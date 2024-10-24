@@ -1,0 +1,28 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        cloud_uaa [label = "{Service: cloud_uaa | --internal--\n--local_logging--\n'Port': 8088\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        cloud_gateway [label = "{Service: cloud_gateway | --infrastructural--\n--gateway--\n--local_logging--\n'Port': 8205\n'Gateway': 'Spring Cloud Gateway'\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        cloud_mission [label = "{Service: cloud_mission | --internal--\n--local_logging--\n'Port': 8888\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        cloud_common [label = "{Service: cloud_common | --internal--\n--local_logging--\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        cloud_manage [label = "{Service: cloud_manage | --internal--\n--local_logging--\n'Port': 8889\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        database_cloud_uaa [label = "{External Entity: database_cloud_uaa | --exitpoint--\n--entrypoint--\n--external_database--\n'Port': 3306\n'Database': 'MySQL'\n}"];
+        database_cloud_mission [label = "{External Entity: database_cloud_mission | --exitpoint--\n--entrypoint--\n--external_database--\n'Port': 3306\n'Database': 'MySQL'\n}"];
+        user [label = "{External Entity: user | --exitpoint--\n--entrypoint--\n--user_stereotype--\n}"];
+        database_cloud_uaa -> cloud_uaa [label = " --jdbc--\n"]
+        database_cloud_mission -> cloud_mission [label = " --jdbc--\n"]
+        user -> cloud_gateway [label = " --restful_http--\n"]
+        cloud_gateway -> user [label = " --restful_http--\n"]
+        cloud_gateway -> cloud_uaa [label = " --restful_http--\n"]
+        cloud_gateway -> cloud_mission [label = " --restful_http--\n"]
+        cloud_gateway -> cloud_manage [label = " --restful_http--\n"]
+
+}
+@enduml

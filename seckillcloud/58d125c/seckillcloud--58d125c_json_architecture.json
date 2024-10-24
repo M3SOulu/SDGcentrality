@@ -1,0 +1,221 @@
+{
+    "microservices": [
+        {
+            "name": "cloud-uaa",
+            "type": "service",
+            "stereotype_instances": [
+                "local_logging",
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ],
+                [
+                    "Port",
+                    8088
+                ]
+            ]
+        },
+        {
+            "name": "cloud-gateway",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "local_logging",
+                "gateway"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8205
+                ],
+                [
+                    "Gateway",
+                    "Spring Cloud Gateway"
+                ],
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ]
+            ]
+        },
+        {
+            "name": "cloud-mission",
+            "type": "service",
+            "stereotype_instances": [
+                "local_logging",
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ],
+                [
+                    "Port",
+                    8888
+                ]
+            ]
+        },
+        {
+            "name": "cloud-common",
+            "type": "service",
+            "stereotype_instances": [
+                "local_logging",
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ]
+            ]
+        },
+        {
+            "name": "cloud-manage",
+            "type": "service",
+            "stereotype_instances": [
+                "local_logging",
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8889
+                ],
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ]
+            ]
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "database-cloud-uaa",
+            "receiver": "cloud-uaa",
+            "stereotype_instances": [
+                "jdbc"
+            ]
+        },
+        {
+            "sender": "database-cloud-mission",
+            "receiver": "cloud-mission",
+            "stereotype_instances": [
+                "jdbc"
+            ]
+        },
+        {
+            "sender": "database-cloud-manage",
+            "receiver": "cloud-manage",
+            "stereotype_instances": [
+                "jdbc"
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "cloud-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "cloud-gateway",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "cloud-gateway",
+            "receiver": "cloud-uaa",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "cloud-gateway",
+            "receiver": "cloud-mission",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "cloud-gateway",
+            "receiver": "cloud-manage",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "database-cloud-uaa",
+            "type": "external_component",
+            "stereotype_instances": [
+                "external_database",
+                "entrypoint",
+                "exitpoint"
+            ],
+            "tagged_values": [
+                [
+                    "Database",
+                    "MySQL"
+                ],
+                [
+                    "Port",
+                    3306
+                ]
+            ]
+        },
+        {
+            "name": "database-cloud-mission",
+            "type": "external_component",
+            "stereotype_instances": [
+                "external_database",
+                "entrypoint",
+                "exitpoint"
+            ],
+            "tagged_values": [
+                [
+                    "Database",
+                    "MySQL"
+                ],
+                [
+                    "Port",
+                    3306
+                ]
+            ]
+        },
+        {
+            "name": "database-cloud-manage",
+            "type": "external_component",
+            "stereotype_instances": [
+                "external_database",
+                "entrypoint",
+                "exitpoint"
+            ],
+            "tagged_values": [
+                [
+                    "Database",
+                    "MySQL"
+                ],
+                [
+                    "Port",
+                    3306
+                ]
+            ]
+        },
+        {
+            "name": "user",
+            "type": "external_component",
+            "stereotype_instances": [
+                "user_stereotype",
+                "entrypoint",
+                "exitpoint"
+            ]
+        }
+    ]
+}

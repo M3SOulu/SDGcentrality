@@ -1,0 +1,40 @@
+{
+    "edges": [
+        {
+            "sender": "database-cloud-manage",
+            "receiver": "cloud-manage"
+        },
+        {
+            "sender": "broker",
+            "receiver": "namesrv"
+        },
+        {
+            "sender": "dashboard",
+            "receiver": "namesrv"
+        },
+        {
+            "sender": "user",
+            "receiver": "cloud-gateway"
+        },
+        {
+            "sender": "cloud-gateway",
+            "receiver": "user"
+        },
+        {
+            "sender": "cloud-gateway",
+            "receiver": "cloud-manage"
+        },
+        {
+            "sender": "cloud-gateway",
+            "receiver": "cloud-monitor"
+        },
+        {
+            "sender": "cloud-gateway",
+            "receiver": "cloud-mission"
+        },
+        {
+            "sender": "cloud-gateway",
+            "receiver": "cloud-uaa"
+        }
+    ]
+}

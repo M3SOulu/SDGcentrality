@@ -25,7 +25,15 @@
             "receiver": "turbine-server"
         },
         {
-            "sender": "recommendation-service",
+            "sender": "turbine-server",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "composite-service",
             "receiver": "eureka"
         },
         {
@@ -33,7 +41,7 @@
             "receiver": "eureka"
         },
         {
-            "sender": "composite-service",
+            "sender": "recommendation-service",
             "receiver": "eureka"
         },
         {
@@ -42,14 +50,6 @@
         },
         {
             "sender": "review-service",
-            "receiver": "eureka"
-        },
-        {
-            "sender": "turbine-server",
-            "receiver": "eureka"
-        },
-        {
-            "sender": "config-server",
             "receiver": "eureka"
         },
         {

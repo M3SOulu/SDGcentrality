@@ -5,8 +5,8 @@
             "type": "service",
             "gradle_path": "microservices/core/recommendation-service/build.gradle",
             "stereotype_instances": [
-                "internal",
-                "local_logging"
+                "local_logging",
+                "internal"
             ],
             "tagged_values": [
                 [
@@ -20,8 +20,8 @@
             "type": "service",
             "gradle_path": "microservices/core/product-service/build.gradle",
             "stereotype_instances": [
-                "internal",
-                "local_logging"
+                "local_logging",
+                "internal"
             ],
             "tagged_values": [
                 [
@@ -35,13 +35,13 @@
             "type": "service",
             "gradle_path": "microservices/core/review-service/build.gradle",
             "stereotype_instances": [
-                "internal",
-                "local_logging"
+                "local_logging",
+                "internal"
             ],
             "tagged_values": [
                 [
                     "Endpoints",
-                    "['/review', '/set-processing-time']"
+                    "['/set-processing-time', '/review']"
                 ]
             ]
         },
@@ -50,20 +50,20 @@
             "type": "service",
             "gradle_path": "microservices/composite/product-composite-service/build.gradle",
             "stereotype_instances": [
-                "circuit_breaker",
                 "local_logging",
+                "load_balancer",
                 "internal",
                 "resource_server",
-                "load_balancer"
+                "circuit_breaker"
             ],
             "tagged_values": [
                 [
-                    "Load Balancer",
-                    "Spring Cloud"
-                ],
-                [
                     "Endpoints",
                     "['/{productId}', '/']"
+                ],
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
                 ]
             ]
         },
@@ -77,16 +77,16 @@
             ],
             "tagged_values": [
                 [
-                    "Monitoring Dashboard",
-                    "Hystrix"
-                ],
-                [
                     "Port",
                     7979
                 ],
                 [
                     "Endpoints",
                     "['/']"
+                ],
+                [
+                    "Monitoring Dashboard",
+                    "Hystrix"
                 ]
             ]
         },
@@ -95,9 +95,9 @@
             "type": "service",
             "gradle_path": "microservices/support/config-server/build.gradle",
             "stereotype_instances": [
+                "infrastructural",
                 "configuration_server",
-                "local_logging",
-                "infrastructural"
+                "local_logging"
             ],
             "tagged_values": [
                 [
@@ -116,8 +116,8 @@
             "gradle_path": "microservices/support/turbine/build.gradle",
             "stereotype_instances": [
                 "monitoring_server",
-                "local_logging",
-                "infrastructural"
+                "infrastructural",
+                "local_logging"
             ],
             "tagged_values": [
                 [
@@ -135,17 +135,13 @@
             "type": "service",
             "gradle_path": "microservices/support/edge-server/build.gradle",
             "stereotype_instances": [
+                "infrastructural",
                 "gateway",
-                "load_balancer",
                 "local_logging",
-                "resource_server",
-                "infrastructural"
+                "load_balancer",
+                "resource_server"
             ],
             "tagged_values": [
-                [
-                    "Port",
-                    8765
-                ],
                 [
                     "Gateway",
                     "Zuul"
@@ -153,6 +149,10 @@
                 [
                     "Load Balancer",
                     "Ribbon"
+                ],
+                [
+                    "Port",
+                    8765
                 ]
             ]
         },
@@ -161,8 +161,8 @@
             "type": "service",
             "gradle_path": "microservices/support/discovery-server/build.gradle",
             "stereotype_instances": [
-                "infrastructural",
-                "service_discovery"
+                "service_discovery",
+                "infrastructural"
             ],
             "tagged_values": [
                 [
@@ -188,12 +188,12 @@
             ],
             "tagged_values": [
                 [
-                    "Port",
-                    15672
-                ],
-                [
                     "Message Broker",
                     "RabbitMQ"
+                ],
+                [
+                    "Port",
+                    15672
                 ]
             ]
         }
@@ -242,10 +242,32 @@
             ]
         },
         {
-            "sender": "recommendation-service",
+            "sender": "turbine-server",
             "receiver": "eureka",
             "stereotype_instances": [
                 "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "composite-service",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http",
+                "circuit_breaker_link",
+                "load_balanced_link"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ]
             ]
         },
         {
@@ -256,18 +278,10 @@
             ]
         },
         {
-            "sender": "composite-service",
+            "sender": "recommendation-service",
             "receiver": "eureka",
             "stereotype_instances": [
-                "load_balanced_link",
-                "circuit_breaker_link",
                 "restful_http"
-            ],
-            "tagged_values": [
-                [
-                    "Load Balancer",
-                    "Spring Cloud"
-                ]
             ]
         },
         {
@@ -279,20 +293,6 @@
         },
         {
             "sender": "review-service",
-            "receiver": "eureka",
-            "stereotype_instances": [
-                "restful_http"
-            ]
-        },
-        {
-            "sender": "turbine-server",
-            "receiver": "eureka",
-            "stereotype_instances": [
-                "restful_http"
-            ]
-        },
-        {
-            "sender": "config-server",
             "receiver": "eureka",
             "stereotype_instances": [
                 "restful_http"
@@ -325,9 +325,9 @@
             "name": "user",
             "type": "external_component",
             "stereotype_instances": [
-                "exitpoint",
                 "user_stereotype",
-                "entrypoint"
+                "entrypoint",
+                "exitpoint"
             ]
         }
     ]

@@ -247,18 +247,6 @@
                 }
             }
         },
-        "elasticsearch": {
-            "file": "docker-compose-with-elk.yml",
-            "line": 5,
-            "span": "[2:15]",
-            "sub_items": {
-                "infrastructural": {
-                    "file": "heuristic, based on stereotype search_engine",
-                    "line": "heuristic, based on stereotype search_engine",
-                    "span": "heuristic, based on stereotype search_engine"
-                }
-            }
-        },
         "kibana": {
             "file": "docker-compose-with-elk.yml",
             "line": 18,
@@ -276,15 +264,15 @@
                 }
             }
         },
-        "zipkin": {
+        "logstash": {
             "file": "docker-compose-with-elk.yml",
-            "line": 205,
-            "span": "[2:8]",
+            "line": 28,
+            "span": "[2:10]",
             "sub_items": {
-                "internal": {
-                    "file": "heuristic",
-                    "line": "heuristic",
-                    "span": "heuristic"
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype logging_server",
+                    "line": "heuristic, based on stereotype logging_server",
+                    "span": "heuristic, based on stereotype logging_server"
                 }
             }
         },
@@ -305,15 +293,27 @@
                 }
             }
         },
-        "logstash": {
+        "elasticsearch": {
             "file": "docker-compose-with-elk.yml",
-            "line": 28,
-            "span": "[2:10]",
+            "line": 5,
+            "span": "[2:15]",
             "sub_items": {
                 "infrastructural": {
-                    "file": "heuristic, based on stereotype logging_server",
-                    "line": "heuristic, based on stereotype logging_server",
-                    "span": "heuristic, based on stereotype logging_server"
+                    "file": "heuristic, based on stereotype search_engine",
+                    "line": "heuristic, based on stereotype search_engine",
+                    "span": "heuristic, based on stereotype search_engine"
+                }
+            }
+        },
+        "zipkin": {
+            "file": "docker-compose-with-elk.yml",
+            "line": 205,
+            "span": "[2:8]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
                 }
             }
         },
@@ -348,8 +348,8 @@
         },
         "config-server -> product-service": {
             "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/core/product-service/src/main/resources/bootstrap.yml",
-            "line": 30,
-            "span": "(12, 66)"
+            "line": 18,
+            "span": "(12, 34)"
         },
         "config-server -> review-service": {
             "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/core/review-service/src/main/resources/bootstrap.yml",
@@ -363,8 +363,8 @@
         },
         "config-server -> monitor-dashboard": {
             "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/monitor-dashboard/src/main/resources/bootstrap.yml",
-            "line": 18,
-            "span": "(12, 34)"
+            "line": 30,
+            "span": "(12, 66)"
         },
         "config-server -> auth-server": {
             "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/auth-server/src/main/resources/bootstrap.yml",
@@ -378,27 +378,17 @@
         },
         "config-server -> edge-server": {
             "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/edge-server/src/main/resources/bootstrap.yml",
-            "line": 30,
-            "span": "(12, 66)"
+            "line": 18,
+            "span": "(12, 34)"
         },
-        "product-service -> discovery-server": {
-            "file": "microservices/core/product-service/src/main/java/se/callista/microservices/core/product/ProductServiceApplication.java",
-            "line": "8",
+        "turbine-server -> discovery-server": {
+            "file": "microservices/support/turbine/src/main/java/se/callista/microservises/support/turbine/TurbineApplication.java",
+            "line": "10",
             "span": "(50, 71)"
         },
         "composite-service -> discovery-server": {
             "file": "microservices/composite/product-composite-service/src/main/java/se/callista/microservices/composite/product/ProductCompositeServiceApplication.java",
             "line": "8",
-            "span": "(50, 71)"
-        },
-        "turbine-server -> discovery-server": {
-            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/turbine/src/main/resources/application.yml",
-            "line": 88,
-            "span": "(20, 59)"
-        },
-        "config-server -> discovery-server": {
-            "file": "microservices/support/config-server/src/main/java/se/callista/microservises/support/ConfigServerApplication.java",
-            "line": "10",
             "span": "(50, 71)"
         },
         "recommendation-service -> discovery-server": {
@@ -409,6 +399,16 @@
         "review-service -> discovery-server": {
             "file": "microservices/core/review-service/src/main/java/se/callista/microservices/core/review/ReviewServiceApplication.java",
             "line": "11",
+            "span": "(50, 71)"
+        },
+        "config-server -> discovery-server": {
+            "file": "microservices/support/config-server/src/main/java/se/callista/microservises/support/ConfigServerApplication.java",
+            "line": "10",
+            "span": "(50, 71)"
+        },
+        "product-service -> discovery-server": {
+            "file": "microservices/core/product-service/src/main/java/se/callista/microservices/core/product/ProductServiceApplication.java",
+            "line": "8",
             "span": "(50, 71)"
         },
         "user -> edge-server": {

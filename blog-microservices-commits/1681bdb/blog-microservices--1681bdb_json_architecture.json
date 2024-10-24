@@ -5,13 +5,13 @@
             "type": "service",
             "gradle_path": "microservices/core/recommendation-service/build.gradle",
             "stereotype_instances": [
-                "local_logging",
-                "internal"
+                "internal",
+                "local_logging"
             ],
             "tagged_values": [
                 [
                     "Endpoints",
-                    "['/recommendation', '/set-processing-time']"
+                    "['/set-processing-time', '/recommendation']"
                 ]
             ]
         },
@@ -20,8 +20,8 @@
             "type": "service",
             "gradle_path": "microservices/core/product-service/build.gradle",
             "stereotype_instances": [
-                "local_logging",
-                "internal"
+                "internal",
+                "local_logging"
             ],
             "tagged_values": [
                 [
@@ -35,13 +35,13 @@
             "type": "service",
             "gradle_path": "microservices/core/review-service/build.gradle",
             "stereotype_instances": [
-                "local_logging",
-                "internal"
+                "internal",
+                "local_logging"
             ],
             "tagged_values": [
                 [
                     "Endpoints",
-                    "['/review', '/set-processing-time']"
+                    "['/set-processing-time', '/review']"
                 ]
             ]
         },
@@ -50,20 +50,20 @@
             "type": "service",
             "gradle_path": "microservices/composite/product-composite-service/build.gradle",
             "stereotype_instances": [
-                "local_logging",
-                "internal",
                 "load_balancer",
-                "resource_server",
-                "circuit_breaker"
+                "local_logging",
+                "circuit_breaker",
+                "internal",
+                "resource_server"
             ],
             "tagged_values": [
                 [
-                    "Endpoints",
-                    "['/{productId}', '/']"
-                ],
-                [
                     "Load Balancer",
                     "Spring Cloud"
+                ],
+                [
+                    "Endpoints",
+                    "['/', '/{productId}']"
                 ]
             ]
         },
@@ -78,12 +78,12 @@
             ],
             "tagged_values": [
                 [
-                    "Monitoring Dashboard",
-                    "Hystrix"
-                ],
-                [
                     "Endpoints",
                     "['/']"
+                ],
+                [
+                    "Monitoring Dashboard",
+                    "Hystrix"
                 ]
             ]
         },
@@ -92,10 +92,10 @@
             "type": "service",
             "gradle_path": "microservices/support/auth-server/build.gradle",
             "stereotype_instances": [
-                "infrastructural",
                 "authorization_server",
-                "resource_server",
-                "local_logging"
+                "local_logging",
+                "infrastructural",
+                "resource_server"
             ],
             "tagged_values": [
                 [
@@ -113,9 +113,9 @@
             "type": "service",
             "gradle_path": "microservices/support/config-server/build.gradle",
             "stereotype_instances": [
-                "infrastructural",
+                "configuration_server",
                 "local_logging",
-                "configuration_server"
+                "infrastructural"
             ],
             "tagged_values": [
                 [
@@ -133,8 +133,8 @@
             "type": "service",
             "gradle_path": "microservices/support/turbine/build.gradle",
             "stereotype_instances": [
-                "infrastructural",
                 "local_logging",
+                "infrastructural",
                 "monitoring_server"
             ],
             "tagged_values": [
@@ -167,10 +167,10 @@
             "type": "service",
             "gradle_path": "microservices/support/edge-server/build.gradle",
             "stereotype_instances": [
-                "infrastructural",
-                "local_logging",
-                "gateway",
                 "load_balancer",
+                "local_logging",
+                "infrastructural",
+                "gateway",
                 "resource_server"
             ],
             "tagged_values": [
@@ -189,8 +189,8 @@
             "type": "service",
             "gradle_path": "microservices/support/discovery-server/build.gradle",
             "stereotype_instances": [
-                "infrastructural",
-                "service_discovery"
+                "service_discovery",
+                "infrastructural"
             ],
             "tagged_values": [
                 [
@@ -204,24 +204,6 @@
                 [
                     "Service Discovery",
                     "Eureka"
-                ]
-            ]
-        },
-        {
-            "name": "elasticsearch",
-            "type": "service",
-            "stereotype_instances": [
-                "infrastructural",
-                "search_engine"
-            ],
-            "tagged_values": [
-                [
-                    "Search Engine",
-                    "Elasticsearch"
-                ],
-                [
-                    "Port",
-                    9200
                 ]
             ]
         },
@@ -244,42 +226,11 @@
             ]
         },
         {
-            "name": "zipkin",
-            "type": "service",
-            "stereotype_instances": [
-                "internal"
-            ],
-            "tagged_values": [
-                [
-                    "Port",
-                    9411
-                ]
-            ]
-        },
-        {
-            "name": "rabbitmq",
-            "type": "service",
-            "stereotype_instances": [
-                "infrastructural",
-                "message_broker"
-            ],
-            "tagged_values": [
-                [
-                    "Port",
-                    15672
-                ],
-                [
-                    "Message Broker",
-                    "RabbitMQ"
-                ]
-            ]
-        },
-        {
             "name": "logstash",
             "type": "service",
             "stereotype_instances": [
-                "logging_server",
-                "infrastructural"
+                "infrastructural",
+                "logging_server"
             ],
             "tagged_values": [
                 [
@@ -289,6 +240,55 @@
                 [
                     "Logging Server",
                     "Logstash"
+                ]
+            ]
+        },
+        {
+            "name": "rabbitmq",
+            "type": "service",
+            "stereotype_instances": [
+                "message_broker",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Message Broker",
+                    "RabbitMQ"
+                ],
+                [
+                    "Port",
+                    15672
+                ]
+            ]
+        },
+        {
+            "name": "elasticsearch",
+            "type": "service",
+            "stereotype_instances": [
+                "search_engine",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Search Engine",
+                    "Elasticsearch"
+                ],
+                [
+                    "Port",
+                    9200
+                ]
+            ]
+        },
+        {
+            "name": "zipkin",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    9411
                 ]
             ]
         }
@@ -351,7 +351,7 @@
             ]
         },
         {
-            "sender": "product-service",
+            "sender": "turbine-server",
             "receiver": "discovery-server",
             "stereotype_instances": [
                 "restful_http"
@@ -373,7 +373,14 @@
             ]
         },
         {
-            "sender": "turbine-server",
+            "sender": "recommendation-service",
+            "receiver": "discovery-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "review-service",
             "receiver": "discovery-server",
             "stereotype_instances": [
                 "restful_http"
@@ -387,14 +394,7 @@
             ]
         },
         {
-            "sender": "recommendation-service",
-            "receiver": "discovery-server",
-            "stereotype_instances": [
-                "restful_http"
-            ]
-        },
-        {
-            "sender": "review-service",
+            "sender": "product-service",
             "receiver": "discovery-server",
             "stereotype_instances": [
                 "restful_http"
@@ -441,9 +441,9 @@
             "name": "user",
             "type": "external_component",
             "stereotype_instances": [
-                "entrypoint",
                 "exitpoint",
-                "user_stereotype"
+                "user_stereotype",
+                "entrypoint"
             ]
         }
     ]

@@ -33,19 +33,11 @@
             "receiver": "edge-server"
         },
         {
-            "sender": "product-service",
-            "receiver": "discovery-server"
-        },
-        {
-            "sender": "composite-service",
-            "receiver": "discovery-server"
-        },
-        {
             "sender": "turbine-server",
             "receiver": "discovery-server"
         },
         {
-            "sender": "config-server",
+            "sender": "composite-service",
             "receiver": "discovery-server"
         },
         {
@@ -54,6 +46,14 @@
         },
         {
             "sender": "review-service",
+            "receiver": "discovery-server"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "discovery-server"
+        },
+        {
+            "sender": "product-service",
             "receiver": "discovery-server"
         },
         {

@@ -1,0 +1,28 @@
+{
+    "edges": [
+        {
+            "sender": "recommendation",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "productcomposite",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "review",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "product",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "user",
+            "receiver": "edgeserver"
+        },
+        {
+            "sender": "edgeserver",
+            "receiver": "user"
+        }
+    ]
+}

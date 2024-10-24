@@ -1,0 +1,46 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        recommendation_service [label = "{Service: recommendation_service | --internal--\n--local_logging--\n'Endpoints': ['/set-processing-time'\n}" shape = Mrecord];
+        product_service [label = "{Service: product_service | --internal--\n--local_logging--\n'Endpoints': ['/set-processing-time'\n}" shape = Mrecord];
+        review_service [label = "{Service: review_service | --internal--\n--local_logging--\n'Endpoints': ['/set-processing-time'\n}" shape = Mrecord];
+        composite_service [label = "{Service: composite_service | --internal--\n--local_logging--\n--circuit_breaker--\n--load_balancer--\n--resource_server--\n'Load Balancer': 'Spring Cloud'\n'Endpoints': ['/\n}" shape = Mrecord];
+        hystrix_dashboard [label = "{Service: hystrix_dashboard | --infrastructural--\n--monitoring_dashboard--\n'Monitoring Dashboard': 'Hystrix'\n'Endpoints': ['/']\n'Port': 7979\n}" shape = Mrecord];
+        auth_server [label = "{Service: auth_server | --infrastructural--\n--authorization_server--\n--ssl_enabled--\n--resource_server--\n'Authorization Server': 'Spring OAuth2'\n'Endpoints': ['/user']\n'Port': 9999\n}" shape = Mrecord];
+        config_server [label = "{Service: config_server | --infrastructural--\n--configuration_server--\n--local_logging--\n'Port': 8888\n'Configuration Server': 'Spring Cloud Config'\n}" shape = Mrecord];
+        turbine_server [label = "{Service: turbine_server | --infrastructural--\n--local_logging--\n--monitoring_server--\n'Monitoring Server': 'Turbine'\n'Port': 8989\n}" shape = Mrecord];
+        edge_server [label = "{Service: edge_server | --infrastructural--\n--local_logging--\n--load_balancer--\n--gateway--\n--resource_server--\n'Port': 8765\n'Load Balancer': 'Ribbon'\n'Gateway': 'Zuul'\n}" shape = Mrecord];
+        eureka [label = "{Service: eureka | --infrastructural--\n--service_discovery--\n'Port': 8761\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        rabbitmq [label = "{Service: rabbitmq | --infrastructural--\n--message_broker--\n'Message Broker': 'RabbitMQ'\n'Port': 15672\n}" shape = Mrecord];
+        elasticsearch [label = "{Service: elasticsearch | --infrastructural--\n--search_engine--\n'Search Engine': 'Elasticsearch'\n'Port': 9200\n}" shape = Mrecord];
+        kibana [label = "{Service: kibana | --infrastructural--\n--monitoring_dashboard--\n'Port': 5601\n'Monitoring Dashboard': 'Kibana'\n}" shape = Mrecord];
+        logstash [label = "{Service: logstash | --infrastructural--\n--logging_server--\n'Port': 12201\n'Logging Server': 'Logstash'\n}" shape = Mrecord];
+        user [label = "{External Entity: user | --entrypoint--\n--exitpoint--\n--user_stereotype--\n}"];
+        config_server -> recommendation_service [label = " --restful_http--\n"]
+        config_server -> product_service [label = " --restful_http--\n"]
+        config_server -> review_service [label = " --restful_http--\n"]
+        config_server -> composite_service [label = " --restful_http--\n"]
+        config_server -> hystrix_dashboard [label = " --restful_http--\n"]
+        config_server -> turbine_server [label = " --restful_http--\n"]
+        config_server -> eureka [label = " --restful_http--\n"]
+        turbine_server -> eureka [label = " --restful_http--\n"]
+        product_service -> eureka [label = " --restful_http--\n"]
+        hystrix_dashboard -> eureka [label = " --restful_http--\n"]
+        recommendation_service -> eureka [label = " --restful_http--\n"]
+        composite_service -> eureka [label = " --circuit_breaker_link--\n--restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        review_service -> eureka [label = " --restful_http--\n"]
+        user -> edge_server [label = " --restful_http--\n"]
+        edge_server -> user [label = " --restful_http--\n"]
+        turbine_server -> hystrix_dashboard [label = " --restful_http--\n"]
+        elasticsearch -> kibana [label = " --restful_http--\n"]
+        logstash -> elasticsearch [label = " --restful_http--\n"]
+
+}
+@enduml

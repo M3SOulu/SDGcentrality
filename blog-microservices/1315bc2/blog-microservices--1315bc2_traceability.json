@@ -1,0 +1,61 @@
+{
+    "nodes": {
+        "products": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/core/ProductService/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:18)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/core/ProductService/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 13)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "reviews": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/core/ReviewService/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:17)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/core/ReviewService/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 13)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "productApi": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/api/ProductApiService/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:20)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/api/ProductApiService/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 13)"
+                },
+                "local_logging": {
+                    "file": "microservices/api/ProductApiService/src/main/java/se/callista/microservises/api/product/service/ProductApiService.java",
+                    "line": "4",
+                    "span": "(17, 30)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {}
+}

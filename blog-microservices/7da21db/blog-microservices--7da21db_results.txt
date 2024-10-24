@@ -1,0 +1,45 @@
+Microservices:
+
+{'name': 'webapp', 'type': 'service', 'stereotype_instances': ['gateway', 'infrastructural', 'load_balancer'], 'tagged_values': [('Gateway', 'Zuul'), ('Load Balancer', 'Ribbon')]}
+{'name': 'recommendation', 'type': 'service', 'gradle_path': 'microservices/core/recommendation-service/build.gradle', 'stereotype_instances': ['internal', 'local_logging'], 'tagged_values': [('Endpoints', "['/recommendation', '/set-processing-time']")]}
+{'name': 'product', 'type': 'service', 'gradle_path': 'microservices/core/product-service/build.gradle', 'stereotype_instances': ['internal'], 'tagged_values': [('Endpoints', "['/product/{productId}']")]}
+{'name': 'review', 'type': 'service', 'gradle_path': 'microservices/core/review-service/build.gradle', 'stereotype_instances': ['internal', 'local_logging'], 'tagged_values': [('Endpoints', "['/set-processing-time', '/review']")]}
+{'name': 'productcomposite', 'type': 'service', 'gradle_path': 'microservices/composite/product-composite-service/build.gradle', 'stereotype_instances': ['circuit_breaker', 'internal', 'local_logging'], 'tagged_values': [('Endpoints', "['/', '/product/{productId}']")]}
+{'name': 'hystrixdashboard', 'type': 'service', 'gradle_path': 'microservices/support/monitor-dashboard/build.gradle', 'stereotype_instances': ['monitoring_dashboard', 'infrastructural'], 'tagged_values': [('Endpoints', "['/']"), ('Port', 7979), ('Monitoring Dashboard', 'Hystrix')]}
+{'name': 'configserver', 'type': 'service', 'gradle_path': 'microservices/support/config-server/build.gradle', 'stereotype_instances': ['infrastructural', 'configuration_server'], 'tagged_values': [('Port', 8888), ('Configuration Server', 'Spring Cloud Config')]}
+{'name': 'turbine', 'type': 'service', 'gradle_path': 'microservices/support/turbine/build.gradle', 'stereotype_instances': ['infrastructural', 'monitoring_server'], 'tagged_values': [('Port', 8989), ('Monitoring Server', 'Turbine')]}
+{'name': 'edgeserver', 'type': 'service', 'gradle_path': 'microservices/support/edge-server/build.gradle', 'stereotype_instances': ['gateway', 'infrastructural', 'load_balancer'], 'tagged_values': [('Gateway', 'Zuul'), ('Port', 8765), ('Load Balancer', 'Ribbon')]}
+{'name': 'eureka', 'type': 'service', 'gradle_path': 'microservices/support/discovery-server/build.gradle', 'stereotype_instances': ['service_discovery', 'infrastructural'], 'tagged_values': [('Service Discovery', 'Eureka'), ('Port', 8761), ('Port', 8762)]}
+{'name': 'productapi', 'type': 'service', 'gradle_path': 'microservices/api/product-api-service/build.gradle', 'stereotype_instances': ['circuit_breaker', 'internal', 'local_logging'], 'tagged_values': [('Endpoints', "['/{productId}']")]}
+
+Information Flows:
+
+{'sender': 'github-repository', 'receiver': 'configserver', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'webapp', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'recommendation', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'product', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'review', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'productcomposite', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'hystrixdashboard', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'turbine', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'edgeserver', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'eureka', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'productapi', 'stereotype_instances': ['restful_http']}
+{'sender': 'review', 'receiver': 'eureka', 'stereotype_instances': ['restful_http']}
+{'sender': 'turbine', 'receiver': 'eureka', 'stereotype_instances': ['restful_http']}
+{'sender': 'productcomposite', 'receiver': 'eureka', 'stereotype_instances': ['circuit_breaker_link', 'restful_http']}
+{'sender': 'recommendation', 'receiver': 'eureka', 'stereotype_instances': ['restful_http']}
+{'sender': 'hystrixdashboard', 'receiver': 'eureka', 'stereotype_instances': ['restful_http']}
+{'sender': 'eureka', 'receiver': 'edgeserver', 'stereotype_instances': ['restful_http']}
+{'sender': 'productapi', 'receiver': 'eureka', 'stereotype_instances': ['circuit_breaker_link', 'restful_http']}
+{'sender': 'product', 'receiver': 'eureka', 'stereotype_instances': ['restful_http']}
+{'sender': 'user', 'receiver': 'edgeserver', 'stereotype_instances': ['restful_http']}
+{'sender': 'edgeserver', 'receiver': 'user', 'stereotype_instances': ['restful_http']}
+{'sender': 'user', 'receiver': 'webapp', 'stereotype_instances': ['restful_http']}
+{'sender': 'webapp', 'receiver': 'user', 'stereotype_instances': ['restful_http']}
+{'sender': 'turbine', 'receiver': 'hystrixdashboard', 'stereotype_instances': ['restful_http']}
+
+External Components:
+
+{'name': 'github-repository', 'type': 'external_component', 'stereotype_instances': ['entrypoint', 'github_repository'], 'tagged_values': [('URL', 'https://github.com/spring-cloud-samples/config-repo')]}
+{'name': 'user', 'type': 'external_component', 'stereotype_instances': ['exitpoint', 'entrypoint', 'user_stereotype']}

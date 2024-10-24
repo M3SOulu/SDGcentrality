@@ -1,0 +1,286 @@
+{
+    "nodes": {
+        "oauth2-vanilla-ui": {
+            "file": "microservices/webapp/ui/pom.xml",
+            "line": 6,
+            "span": "[13:30]",
+            "sub_items": {
+                "gateway": {
+                    "file": "microservices/webapp/ui/src/main/java/demo/UiApplication.java",
+                    "line": "27",
+                    "span": "(0, 16)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "hystrixdashboard": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/monitor-dashboard/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:26)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/monitor-dashboard/src/main/resources/application.yml",
+                    "line": 11,
+                    "span": "(8, 12)"
+                },
+                "monitoring_dashboard": {
+                    "file": "microservices/support/monitor-dashboard/src/main/java/hystrixdashboard/HystrixDashboardApplication.java",
+                    "line": "23",
+                    "span": "(0, 23)"
+                },
+                "local_logging": {
+                    "file": "microservices/support/monitor-dashboard/src/main/java/hystrixdashboard/stream/MockStreamServlet.java",
+                    "line": "4",
+                    "span": "(17, 30)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype monitoring_dashboard",
+                    "line": "heuristic, based on stereotype monitoring_dashboard",
+                    "span": "heuristic, based on stereotype monitoring_dashboard"
+                }
+            }
+        },
+        "zuulserver": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/edge-server/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:20)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/edge-server/src/main/resources/application.yml",
+                    "line": 33,
+                    "span": "(8, 12)"
+                },
+                "gateway": {
+                    "file": "microservices/support/edge-server/src/main/java/zuulserver/ZuulServerApplication.java",
+                    "line": "20",
+                    "span": "(0, 16)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/discovery-server/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:16)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/discovery-server/src/main/resources/application.yml",
+                    "line": 31,
+                    "span": "(8, 12)"
+                },
+                "service_discovery": {
+                    "file": "microservices/support/discovery-server/src/main/java/eurekademo/EurekaApplication.java",
+                    "line": "14",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "oauth2-vanilla-resource": {
+            "file": "microservices/api/resource/pom.xml",
+            "line": 6,
+            "span": "[13:36]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "products": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/composite/product-composite-service/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:18)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/composite/product-composite-service/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 13)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "reviews": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/core/review-service/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:17)",
+            "sub_items": {
+                "local_logging": {
+                    "file": "microservices/core/review-service/src/main/java/se/callista/microservises/core/review/service/util/SetProcTimeBean.java",
+                    "line": "4",
+                    "span": "(17, 30)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "configserver": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/config-server/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:22)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/config-server/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "configuration_server": {
+                    "file": "microservices/support/config-server/src/main/java/demo/ConfigServerApplication.java",
+                    "line": "12",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype configuration_server",
+                    "line": "heuristic, based on stereotype configuration_server",
+                    "span": "heuristic, based on stereotype configuration_server"
+                }
+            }
+        },
+        "productapi": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/api/product-api-service/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:20)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/api/product-api-service/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 13)"
+                },
+                "local_logging": {
+                    "file": "microservices/api/product-api-service/src/main/java/se/callista/microservices/api/product/SecurityConfiguration.java",
+                    "line": "4",
+                    "span": "(17, 30)"
+                },
+                "circuit_breaker": {
+                    "file": "microservices/api/product-api-service/src/main/java/se/callista/microservices/api/product/service/ProductApiService.java",
+                    "line": "22",
+                    "span": "(0, 14)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "github-repository": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/config-server/src/main/resources/application.yml",
+            "line": 28,
+            "span": "(16, 67)"
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "github-repository -> configserver": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/config-server/src/main/resources/application.yml",
+            "line": 28,
+            "span": "(16, 67)"
+        },
+        "configserver -> hystrixdashboard": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/monitor-dashboard/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 103)"
+        },
+        "configserver -> zuulserver": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/edge-server/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 103)"
+        },
+        "configserver -> eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/support/discovery-server/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 103)"
+        },
+        "configserver -> products": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/composite/product-composite-service/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 103)"
+        },
+        "configserver -> reviews": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/core/review-service/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 103)"
+        },
+        "configserver -> productapi": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/blog-microservices/microservices/api/product-api-service/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 103)"
+        },
+        "productapi -> eureka": {
+            "file": "microservices/api/product-api-service/src/main/java/se/callista/microservices/api/product/ProductApiServiceApplication.java",
+            "line": "6",
+            "span": "(50, 71)"
+        },
+        "products -> eureka": {
+            "file": "microservices/composite/product-composite-service/src/main/java/se/callista/microservises/core/product/ProductServiceApplication.java",
+            "line": "6",
+            "span": "(50, 71)"
+        },
+        "reviews -> eureka": {
+            "file": "microservices/core/review-service/src/main/java/se/callista/microservises/core/review/ReviewServiceApplication.java",
+            "line": "7",
+            "span": "(50, 71)"
+        },
+        "user -> oauth2-vanilla-ui": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "oauth2-vanilla-ui -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "user -> zuulserver": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "zuulserver -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        }
+    }
+}

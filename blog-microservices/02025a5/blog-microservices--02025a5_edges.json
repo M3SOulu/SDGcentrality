@@ -1,0 +1,56 @@
+{
+    "edges": [
+        {
+            "sender": "composite",
+            "receiver": "rabbitmq"
+        },
+        {
+            "sender": "api",
+            "receiver": "rabbitmq"
+        },
+        {
+            "sender": "turbine",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "productcomposite",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "product",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "hystrixdashboard",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "recommendation",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "productapi",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "review",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "user",
+            "receiver": "edgeserver"
+        },
+        {
+            "sender": "edgeserver",
+            "receiver": "user"
+        },
+        {
+            "sender": "turbine",
+            "receiver": "hystrixdashboard"
+        },
+        {
+            "sender": "rabbitmq",
+            "receiver": "turbine"
+        }
+    ]
+}

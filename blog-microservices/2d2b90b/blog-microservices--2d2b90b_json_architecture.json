@@ -1,0 +1,419 @@
+{
+    "microservices": [
+        {
+            "name": "recommendation-service",
+            "type": "service",
+            "gradle_path": "microservices/core/recommendation-service/build.gradle",
+            "stereotype_instances": [
+                "local_logging",
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8080
+                ],
+                [
+                    "Endpoints",
+                    "['/recommendation', '/set-processing-time']"
+                ]
+            ]
+        },
+        {
+            "name": "product-service",
+            "type": "service",
+            "gradle_path": "microservices/core/product-service/build.gradle",
+            "stereotype_instances": [
+                "local_logging",
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8080
+                ],
+                [
+                    "Endpoints",
+                    "['/product/{productId}', '/set-processing-time']"
+                ]
+            ]
+        },
+        {
+            "name": "review-service",
+            "type": "service",
+            "gradle_path": "microservices/core/review-service/build.gradle",
+            "stereotype_instances": [
+                "local_logging",
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8080
+                ],
+                [
+                    "Endpoints",
+                    "['/review', '/set-processing-time']"
+                ]
+            ]
+        },
+        {
+            "name": "composite-service",
+            "type": "service",
+            "gradle_path": "microservices/composite/product-composite-service/build.gradle",
+            "stereotype_instances": [
+                "local_logging",
+                "resource_server",
+                "internal",
+                "circuit_breaker"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/', '/{productId}']"
+                ],
+                [
+                    "Circuit Breaker",
+                    "Hystrix"
+                ]
+            ]
+        },
+        {
+            "name": "hystrix-dashboard",
+            "type": "service",
+            "gradle_path": "microservices/support/monitor-dashboard/build.gradle",
+            "stereotype_instances": [
+                "infrastructural",
+                "monitoring_dashboard"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    7979
+                ],
+                [
+                    "Monitoring Dashboard",
+                    "Hystrix"
+                ],
+                [
+                    "Endpoints",
+                    "['/']"
+                ]
+            ]
+        },
+        {
+            "name": "config-server",
+            "type": "service",
+            "gradle_path": "microservices/support/config-server/build.gradle",
+            "stereotype_instances": [
+                "local_logging",
+                "configuration_server",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Configuration Server",
+                    "Spring Cloud Config"
+                ],
+                [
+                    "Port",
+                    8888
+                ]
+            ]
+        },
+        {
+            "name": "turbine-server",
+            "type": "service",
+            "gradle_path": "microservices/support/turbine/build.gradle",
+            "stereotype_instances": [
+                "local_logging",
+                "monitoring_server",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Monitoring Server",
+                    "Turbine"
+                ],
+                [
+                    "Port",
+                    8989
+                ]
+            ]
+        },
+        {
+            "name": "edge-server",
+            "type": "service",
+            "gradle_path": "microservices/support/edge-server/build.gradle",
+            "stereotype_instances": [
+                "gateway",
+                "infrastructural",
+                "load_balancer"
+            ],
+            "tagged_values": [
+                [
+                    "Gateway",
+                    "Zuul"
+                ],
+                [
+                    "Load Balancer",
+                    "Ribbon"
+                ],
+                [
+                    "Port",
+                    8765
+                ]
+            ]
+        },
+        {
+            "name": "eureka",
+            "type": "service",
+            "gradle_path": "microservices/support/discovery-server/build.gradle",
+            "stereotype_instances": [
+                "service_discovery",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8761
+                ],
+                [
+                    "Port",
+                    8762
+                ],
+                [
+                    "Service Discovery",
+                    "Eureka"
+                ]
+            ]
+        },
+        {
+            "name": "productapi",
+            "type": "service",
+            "gradle_path": "microservices/api/product-api-service/build.gradle",
+            "stereotype_instances": [
+                "local_logging",
+                "resource_server",
+                "internal",
+                "circuit_breaker"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/{productId}']"
+                ],
+                [
+                    "Circuit Breaker",
+                    "Hystrix"
+                ]
+            ]
+        },
+        {
+            "name": "rabbitmq",
+            "type": "service",
+            "stereotype_instances": [
+                "message_broker",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Message Broker",
+                    "RabbitMQ"
+                ],
+                [
+                    "Port",
+                    15672
+                ]
+            ]
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "config-server",
+            "receiver": "recommendation-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "product-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "review-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "composite-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "hystrix-dashboard",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "turbine-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "productapi",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config",
+            "receiver": "rabbitmq",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "pro",
+            "receiver": "rabbitmq",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "rec",
+            "receiver": "rabbitmq",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "rev",
+            "receiver": "rabbitmq",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "composite",
+            "receiver": "rabbitmq",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "turbine-server",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "recommendation-service",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "review-service",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "product-service",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "composite-service",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "circuit_breaker_link",
+                "restful_http"
+            ],
+            "tagged_values": [
+                [
+                    "Circuit Breaker",
+                    "Hystrix"
+                ]
+            ]
+        },
+        {
+            "sender": "hystrix-dashboard",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "productapi",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "circuit_breaker_link",
+                "restful_http"
+            ],
+            "tagged_values": [
+                [
+                    "Circuit Breaker",
+                    "Hystrix"
+                ]
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "edge-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "edge-server",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "turbine-server",
+            "receiver": "hystrix-dashboard",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "user",
+            "type": "external_component",
+            "stereotype_instances": [
+                "entrypoint",
+                "exitpoint",
+                "user_stereotype"
+            ]
+        }
+    ]
+}

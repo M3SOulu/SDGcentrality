@@ -1,0 +1,55 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        webapp [label = "{Service: webapp | --gateway--\n--load_balancer--\n--infrastructural--\n'Gateway': 'Zuul'\n'Load Balancer': 'Ribbon'\n}" shape = Mrecord];
+        recommendation [label = "{Service: recommendation | --local_logging--\n--internal--\n'Endpoints': ['/recommendation'\n'Port': 8080\n}" shape = Mrecord];
+        product [label = "{Service: product | --local_logging--\n--internal--\n'Port': 8080\n'Endpoints': ['/product/\n}" shape = Mrecord];
+        review [label = "{Service: review | --local_logging--\n--internal--\n'Endpoints': ['/review'\n'Port': 8080\n}" shape = Mrecord];
+        productcomposite [label = "{Service: productcomposite | --circuit_breaker--\n--local_logging--\n--internal--\n'Port': 8080\n'Endpoints': ['/product/\n}" shape = Mrecord];
+        hystrixdashboard [label = "{Service: hystrixdashboard | --monitoring_dashboard--\n--infrastructural--\n'Endpoints': ['/']\n'Port': 7979\n'Monitoring Dashboard': 'Hystrix'\n}" shape = Mrecord];
+        configserver [label = "{Service: configserver | --configuration_server--\n--infrastructural--\n'Port': 8888\n'Configuration Server': 'Spring Cloud Config'\n}" shape = Mrecord];
+        turbine [label = "{Service: turbine | --monitoring_server--\n--local_logging--\n--infrastructural--\n'Port': 8989\n'Monitoring Server': 'Turbine'\n}" shape = Mrecord];
+        edgeserver [label = "{Service: edgeserver | --gateway--\n--load_balancer--\n--infrastructural--\n'Gateway': 'Zuul'\n'Port': 8765\n'Load Balancer': 'Ribbon'\n}" shape = Mrecord];
+        eureka [label = "{Service: eureka | --service_discovery--\n--infrastructural--\n'Port': 8762\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        productapi [label = "{Service: productapi | --circuit_breaker--\n--local_logging--\n--internal--\n'Port': 8080\n'Endpoints': ['/\n}" shape = Mrecord];
+        rabbitmq [label = "{Service: rabbitmq | --message_broker--\n--infrastructural--\n'Port': 5672\n'Message Broker': 'RabbitMQ'\n}" shape = Mrecord];
+        github_repository [label = "{External Entity: github_repository | --github_repository--\n--entrypoint--\n'URL': 'https\n}"];
+        user [label = "{External Entity: user | --exitpoint--\n--user_stereotype--\n--entrypoint--\n}"];
+        github_repository -> configserver [label = " --restful_http--\n"]
+        configserver -> webapp [label = " --restful_http--\n"]
+        configserver -> recommendation [label = " --restful_http--\n"]
+        configserver -> product [label = " --restful_http--\n"]
+        configserver -> review [label = " --restful_http--\n"]
+        configserver -> productcomposite [label = " --restful_http--\n"]
+        configserver -> hystrixdashboard [label = " --restful_http--\n"]
+        configserver -> turbine [label = " --restful_http--\n"]
+        configserver -> edgeserver [label = " --restful_http--\n"]
+        configserver -> eureka [label = " --restful_http--\n"]
+        configserver -> productapi [label = " --restful_http--\n"]
+        turbine -> rabbitmq [label = " --restful_http--\n"]
+        composite -> rabbitmq [label = " --restful_http--\n"]
+        api -> rabbitmq [label = " --restful_http--\n"]
+        recommendation -> eureka [label = " --restful_http--\n"]
+        turbine -> eureka [label = " --restful_http--\n"]
+        productapi -> eureka [label = " --circuit_breaker_link--\n--restful_http--\n"]
+        product -> eureka [label = " --restful_http--\n"]
+        productcomposite -> eureka [label = " --circuit_breaker_link--\n--restful_http--\n"]
+        eureka -> edgeserver [label = " --restful_http--\n"]
+        hystrixdashboard -> eureka [label = " --restful_http--\n"]
+        review -> eureka [label = " --restful_http--\n"]
+        user -> edgeserver [label = " --restful_http--\n"]
+        edgeserver -> user [label = " --restful_http--\n"]
+        user -> webapp [label = " --restful_http--\n"]
+        webapp -> user [label = " --restful_http--\n"]
+        turbine -> hystrixdashboard [label = " --restful_http--\n"]
+        rabbitmq -> turbine [label = " --restful_http--\n"]
+
+}
+@enduml

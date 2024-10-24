@@ -1,0 +1,9 @@
+Microservices:
+
+{'name': 'products', 'type': 'service', 'gradle_path': 'microservices/core/ProductService/build.gradle', 'stereotype_instances': ['internal'], 'tagged_values': [('Port', 10011)]}
+{'name': 'reviews', 'type': 'service', 'gradle_path': 'microservices/core/ReviewService/build.gradle', 'stereotype_instances': ['internal', 'circuit_breaker'], 'tagged_values': [('Port', 10002)]}
+{'name': 'productapi', 'type': 'service', 'gradle_path': 'microservices/api/ProductApiService/build.gradle', 'stereotype_instances': ['internal', 'circuit_breaker'], 'tagged_values': [('Port', 10021)]}
+
+Information Flows:
+
+{'sender': False, 'receiver': 'productApi', 'stereotype_instances': ['restful_http']}

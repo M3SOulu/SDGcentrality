@@ -1,0 +1,71 @@
+{
+    "microservices": [
+        {
+            "name": "products",
+            "type": "service",
+            "gradle_path": "microservices/core/ProductService/build.gradle",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/products/{productId}']"
+                ],
+                [
+                    "Port",
+                    10011
+                ]
+            ]
+        },
+        {
+            "name": "reviews",
+            "type": "service",
+            "gradle_path": "microservices/core/ReviewService/build.gradle",
+            "stereotype_instances": [
+                "internal",
+                "circuit_breaker"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/reviews']"
+                ],
+                [
+                    "Port",
+                    10002
+                ]
+            ]
+        },
+        {
+            "name": "productapi",
+            "type": "service",
+            "gradle_path": "microservices/api/ProductApiService/build.gradle",
+            "stereotype_instances": [
+                "local_logging",
+                "internal",
+                "circuit_breaker"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/products/{productId}']"
+                ],
+                [
+                    "Port",
+                    10021
+                ]
+            ]
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": false,
+            "receiver": "productApi",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": []
+}

@@ -1,0 +1,38 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        oauth2_vanilla_ui [label = "{Service: oauth2_vanilla_ui | --infrastructural--\n--load_balancer--\n--gateway--\n'Gateway': 'Zuul'\n'Load Balancer': 'Ribbon'\n}" shape = Mrecord];
+        hystrixdashboard [label = "{Service: hystrixdashboard | --infrastructural--\n--local_logging--\n--monitoring_dashboard--\n'Port': 7979\n'Monitoring Dashboard': 'Hystrix'\n'Endpoints': ['/']\n}" shape = Mrecord];
+        zuulserver [label = "{Service: zuulserver | --infrastructural--\n--load_balancer--\n--gateway--\n'Port': 8765\n'Load Balancer': 'Ribbon'\n'Gateway': 'Zuul'\n}" shape = Mrecord];
+        eureka [label = "{Service: eureka | --infrastructural--\n--service_discovery--\n'Service Discovery': 'Eureka'\n'Port': 8762\n}" shape = Mrecord];
+        oauth2_vanilla_resource [label = "{Service: oauth2_vanilla_resource | --internal--\n}" shape = Mrecord];
+        products [label = "{Service: products | --circuit_breaker--\n--internal--\n'Endpoints': ['/products/\n}" shape = Mrecord];
+        reviews [label = "{Service: reviews | --circuit_breaker--\n--internal--\n'Endpoints': ['/reviews']\n'Circuit Breaker': 'Hystrix'\n'Port': 10002\n}" shape = Mrecord];
+        configserver [label = "{Service: configserver | --infrastructural--\n--configuration_server--\n'Configuration Server': 'Spring Cloud Config'\n'Port': 8888\n}" shape = Mrecord];
+        productapi [label = "{Service: productapi | --circuit_breaker--\n--internal--\n--local_logging--\n'Port': 10021\n'Endpoints': ['/products/\n}" shape = Mrecord];
+        github_repository [label = "{External Entity: github_repository | --github_repository--\n--entrypoint--\n'URL': 'https\n}"];
+        user [label = "{External Entity: user | --entrypoint--\n--user_stereotype--\n--exitpoint--\n}"];
+        github_repository -> configserver [label = " --restful_http--\n"]
+        configserver -> hystrixdashboard [label = " --restful_http--\n"]
+        configserver -> zuulserver [label = " --restful_http--\n"]
+        configserver -> eureka [label = " --restful_http--\n"]
+        configserver -> products [label = " --restful_http--\n"]
+        configserver -> reviews [label = " --restful_http--\n"]
+        configserver -> productapi [label = " --restful_http--\n"]
+        reviews -> eureka [label = " --circuit_breaker_link--\n--restful_http--\n"]
+        productapi -> eureka [label = " --circuit_breaker_link--\n--restful_http--\n"]
+        products -> eureka [label = " --circuit_breaker_link--\n--restful_http--\n"]
+        user -> oauth2_vanilla_ui [label = " --restful_http--\n"]
+        oauth2_vanilla_ui -> user [label = " --restful_http--\n"]
+        user -> zuulserver [label = " --restful_http--\n"]
+        zuulserver -> user [label = " --restful_http--\n"]
+
+}
+@enduml

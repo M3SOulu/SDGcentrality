@@ -1,0 +1,17 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        products [label = "{Service: products | --internal--\n'Endpoints': ['/products/\n}" shape = Mrecord];
+        reviews [label = "{Service: reviews | --internal--\n--circuit_breaker--\n'Endpoints': ['/reviews']\n'Port': 10002\n}" shape = Mrecord];
+        productapi [label = "{Service: productapi | --internal--\n--circuit_breaker--\n--local_logging--\n'Port': 10021\n'Endpoints': ['/products/\n}" shape = Mrecord];
+        False -> productApi [label = " --restful_http--\n"]
+
+}
+@enduml

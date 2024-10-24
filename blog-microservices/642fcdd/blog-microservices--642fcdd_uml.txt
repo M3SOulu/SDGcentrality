@@ -1,0 +1,49 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        recommendation_service [label = "{Service: recommendation_service | --internal--\n--local_logging--\n'Endpoints': ['/set-processing-time'\n}" shape = Mrecord];
+        product_service [label = "{Service: product_service | --internal--\n--local_logging--\n'Endpoints': ['/product/\n}" shape = Mrecord];
+        review_service [label = "{Service: review_service | --internal--\n--local_logging--\n'Endpoints': ['/set-processing-time'\n}" shape = Mrecord];
+        composite_service [label = "{Service: composite_service | --resource_server--\n--local_logging--\n--load_balancer--\n--internal--\n--circuit_breaker--\n'Endpoints': ['/'\n}" shape = Mrecord];
+        monitor_dashboard [label = "{Service: monitor_dashboard | --monitoring_dashboard--\n--infrastructural--\n'Monitoring Dashboard': 'Hystrix'\n'Endpoints': ['/']\n}" shape = Mrecord];
+        auth_server [label = "{Service: auth_server | --resource_server--\n--infrastructural--\n--authorization_server--\n'Authorization Server': 'Spring OAuth2'\n'Endpoints': ['/user']\n}" shape = Mrecord];
+        config_server [label = "{Service: config_server | --configuration_server--\n--local_logging--\n--infrastructural--\n'Configuration Server': 'Spring Cloud Config'\n'Port': 8888\n}" shape = Mrecord];
+        turbine_server [label = "{Service: turbine_server | --local_logging--\n--monitoring_server--\n--infrastructural--\n'Monitoring Server': 'Turbine'\n'Port': 8989\n}" shape = Mrecord];
+        zipkin_server [label = "{Service: zipkin_server | --internal--\n'Port': 9411\n}" shape = Mrecord];
+        edge_server [label = "{Service: edge_server | --resource_server--\n--local_logging--\n--load_balancer--\n--gateway--\n--infrastructural--\n'Gateway': 'Zuul'\n'Load Balancer': 'Ribbon'\n}" shape = Mrecord];
+        discovery_server [label = "{Service: discovery_server | --service_discovery--\n--infrastructural--\n'Service Discovery': 'Eureka'\n'Port': 8762\n}" shape = Mrecord];
+        kibana [label = "{Service: kibana | --monitoring_dashboard--\n--infrastructural--\n'Monitoring Dashboard': 'Kibana'\n'Port': 5601\n}" shape = Mrecord];
+        rabbitmq [label = "{Service: rabbitmq | --infrastructural--\n--message_broker--\n'Message Broker': 'RabbitMQ'\n'Port': 15672\n}" shape = Mrecord];
+        logstash [label = "{Service: logstash | --logging_server--\n--infrastructural--\n'Logging Server': 'Logstash'\n'Port': 12201\n}" shape = Mrecord];
+        zipkin [label = "{Service: zipkin | --internal--\n'Port': 9411\n}" shape = Mrecord];
+        elasticsearch [label = "{Service: elasticsearch | --search_engine--\n--infrastructural--\n'Port': 9200\n'Search Engine': 'Elasticsearch'\n}" shape = Mrecord];
+        user [label = "{External Entity: user | --user_stereotype--\n--entrypoint--\n--exitpoint--\n}"];
+        config_server -> recommendation_service [label = " --restful_http--\n"]
+        config_server -> product_service [label = " --restful_http--\n"]
+        config_server -> review_service [label = " --restful_http--\n"]
+        config_server -> composite_service [label = " --restful_http--\n"]
+        config_server -> monitor_dashboard [label = " --restful_http--\n"]
+        config_server -> auth_server [label = " --restful_http--\n"]
+        config_server -> turbine_server [label = " --restful_http--\n"]
+        config_server -> edge_server [label = " --restful_http--\n"]
+        composite_service -> discovery_server [label = " --load_balanced_link--\n--restful_http--\n--circuit_breaker_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        recommendation_service -> discovery_server [label = " --restful_http--\n"]
+        turbine_server -> discovery_server [label = " --restful_http--\n"]
+        product_service -> discovery_server [label = " --restful_http--\n"]
+        review_service -> discovery_server [label = " --restful_http--\n"]
+        config_server -> discovery_server [label = " --restful_http--\n"]
+        user -> edge_server [label = " --restful_http--\n"]
+        edge_server -> user [label = " --restful_http--\n"]
+        turbine_server -> monitor_dashboard [label = " --restful_http--\n"]
+        elasticsearch -> kibana [label = " --restful_http--\n"]
+        logstash -> elasticsearch [label = " --restful_http--\n"]
+
+}
+@enduml

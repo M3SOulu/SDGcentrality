@@ -1,0 +1,12 @@
+{
+    "edges": [
+        {
+            "sender": "user",
+            "receiver": "oauth2-vanilla-ui"
+        },
+        {
+            "sender": "oauth2-vanilla-ui",
+            "receiver": "user"
+        }
+    ]
+}

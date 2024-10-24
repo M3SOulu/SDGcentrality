@@ -1,0 +1,32 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        cloud_uaa [label = "{Service: cloud_uaa | --local_logging--\n--internal--\n'Logging Technology': 'Lombok'\n'Port': 8088\n}" shape = Mrecord];
+        cloud_gateway [label = "{Service: cloud_gateway | --local_logging--\n--gateway--\n--infrastructural--\n'Port': 8205\n'Logging Technology': 'Lombok'\n'Gateway': 'Spring Cloud Gateway'\n}" shape = Mrecord];
+        cloud_mission [label = "{Service: cloud_mission | --local_logging--\n--internal--\n'Logging Technology': 'Lombok'\n'Port': 8888\n}" shape = Mrecord];
+        cloud_common [label = "{Service: cloud_common | --local_logging--\n--internal--\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        cloud_manage [label = "{Service: cloud_manage | --internal--\n--local_logging--\n--pre_authorized_endpoints--\n--encryption--\n--csrf_disabled--\n'Port': 8070\n'Logging Technology': 'Lombok'\n'Pre-authorized Endpoints': ['/\n}" shape = Mrecord];
+        cloud_monitor [label = "{Service: cloud_monitor | --basic_authentication--\n--administration_server--\n--infrastructural--\n'Administration Server': 'Spring Boot Admin'\n'Port': 8890\n}" shape = Mrecord];
+        mysql [label = "{Service: mysql | --internal--\n'Port': 3306\n}" shape = Mrecord];
+        rabbitmq [label = "{Service: rabbitmq | --plaintext_credentials--\n--message_broker--\n--infrastructural--\n'Username': 'guest'\n'Password': 'guest'\n'Port': 5672\n'Message Broker': 'RabbitMQ'\n}" shape = Mrecord];
+        database_cloud_manage [label = "{External Entity: database_cloud_manage | --entrypoint--\n--exitpoint--\n--external_database--\n'Database': 'MySQL'\n}"];
+        user [label = "{External Entity: user | --entrypoint--\n--user_stereotype--\n--exitpoint--\n}"];
+        rabbitmq -> cloud_mission [label = " --message_consumer_rabbitmq--\n--restful_http--\n'Queue': 'None'\n"]
+        cloud_mission -> rabbitmq [label = " --message_producer_rabbitmq--\n--restful_http--\n--plaintext_credentials_link--\n'Routing Key': 'None'\n 'Producer Exchange': 'None'\n"]
+        database_cloud_manage -> cloud_manage [label = " --jdbc--\n"]
+        user -> cloud_gateway [label = " --restful_http--\n"]
+        cloud_gateway -> user [label = " --restful_http--\n"]
+        cloud_gateway -> cloud_mission [label = " --restful_http--\n"]
+        cloud_gateway -> cloud_manage [label = " --restful_http--\n"]
+        cloud_gateway -> cloud_uaa [label = " --restful_http--\n"]
+        cloud_gateway -> cloud_monitor [label = " --restful_http--\n"]
+
+}
+@enduml

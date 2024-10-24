@@ -1,0 +1,17 @@
+{
+    "nodes": {
+        "samples": {
+            "file": "org.springframework.samples.petclinic/pom.xml",
+            "line": 5,
+            "span": "[13:20]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {}
+}

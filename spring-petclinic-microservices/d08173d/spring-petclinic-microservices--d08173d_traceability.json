@@ -1,0 +1,17 @@
+{
+    "nodes": {
+        "spring-petclinic": {
+            "file": "pom.xml",
+            "line": 5,
+            "span": "[16:32]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {}
+}

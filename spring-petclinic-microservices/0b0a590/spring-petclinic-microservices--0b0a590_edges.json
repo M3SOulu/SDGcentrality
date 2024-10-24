@@ -1,0 +1,32 @@
+{
+    "edges": [
+        {
+            "sender": "github-repository",
+            "receiver": "petclinic-config-server"
+        },
+        {
+            "sender": "petclinic-config-server",
+            "receiver": "clients-service"
+        },
+        {
+            "sender": "petclinic-config-server",
+            "receiver": "visits-service"
+        },
+        {
+            "sender": "petclinic-config-server",
+            "receiver": "vets-service"
+        },
+        {
+            "sender": "vets-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "clients-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "visits-service",
+            "receiver": "discovery-service"
+        }
+    ]
+}

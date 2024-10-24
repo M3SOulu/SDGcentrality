@@ -1,0 +1,386 @@
+{
+    "microservices": [
+        {
+            "name": "tracing-server",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8081
+                ]
+            ]
+        },
+        {
+            "name": "config-server",
+            "type": "service",
+            "stereotype_instances": [
+                "configuration_server",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8888
+                ],
+                [
+                    "Configuration Server",
+                    "Spring Cloud Config"
+                ]
+            ]
+        },
+        {
+            "name": "discovery-server",
+            "type": "service",
+            "stereotype_instances": [
+                "service_discovery",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8761
+                ],
+                [
+                    "Service Discovery",
+                    "Eureka"
+                ]
+            ]
+        },
+        {
+            "name": "admin-server",
+            "type": "service",
+            "stereotype_instances": [
+                "administration_server",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Administration Server",
+                    "Spring Boot Admin"
+                ],
+                [
+                    "Port",
+                    9090
+                ]
+            ]
+        },
+        {
+            "name": "vets-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/vets']"
+                ],
+                [
+                    "Port",
+                    8081
+                ]
+            ]
+        },
+        {
+            "name": "api-gateway",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "gateway",
+                "load_balancer"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8081
+                ],
+                [
+                    "Gateway",
+                    "Zuul"
+                ],
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ],
+                [
+                    "Load Balancer",
+                    "Ribbon"
+                ]
+            ]
+        },
+        {
+            "name": "customers-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/owners', '/owners/{ownerId}']"
+                ],
+                [
+                    "Port",
+                    8081
+                ],
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ]
+            ]
+        },
+        {
+            "name": "visits-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": [
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ],
+                [
+                    "Port",
+                    8081
+                ]
+            ]
+        },
+        {
+            "name": "spring-petclinic-monitoring",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "github-repository",
+            "receiver": "config-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "tracing-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "discovery-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "admin-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "vets-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "api-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "customers-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "visits-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "customers-service",
+            "receiver": "tracing-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "visits-service",
+            "receiver": "tracing-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "vets-service",
+            "receiver": "tracing-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "customers-service",
+            "stereotype_instances": [
+                "load_balanced_link",
+                "restful_http"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ]
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "visits-service",
+            "stereotype_instances": [
+                "load_balanced_link",
+                "restful_http"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ]
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "vets-service",
+            "stereotype_instances": [
+                "load_balanced_link",
+                "restful_http"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ]
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "tracing-server",
+            "stereotype_instances": [
+                "load_balanced_link",
+                "restful_http"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ]
+            ]
+        },
+        {
+            "sender": "vets-service",
+            "receiver": "discovery-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "discovery-server",
+            "receiver": "api-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "admin-server",
+            "receiver": "discovery-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "visits-service",
+            "receiver": "discovery-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "tracing-server",
+            "receiver": "discovery-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "customers-service",
+            "receiver": "discovery-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "api-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "user",
+            "stereotype_instances": [
+                "load_balanced_link",
+                "restful_http"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ]
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "github-repository",
+            "type": "external_component",
+            "stereotype_instances": [
+                "github_repository",
+                "entrypoint"
+            ],
+            "tagged_values": [
+                [
+                    "URL",
+                    "https://github.com/spring-petclinic/spring-petclinic-microservices-config"
+                ]
+            ]
+        },
+        {
+            "name": "user",
+            "type": "external_component",
+            "stereotype_instances": [
+                "exitpoint",
+                "entrypoint",
+                "user_stereotype"
+            ]
+        }
+    ]
+}

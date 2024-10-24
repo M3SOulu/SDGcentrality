@@ -1,0 +1,35 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        spring_petclinic_config_server [label = "{Service: spring_petclinic_config_server | --configuration_server--\n--infrastructural--\n'Configuration Server': 'Spring Cloud Config'\n'Port': 8888\n}" shape = Mrecord];
+        discovery_server [label = "{Service: discovery_server | --service_discovery--\n--infrastructural--\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        spring_petclinic_client [label = "{Service: spring_petclinic_client | --internal--\n}" shape = Mrecord];
+        vets_service [label = "{Service: vets_service | --internal--\n}" shape = Mrecord];
+        api_gateway [label = "{Service: api_gateway | --load_balancer--\n--gateway--\n--infrastructural--\n'Load Balancer': 'Ribbon'\n'Gateway': 'Zuul'\n}" shape = Mrecord];
+        visits_service [label = "{Service: visits_service | --internal--\n}" shape = Mrecord];
+        spring_petclinic_monitoring [label = "{Service: spring_petclinic_monitoring | --internal--\n}" shape = Mrecord];
+        clients_service [label = "{Service: clients_service | --internal--\n}" shape = Mrecord];
+        github_repository [label = "{External Entity: github_repository | --entrypoint--\n--github_repository--\n'URL': 'https\n}"];
+        user [label = "{External Entity: user | --exitpoint--\n--user_stereotype--\n--entrypoint--\n}"];
+        github_repository -> spring_petclinic_config_server [label = " --restful_http--\n"]
+        spring_petclinic_config_server -> discovery_server [label = " --restful_http--\n"]
+        spring_petclinic_config_server -> vets_service [label = " --restful_http--\n"]
+        spring_petclinic_config_server -> api_gateway [label = " --restful_http--\n"]
+        spring_petclinic_config_server -> visits_service [label = " --restful_http--\n"]
+        spring_petclinic_config_server -> clients_service [label = " --restful_http--\n"]
+        vets_service -> discovery_server [label = " --restful_http--\n"]
+        discovery_server -> api_gateway [label = " --restful_http--\n"]
+        clients_service -> discovery_server [label = " --restful_http--\n"]
+        visits_service -> discovery_server [label = " --restful_http--\n"]
+        user -> api_gateway [label = " --restful_http--\n"]
+        api_gateway -> user [label = " --restful_http--\n"]
+
+}
+@enduml

@@ -1,0 +1,15 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        petclinic [label = "{Service: petclinic | --internal--\n}" shape = Mrecord];
+        org.springframework.samples.petclinic [label = "{Service: org.springframework.samples.petclinic | --internal--\n}" shape = Mrecord];
+
+}
+@enduml

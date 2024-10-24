@@ -1,0 +1,47 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        config_server [label = "{Service: config_server | --infrastructural--\n--configuration_server--\n'Port': 8888\n'Configuration Server': 'Spring Cloud Config'\n}" shape = Mrecord];
+        discovery_server [label = "{Service: discovery_server | --infrastructural--\n--service_discovery--\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        admin_server [label = "{Service: admin_server | --infrastructural--\n--administration_server--\n'Administration Server': 'Spring Boot Admin'\n}" shape = Mrecord];
+        vets_service [label = "{Service: vets_service | --internal--\n'Endpoints': ['/vets']\n}" shape = Mrecord];
+        api_gateway [label = "{Service: api_gateway | --gateway--\n--infrastructural--\n--load_balancer--\n'Load Balancer': 'Spring Cloud'\n'Endpoints': ['/api/gatewayowners/\n}" shape = Mrecord];
+        customers_service [label = "{Service: customers_service | --local_logging--\n--internal--\n'Logging Technology': 'Lombok'\n'Endpoints': ['/owners'\n}" shape = Mrecord];
+        visits_service [label = "{Service: visits_service | --local_logging--\n--internal--\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        prometheus_server [label = "{Service: prometheus_server | --internal--\n'Port': 9091\n}" shape = Mrecord];
+        tracing_server [label = "{Service: tracing_server | --infrastructural--\n--tracing_server--\n'Tracing Server': 'Zipkin'\n'Port': 9411\n}" shape = Mrecord];
+        grafana_server [label = "{Service: grafana_server | --internal--\n'Port': 3000\n}" shape = Mrecord];
+        prometheus_server [label = "{Service: prometheus_server | --infrastructural--\n--metrics_server--\n'Metrics Server': 'Prometheus'\n}" shape = Mrecord];
+        github_repository [label = "{External Entity: github_repository | --entrypoint--\n--github_repository--\n'URL': 'https\n}"];
+        user [label = "{External Entity: user | --user_stereotype--\n--entrypoint--\n--exitpoint--\n}"];
+        github_repository -> config_server [label = " --restful_http--\n"]
+        config_server -> discovery_server [label = " --restful_http--\n"]
+        config_server -> admin_server [label = " --restful_http--\n"]
+        config_server -> vets_service [label = " --restful_http--\n"]
+        config_server -> api_gateway [label = " --restful_http--\n"]
+        config_server -> customers_service [label = " --restful_http--\n"]
+        config_server -> visits_service [label = " --restful_http--\n"]
+        admin_server -> discovery_server [label = " --restful_http--\n"]
+        customers_service -> discovery_server [label = " --restful_http--\n"]
+        vets_service -> discovery_server [label = " --restful_http--\n"]
+        discovery_server -> api_gateway [label = " --restful_http--\n"]
+        visits_service -> discovery_server [label = " --restful_http--\n"]
+        user -> api_gateway [label = " --restful_http--\n"]
+        api_gateway -> user [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        api_gateway -> vets_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        api_gateway -> visits_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        api_gateway -> customers_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        api_gateway -> prometheus_server [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        customers_service -> prometheus_server [label = " --restful_http--\n"]
+        visits_service -> prometheus_server [label = " --restful_http--\n"]
+        vets_service -> prometheus_server [label = " --restful_http--\n"]
+
+}
+@enduml

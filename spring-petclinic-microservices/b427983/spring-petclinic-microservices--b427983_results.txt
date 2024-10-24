@@ -1,0 +1,36 @@
+Microservices:
+
+{'name': 'tracing-server', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Port', 8081)]}
+{'name': 'config-server', 'type': 'service', 'stereotype_instances': ['configuration_server', 'infrastructural'], 'tagged_values': [('Configuration Server', 'Spring Cloud Config'), ('Port', 8888)]}
+{'name': 'discovery-server', 'type': 'service', 'stereotype_instances': ['service_discovery', 'infrastructural'], 'tagged_values': [('Service Discovery', 'Eureka'), ('Port', 8761)]}
+{'name': 'vets-service', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Endpoints', "['/vets']"), ('Port', 8081)]}
+{'name': 'api-gateway', 'type': 'service', 'stereotype_instances': ['infrastructural', 'gateway', 'load_balancer'], 'tagged_values': [('Load Balancer', 'Ribbon'), ('Load Balancer', 'Spring Cloud'), ('Gateway', 'Zuul'), ('Port', 8081)]}
+{'name': 'spring-petclinic-ui', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': []}
+{'name': 'customers-service', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Endpoints', "['/owners/{ownerId}', '/owners']"), ('Port', 8081)]}
+{'name': 'visits-service', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Port', 8081)]}
+{'name': 'spring-petclinic-monitoring', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': []}
+
+Information Flows:
+
+{'sender': 'github-repository', 'receiver': 'config-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'tracing-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'vets-service', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'api-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'customers-service', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'visits-service', 'stereotype_instances': ['restful_http']}
+{'sender': 'api-gateway', 'receiver': 'customers-service', 'stereotype_instances': ['load_balanced_link', 'restful_http'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'api-gateway', 'receiver': 'visits-service', 'stereotype_instances': ['load_balanced_link', 'restful_http'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'api-gateway', 'receiver': 'vets-service', 'stereotype_instances': ['load_balanced_link', 'restful_http'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'vets-service', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'customers-service', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'visits-service', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'discovery-server', 'receiver': 'api-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'tracing-server', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'user', 'receiver': 'api-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'api-gateway', 'receiver': 'user', 'stereotype_instances': ['load_balanced_link', 'restful_http'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+
+External Components:
+
+{'name': 'github-repository', 'type': 'external_component', 'stereotype_instances': ['github_repository', 'entrypoint'], 'tagged_values': [('URL', 'file:///${GIT_REPO}')]}
+{'name': 'user', 'type': 'external_component', 'stereotype_instances': ['exitpoint', 'user_stereotype', 'entrypoint']}

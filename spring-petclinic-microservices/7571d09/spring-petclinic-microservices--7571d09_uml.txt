@@ -1,0 +1,37 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        config_server [label = "{Service: config_server | --configuration_server--\n--infrastructural--\n'Port': 8888\n'Configuration Server': 'Spring Cloud Config'\n}" shape = Mrecord];
+        discovery_server [label = "{Service: discovery_server | --service_discovery--\n--infrastructural--\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        admin_server [label = "{Service: admin_server | --administration_server--\n--infrastructural--\n'Administration Server': 'Spring Boot Admin'\n}" shape = Mrecord];
+        vets_service [label = "{Service: vets_service | --internal--\n'Endpoints': ['/vets']\n}" shape = Mrecord];
+        api_gateway [label = "{Service: api_gateway | --gateway--\n--load_balancer--\n--infrastructural--\n'Gateway': 'Zuul'\n'Load Balancer': 'Ribbon'\n}" shape = Mrecord];
+        customers_service [label = "{Service: customers_service | --local_logging--\n--internal--\n'Endpoints': ['/owners'\n}" shape = Mrecord];
+        visits_service [label = "{Service: visits_service | --local_logging--\n--internal--\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        tracing_server [label = "{Service: tracing_server | --tracing_server--\n--infrastructural--\n'Tracing Server': 'Zipkin'\n'Port': 9411\n}" shape = Mrecord];
+        github_repository [label = "{External Entity: github_repository | --entrypoint--\n--github_repository--\n'URL': 'https\n}"];
+        user [label = "{External Entity: user | --entrypoint--\n--exitpoint--\n--user_stereotype--\n}"];
+        github_repository -> config_server [label = " --restful_http--\n"]
+        config_server -> discovery_server [label = " --restful_http--\n"]
+        config_server -> admin_server [label = " --restful_http--\n"]
+        config_server -> vets_service [label = " --restful_http--\n"]
+        config_server -> api_gateway [label = " --restful_http--\n"]
+        config_server -> customers_service [label = " --restful_http--\n"]
+        config_server -> visits_service [label = " --restful_http--\n"]
+        vets_service -> discovery_server [label = " --restful_http--\n"]
+        customers_service -> discovery_server [label = " --restful_http--\n"]
+        visits_service -> discovery_server [label = " --restful_http--\n"]
+        admin_server -> discovery_server [label = " --restful_http--\n"]
+        discovery_server -> api_gateway [label = " --restful_http--\n"]
+        user -> api_gateway [label = " --restful_http--\n"]
+        api_gateway -> user [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+
+}
+@enduml

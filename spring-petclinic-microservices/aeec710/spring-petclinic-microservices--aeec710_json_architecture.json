@@ -1,0 +1,14 @@
+{
+    "microservices": [
+        {
+            "name": "spring-petclinic",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        }
+    ],
+    "information_flows": [],
+    "external_components": []
+}

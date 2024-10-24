@@ -1,0 +1,35 @@
+Microservices:
+
+{'name': 'config-server', 'type': 'service', 'stereotype_instances': ['infrastructural', 'configuration_server'], 'tagged_values': [('Port', 8888), ('Configuration Server', 'Spring Cloud Config')]}
+{'name': 'discovery-server', 'type': 'service', 'stereotype_instances': ['infrastructural', 'service_discovery'], 'tagged_values': [('Service Discovery', 'Eureka')]}
+{'name': 'hystrix-dashboard', 'type': 'service', 'stereotype_instances': ['infrastructural', 'monitoring_dashboard'], 'tagged_values': [('Endpoints', "['/']"), ('Monitoring Dashboard', 'Hystrix')]}
+{'name': 'admin-server', 'type': 'service', 'stereotype_instances': ['infrastructural', 'administration_server'], 'tagged_values': [('Administration Server', 'Spring Boot Admin')]}
+{'name': 'vets-service', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Endpoints', "['/vets']")]}
+{'name': 'api-gateway', 'type': 'service', 'stereotype_instances': ['circuit_breaker', 'infrastructural', 'load_balancer', 'gateway'], 'tagged_values': [('Circuit Breaker', 'Hystrix'), ('Gateway', 'Zuul'), ('Load Balancer', 'Ribbon'), ('Load Balancer', 'Spring Cloud')]}
+{'name': 'customers-service', 'type': 'service', 'stereotype_instances': ['internal', 'local_logging'], 'tagged_values': [('Endpoints', "['/owners', '/owners/{ownerId}']"), ('Logging Technology', 'Lombok')]}
+{'name': 'visits-service', 'type': 'service', 'stereotype_instances': ['internal', 'local_logging'], 'tagged_values': [('Logging Technology', 'Lombok')]}
+{'name': 'tracing-server', 'type': 'service', 'stereotype_instances': ['infrastructural', 'tracing_server'], 'tagged_values': [('Tracing Server', 'Zipkin'), ('Port', 9411)]}
+
+Information Flows:
+
+{'sender': 'github-repository', 'receiver': 'config-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'hystrix-dashboard', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'admin-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'vets-service', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'api-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'customers-service', 'stereotype_instances': ['restful_http']}
+{'sender': 'config-server', 'receiver': 'visits-service', 'stereotype_instances': ['restful_http']}
+{'sender': 'discovery-server', 'receiver': 'api-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'admin-server', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'customers-service', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'visits-service', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'vets-service', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'hystrix-dashboard', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'user', 'receiver': 'api-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'api-gateway', 'receiver': 'user', 'stereotype_instances': ['circuit_breaker_link', 'restful_http', 'load_balanced_link'], 'tagged_values': [('Circuit Breaker', 'Hystrix'), ('Load Balancer', 'Spring Cloud')]}
+
+External Components:
+
+{'name': 'github-repository', 'type': 'external_component', 'stereotype_instances': ['entrypoint', 'github_repository'], 'tagged_values': [('URL', 'file:///${GIT_REPO}')]}
+{'name': 'user', 'type': 'external_component', 'stereotype_instances': ['exitpoint', 'entrypoint', 'user_stereotype']}

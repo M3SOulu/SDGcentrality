@@ -1,0 +1,29 @@
+{
+    "nodes": {
+        "springboot-petclinic-client": {
+            "file": "springboot-petclinic-client/pom.xml",
+            "line": 9,
+            "span": "[13:40]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "petclinic": {
+            "file": "springboot-petclinic-server/pom.xml",
+            "line": 86,
+            "span": "[19:28]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {}
+}

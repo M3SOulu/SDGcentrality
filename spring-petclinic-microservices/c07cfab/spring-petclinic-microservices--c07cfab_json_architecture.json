@@ -1,0 +1,22 @@
+{
+    "microservices": [
+        {
+            "name": "springboot-petclinic-client",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "petclinic",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        }
+    ],
+    "information_flows": [],
+    "external_components": []
+}

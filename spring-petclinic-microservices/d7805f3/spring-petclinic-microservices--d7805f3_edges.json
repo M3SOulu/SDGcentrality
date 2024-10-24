@@ -1,0 +1,88 @@
+{
+    "edges": [
+        {
+            "sender": "github-repository",
+            "receiver": "config-server"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "discovery-server"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "admin-server"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "vets-service"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "api-gateway"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "customers-service"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "visits-service"
+        },
+        {
+            "sender": "admin-server",
+            "receiver": "discovery-server"
+        },
+        {
+            "sender": "discovery-server",
+            "receiver": "api-gateway"
+        },
+        {
+            "sender": "customers-service",
+            "receiver": "discovery-server"
+        },
+        {
+            "sender": "visits-service",
+            "receiver": "discovery-server"
+        },
+        {
+            "sender": "vets-service",
+            "receiver": "discovery-server"
+        },
+        {
+            "sender": "user",
+            "receiver": "api-gateway"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "user"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "vets-service"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "visits-service"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "customers-service"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "prometheus_server"
+        },
+        {
+            "sender": "customers-service",
+            "receiver": "prometheus_server"
+        },
+        {
+            "sender": "visits-service",
+            "receiver": "prometheus_server"
+        },
+        {
+            "sender": "vets-service",
+            "receiver": "prometheus_server"
+        }
+    ]
+}

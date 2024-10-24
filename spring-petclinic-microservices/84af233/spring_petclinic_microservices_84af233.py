@@ -1,0 +1,21 @@
+from codeable_models import CClass, CBundle, add_links, CStereotype, CMetaclass, CEnum, CAttribute 
+from metamodels.microservice_dfds_metamodel import * 
+from plant_uml_renderer import PlantUMLGenerator 
+plantuml_path = "../../plantuml.jar" 
+output_directory = "." 
+model_name = "spring-petclinic-microservices_84af233"
+client_service = CClass(service, "client-service", stereotype_instances = [internal])
+spring_petclinic_client = CClass(service, "spring-petclinic-client", stereotype_instances = [internal])
+visit_service = CClass(service, "visit-service", stereotype_instances = [internal])
+petclinic = CClass(service, "petclinic", stereotype_instances = [internal])
+vet_service = CClass(service, "vet-service", stereotype_instances = [internal])
+model = CBundle(model_name, elements = vet_service.class_object.get_connected_elements())
+def run():
+    generator = PlantUMLGenerator()
+    generator.plant_uml_jar_path = plantuml_path
+    generator.directory = output_directory
+    generator.object_model_renderer.left_to_right = True
+    generator.generate_object_models(model_name, [model, {}])
+    print(f"Generated models in {generator.directory!s}/" + model_name)
+if __name__ == "__main__":
+    run()

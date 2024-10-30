@@ -1,0 +1,36 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        recommendation_service [label = "{Service: recommendation_service | --internal--\n'Endpoints': ['/recommendation/movie'\n}" shape = Mrecord];
+        config_service [label = "{Service: config_service | --configuration_server--\n--infrastructural--\n'Port': 8888\n'Configuration Server': 'Spring Cloud Config'\n}" shape = Mrecord];
+        recommendation_client [label = "{Service: recommendation_client | --circuit_breaker--\n--monitoring_dashboard--\n--infrastructural--\n--gateway--\n--load_balancer--\n'Monitoring Dashboard': 'Hystrix'\n'Load Balancer': 'Spring Cloud'\n'Endpoints': ['/api/recommendation/user/\n}" shape = Mrecord];
+        eureka_service [label = "{Service: eureka_service | --infrastructural--\n--service_discovery--\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        user_service [label = "{Service: user_service | --internal--\n'Endpoints': ['/user/\n}" shape = Mrecord];
+        movie_service [label = "{Service: movie_service | --internal--\n'Endpoints': ['/movie/\n}" shape = Mrecord];
+        github_repository [label = "{External Entity: github_repository | --github_repository--\n--entrypoint--\n'URL': 'https\n}"];
+        user [label = "{External Entity: user | --user_stereotype--\n--entrypoint--\n--exitpoint--\n}"];
+        github_repository -> config_service [label = " --restful_http--\n"]
+        config_service -> recommendation_service [label = " --restful_http--\n"]
+        config_service -> recommendation_client [label = " --restful_http--\n"]
+        config_service -> eureka_service [label = " --restful_http--\n"]
+        config_service -> user_service [label = " --restful_http--\n"]
+        config_service -> movie_service [label = " --restful_http--\n"]
+        recommendation_client -> user_service [label = " --restful_http--\n--circuit_breaker_link--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        recommendation_client -> recommendation_service [label = " --restful_http--\n--circuit_breaker_link--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        recommendation_client -> movie_service [label = " --restful_http--\n--circuit_breaker_link--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        user_service -> eureka_service [label = " --restful_http--\n"]
+        eureka_service -> recommendation_client [label = " --restful_http--\n"]
+        recommendation_service -> eureka_service [label = " --restful_http--\n"]
+        movie_service -> eureka_service [label = " --restful_http--\n"]
+        user -> recommendation_client [label = " --restful_http--\n"]
+        recommendation_client -> user [label = " --restful_http--\n--circuit_breaker_link--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+
+}
+@enduml

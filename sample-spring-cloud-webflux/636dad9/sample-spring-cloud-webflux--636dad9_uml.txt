@@ -1,0 +1,25 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        account_service [label = "{Service: account_service | --internal--\n--local_logging--\n'Port': 2222\n}" shape = Mrecord];
+        gateway_service [label = "{Service: gateway_service | --infrastructural--\n--gateway--\n'Port': 8090\n'Gateway': 'Spring Cloud Gateway'\n}" shape = Mrecord];
+        customer_service [label = "{Service: customer_service | --internal--\n--load_balancer--\n--local_logging--\n'Port': 3333\n'Load Balancer': 'Spring Cloud'\n}" shape = Mrecord];
+        discovery_service [label = "{Service: discovery_service | --infrastructural--\n--service_discovery--\n'Port': 8761\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        user [label = "{External Entity: user | --entrypoint--\n--user_stereotype--\n--exitpoint--\n}"];
+        discovery_service -> gateway_service [label = " --restful_http--\n"]
+        account_service -> discovery_service [label = " --restful_http--\n"]
+        customer_service -> discovery_service [label = " --load_balanced_link--\n--restful_http--\n'Load Balancer': 'Spring Cloud'\n"]
+        user -> gateway_service [label = " --restful_http--\n"]
+        gateway_service -> user [label = " --restful_http--\n"]
+        gateway_service -> account_service [label = " --restful_http--\n"]
+        gateway_service -> customer_service [label = " --restful_http--\n"]
+
+}
+@enduml

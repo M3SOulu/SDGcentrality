@@ -1,0 +1,40 @@
+{
+    "edges": [
+        {
+            "sender": "github-repository",
+            "receiver": "jhipster-registry"
+        },
+        {
+            "sender": "jhipster-registry",
+            "receiver": "blog"
+        },
+        {
+            "sender": "jhipster-registry",
+            "receiver": "store"
+        },
+        {
+            "sender": "jhipster-registry",
+            "receiver": "jhipster-registry"
+        },
+        {
+            "sender": "store",
+            "receiver": "jhipster-registry"
+        },
+        {
+            "sender": "user",
+            "receiver": "blog"
+        },
+        {
+            "sender": "blog",
+            "receiver": "user"
+        },
+        {
+            "sender": "user",
+            "receiver": "jhipster-registry"
+        },
+        {
+            "sender": "jhipster-registry",
+            "receiver": "user"
+        }
+    ]
+}

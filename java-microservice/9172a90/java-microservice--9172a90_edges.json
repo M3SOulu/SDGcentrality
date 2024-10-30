@@ -1,0 +1,152 @@
+{
+    "edges": [
+        {
+            "sender": "github-repository",
+            "receiver": "config-server"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "oauth"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "admin"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "api-gateway"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "eureka-server"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "mailer"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "user"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "reminder"
+        },
+        {
+            "sender": "kafka",
+            "receiver": "mailer"
+        },
+        {
+            "sender": "reminder",
+            "receiver": "kafka"
+        },
+        {
+            "sender": "reminder",
+            "receiver": "eureka-server"
+        },
+        {
+            "sender": "oauth",
+            "receiver": "eureka-server"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "eureka-server"
+        },
+        {
+            "sender": "mailer",
+            "receiver": "eureka-server"
+        },
+        {
+            "sender": "admin",
+            "receiver": "eureka-server"
+        },
+        {
+            "sender": "user",
+            "receiver": "eureka-server"
+        },
+        {
+            "sender": "admin",
+            "receiver": "oauth"
+        },
+        {
+            "sender": "admin",
+            "receiver": "api-gateway"
+        },
+        {
+            "sender": "admin",
+            "receiver": "mailer"
+        },
+        {
+            "sender": "admin",
+            "receiver": "user"
+        },
+        {
+            "sender": "admin",
+            "receiver": "reminder"
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "kafka"
+        },
+        {
+            "sender": "oauth",
+            "receiver": "logstash"
+        },
+        {
+            "sender": "admin",
+            "receiver": "logstash"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "logstash"
+        },
+        {
+            "sender": "eureka-server",
+            "receiver": "logstash"
+        },
+        {
+            "sender": "mailer",
+            "receiver": "logstash"
+        },
+        {
+            "sender": "user",
+            "receiver": "logstash"
+        },
+        {
+            "sender": "config-server",
+            "receiver": "logstash"
+        },
+        {
+            "sender": "reminder",
+            "receiver": "logstash"
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "oauth"
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "admin"
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "api-gateway"
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "eureka-server"
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "mailer"
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "user"
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "reminder"
+        }
+    ]
+}

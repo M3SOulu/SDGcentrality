@@ -1,0 +1,46 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        scaffold_txmanager [label = "{Service: scaffold_txmanager | --internal--\n}" shape = Mrecord];
+        scaffold_core_code [label = "{Service: scaffold_core_code | --internal--\n--local_logging--\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        scaffold_core_common [label = "{Service: scaffold_core_common | --internal--\n--local_logging--\n}" shape = Mrecord];
+        scaffold_core_plugin [label = "{Service: scaffold_core_plugin | --internal--\n--local_logging--\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        scaffold_business_thirdparty_service [label = "{Service: scaffold_business_thirdparty_service | --internal--\n--local_logging--\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        scaffold_business_job_service [label = "{Service: scaffold_business_job_service | --internal--\n--local_logging--\n}" shape = Mrecord];
+        scaffold_business_sys_service [label = "{Service: scaffold_business_sys_service | --internal--\n--local_logging--\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        scaffold_zuul [label = "{Service: scaffold_zuul | --gateway--\n--infrastructural--\n--load_balancer--\n'Load Balancer': 'Ribbon'\n'Gateway': 'Zuul'\n}" shape = Mrecord];
+        demo [label = "{Service: demo | --internal--\n}" shape = Mrecord];
+        scaffold_config_server [label = "{Service: scaffold_config_server | --configuration_server--\n--infrastructural--\n'Configuration Server': 'Spring Cloud Config'\n}" shape = Mrecord];
+        scaffold_eureka [label = "{Service: scaffold_eureka | --service_discovery--\n--infrastructural--\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        scaffold_business_thirdparty_api [label = "{Service: scaffold_business_thirdparty_api | --internal--\n}" shape = Mrecord];
+        scaffold_business_sys_api [label = "{Service: scaffold_business_sys_api | --internal--\n}" shape = Mrecord];
+        scaffold_feign_sys [label = "{Service: scaffold_feign_sys | --internal--\n}" shape = Mrecord];
+        scaffold_feign_thirdparty [label = "{Service: scaffold_feign_thirdparty | --internal--\n}" shape = Mrecord];
+        scaffold_route_openapi [label = "{Service: scaffold_route_openapi | --internal--\n--circuit_breaker--\n'Circuit Breaker': 'Hystrix'\n}" shape = Mrecord];
+        scaffold_route_app [label = "{Service: scaffold_route_app | --internal--\n}" shape = Mrecord];
+        scaffold_route_operate [label = "{Service: scaffold_route_operate | --internal--\n--local_logging--\n--circuit_breaker--\n'Circuit Breaker': 'Hystrix'\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        mysql [label = "|{Service: mysql | --database--\n'Database': 'MySQL'\n'Port': 3306\n}"]
+        user [label = "{External Entity: user | --entrypoint--\n--exitpoint--\n--user_stereotype--\n}"];
+        scaffold_config_server -> demo [label = " --restful_http--\n"]
+        scaffold_route_app -> scaffold_eureka [label = " --restful_http--\n"]
+        scaffold_route_operate -> scaffold_eureka [label = " --restful_http--\n"]
+        scaffold_route_openapi -> scaffold_eureka [label = " --restful_http--\n"]
+        demo -> scaffold_eureka [label = " --restful_http--\n"]
+        scaffold_eureka -> scaffold_zuul [label = " --restful_http--\n"]
+        scaffold_business_thirdparty_service -> scaffold_eureka [label = " --restful_http--\n"]
+        scaffold_business_job_service -> scaffold_eureka [label = " --restful_http--\n"]
+        scaffold_txmanager -> scaffold_eureka [label = " --restful_http--\n"]
+        scaffold_business_sys_service -> scaffold_eureka [label = " --restful_http--\n"]
+        scaffold_config_server -> scaffold_eureka [label = " --restful_http--\n"]
+        user -> scaffold_zuul [label = " --restful_http--\n"]
+        scaffold_zuul -> user [label = " --restful_http--\n"]
+
+}
+@enduml

@@ -1,0 +1,220 @@
+{
+    "nodes": {
+        "order": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-order/src/main/resources/application.properties",
+            "line": 5,
+            "span": "(24:29)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-order/src/main/resources/application.properties",
+                    "line": 0,
+                    "span": "(0, 11)"
+                },
+                "local_logging": {
+                    "file": "microservice-demo/microservice-demo-order/src/main/java/com/ewolff/microservice/order/clients/CustomerClient.java",
+                    "line": "8",
+                    "span": "(17, 30)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-eureka-server/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:16)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-eureka-server/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "service_discovery": {
+                    "file": "microservice-demo/microservice-demo-eureka-server/src/main/java/com/ewolff/microservice/eurekaserver/EurekaApplication.java",
+                    "line": "8",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "turbine": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-turbine-server/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:17)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-turbine-server/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "monitoring_dashboard": {
+                    "file": "microservice-demo/microservice-demo-turbine-server/src/main/java/com/ewolff/microservice/turbine/TurbineApplication.java",
+                    "line": "12",
+                    "span": "(0, 23)"
+                },
+                "monitoring_server": {
+                    "file": "microservice-demo/microservice-demo-turbine-server/src/main/java/com/ewolff/microservice/turbine/TurbineApplication.java",
+                    "line": "10",
+                    "span": "(0, 14)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype monitoring_server",
+                    "line": "heuristic, based on stereotype monitoring_server",
+                    "span": "heuristic, based on stereotype monitoring_server"
+                }
+            }
+        },
+        "catalog": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-catalog/src/main/resources/application.properties",
+            "line": 5,
+            "span": "(24:31)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-catalog/src/main/resources/application.properties",
+                    "line": 0,
+                    "span": "(0, 11)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "zuul": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-zuul-server/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:14)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-zuul-server/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "gateway": {
+                    "file": "microservice-demo/microservice-demo-zuul-server/src/main/java/com/ewolff/microservice/zuulserver/ZuulApplication.java",
+                    "line": "8",
+                    "span": "(0, 16)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "customer": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-customer/src/main/resources/application.properties",
+            "line": 5,
+            "span": "(24:32)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-customer/src/main/resources/application.properties",
+                    "line": 0,
+                    "span": "(0, 11)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "order -> catalog": {
+            "file": "microservice-demo/microservice-demo-order/src/main/java/com/ewolff/microservice/order/clients/CatalogClient.java",
+            "line": "86",
+            "span": "(36, 61)"
+        },
+        "order -> customer": {
+            "file": "microservice-demo/microservice-demo-order/src/main/java/com/ewolff/microservice/order/clients/CustomerClient.java",
+            "line": "107",
+            "span": "(9, 34)"
+        },
+        "order -> order": {
+            "file": "microservice-demo/microservice-demo-order/src/main/resources/templates/orderlist.html",
+            "line": "25",
+            "span": "(12, 16)"
+        },
+        "zuul -> customer": {
+            "file": "microservice-demo/microservice-demo-zuul-server/src/main/resources/static/index.html",
+            "line": "7",
+            "span": "(1, 5)"
+        },
+        "zuul -> catalog": {
+            "file": "microservice-demo/microservice-demo-zuul-server/src/main/resources/static/index.html",
+            "line": "7",
+            "span": "(1, 5)"
+        },
+        "zuul -> order": {
+            "file": "microservice-demo/microservice-demo-zuul-server/src/main/resources/static/index.html",
+            "line": "7",
+            "span": "(1, 5)"
+        },
+        "customer -> eureka": {
+            "file": "microservice-demo/microservice-demo-customer/src/main/java/com/ewolff/microservice/customer/CustomerApp.java",
+            "line": "8",
+            "span": "(50, 71)"
+        },
+        "catalog -> eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-catalog/src/main/resources/application.properties",
+            "line": 5,
+            "span": "(0, 36)"
+        },
+        "turbine -> eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-turbine-server/src/main/resources/application.yml",
+            "line": 7,
+            "span": "(20, 46)"
+        },
+        "order -> eureka": {
+            "file": "microservice-demo/microservice-demo-order/pom.xml",
+            "line": "17",
+            "span": "(15, 57)"
+        },
+        "eureka -> zuul": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice/microservice-demo/microservice-demo-zuul-server/src/main/resources/bootstrap.yml",
+            "line": 11,
+            "span": "(20, 46)"
+        },
+        "user -> zuul": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "zuul -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        }
+    }
+}

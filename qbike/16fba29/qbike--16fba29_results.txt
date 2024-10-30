@@ -1,0 +1,46 @@
+Microservices:
+
+{'name': 'qbike-order', 'type': 'service', 'stereotype_instances': ['internal', 'load_balancer', 'local_logging'], 'tagged_values': [('Port', 8002), ('Load Balancer', 'Spring Cloud')]}
+{'name': 'qbike-intention', 'type': 'service', 'stereotype_instances': ['circuit_breaker', 'internal', 'load_balancer', 'local_logging'], 'tagged_values': [('Port', 8001), ('Load Balancer', 'Spring Cloud')]}
+{'name': 'microservice-api-gateway', 'type': 'service', 'stereotype_instances': ['gateway', 'infrastructural', 'load_balancer'], 'tagged_values': [('Gateway', 'Zuul'), ('Load Balancer', 'Ribbon'), ('Port', 8050)]}
+{'name': 'qbike-trip', 'type': 'service', 'stereotype_instances': ['circuit_breaker', 'internal', 'load_balancer', 'local_logging'], 'tagged_values': [('Port', 8003), ('Load Balancer', 'Spring Cloud')]}
+{'name': 'eureka', 'type': 'service', 'stereotype_instances': ['service_discovery', 'infrastructural'], 'tagged_values': [('Port', 8761), ('Service Discovery', 'Eureka')]}
+{'name': 'qbike-uc', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Endpoints', '[\'/"users\']'), ('Port', 8000)]}
+{'name': 'testclient', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': []}
+{'name': 'zipkin-server', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Port', 9411)]}
+{'name': 'mysql', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Port', 13306)]}
+{'name': 'rabbit', 'type': 'service', 'stereotype_instances': ['message_broker', 'infrastructural'], 'tagged_values': [('Message Broker', 'RabbitMQ'), ('Port', 15672)]}
+
+Information Flows:
+
+{'sender': 'rabbit', 'receiver': 'qbike-order', 'stereotype_instances': ['message_consumer_rabbitmq', 'restful_http'], 'tagged_values': [('Queue', 'intention')]}
+{'sender': 'qbike-intention', 'receiver': 'qbike-trip', 'stereotype_instances': ['load_balanced_link', 'restful_http', 'circuit_breaker_link'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'database-qbike-order', 'receiver': 'qbike-order', 'stereotype_instances': ['plaintext_credentials_link', 'jdbc'], 'tagged_values': [('Username', 'root')]}
+{'sender': 'database-qbike-intention', 'receiver': 'qbike-intention', 'stereotype_instances': ['plaintext_credentials_link', 'jdbc'], 'tagged_values': [('Username', 'root')]}
+{'sender': 'database-qbike-trip', 'receiver': 'qbike-trip', 'stereotype_instances': ['plaintext_credentials_link', 'jdbc'], 'tagged_values': [('Username', 'root')]}
+{'sender': 'database-qbike-uc', 'receiver': 'qbike-uc', 'stereotype_instances': ['plaintext_credentials_link', 'jdbc'], 'tagged_values': [('Username', 'root')]}
+{'sender': 'uc', 'receiver': 'mysql', 'stereotype_instances': ['restful_http']}
+{'sender': 'uc', 'receiver': 'rabbit', 'stereotype_instances': ['restful_http']}
+{'sender': 'intention', 'receiver': 'mysql', 'stereotype_instances': ['restful_http']}
+{'sender': 'intention', 'receiver': 'rabbit', 'stereotype_instances': ['restful_http']}
+{'sender': 'position', 'receiver': 'mysql', 'stereotype_instances': ['restful_http']}
+{'sender': 'position', 'receiver': 'rabbit', 'stereotype_instances': ['restful_http']}
+{'sender': 'order', 'receiver': 'mysql', 'stereotype_instances': ['restful_http']}
+{'sender': 'order', 'receiver': 'rabbit', 'stereotype_instances': ['restful_http']}
+{'sender': 'api-gateway', 'receiver': 'rabbit', 'stereotype_instances': ['restful_http']}
+{'sender': 'zipkin', 'receiver': 'rabbit', 'stereotype_instances': ['restful_http']}
+{'sender': 'qbike-uc', 'receiver': 'eureka', 'stereotype_instances': ['restful_http']}
+{'sender': 'qbike-trip', 'receiver': 'eureka', 'stereotype_instances': ['load_balanced_link', 'restful_http', 'circuit_breaker_link'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'qbike-intention', 'receiver': 'eureka', 'stereotype_instances': ['load_balanced_link', 'restful_http', 'circuit_breaker_link'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'qbike-order', 'receiver': 'eureka', 'stereotype_instances': ['load_balanced_link', 'restful_http'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'eureka', 'receiver': 'microservice-api-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'user', 'receiver': 'microservice-api-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'microservice-api-gateway', 'receiver': 'user', 'stereotype_instances': ['restful_http']}
+
+External Components:
+
+{'name': 'database-qbike-order', 'type': 'external_component', 'stereotype_instances': ['external_database', 'exitpoint', 'plaintext_credentials', 'entrypoint'], 'tagged_values': [('Username', 'root'), ('Database', 'MySQL')]}
+{'name': 'database-qbike-intention', 'type': 'external_component', 'stereotype_instances': ['external_database', 'exitpoint', 'plaintext_credentials', 'entrypoint'], 'tagged_values': [('Username', 'root'), ('Database', 'MySQL')]}
+{'name': 'database-qbike-trip', 'type': 'external_component', 'stereotype_instances': ['external_database', 'exitpoint', 'plaintext_credentials', 'entrypoint'], 'tagged_values': [('Username', 'root'), ('Database', 'MySQL')]}
+{'name': 'database-qbike-uc', 'type': 'external_component', 'stereotype_instances': ['external_database', 'exitpoint', 'plaintext_credentials', 'entrypoint'], 'tagged_values': [('Username', 'root'), ('Database', 'MySQL')]}
+{'name': 'user', 'type': 'external_component', 'stereotype_instances': ['exitpoint', 'user_stereotype', 'entrypoint']}

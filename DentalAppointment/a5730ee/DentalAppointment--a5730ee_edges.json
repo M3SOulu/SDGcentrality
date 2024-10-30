@@ -1,0 +1,72 @@
+{
+    "edges": [
+        {
+            "sender": "appointment-service",
+            "receiver": "personal-info-service"
+        },
+        {
+            "sender": "appointment-service",
+            "receiver": "hospital-manage-service"
+        },
+        {
+            "sender": "approval-service",
+            "receiver": "appointment-service"
+        },
+        {
+            "sender": "approval-service",
+            "receiver": "message-service"
+        },
+        {
+            "sender": "message-service",
+            "receiver": "personal-info-service"
+        },
+        {
+            "sender": "database-appointment-service",
+            "receiver": "appointment-service"
+        },
+        {
+            "sender": "database-approval-service",
+            "receiver": "approval-service"
+        },
+        {
+            "sender": "database-hospital-manage-service",
+            "receiver": "hospital-manage-service"
+        },
+        {
+            "sender": "database-message-service",
+            "receiver": "message-service"
+        },
+        {
+            "sender": "database-personal-info-service",
+            "receiver": "personal-info-service"
+        },
+        {
+            "sender": "user",
+            "receiver": "gateway-service"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "user"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "message-service"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "approval-service"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "hospital-manage-service"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "appointment-service"
+        },
+        {
+            "sender": "message-service",
+            "receiver": "mail-server"
+        }
+    ]
+}

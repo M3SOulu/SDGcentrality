@@ -1,0 +1,35 @@
+Microservices:
+
+{'name': 'geocoderlocal-service', 'type': 'service', 'stereotype_instances': ['internal', 'circuit_breaker', 'resource_server'], 'tagged_values': [('Port', 9001), ('Circuit Breaker', 'Hystrix'), ('Endpoints', "['/geocoder']")]}
+{'name': 'zuul-gateway', 'type': 'service', 'stereotype_instances': ['gateway', 'local_logging', 'infrastructural', 'load_balancer'], 'tagged_values': [('Gateway', 'Zuul'), ('Port', 4000), ('Load Balancer', 'Ribbon')]}
+{'name': 'geocoderremote-service', 'type': 'service', 'stereotype_instances': ['internal', 'circuit_breaker', 'resource_server'], 'tagged_values': [('Port', 9002), ('Circuit Breaker', 'Hystrix'), ('Endpoints', "['/geocoder']")]}
+{'name': 'hystrix-dashboard', 'type': 'service', 'stereotype_instances': ['monitoring_server', 'infrastructural', 'monitoring_dashboard'], 'tagged_values': [('Port', '8989 8080'), ('Monitoring Server', 'Turbine'), ('Monitoring Dashboard', 'Hystrix'), ('Port', 7979)]}
+{'name': 'eureka-discovery', 'type': 'service', 'stereotype_instances': ['service_discovery', 'infrastructural'], 'tagged_values': [('Service Discovery', 'Eureka'), ('Port', 8761)]}
+{'name': 'configurator', 'type': 'service', 'stereotype_instances': ['configuration_server', 'infrastructural'], 'tagged_values': [('Configuration Server', 'Spring Cloud Config'), ('Port', 8888)]}
+{'name': 'auth-service', 'type': 'service', 'stereotype_instances': ['authorization_server', 'local_logging', 'resource_server', 'infrastructural', 'encryption', 'token_server'], 'tagged_values': [('Port', 5000), ('Authorization Server', 'Spring OAuth2'), ('Endpoints', "['/users', '/users/current']")]}
+{'name': 'mongodb', 'type': 'database_component', 'stereotype_instances': ['plaintext_credentials', 'database'], 'tagged_values': [('Database', 'MongoDB'), ('Password', 'pwd'), ('Port', 25000), ('Username', 'user')]}
+
+Information Flows:
+
+{'sender': 'configurator', 'receiver': 'geocoderlocal-service', 'stereotype_instances': ['restful_http']}
+{'sender': 'configurator', 'receiver': 'zuul-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'configurator', 'receiver': 'geocoderremote-service', 'stereotype_instances': ['restful_http']}
+{'sender': 'configurator', 'receiver': 'hystrix-dashboard', 'stereotype_instances': ['restful_http']}
+{'sender': 'configurator', 'receiver': 'eureka-discovery', 'stereotype_instances': ['restful_http']}
+{'sender': 'configurator', 'receiver': 'auth-service', 'stereotype_instances': ['restful_http']}
+{'sender': 'mongodb', 'receiver': 'geocoderremote-service', 'stereotype_instances': ['jdbc', 'plaintext_credentials_link'], 'tagged_values': [('Password', 'pwd'), ('Username', 'user')]}
+{'sender': 'mongodb', 'receiver': 'auth-service', 'stereotype_instances': ['jdbc', 'plaintext_credentials_link'], 'tagged_values': [('Password', 'pwd'), ('Username', 'user')]}
+{'sender': 'geocoderremote-service', 'receiver': 'eureka-discovery', 'stereotype_instances': ['restful_http']}
+{'sender': 'eureka-discovery', 'receiver': 'zuul-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'auth-service', 'receiver': 'eureka-discovery', 'stereotype_instances': ['restful_http']}
+{'sender': 'geocoderlocal-service', 'receiver': 'eureka-discovery', 'stereotype_instances': ['restful_http']}
+{'sender': 'user', 'receiver': 'zuul-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'zuul-gateway', 'receiver': 'user', 'stereotype_instances': ['restful_http']}
+{'sender': 'zuul-gateway', 'receiver': 'auth-service', 'stereotype_instances': ['circuit_breaker_link', 'load_balanced_link', 'restful_http'], 'tagged_values': [('Load Balancer', 'Ribbon'), ('Circuit Breaker', 'Hystrix')]}
+{'sender': 'auth-service', 'receiver': 'geocoderlocal-service', 'stereotype_instances': ['auth_provider', 'authentication_with_plaintext_credentials', 'restful_http', 'plaintext_credentials_link'], 'tagged_values': [('Password', 'geocoderLocal-pwd')]}
+{'sender': 'auth-service', 'receiver': 'geocoderremote-service', 'stereotype_instances': ['auth_provider', 'authentication_with_plaintext_credentials', 'restful_http', 'plaintext_credentials_link'], 'tagged_values': [('Password', 'pwd1')]}
+{'sender': 'hystrix-dashboard', 'receiver': 'hystrix-dashboard', 'stereotype_instances': ['restful_http']}
+
+External Components:
+
+{'name': 'user', 'type': 'external_component', 'stereotype_instances': ['user_stereotype', 'exitpoint', 'entrypoint']}

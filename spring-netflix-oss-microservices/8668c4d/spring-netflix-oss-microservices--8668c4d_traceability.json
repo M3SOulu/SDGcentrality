@@ -1,0 +1,266 @@
+{
+    "nodes": {
+        "monitor-dashboard": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/monitor-dashboard/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:27)",
+            "sub_items": {
+                "monitoring_dashboard": {
+                    "file": "monitor-dashboard/src/main/java/com/spring/netflix/oss/microservices/MonitorDashboardApplication.java",
+                    "line": "11",
+                    "span": "(0, 23)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype monitoring_dashboard",
+                    "line": "heuristic, based on stereotype monitoring_dashboard",
+                    "span": "heuristic, based on stereotype monitoring_dashboard"
+                }
+            }
+        },
+        "card-statement-composite": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/card-statement-composite/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:34)",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "card-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/card-service/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:22)",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "discovery-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/discovery-service/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:27)",
+            "sub_items": {
+                "service_discovery": {
+                    "file": "discovery-service/src/main/java/com/spring/netflix/oss/microservices/DiscoveryServiceApplication.java",
+                    "line": "8",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "statement-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/statement-service/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:27)",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "config-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/config-server/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:23)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/config-server/src/main/resources/application.yml",
+                    "line": 4,
+                    "span": "(8, 12)"
+                },
+                "configuration_server": {
+                    "file": "config-server/src/main/java/com/spring/netflix/oss/microservices/ConfigServerApplication.java",
+                    "line": "8",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype configuration_server",
+                    "line": "heuristic, based on stereotype configuration_server",
+                    "span": "heuristic, based on stereotype configuration_server"
+                }
+            }
+        },
+        "turbine": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/turbine/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:17)",
+            "sub_items": {
+                "monitoring_server": {
+                    "file": "turbine/src/main/java/com/spring/netflix/oss/microservices/TurbineApplication.java",
+                    "line": "9",
+                    "span": "(0, 18)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype monitoring_server",
+                    "line": "heuristic, based on stereotype monitoring_server",
+                    "span": "heuristic, based on stereotype monitoring_server"
+                }
+            }
+        },
+        "edge-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/edge-server/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:21)",
+            "sub_items": {
+                "gateway": {
+                    "file": "edge-server/src/main/java/com/spring/netflix/oss/microservices/EdgeServerApplication.java",
+                    "line": "10",
+                    "span": "(0, 16)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "rabbitmq": {
+            "file": "docker-compose.yml",
+            "line": 80,
+            "span": "[2:10]",
+            "sub_items": {
+                "message_broker": {
+                    "file": "heuristic, based on image in Docker Compose",
+                    "line": "heuristic, based on image in Docker Compose",
+                    "span": "heuristic, based on image in Docker Compose"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype message_broker",
+                    "line": "heuristic, based on stereotype message_broker",
+                    "span": "heuristic, based on stereotype message_broker"
+                }
+            }
+        },
+        "github-repository": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/config-server/src/main/resources/application.yml",
+            "line": 11,
+            "span": "(17, 77)"
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "github-repository -> config-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/config-server/src/main/resources/application.yml",
+            "line": 11,
+            "span": "(17, 77)"
+        },
+        "config-server -> monitor-dashboard": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/monitor-dashboard/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 33)"
+        },
+        "config-server -> card-statement-composite": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/card-statement-composite/src/main/resources/bootstrap.yml",
+            "line": 12,
+            "span": "(14, 39)"
+        },
+        "config-server -> card-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/card-service/src/main/resources/bootstrap.yml",
+            "line": 12,
+            "span": "(14, 39)"
+        },
+        "config-server -> discovery-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/discovery-service/src/main/resources/bootstrap.yml",
+            "line": 12,
+            "span": "(14, 39)"
+        },
+        "config-server -> statement-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/statement-service/src/main/resources/bootstrap.yml",
+            "line": 12,
+            "span": "(14, 39)"
+        },
+        "config-server -> turbine": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/turbine/src/main/resources/bootstrap.yml",
+            "line": 12,
+            "span": "(14, 39)"
+        },
+        "config-server -> edge-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-netflix-oss-microservices/edge-server/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 33)"
+        },
+        "monitor-dashboard -> discovery-service": {
+            "file": "monitor-dashboard/src/main/java/com/spring/netflix/oss/microservices/MonitorDashboardApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "turbine -> discovery-service": {
+            "file": "turbine/src/main/java/com/spring/netflix/oss/microservices/TurbineApplication.java",
+            "line": "5",
+            "span": "(48, 66)"
+        },
+        "statement-service -> discovery-service": {
+            "file": "statement-service/src/main/java/com/spring/netflix/oss/microservices/StatementServiceApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "card-statement-composite -> discovery-service": {
+            "file": "card-statement-composite/src/main/java/com/spring/netflix/oss/microservices/CardStatementCompositeApplication.java",
+            "line": "6",
+            "span": "(48, 66)"
+        },
+        "card-service -> discovery-service": {
+            "file": "card-service/src/main/java/com/spring/netflix/oss/microservices/CardServiceApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "discovery-service -> edge-server": {
+            "file": "edge-server/src/main/java/com/spring/netflix/oss/microservices/EdgeServerApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "user -> edge-server": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "edge-server -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "turbine -> monitor-dashboard": {
+            "file": "turbine/src/main/java/com/spring/netflix/oss/microservices/TurbineApplication.java",
+            "line": "9",
+            "span": "(0, 18)"
+        },
+        "rabbitmq -> turbine": {
+            "file": "turbine/src/main/java/com/spring/netflix/oss/microservices/TurbineApplication.java",
+            "line": "9",
+            "span": "(0, 18)"
+        }
+    }
+}

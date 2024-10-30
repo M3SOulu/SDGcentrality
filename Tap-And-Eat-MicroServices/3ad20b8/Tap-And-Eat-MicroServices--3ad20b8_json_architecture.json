@@ -1,0 +1,309 @@
+{
+    "microservices": [
+        {
+            "name": "account-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8000
+                ],
+                [
+                    "Endpoints",
+                    "['/accounts']"
+                ]
+            ]
+        },
+        {
+            "name": "config-service",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "configuration_server"
+            ],
+            "tagged_values": [
+                [
+                    "Configuration Server",
+                    "Spring Cloud Config"
+                ],
+                [
+                    "Port",
+                    8888
+                ],
+                [
+                    "Port",
+                    8167
+                ]
+            ]
+        },
+        {
+            "name": "foodtray-service",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "monitoring_dashboard",
+                "circuit_breaker"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8005
+                ],
+                [
+                    "Circuit Breaker",
+                    "Hystrix"
+                ],
+                [
+                    "Monitoring Dashboard",
+                    "Hystrix"
+                ]
+            ]
+        },
+        {
+            "name": "discovery-service",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "service_discovery"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8888
+                ],
+                [
+                    "Port",
+                    8002
+                ],
+                [
+                    "Service Discovery",
+                    "Eureka"
+                ]
+            ]
+        },
+        {
+            "name": "price-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/prices']"
+                ],
+                [
+                    "Port",
+                    8001
+                ],
+                [
+                    "Port",
+                    8002
+                ]
+            ]
+        },
+        {
+            "name": "store-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8003
+                ],
+                [
+                    "Endpoints",
+                    "['/stores']"
+                ]
+            ]
+        },
+        {
+            "name": "customer-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/customers']"
+                ],
+                [
+                    "Port",
+                    8002
+                ]
+            ]
+        },
+        {
+            "name": "item-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8004
+                ],
+                [
+                    "Endpoints",
+                    "['/items']"
+                ]
+            ]
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "github-repository",
+            "receiver": "config-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-service",
+            "receiver": "account-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-service",
+            "receiver": "foodtray-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-service",
+            "receiver": "price-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-service",
+            "receiver": "store-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-service",
+            "receiver": "customer-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-service",
+            "receiver": "item-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "foodtray-service",
+            "receiver": "item-service",
+            "stereotype_instances": [
+                "restful_http",
+                "feign_connection",
+                "circuit_breaker_link",
+                "load_balanced_link"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Ribbon"
+                ]
+            ]
+        },
+        {
+            "sender": "foodtray-service",
+            "receiver": "price-service",
+            "stereotype_instances": [
+                "restful_http",
+                "feign_connection",
+                "circuit_breaker_link",
+                "load_balanced_link"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Ribbon"
+                ]
+            ]
+        },
+        {
+            "sender": "foodtray-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http",
+                "circuit_breaker_link"
+            ]
+        },
+        {
+            "sender": "customer-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "account-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "store-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "price-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "item-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "github-repository",
+            "type": "external_component",
+            "stereotype_instances": [
+                "github_repository",
+                "entrypoint"
+            ],
+            "tagged_values": [
+                [
+                    "URL",
+                    "https://github.com/jferrater/ConfigData"
+                ]
+            ]
+        }
+    ]
+}

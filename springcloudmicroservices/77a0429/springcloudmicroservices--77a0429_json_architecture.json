@@ -1,0 +1,270 @@
+{
+    "microservices": [
+        {
+            "name": "serviceregistry",
+            "type": "service",
+            "stereotype_instances": [
+                "service_discovery",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8762
+                ],
+                [
+                    "Service Discovery",
+                    "Eureka"
+                ]
+            ]
+        },
+        {
+            "name": "user-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging",
+                "load_balancer"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8081
+                ],
+                [
+                    "Endpoints",
+                    "['/users', '/users/{userId}']"
+                ],
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ]
+            ]
+        },
+        {
+            "name": "rating-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/ratings', '/ratings/users/{userId}', '/ratings/hotels/{hotelId}']"
+                ],
+                [
+                    "Port",
+                    8083
+                ]
+            ]
+        },
+        {
+            "name": "hotel-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/hotels', '/hotels/{hotelId}']"
+                ],
+                [
+                    "Port",
+                    8082
+                ]
+            ]
+        },
+        {
+            "name": "api-gateway",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "gateway"
+            ],
+            "tagged_values": [
+                [
+                    "Gateway",
+                    "Spring Cloud Gateway"
+                ],
+                [
+                    "Port",
+                    8084
+                ]
+            ]
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "user-service",
+            "receiver": "rating-service",
+            "stereotype_instances": [
+                "restful_http",
+                "load_balanced_link"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ]
+            ]
+        },
+        {
+            "sender": "database-user-service",
+            "receiver": "user-service",
+            "stereotype_instances": [
+                "plaintext_credentials_link",
+                "jdbc"
+            ],
+            "tagged_values": [
+                [
+                    "Username",
+                    "root"
+                ]
+            ]
+        },
+        {
+            "sender": "database-hotel-service",
+            "receiver": "hotel-service",
+            "stereotype_instances": [
+                "plaintext_credentials_link",
+                "jdbc"
+            ],
+            "tagged_values": [
+                [
+                    "Username",
+                    "root"
+                ]
+            ]
+        },
+        {
+            "sender": "serviceregistry",
+            "receiver": "api-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "user-service",
+            "receiver": "serviceregistry",
+            "stereotype_instances": [
+                "restful_http",
+                "load_balanced_link"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ]
+            ]
+        },
+        {
+            "sender": "rating-service",
+            "receiver": "serviceregistry",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "hotel-service",
+            "receiver": "serviceregistry",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "api-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "hotel-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "user-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "rating-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "database-user-service",
+            "type": "external_component",
+            "stereotype_instances": [
+                "entrypoint",
+                "exitpoint",
+                "external_database",
+                "plaintext_credentials"
+            ],
+            "tagged_values": [
+                [
+                    "Database",
+                    "MySQL"
+                ],
+                [
+                    "Port",
+                    3306
+                ],
+                [
+                    "Username",
+                    "root"
+                ]
+            ]
+        },
+        {
+            "name": "database-hotel-service",
+            "type": "external_component",
+            "stereotype_instances": [
+                "entrypoint",
+                "exitpoint",
+                "external_database",
+                "plaintext_credentials"
+            ],
+            "tagged_values": [
+                [
+                    "Database",
+                    "MySQL"
+                ],
+                [
+                    "Port",
+                    3306
+                ],
+                [
+                    "Username",
+                    "root"
+                ]
+            ]
+        },
+        {
+            "name": "user",
+            "type": "external_component",
+            "stereotype_instances": [
+                "user_stereotype",
+                "entrypoint",
+                "exitpoint"
+            ]
+        }
+    ]
+}

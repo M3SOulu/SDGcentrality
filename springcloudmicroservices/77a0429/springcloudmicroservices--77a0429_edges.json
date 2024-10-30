@@ -1,0 +1,52 @@
+{
+    "edges": [
+        {
+            "sender": "user-service",
+            "receiver": "rating-service"
+        },
+        {
+            "sender": "database-user-service",
+            "receiver": "user-service"
+        },
+        {
+            "sender": "database-hotel-service",
+            "receiver": "hotel-service"
+        },
+        {
+            "sender": "serviceregistry",
+            "receiver": "api-gateway"
+        },
+        {
+            "sender": "user-service",
+            "receiver": "serviceregistry"
+        },
+        {
+            "sender": "rating-service",
+            "receiver": "serviceregistry"
+        },
+        {
+            "sender": "hotel-service",
+            "receiver": "serviceregistry"
+        },
+        {
+            "sender": "user",
+            "receiver": "api-gateway"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "user"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "hotel-service"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "user-service"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "rating-service"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+Microservices:
+
+{'name': 'benchmark-service', 'type': 'service', 'stereotype_instances': ['internal', 'local_logging'], 'tagged_values': [('Logging Technology', 'Lombok'), ('Endpoints', "['/benchmarkService', '/benchmarkService//stop', '/benchmarkService//status', '/benchmarkService//joblist', '/benchmarkService//start']"), ('Port', 8082)]}
+{'name': 'commons', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': []}
+{'name': 'repository-service', 'type': 'service', 'stereotype_instances': ['internal', 'local_logging'], 'tagged_values': [('Port', 8080), ('Logging Technology', 'Lombok'), ('Endpoints', "['/pending', '/docker', '/repos/docker/{id}', '/repos/git', '/repos/git/{id}', '/continuousChecking//stop', '/repos/docker', '/continuousChecking', '/manualStart', '/git', '/abort/{id}', '/repos/git/release', '/repos/git/pullRequest', '/', '/continuousChecking//start', '/{id}', '/delete/{id}', '/repos/git/branch', '/continuousChecking//status']")]}
+{'name': 'rabbitmq', 'type': 'service', 'stereotype_instances': ['infrastructural', 'plaintext_credentials', 'message_broker'], 'tagged_values': [('Port', 5672), ('Username', 'guest'), ('Password', 'guest'), ('Message Broker', 'RabbitMQ')]}
+
+Information Flows:
+
+{'sender': 'rabbitmq', 'receiver': 'repository-service', 'stereotype_instances': ['message_consumer_rabbitmq', 'restful_http'], 'tagged_values': [('Queue', '${rabbitmq.benchmarks.resultQueue}')]}
+{'sender': 'rabbitmq', 'receiver': 'benchmark-service', 'stereotype_instances': ['message_consumer_rabbitmq', 'restful_http'], 'tagged_values': [('Queue', '${rabbitmq.benchmarks.jobQueue}')]}
+{'sender': 'benchmark-service', 'receiver': 'rabbitmq', 'stereotype_instances': ['restful_http', 'message_producer_rabbitmq', 'plaintext_credentials_link'], 'tagged_values': [('Routing Key', 'None'), ('Producer Exchange', 'None')]}
+{'sender': 'repository-service', 'receiver': 'rabbitmq', 'stereotype_instances': ['restful_http', 'message_producer_rabbitmq', 'plaintext_credentials_link'], 'tagged_values': [('Routing Key', 'None'), ('Producer Exchange', 'None')]}
+{'sender': 'database-benchmark-service', 'receiver': 'benchmark-service', 'stereotype_instances': ['jdbc', 'plaintext_credentials_link'], 'tagged_values': [('Username', 'basilisk'), ('Password', 'password')]}
+{'sender': 'database-repository-service', 'receiver': 'repository-service', 'stereotype_instances': ['jdbc', 'plaintext_credentials_link'], 'tagged_values': [('Username', 'basilisk'), ('Password', 'password')]}
+
+External Components:
+
+{'name': 'database-benchmark-service', 'type': 'external_component', 'stereotype_instances': ['entrypoint', 'external_database', 'plaintext_credentials', 'exitpoint'], 'tagged_values': [('Username', 'basilisk'), ('Password', 'password')]}
+{'name': 'database-repository-service', 'type': 'external_component', 'stereotype_instances': ['entrypoint', 'external_database', 'plaintext_credentials', 'exitpoint'], 'tagged_values': [('Username', 'basilisk'), ('Password', 'password')]}

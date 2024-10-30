@@ -1,0 +1,30 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        blog [label = "{Service: blog | --local_logging--\n--gateway--\n--load_balancer--\n--infrastructural--\n--csrf_disabled--\n'Gateway': 'Zuul'\n'Load Balancer': 'Ribbon'\n'Port': '8080 5701'\n}" shape = Mrecord];
+        jhipster_registry [label = "{Service: jhipster_registry | --local_logging--\n--basic_authentication--\n--gateway--\n--service_discovery--\n--load_balancer--\n--infrastructural--\n--csrf_disabled--\n--configuration_server--\n'Gateway': 'Zuul'\n'Load Balancer': 'Ribbon'\n'Port': 8761\n'Configuration Server': 'Spring Cloud Config'\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        store [label = "{Service: store | --internal--\n--local_logging--\n--csrf_disabled--\n'Port': 8081\n}" shape = Mrecord];
+        store_mongodb [label = "|{Service: store_mongodb | --database--\n'Database': 'MongoDB'\n}"]
+        blog_postgresql [label = "{Service: blog_postgresql | --internal--\n}" shape = Mrecord];
+        blog_elasticsearch [label = "{Service: blog_elasticsearch | --search_engine--\n--infrastructural--\n'Search Engine': 'Elasticsearch'\n}" shape = Mrecord];
+        github_repository [label = "{External Entity: github_repository | --entrypoint--\n--github_repository--\n'URL': 'https\n}"];
+        user [label = "{External Entity: user | --entrypoint--\n--user_stereotype--\n--exitpoint--\n}"];
+        github_repository -> jhipster_registry [label = " --restful_http--\n"]
+        jhipster_registry -> blog [label = " --restful_http--\n"]
+        jhipster_registry -> store [label = " --restful_http--\n"]
+        jhipster_registry -> jhipster_registry [label = " --restful_http--\n"]
+        store -> jhipster_registry [label = " --restful_http--\n"]
+        user -> blog [label = " --restful_http--\n"]
+        blog -> user [label = " --restful_http--\n"]
+        user -> jhipster_registry [label = " --restful_http--\n"]
+        jhipster_registry -> user [label = " --restful_http--\n"]
+
+}
+@enduml

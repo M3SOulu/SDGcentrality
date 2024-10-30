@@ -1,0 +1,299 @@
+{
+    "nodes": {
+        "zuul": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/server_zuul/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:14)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/server_zuul/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "gateway": {
+                    "file": "server_zuul/src/main/java/de/hska/iwi/vsys/microlab/ZuulApplication.java",
+                    "line": "12",
+                    "span": "(0, 16)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/server_eureka/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:16)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/server_eureka/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "service_discovery": {
+                    "file": "server_eureka/src/main/java/de/hska/iwi/vsys/microlab/EurekaApplication.java",
+                    "line": "9",
+                    "span": "(0, 19)"
+                },
+                "monitoring_dashboard": {
+                    "file": "server_eureka/src/main/java/de/hska/iwi/vsys/microlab/EurekaApplication.java",
+                    "line": "10",
+                    "span": "(0, 23)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype monitoring_dashboard",
+                    "line": "heuristic, based on stereotype monitoring_dashboard",
+                    "span": "heuristic, based on stereotype monitoring_dashboard"
+                }
+            }
+        },
+        "user-proxy": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/user_proxy/src/main/resources/application.yml",
+            "line": 5,
+            "span": "(10:20)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/user_proxy/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "circuit_breaker": {
+                    "file": "user_proxy/src/main/java/de/hska/iwi/vsys/microlab/UserProxyApplication.java",
+                    "line": "14",
+                    "span": "(0, 14)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "product-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/product_service/src/main/resources/application.properties",
+            "line": 4,
+            "span": "(24:39)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/product_service/src/main/resources/application.properties",
+                    "line": 2,
+                    "span": "(0, 11)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "category-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/category_service/src/main/resources/application.properties",
+            "line": 4,
+            "span": "(24:40)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/category_service/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "security-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/security_service/src/main/resources/application.properties",
+            "line": 4,
+            "span": "(24:40)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/security_service/src/main/resources/application.properties",
+                    "line": 2,
+                    "span": "(0, 11)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "product-proxy": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/product_proxy/src/main/resources/application.yml",
+            "line": 7,
+            "span": "(10:23)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/product_proxy/src/main/resources/application.yml",
+                    "line": 4,
+                    "span": "(8, 12)"
+                },
+                "resource_server": {
+                    "file": "product_proxy/src/main/java/de/hska/iwi/vsys/microlab/ProductProxyApplication.java",
+                    "line": "20",
+                    "span": "(0, 21)"
+                },
+                "circuit_breaker": {
+                    "file": "product_proxy/src/main/java/de/hska/iwi/vsys/microlab/ProductProxyApplication.java",
+                    "line": "21",
+                    "span": "(0, 14)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "auth-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/oauth_server/src/main/resources/application.yml",
+            "line": 7,
+            "span": "(10:21)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/oauth_server/src/main/resources/application.yml",
+                    "line": 4,
+                    "span": "(8, 12)"
+                },
+                "in_memory_authentication": {
+                    "file": "oauth_server/src/main/java/de/hska/iwi/oauth/server/config/SecurityConfiguration.java",
+                    "line": "7",
+                    "span": "(78, 106)"
+                },
+                "authorization_server": {
+                    "file": "oauth_server/src/main/java/de/hska/iwi/oauth/server/config/AuthorizationServerConfiguration.java",
+                    "line": "21",
+                    "span": "(0, 26)"
+                },
+                "resource_server": {
+                    "file": "oauth_server/src/main/java/de/hska/iwi/oauth/server/OAuthServerApp.java",
+                    "line": "13",
+                    "span": "(0, 21)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype authorization_server",
+                    "line": "heuristic, based on stereotype authorization_server",
+                    "span": "heuristic, based on stereotype authorization_server"
+                }
+            }
+        },
+        "database-product-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/product_service/src/main/resources/application.properties",
+            "line": 11,
+            "span": "(0, 21)"
+        },
+        "database-category-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/category_service/src/main/resources/application.properties",
+            "line": 11,
+            "span": "(0, 21)"
+        },
+        "database-security-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/security_service/src/main/resources/application.properties",
+            "line": 11,
+            "span": "(0, 21)"
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "user-proxy -> security-service": {
+            "file": "user_proxy/src/main/java/de/hska/iwi/vsys/microlab/UserClient.java",
+            "line": "28",
+            "span": "(20, 45)"
+        },
+        "product-proxy -> category-service": {
+            "file": "product_proxy/src/main/java/de/hska/iwi/vsys/microlab/api/CategoryClient.java",
+            "line": "28",
+            "span": "(28, 53)"
+        },
+        "product-proxy -> product-service": {
+            "file": "product_proxy/src/main/java/de/hska/iwi/vsys/microlab/api/ProductClient.java",
+            "line": "36",
+            "span": "(26, 51)"
+        },
+        "database-product-service -> product-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/product_service/src/main/resources/application.properties",
+            "line": 11,
+            "span": "(0, 21)"
+        },
+        "database-category-service -> category-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/category_service/src/main/resources/application.properties",
+            "line": 11,
+            "span": "(0, 21)"
+        },
+        "database-security-service -> security-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/security_service/src/main/resources/application.properties",
+            "line": 11,
+            "span": "(0, 21)"
+        },
+        "category-service -> eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/category_service/src/main/resources/application.yml",
+            "line": 9,
+            "span": "(20, 49)"
+        },
+        "security-service -> eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/security_service/src/main/resources/application.yml",
+            "line": 9,
+            "span": "(20, 49)"
+        },
+        "user-proxy -> eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/user_proxy/src/main/resources/application.yml",
+            "line": 9,
+            "span": "(20, 49)"
+        },
+        "auth-server -> eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/oauth_server/src/main/resources/application.yml",
+            "line": 11,
+            "span": "(20, 49)"
+        },
+        "product-service -> eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/product_service/src/main/resources/application.yml",
+            "line": 9,
+            "span": "(20, 49)"
+        },
+        "product-proxy -> eureka": {
+            "file": "product_proxy/src/main/java/de/hska/iwi/vsys/microlab/ProductProxyApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "eureka -> zuul": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/micro_webshop/server_zuul/src/main/resources/bootstrap.yml",
+            "line": 10,
+            "span": "(20, 49)"
+        },
+        "user -> zuul": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "zuul -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        }
+    }
+}

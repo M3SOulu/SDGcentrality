@@ -1,0 +1,205 @@
+{
+    "nodes": {
+        "blog": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/jhipster-microservices-example/blog/src/main/resources/config/application.yml",
+            "line": 66,
+            "span": "(14:18)",
+            "sub_items": {
+                "csrf_disabled": {
+                    "file": "blog/src/main/java/org/jhipster/blog/config/SecurityConfiguration.java",
+                    "line": "14",
+                    "span": "(67, 79)"
+                },
+                "gateway": {
+                    "file": "blog/src/main/java/org/jhipster/blog/BlogApp.java",
+                    "line": "30",
+                    "span": "(0, 16)"
+                },
+                "local_logging": {
+                    "file": "blog/src/main/java/org/jhipster/blog/gateway/ratelimiting/RateLimitingFilter.java",
+                    "line": "15",
+                    "span": "(17, 30)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "jhipster-registry": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/jhipster-microservices-example/registry/src/main/resources/config/application.yml",
+            "line": 19,
+            "span": "(14:31)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/jhipster-microservices-example/registry/src/main/resources/config/application.yml",
+                    "line": 29,
+                    "span": "(10, 14)"
+                },
+                "configuration_server": {
+                    "file": "registry/src/main/java/io/github/jhipster/registry/JHipsterRegistryApp.java",
+                    "line": "30",
+                    "span": "(0, 19)"
+                },
+                "csrf_disabled": {
+                    "file": "registry/src/main/java/io/github/jhipster/registry/config/SecurityConfiguration.java",
+                    "line": "10",
+                    "span": "(67, 79)"
+                },
+                "basic_authentication": {
+                    "file": "registry/src/main/java/io/github/jhipster/registry/config/SecurityConfiguration.java",
+                    "line": "10",
+                    "span": "(67, 79)"
+                },
+                "service_discovery": {
+                    "file": "registry/src/main/java/io/github/jhipster/registry/JHipsterRegistryApp.java",
+                    "line": "29",
+                    "span": "(0, 19)"
+                },
+                "gateway": {
+                    "file": "registry/src/main/java/io/github/jhipster/registry/JHipsterRegistryApp.java",
+                    "line": "35",
+                    "span": "(0, 16)"
+                },
+                "local_logging": {
+                    "file": "registry/src/main/java/io/github/jhipster/registry/JHipsterRegistryApp.java",
+                    "line": "9",
+                    "span": "(17, 30)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "store": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/jhipster-microservices-example/store/src/main/resources/config/application.yml",
+            "line": 58,
+            "span": "(14:19)",
+            "sub_items": {
+                "csrf_disabled": {
+                    "file": "store/src/main/java/org/jhipster/store/config/MicroserviceSecurityConfiguration.java",
+                    "line": "11",
+                    "span": "(67, 79)"
+                },
+                "local_logging": {
+                    "file": "store/src/main/java/org/jhipster/store/StoreApp.java",
+                    "line": "9",
+                    "span": "(17, 30)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "store-mongodb": {
+            "file": "docker/docker-compose.yml",
+            "line": 33,
+            "span": "[4:17]",
+            "sub_items": {
+                "database": {
+                    "file": "heuristic, based on image",
+                    "line": "heuristic, based on image",
+                    "span": "heuristic, based on image"
+                }
+            }
+        },
+        "blog-postgresql": {
+            "file": "docker/docker-compose.yml",
+            "line": 15,
+            "span": "[4:19]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "blog-elasticsearch": {
+            "file": "docker/docker-compose.yml",
+            "line": 20,
+            "span": "[4:22]",
+            "sub_items": {
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype search_engine",
+                    "line": "heuristic, based on stereotype search_engine",
+                    "span": "heuristic, based on stereotype search_engine"
+                }
+            }
+        },
+        "github-repository": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/jhipster-microservices-example/registry/src/main/resources/config/bootstrap.yml",
+            "line": 15,
+            "span": "(26, 85)"
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "github-repository -> jhipster-registry": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/jhipster-microservices-example/registry/src/main/resources/config/bootstrap.yml",
+            "line": 15,
+            "span": "(26, 85)"
+        },
+        "jhipster-registry -> blog": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/jhipster-microservices-example/blog/src/main/resources/config/bootstrap.yml",
+            "line": 21,
+            "span": "(18, 82)"
+        },
+        "jhipster-registry -> store": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/jhipster-microservices-example/store/src/main/resources/config/bootstrap.yml",
+            "line": 21,
+            "span": "(18, 82)"
+        },
+        "store -> jhipster-registry": {
+            "file": "store/src/main/java/org/jhipster/store/StoreApp.java",
+            "line": "15",
+            "span": "(50, 71)"
+        },
+        "user -> blog": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "blog -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "user -> jhipster-registry": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "jhipster-registry -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        }
+    }
+}

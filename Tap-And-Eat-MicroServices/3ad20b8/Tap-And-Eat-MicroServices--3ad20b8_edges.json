@@ -1,0 +1,68 @@
+{
+    "edges": [
+        {
+            "sender": "github-repository",
+            "receiver": "config-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "account-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "foodtray-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "price-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "store-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "customer-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "item-service"
+        },
+        {
+            "sender": "foodtray-service",
+            "receiver": "item-service"
+        },
+        {
+            "sender": "foodtray-service",
+            "receiver": "price-service"
+        },
+        {
+            "sender": "foodtray-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "customer-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "account-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "store-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "price-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "item-service",
+            "receiver": "discovery-service"
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "edges": [
+        {
+            "sender": "order",
+            "receiver": "catalog"
+        },
+        {
+            "sender": "order",
+            "receiver": "customer"
+        },
+        {
+            "sender": "order",
+            "receiver": "order"
+        },
+        {
+            "sender": "zuul",
+            "receiver": "customer"
+        },
+        {
+            "sender": "zuul",
+            "receiver": "catalog"
+        },
+        {
+            "sender": "zuul",
+            "receiver": "order"
+        },
+        {
+            "sender": "customer",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "catalog",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "eureka",
+            "receiver": "zuul"
+        },
+        {
+            "sender": "turbine",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "order",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "user",
+            "receiver": "zuul"
+        },
+        {
+            "sender": "zuul",
+            "receiver": "user"
+        }
+    ]
+}

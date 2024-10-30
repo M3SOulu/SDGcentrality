@@ -1,0 +1,40 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        geocoderlocal_service [label = "{Service: geocoderlocal_service | --internal--\n--circuit_breaker--\n--resource_server--\n'Port': 9001\n'Circuit Breaker': 'Hystrix'\n'Endpoints': ['/geocoder']\n}" shape = Mrecord];
+        zuul_gateway [label = "{Service: zuul_gateway | --gateway--\n--local_logging--\n--infrastructural--\n--load_balancer--\n'Gateway': 'Zuul'\n'Port': 4000\n'Load Balancer': 'Ribbon'\n}" shape = Mrecord];
+        geocoderremote_service [label = "{Service: geocoderremote_service | --internal--\n--circuit_breaker--\n--resource_server--\n'Port': 9002\n'Circuit Breaker': 'Hystrix'\n'Endpoints': ['/geocoder']\n}" shape = Mrecord];
+        hystrix_dashboard [label = "{Service: hystrix_dashboard | --monitoring_server--\n--infrastructural--\n--monitoring_dashboard--\n'Port': 7979\n'Monitoring Server': 'Turbine'\n'Monitoring Dashboard': 'Hystrix'\n}" shape = Mrecord];
+        eureka_discovery [label = "{Service: eureka_discovery | --service_discovery--\n--infrastructural--\n'Service Discovery': 'Eureka'\n'Port': 8761\n}" shape = Mrecord];
+        configurator [label = "{Service: configurator | --configuration_server--\n--infrastructural--\n'Configuration Server': 'Spring Cloud Config'\n'Port': 8888\n}" shape = Mrecord];
+        auth_service [label = "{Service: auth_service | --authorization_server--\n--local_logging--\n--resource_server--\n--infrastructural--\n--encryption--\n--token_server--\n'Port': 5000\n'Authorization Server': 'Spring OAuth2'\n'Endpoints': ['/users'\n}" shape = Mrecord];
+        mongodb [label = "{Service: mongodb | --plaintext_credentials--\n--database--\n'Database': 'MongoDB'\n'Password': 'pwd'\n'Port': 25000\n'Username': 'user'\n}" shape = Mrecord];
+        user [label = "{External Entity: user | --user_stereotype--\n--exitpoint--\n--entrypoint--\n}"];
+        configurator -> geocoderlocal_service [label = " --restful_http--\n"]
+        configurator -> zuul_gateway [label = " --restful_http--\n"]
+        configurator -> geocoderremote_service [label = " --restful_http--\n"]
+        configurator -> hystrix_dashboard [label = " --restful_http--\n"]
+        configurator -> eureka_discovery [label = " --restful_http--\n"]
+        configurator -> auth_service [label = " --restful_http--\n"]
+        mongodb -> geocoderremote_service [label = " --jdbc--\n--plaintext_credentials_link--\n'Password': 'pwd'\n 'Username': 'user'\n"]
+        mongodb -> auth_service [label = " --jdbc--\n--plaintext_credentials_link--\n'Password': 'pwd'\n 'Username': 'user'\n"]
+        geocoderremote_service -> eureka_discovery [label = " --restful_http--\n"]
+        eureka_discovery -> zuul_gateway [label = " --restful_http--\n"]
+        auth_service -> eureka_discovery [label = " --restful_http--\n"]
+        geocoderlocal_service -> eureka_discovery [label = " --restful_http--\n"]
+        user -> zuul_gateway [label = " --restful_http--\n"]
+        zuul_gateway -> user [label = " --restful_http--\n"]
+        zuul_gateway -> auth_service [label = " --circuit_breaker_link--\n--load_balanced_link--\n--restful_http--\n'Load Balancer': 'Ribbon'\n 'Circuit Breaker': 'Hystrix'\n"]
+        auth_service -> geocoderlocal_service [label = " --auth_provider--\n--authentication_with_plaintext_credentials--\n--restful_http--\n--plaintext_credentials_link--\n'Password': 'geocoderLocal-pwd'\n"]
+        auth_service -> geocoderremote_service [label = " --auth_provider--\n--authentication_with_plaintext_credentials--\n--restful_http--\n--plaintext_credentials_link--\n'Password': 'pwd1'\n"]
+        hystrix_dashboard -> hystrix_dashboard [label = " --restful_http--\n"]
+
+}
+@enduml

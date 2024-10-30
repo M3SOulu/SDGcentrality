@@ -1,0 +1,223 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        ts_contacts_service [label = "{Service: ts_contacts_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/contactservice/contacts/\n}" shape = Mrecord];
+        ts_admin_user_service [label = "{Service: ts_admin_user_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 16115\n'Endpoints': ['/api/v1/adminuserservice/users/\n}" shape = Mrecord];
+        ts_notification_service [label = "{Service: ts_notification_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 17853\n'Endpoints': ['/api/v1/notifyservice/notification/order_cancel_success'\n'Load Balancer': 'Spring Cloud'\n}" shape = Mrecord];
+        ts_cancel_service [label = "{Service: ts_cancel_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 18885\n'Endpoints': ['/api/v1/cancelservice/cancel/refound/\n}" shape = Mrecord];
+        ts_config_service [label = "{Service: ts_config_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/configservice/welcome'\n}" shape = Mrecord];
+        ts_assurance_service [label = "{Service: ts_assurance_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 18888\n'Endpoints': ['/api/v1/assuranceservice/assurance/orderid/\n}" shape = Mrecord];
+        ts_order_other_service [label = "{Service: ts_order_other_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 12032\n'Endpoints': ['/api/v1/orderOtherService/orderOther/admin'\n}" shape = Mrecord];
+        ts_route_service [label = "{Service: ts_route_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/routeservice'\n}" shape = Mrecord];
+        ts_price_service [label = "{Service: ts_price_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Load Balancer': 'Spring Cloud'\n'Port': 16579\n'Endpoints': ['/api/v1/priceservice/prices/\n}" shape = Mrecord];
+        ts_preserve_service [label = "{Service: ts_preserve_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 14568\n'Endpoints': ['/api/v1/preserveservice'\n'Load Balancer': 'Spring Cloud'\n}" shape = Mrecord];
+        ts_security_service [label = "{Service: ts_security_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 11188\n'Endpoints': ['/api/v1/securityservice'\n}" shape = Mrecord];
+        ts_consign_service [label = "{Service: ts_consign_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 16111\n'Endpoints': ['/api/v1/consignservice/consigns/account/\n}" shape = Mrecord];
+        ts_train_service [label = "{Service: ts_train_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Load Balancer': 'Spring Cloud'\n'Port': 14567\n'Endpoints': ['/api/v1/trainservice/trains/welcome'\n}" shape = Mrecord];
+        ts_order_service [label = "{Service: ts_order_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 12031\n'Endpoints': ['/api/v1/orderservice/order/admin'\n}" shape = Mrecord];
+        ts_verification_code_service [label = "{Service: ts_verification_code_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/verifycode'\n}" shape = Mrecord];
+        ts_food_service [label = "{Service: ts_food_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 18856\n'Endpoints': ['/api/v1/foodservice/createOrderBatch'\n}" shape = Mrecord];
+        ts_station_food_service [label = "{Service: ts_station_food_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 18855\n'Load Balancer': 'Spring Cloud'\n'Endpoints': ['/api/v1/stationfoodservice/stationfoodstores/welcome'\n}" shape = Mrecord];
+        ts_rebook_service [label = "{Service: ts_rebook_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/rebookservice'\n'Port': 18886\n'Load Balancer': 'Spring Cloud'\n}" shape = Mrecord];
+        ts_train_food_service [label = "{Service: ts_train_food_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/trainfoodservice/trainfoods/welcome'\n}" shape = Mrecord];
+        ts_admin_basic_info_service [label = "{Service: ts_admin_basic_info_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Load Balancer': 'Spring Cloud'\n'Port': 18767\n'Endpoints': ['/api/v1/adminbasicservice/adminbasic/trains'\n}" shape = Mrecord];
+        ts_food_delivery_service [label = "{Service: ts_food_delivery_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/fooddeliveryservice/orders/tripid'\n}" shape = Mrecord];
+        ts_consign_price_service [label = "{Service: ts_consign_price_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 16110\n'Endpoints': ['/api/v1/consignpriceservice/welcome'\n}" shape = Mrecord];
+        ts_wait_order_service [label = "{Service: ts_wait_order_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 17525\n'Endpoints': ['/api/v1/waitorderservice/welcome'\n'Load Balancer': 'Spring Cloud'\n}" shape = Mrecord];
+        ts_basic_service [label = "{Service: ts_basic_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/basicservice/welcome'\n}" shape = Mrecord];
+        ts_preserve_other_service [label = "{Service: ts_preserve_other_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 14569\n'Endpoints': ['/api/v1/preserveotherservice/preserveOther'\n'Load Balancer': 'Spring Cloud'\n}" shape = Mrecord];
+        ts_common [label = "{Service: ts_common | --internal--\n--local_logging--\n}" shape = Mrecord];
+        ts_station_service [label = "{Service: ts_station_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/stationservice/stations/name/\n}" shape = Mrecord];
+        ts_auth_service [label = "{Service: ts_auth_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Load Balancer': 'Spring Cloud'\n'Port': 12340\n'Endpoints': ['/api/v1/users/\n}" shape = Mrecord];
+        ts_user_service [label = "{Service: ts_user_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 12342\n'Endpoints': ['/api/v1/userservice/users/id/\n}" shape = Mrecord];
+        ts_route_plan_service [label = "{Service: ts_route_plan_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/routeplanservice/routePlan/cheapestRoute'\n'Port': 14578\n'Load Balancer': 'Spring Cloud'\n}" shape = Mrecord];
+        ts_gateway_service [label = "{Service: ts_gateway_service | --gateway--\n--infrastructural--\n'Port': 18888\n'Gateway': 'Spring Cloud Gateway'\n}" shape = Mrecord];
+        ts_payment_service [label = "{Service: ts_payment_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 19001\n'Endpoints': ['/api/v1/paymentservice/welcome'\n'Load Balancer': 'Spring Cloud'\n}" shape = Mrecord];
+        ts_inside_payment_service [label = "{Service: ts_inside_payment_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/inside_pay_service/inside_payment/account'\n}" shape = Mrecord];
+        ts_ui_test [label = "{Service: ts_ui_test | --internal--\n}" shape = Mrecord];
+        micro_service_monitoring_core [label = "{Service: micro_service_monitoring_core | --internal--\n--local_logging--\n}" shape = Mrecord];
+        ts_delivery_service [label = "{Service: ts_delivery_service | --internal--\n--local_logging--\n--load_balancer--\n'Port': 18808\n'Load Balancer': 'Spring Cloud'\n}" shape = Mrecord];
+        ts_seat_service [label = "{Service: ts_seat_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Load Balancer': 'Spring Cloud'\n'Port': 18898\n'Endpoints': ['/api/v1/seatservice/welcome'\n}" shape = Mrecord];
+        ts_execute_service [label = "{Service: ts_execute_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 12386\n'Load Balancer': 'Spring Cloud'\n'Endpoints': ['/api/v1/executeservice'\n}" shape = Mrecord];
+        ts_travel_plan_service [label = "{Service: ts_travel_plan_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 14322\n'Endpoints': ['/api/v1/travelplanservice/travelPlan/cheapest'\n'Load Balancer': 'Spring Cloud'\n}" shape = Mrecord];
+        ts_travel2_service [label = "{Service: ts_travel2_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 16346\n'Endpoints': ['/api/v1/travel2service/trips/left'\n}" shape = Mrecord];
+        ts_travel_service [label = "{Service: ts_travel_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Port': 12346\n'Endpoints': ['/api/v1/travelservice/trip_detail'\n}" shape = Mrecord];
+        ts_admin_order_service [label = "{Service: ts_admin_order_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/adminorderservice/adminorder'\n}" shape = Mrecord];
+        ts_admin_travel_service [label = "{Service: ts_admin_travel_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/admintravelservice/admintravel/\n}" shape = Mrecord];
+        ts_admin_route_service [label = "{Service: ts_admin_route_service | --local_logging--\n--basic_authentication--\n--internal--\n--csrf_disabled--\n--load_balancer--\n'Endpoints': ['/api/v1/adminrouteservice/adminroute/\n}" shape = Mrecord];
+        ts_contacts_mongo [label = "{Service: ts_contacts_mongo | --internal--\n}" shape = Mrecord];
+        ts_voucher_mysql [label = "{Service: ts_voucher_mysql | --internal--\n'Port': 3306\n}" shape = Mrecord];
+        ts_route_mongo [label = "{Service: ts_route_mongo | --internal--\n}" shape = Mrecord];
+        ts_inside_payment_mongo [label = "{Service: ts_inside_payment_mongo | --internal--\n}" shape = Mrecord];
+        ts_news_mongo [label = "{Service: ts_news_mongo | --internal--\n}" shape = Mrecord];
+        ts_price_mongo [label = "{Service: ts_price_mongo | --internal--\n}" shape = Mrecord];
+        ts_consign_mongo [label = "{Service: ts_consign_mongo | --internal--\n}" shape = Mrecord];
+        ts_order_other_mongo [label = "{Service: ts_order_other_mongo | --internal--\n}" shape = Mrecord];
+        ts_rebook_mongo [label = "{Service: ts_rebook_mongo | --internal--\n}" shape = Mrecord];
+        ts_user_mongo [label = "{Service: ts_user_mongo | --internal--\n}" shape = Mrecord];
+        ts_security_mongo [label = "{Service: ts_security_mongo | --internal--\n}" shape = Mrecord];
+        ts_payment_mongo [label = "{Service: ts_payment_mongo | --internal--\n}" shape = Mrecord];
+        ts_auth_mongo [label = "{Service: ts_auth_mongo | --internal--\n}" shape = Mrecord];
+        ts_station_mongo [label = "{Service: ts_station_mongo | --internal--\n}" shape = Mrecord];
+        ts_travel_mongo [label = "{Service: ts_travel_mongo | --internal--\n}" shape = Mrecord];
+        ts_order_mongo [label = "{Service: ts_order_mongo | --internal--\n}" shape = Mrecord];
+        ts_account_mongo [label = "{Service: ts_account_mongo | --internal--\n}" shape = Mrecord];
+        ts_assurance_mongo [label = "{Service: ts_assurance_mongo | --internal--\n}" shape = Mrecord];
+        ts_ticket_office_mongo [label = "{Service: ts_ticket_office_mongo | --internal--\n}" shape = Mrecord];
+        ts_food_mongo [label = "{Service: ts_food_mongo | --internal--\n}" shape = Mrecord];
+        ts_config_mongo [label = "{Service: ts_config_mongo | --internal--\n}" shape = Mrecord];
+        ts_food_map_mongo [label = "{Service: ts_food_map_mongo | --internal--\n}" shape = Mrecord];
+        ts_train_mongo [label = "{Service: ts_train_mongo | --internal--\n}" shape = Mrecord];
+        ts_travel2_mongo [label = "{Service: ts_travel2_mongo | --internal--\n}" shape = Mrecord];
+        ts_consign_price_mongo [label = "{Service: ts_consign_price_mongo | --internal--\n}" shape = Mrecord];
+        prometheus_server [label = "{Service: prometheus_server | --metrics_server--\n--infrastructural--\n'Metrics Server': 'Prometheus'\n}" shape = Mrecord];
+        database_ts_contacts_service [label = "{External Entity: database_ts_contacts_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'CONTACTS_MYSQL_USER\n'Password': 'CONTACTS_MYSQL_PASSWORD\n}"];
+        database_ts_notification_service [label = "{External Entity: database_ts_notification_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Password': 'NOTIFICATION_MYSQL_PASSWORD\n'Username': 'NOTIFICATION_MYSQL_USER\n}"];
+        database_ts_config_service [label = "{External Entity: database_ts_config_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'CONFIG_MYSQL_USER\n'Password': 'CONFIG_MYSQL_PASSWORD\n}"];
+        database_ts_assurance_service [label = "{External Entity: database_ts_assurance_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'ASSURANCE_MYSQL_USER\n'Password': 'ASSURANCE_MYSQL_PASSWORD\n}"];
+        database_ts_order_other_service [label = "{External Entity: database_ts_order_other_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'ORDER_OTHER_MYSQL_USER\n'Password': 'ORDER_OTHER_MYSQL_PASSWORD\n}"];
+        database_ts_route_service [label = "{External Entity: database_ts_route_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Password': 'ROUTE_MYSQL_PASSWORD\n'Username': 'ROUTE_MYSQL_USER\n}"];
+        database_ts_price_service [label = "{External Entity: database_ts_price_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'PRICE_MYSQL_USER\n'Password': 'PRICE_MYSQL_PASSWORD\n}"];
+        database_ts_security_service [label = "{External Entity: database_ts_security_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'SECURITY_MYSQL_USER\n'Password': 'SECURITY_MYSQL_PASSWORD\n}"];
+        database_ts_consign_service [label = "{External Entity: database_ts_consign_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'CONSIGN_MYSQL_USER\n'Password': 'CONSIGN_MYSQL_PASSWORD\n}"];
+        database_ts_train_service [label = "{External Entity: database_ts_train_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Password': 'TRAIN_MYSQL_PASSWORD\n'Username': 'TRAIN_MYSQL_USER\n}"];
+        database_ts_order_service [label = "{External Entity: database_ts_order_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'ORDER_MYSQL_USER\n'Password': 'ORDER_MYSQL_PASSWORD\n}"];
+        database_ts_food_service [label = "{External Entity: database_ts_food_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Password': 'FOOD_MYSQL_PASSWORD\n'Username': 'FOOD_MYSQL_USER\n}"];
+        database_ts_station_food_service [label = "{External Entity: database_ts_station_food_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Password': 'STATION_FOOD_MYSQL_PASSWORD\n'Username': 'STATION_FOOD_MYSQL_USER\n}"];
+        database_ts_train_food_service [label = "{External Entity: database_ts_train_food_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'TRAIN_FOOD_MYSQL_USER\n'Password': 'TRAIN_FOOD_MYSQL_PASSWORD\n}"];
+        database_ts_food_delivery_service [label = "{External Entity: database_ts_food_delivery_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Password': 'FOOD_DELIVERY_MYSQL_PASSWORD\n'Username': 'FOOD_DELIVERY_MYSQL_USER\n}"];
+        database_ts_consign_price_service [label = "{External Entity: database_ts_consign_price_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Password': 'CONSIGN_PRICE_MYSQL_PASSWORD\n'Username': 'CONSIGN_PRICE_MYSQL_USER\n}"];
+        database_ts_wait_order_service [label = "{External Entity: database_ts_wait_order_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'WAIT_ORDER_MYSQL_USER\n'Password': 'WAIT_ORDER_PASSWORD\n}"];
+        database_ts_station_service [label = "{External Entity: database_ts_station_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'STATION_MYSQL_USER\n'Password': 'STATION_MYSQL_PASSWORD\n}"];
+        database_ts_auth_service [label = "{External Entity: database_ts_auth_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'AUTH_MYSQL_USER\n'Password': 'AUTH_MYSQL_PASSWORD\n}"];
+        database_ts_user_service [label = "{External Entity: database_ts_user_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'USER_MYSQL_USER\n'Password': 'USER_MYSQL_PASSWORD\n}"];
+        database_ts_payment_service [label = "{External Entity: database_ts_payment_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'PAYMENT_MYSQL_USER\n'Password': 'PAYMENT_MYSQL_PASSWORD\n}"];
+        database_ts_inside_payment_service [label = "{External Entity: database_ts_inside_payment_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Password': 'INSIDE_PAYMENT_MYSQL_PASSWORD\n'Username': 'INSIDE_PAYMENT_MYSQL_USER\n}"];
+        database_ts_delivery_service [label = "{External Entity: database_ts_delivery_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'DELIVERY_MYSQL_USER\n'Password': 'DELIVERY_MYSQL_PASSWORD\n}"];
+        database_ts_travel2_service [label = "{External Entity: database_ts_travel2_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Username': 'TRAVEL2_MYSQL_USER\n'Password': 'TRAVEL2_MYSQL_PASSWORD\n}"];
+        database_ts_travel_service [label = "{External Entity: database_ts_travel_service | --exitpoint--\n--entrypoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Password': 'TRAVEL_MYSQL_PASSWORD\n'Username': 'TRAVEL_MYSQL_USER\n}"];
+        user [label = "{External Entity: user | --exitpoint--\n--user_stereotype--\n--entrypoint--\n}"];
+        mail_server [label = "{External Entity: mail_server | --mail_server--\n--exitpoint--\n--entrypoint--\n--plaintext_credentials--\n'Password': '$\n}"];
+        ts_cancel_service -> ts_notification_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_cancel_service -> ts_order_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_cancel_service -> ts_order_other_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_cancel_service -> ts_inside_payment_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_cancel_service -> ts_user_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_order_other_service -> ts_station_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_service -> ts_basic_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_service -> ts_seat_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_service -> ts_user_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_service -> ts_assurance_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_service -> ts_station_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_service -> ts_security_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_service -> ts_travel_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_service -> ts_contacts_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_service -> ts_order_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_service -> ts_food_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_service -> ts_consign_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_security_service -> ts_order_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_security_service -> ts_order_other_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_consign_service -> ts_consign_price_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_order_service -> ts_station_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_food_service -> ts_train_food_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_food_service -> ts_travel_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_food_service -> ts_station_food_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_rebook_service -> ts_seat_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_rebook_service -> ts_travel_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_rebook_service -> ts_order_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_rebook_service -> ts_train_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_rebook_service -> ts_route_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_rebook_service -> ts_inside_payment_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_basic_info_service -> ts_contacts_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_basic_info_service -> ts_station_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_basic_info_service -> ts_train_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_basic_info_service -> ts_config_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_basic_info_service -> ts_price_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_food_delivery_service -> ts_station_food_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_basic_service -> ts_station_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_basic_service -> ts_train_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_basic_service -> ts_route_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_basic_service -> ts_price_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_other_service -> ts_basic_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_other_service -> ts_seat_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_other_service -> ts_user_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_other_service -> ts_assurance_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_other_service -> ts_station_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_other_service -> ts_security_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_other_service -> ts_travel2_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_other_service -> ts_contacts_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_other_service -> ts_order_other_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_other_service -> ts_food_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_preserve_other_service -> ts_consign_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_auth_service -> ts_verification_code_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_route_plan_service -> ts_route_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_route_plan_service -> ts_travel_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_route_plan_service -> ts_travel2_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_inside_payment_service -> ts_order_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_inside_payment_service -> ts_payment_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_inside_payment_service -> ts_order_other_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_seat_service -> ts_order_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_seat_service -> ts_order_other_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_seat_service -> ts_config_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_execute_service -> ts_order_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_execute_service -> ts_order_other_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel_plan_service -> ts_seat_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel_plan_service -> ts_route_plan_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel_plan_service -> ts_travel_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel_plan_service -> ts_travel2_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel_plan_service -> ts_train_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel2_service -> ts_basic_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel2_service -> ts_train_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel2_service -> ts_route_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel2_service -> ts_seat_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel_service -> ts_basic_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel_service -> ts_train_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel_service -> ts_route_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_travel_service -> ts_seat_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_order_service -> ts_order_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_order_service -> ts_order_other_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_travel_service -> ts_travel_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_travel_service -> ts_travel2_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_travel_service -> ts_station_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_travel_service -> ts_train_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_travel_service -> ts_route_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_route_service -> ts_route_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ts_admin_route_service -> ts_station_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        database_ts_contacts_service -> ts_contacts_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'CONTACTS_MYSQL_USER:root'\n 'Password': 'CONTACTS_MYSQL_PASSWORD:Abcd1234#'\n"]
+        database_ts_notification_service -> ts_notification_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': 'NOTIFICATION_MYSQL_PASSWORD:root'\n 'Username': 'NOTIFICATION_MYSQL_USER:root'\n"]
+        database_ts_config_service -> ts_config_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'CONFIG_MYSQL_USER:root'\n 'Password': 'CONFIG_MYSQL_PASSWORD:root'\n"]
+        database_ts_assurance_service -> ts_assurance_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'ASSURANCE_MYSQL_USER:root'\n 'Password': 'ASSURANCE_MYSQL_PASSWORD:root'\n"]
+        database_ts_order_other_service -> ts_order_other_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'ORDER_OTHER_MYSQL_USER:root'\n 'Password': 'ORDER_OTHER_MYSQL_PASSWORD:root'\n"]
+        database_ts_route_service -> ts_route_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': 'ROUTE_MYSQL_PASSWORD:Abcd1234#'\n 'Username': 'ROUTE_MYSQL_USER:root'\n"]
+        database_ts_price_service -> ts_price_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'PRICE_MYSQL_USER:root'\n 'Password': 'PRICE_MYSQL_PASSWORD:Abcd1234#'\n"]
+        database_ts_security_service -> ts_security_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'SECURITY_MYSQL_USER:root'\n 'Password': 'SECURITY_MYSQL_PASSWORD:root'\n"]
+        database_ts_consign_service -> ts_consign_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': 'CONSIGN_MYSQL_PASSWORD:root'\n 'Username': 'CONSIGN_MYSQL_USER:root'\n"]
+        database_ts_train_service -> ts_train_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': 'TRAIN_MYSQL_PASSWORD:Abcd1234#'\n 'Username': 'TRAIN_MYSQL_USER:root'\n"]
+        database_ts_order_service -> ts_order_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'ORDER_MYSQL_USER:root'\n 'Password': 'ORDER_MYSQL_PASSWORD:Abcd1234#'\n"]
+        database_ts_food_service -> ts_food_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'FOOD_MYSQL_USER:root'\n 'Password': 'FOOD_MYSQL_PASSWORD:root'\n"]
+        database_ts_station_food_service -> ts_station_food_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': 'STATION_FOOD_MYSQL_PASSWORD:Abcd1234#'\n 'Username': 'STATION_FOOD_MYSQL_USER:root'\n"]
+        database_ts_train_food_service -> ts_train_food_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'TRAIN_FOOD_MYSQL_USER:root'\n 'Password': 'TRAIN_FOOD_MYSQL_PASSWORD:root'\n"]
+        database_ts_food_delivery_service -> ts_food_delivery_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': 'FOOD_DELIVERY_MYSQL_PASSWORD:root'\n 'Username': 'FOOD_DELIVERY_MYSQL_USER:root'\n"]
+        database_ts_consign_price_service -> ts_consign_price_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': 'CONSIGN_PRICE_MYSQL_PASSWORD:Abcd1234#'\n 'Username': 'CONSIGN_PRICE_MYSQL_USER:root'\n"]
+        database_ts_wait_order_service -> ts_wait_order_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'WAIT_ORDER_MYSQL_USER:root'\n 'Password': 'WAIT_ORDER_PASSWORD:Abcd1234#'\n"]
+        database_ts_station_service -> ts_station_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': 'STATION_MYSQL_PASSWORD:Abcd1234#'\n 'Username': 'STATION_MYSQL_USER:root'\n"]
+        database_ts_auth_service -> ts_auth_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'AUTH_MYSQL_USER:root'\n 'Password': 'AUTH_MYSQL_PASSWORD:Abcd1234#'\n"]
+        database_ts_user_service -> ts_user_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'USER_MYSQL_USER:root'\n 'Password': 'USER_MYSQL_PASSWORD:Abcd1234#'\n"]
+        database_ts_payment_service -> ts_payment_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'PAYMENT_MYSQL_USER:root'\n 'Password': 'PAYMENT_MYSQL_PASSWORD:Abcd1234#'\n"]
+        database_ts_inside_payment_service -> ts_inside_payment_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': 'INSIDE_PAYMENT_MYSQL_PASSWORD:Abcd1234#'\n 'Username': 'INSIDE_PAYMENT_MYSQL_USER:root'\n"]
+        database_ts_delivery_service -> ts_delivery_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'DELIVERY_MYSQL_USER:root'\n 'Password': 'DELIVERY_MYSQL_PASSWORD:Abcd1234#'\n"]
+        database_ts_travel2_service -> ts_travel2_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'TRAVEL2_MYSQL_USER:root'\n 'Password': 'TRAVEL2_MYSQL_PASSWORD:Abcd1234#'\n"]
+        database_ts_travel_service -> ts_travel_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': 'TRAVEL_MYSQL_PASSWORD:root'\n 'Username': 'TRAVEL_MYSQL_USER:root'\n"]
+        user -> ts_gateway_service [label = " --restful_http--\n"]
+        ts_gateway_service -> user [label = " --restful_http--\n"]
+        ts_notification_service -> mail_server [label = " --restful_http--\n--plaintext_credentials_link--\n"]
+
+}
+@enduml

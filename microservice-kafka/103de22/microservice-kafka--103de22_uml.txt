@@ -1,0 +1,36 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        invoicing [label = "{Service: invoicing | --local_logging--\n--internal--\n'Port': 8080\n}" shape = Mrecord];
+        order [label = "{Service: order | --internal--\n'Endpoints': '[\'/"order\']'\n'Port': 8080\n}" shape = Mrecord];
+        shipping [label = "{Service: shipping | --local_logging--\n--internal--\n'Port': 8080\n}" shape = Mrecord];
+        zookeeper [label = "{Service: zookeeper | --infrastructural--\n--configuration_server--\n'Configuration Server': 'ZooKeeper'\n}" shape = Mrecord];
+        kafka [label = "{Service: kafka | --infrastructural--\n--message_broker--\n'Message Broker': 'Kafka'\n}" shape = Mrecord];
+        apache [label = "{Service: apache | --infrastructural--\n--web_server--\n'Web Server': 'Apache httpd'\n'Port': 8080\n}" shape = Mrecord];
+        postgres [label = "|{Service: postgres | --database--\n--plaintext_credentials--\n'Database': 'PostgreSQL'\n'Username': 'dbuser'\n'Password': 'dbpass'\n}"]
+        user [label = "{External Entity: user | --entrypoint--\n--user_stereotype--\n--exitpoint--\n}"];
+        kafka -> shipping [label = " --restful_http--\n--message_consumer_kafka--\n'Consumer Topic': 'order'\n"]
+        kafka -> invoicing [label = " --restful_http--\n--message_consumer_kafka--\n'Consumer Topic': 'order'\n"]
+        order -> kafka [label = " --message_producer_kafka--\n--restful_http--\n'Producer Topic': 'order'\n"]
+        postgres -> invoicing [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'dbuser'\n 'Password': 'dbpass'\n"]
+        postgres -> order [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'dbuser'\n 'Password': 'dbpass'\n"]
+        postgres -> shipping [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'dbuser'\n 'Password': 'dbpass'\n"]
+        order -> order [label = " --restful_http--\n"]
+        apache -> order [label = " --restful_http--\n"]
+        apache -> shipping [label = " --restful_http--\n"]
+        apache -> invoicing [label = " --restful_http--\n"]
+        shipping -> kafka [label = " --restful_http--\n"]
+        invoicing -> kafka [label = " --restful_http--\n"]
+        zookeeper -> kafka [label = " --restful_http--\n"]
+        user -> apache [label = " --restful_http--\n"]
+        apache -> user [label = " --restful_http--\n"]
+
+}
+@enduml

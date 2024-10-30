@@ -1,0 +1,64 @@
+{
+    "edges": [
+        {
+            "sender": "kafka",
+            "receiver": "shipping"
+        },
+        {
+            "sender": "kafka",
+            "receiver": "invoicing"
+        },
+        {
+            "sender": "order",
+            "receiver": "kafka"
+        },
+        {
+            "sender": "postgres",
+            "receiver": "invoicing"
+        },
+        {
+            "sender": "postgres",
+            "receiver": "order"
+        },
+        {
+            "sender": "postgres",
+            "receiver": "shipping"
+        },
+        {
+            "sender": "order",
+            "receiver": "order"
+        },
+        {
+            "sender": "apache",
+            "receiver": "order"
+        },
+        {
+            "sender": "apache",
+            "receiver": "shipping"
+        },
+        {
+            "sender": "apache",
+            "receiver": "invoicing"
+        },
+        {
+            "sender": "shipping",
+            "receiver": "kafka"
+        },
+        {
+            "sender": "invoicing",
+            "receiver": "kafka"
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "kafka"
+        },
+        {
+            "sender": "user",
+            "receiver": "apache"
+        },
+        {
+            "sender": "apache",
+            "receiver": "user"
+        }
+    ]
+}

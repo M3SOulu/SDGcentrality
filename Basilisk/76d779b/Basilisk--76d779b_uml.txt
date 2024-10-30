@@ -1,0 +1,25 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        benchmark_service [label = "{Service: benchmark_service | --local_logging--\n--internal--\n'Logging Technology': 'Lombok'\n'Endpoints': ['/benchmarkService'\n'Port': 8082\n}" shape = Mrecord];
+        commons [label = "{Service: commons | --internal--\n}" shape = Mrecord];
+        repository_service [label = "{Service: repository_service | --local_logging--\n--internal--\n'Port': 8080\n'Logging Technology': 'Lombok'\n'Endpoints': ['/pending'\n}" shape = Mrecord];
+        rabbitmq [label = "{Service: rabbitmq | --message_broker--\n--plaintext_credentials--\n--infrastructural--\n'Port': 5672\n'Username': 'guest'\n'Password': 'guest'\n'Message Broker': 'RabbitMQ'\n}" shape = Mrecord];
+        database_benchmark_service [label = "{External Entity: database_benchmark_service | --entrypoint--\n--external_database--\n--plaintext_credentials--\n--exitpoint--\n'Username': 'basilisk'\n'Password': 'password'\n}"];
+        database_repository_service [label = "{External Entity: database_repository_service | --entrypoint--\n--external_database--\n--plaintext_credentials--\n--exitpoint--\n'Username': 'basilisk'\n'Password': 'password'\n}"];
+        rabbitmq -> repository_service [label = " --message_consumer_rabbitmq--\n--restful_http--\n'Queue': '$\n"]
+        rabbitmq -> benchmark_service [label = " --message_consumer_rabbitmq--\n--restful_http--\n'Queue': '$\n"]
+        benchmark_service -> rabbitmq [label = " --restful_http--\n--message_producer_rabbitmq--\n--plaintext_credentials_link--\n'Routing Key': 'None'\n 'Producer Exchange': 'None'\n"]
+        repository_service -> rabbitmq [label = " --restful_http--\n--message_producer_rabbitmq--\n--plaintext_credentials_link--\n'Routing Key': 'None'\n 'Producer Exchange': 'None'\n"]
+        database_benchmark_service -> benchmark_service [label = " --jdbc--\n--plaintext_credentials_link--\n'Username': 'basilisk'\n 'Password': 'password'\n"]
+        database_repository_service -> repository_service [label = " --jdbc--\n--plaintext_credentials_link--\n'Username': 'basilisk'\n 'Password': 'password'\n"]
+
+}
+@enduml

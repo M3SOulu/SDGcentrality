@@ -1,0 +1,31 @@
+Microservices:
+
+{'name': 'invoicing', 'type': 'service', 'stereotype_instances': ['local_logging', 'internal'], 'tagged_values': [('Port', 8080)]}
+{'name': 'order', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Endpoints', '[\'/"order\']'), ('Port', 8080)]}
+{'name': 'shipping', 'type': 'service', 'stereotype_instances': ['local_logging', 'internal'], 'tagged_values': [('Port', 8080)]}
+{'name': 'zookeeper', 'type': 'service', 'stereotype_instances': ['infrastructural', 'configuration_server'], 'tagged_values': [('Configuration Server', 'ZooKeeper')]}
+{'name': 'kafka', 'type': 'service', 'stereotype_instances': ['infrastructural', 'message_broker'], 'tagged_values': [('Message Broker', 'Kafka')]}
+{'name': 'apache', 'type': 'service', 'stereotype_instances': ['infrastructural', 'web_server'], 'tagged_values': [('Web Server', 'Apache httpd'), ('Port', 8080)]}
+{'name': 'postgres', 'type': 'database_component', 'stereotype_instances': ['database', 'plaintext_credentials'], 'tagged_values': [('Database', 'PostgreSQL'), ('Username', 'dbuser'), ('Password', 'dbpass')]}
+
+Information Flows:
+
+{'sender': 'kafka', 'receiver': 'shipping', 'stereotype_instances': ['restful_http', 'message_consumer_kafka'], 'tagged_values': [('Consumer Topic', 'order')]}
+{'sender': 'kafka', 'receiver': 'invoicing', 'stereotype_instances': ['restful_http', 'message_consumer_kafka'], 'tagged_values': [('Consumer Topic', 'order')]}
+{'sender': 'order', 'receiver': 'kafka', 'stereotype_instances': ['message_producer_kafka', 'restful_http'], 'tagged_values': [('Producer Topic', 'order')]}
+{'sender': 'postgres', 'receiver': 'invoicing', 'stereotype_instances': ['plaintext_credentials_link', 'jdbc'], 'tagged_values': [('Username', 'dbuser'), ('Password', 'dbpass')]}
+{'sender': 'postgres', 'receiver': 'order', 'stereotype_instances': ['plaintext_credentials_link', 'jdbc'], 'tagged_values': [('Username', 'dbuser'), ('Password', 'dbpass')]}
+{'sender': 'postgres', 'receiver': 'shipping', 'stereotype_instances': ['plaintext_credentials_link', 'jdbc'], 'tagged_values': [('Username', 'dbuser'), ('Password', 'dbpass')]}
+{'sender': 'order', 'receiver': 'order', 'stereotype_instances': ['restful_http']}
+{'sender': 'apache', 'receiver': 'order', 'stereotype_instances': ['restful_http']}
+{'sender': 'apache', 'receiver': 'shipping', 'stereotype_instances': ['restful_http']}
+{'sender': 'apache', 'receiver': 'invoicing', 'stereotype_instances': ['restful_http']}
+{'sender': 'shipping', 'receiver': 'kafka', 'stereotype_instances': ['restful_http']}
+{'sender': 'invoicing', 'receiver': 'kafka', 'stereotype_instances': ['restful_http']}
+{'sender': 'zookeeper', 'receiver': 'kafka', 'stereotype_instances': ['restful_http']}
+{'sender': 'user', 'receiver': 'apache', 'stereotype_instances': ['restful_http']}
+{'sender': 'apache', 'receiver': 'user', 'stereotype_instances': ['restful_http']}
+
+External Components:
+
+{'name': 'user', 'type': 'external_component', 'stereotype_instances': ['entrypoint', 'user_stereotype', 'exitpoint']}

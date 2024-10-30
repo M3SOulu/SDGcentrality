@@ -1,0 +1,220 @@
+{
+    "microservices": [
+        {
+            "name": "customer",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/\"customer']"
+                ],
+                [
+                    "Endpoints",
+                    "['/form.html', '/list.html', '/{id}.html']"
+                ],
+                [
+                    "Port",
+                    8080
+                ]
+            ]
+        },
+        {
+            "name": "order",
+            "type": "service",
+            "stereotype_instances": [
+                "local_logging",
+                "load_balancer",
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Ribbon"
+                ],
+                [
+                    "Endpoints",
+                    "['/\"order']"
+                ],
+                [
+                    "Endpoints",
+                    "['/form.html', '/{id}', '/', '/line']"
+                ],
+                [
+                    "Port",
+                    8080
+                ]
+            ]
+        },
+        {
+            "name": "catalog",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/form.html', '/searchByName.html', '/list.html', '/{id}.html', '/searchForm.html']"
+                ],
+                [
+                    "Endpoints",
+                    "['/\"catalog']"
+                ],
+                [
+                    "Port",
+                    8080
+                ]
+            ]
+        },
+        {
+            "name": "apache",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "web_server"
+            ],
+            "tagged_values": [
+                [
+                    "Web Server",
+                    "Apache httpd"
+                ],
+                [
+                    "Port",
+                    8080
+                ]
+            ]
+        },
+        {
+            "name": "consul",
+            "type": "service",
+            "stereotype_instances": [
+                "service_discovery",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Service Discovery",
+                    "Consul"
+                ],
+                [
+                    "Port",
+                    8500
+                ]
+            ]
+        },
+        {
+            "name": "prometheus_server",
+            "stereotype_instances": [
+                "metrics_server",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Metrics Server",
+                    "Prometheus"
+                ]
+            ],
+            "type": "service"
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "order",
+            "receiver": "catalog",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "order",
+            "receiver": "customer",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "apache",
+            "receiver": "customer",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "apache",
+            "receiver": "catalog",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "apache",
+            "receiver": "order",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "order",
+            "receiver": "order",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "customer",
+            "receiver": "consul",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "catalog",
+            "receiver": "consul",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "order",
+            "receiver": "consul",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "apache",
+            "receiver": "consul",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "apache",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "apache",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "user",
+            "type": "external_component",
+            "stereotype_instances": [
+                "entrypoint",
+                "user_stereotype",
+                "exitpoint"
+            ]
+        }
+    ]
+}

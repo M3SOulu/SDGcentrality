@@ -1,0 +1,65 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        oauth [label = "{Service: oauth | --authorization_server--\n--infrastructural--\n--circuit_breaker--\n'Circuit Breaker': 'Hystrix'\n'Port': 8017\n'Authorization Server': 'Spring OAuth2'\n}" shape = Mrecord];
+        jmx_monitoring [label = "{Service: jmx_monitoring | --internal--\n}" shape = Mrecord];
+        admin [label = "{Service: admin | --infrastructural--\n--administration_server--\n'Port': 8026\n'Administration Server': 'Spring Boot Admin'\n}" shape = Mrecord];
+        api_gateway [label = "{Service: api_gateway | --csrf_disabled--\n--resource_server--\n--internal--\n--circuit_breaker--\n'Circuit Breaker': 'Hystrix'\n'Port': 8018\n}" shape = Mrecord];
+        eureka_server [label = "{Service: eureka_server | --service_discovery--\n--infrastructural--\n'Port': 8013\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        mailer [label = "{Service: mailer | --internal--\n'Port': 8020\n}" shape = Mrecord];
+        todo_infra [label = "{Service: todo_infra | --internal--\n}" shape = Mrecord];
+        user [label = "{Service: user | --internal--\n'Port': 8016\n}" shape = Mrecord];
+        config_server [label = "{Service: config_server | --configuration_server--\n--infrastructural--\n'Configuration Server': 'Spring Cloud Config'\n'Port': 8888\n}" shape = Mrecord];
+        reminder [label = "{Service: reminder | --internal--\n'Port': 8015\n}" shape = Mrecord];
+        zookeeper [label = "{Service: zookeeper | --configuration_server--\n--infrastructural--\n'Configuration Server': 'ZooKeeper'\n'Port': 2181\n}" shape = Mrecord];
+        kafka [label = "{Service: kafka | --message_broker--\n--infrastructural--\n'Message Broker': 'Kafka'\n}" shape = Mrecord];
+        web_app [label = "{Service: web_app | --infrastructural--\n--web_application--\n'Web Application': 'Nginx'\n}" shape = Mrecord];
+        github_repository [label = "{External Entity: github_repository | --entrypoint--\n--github_repository--\n'URL': 'https\n}"];
+        logstash [label = "{External Entity: logstash | --logging_server--\n--exitpoint--\n'Port': 5044\n'Logging Server': 'Logstash'\n}"];
+        github_repository -> config_server [label = " --restful_http--\n"]
+        config_server -> oauth [label = " --restful_http--\n"]
+        config_server -> admin [label = " --restful_http--\n"]
+        config_server -> api_gateway [label = " --restful_http--\n"]
+        config_server -> eureka_server [label = " --restful_http--\n"]
+        config_server -> mailer [label = " --restful_http--\n"]
+        config_server -> user [label = " --restful_http--\n"]
+        config_server -> reminder [label = " --restful_http--\n"]
+        kafka -> mailer [label = " --message_consumer_kafka--\n--restful_http--\n'Consumer Topic': 'todo-mail'\n"]
+        reminder -> kafka [label = " --message_producer_kafka--\n--restful_http--\n'Producer Topic': 'todo-mail'\n"]
+        reminder -> eureka_server [label = " --restful_http--\n"]
+        oauth -> eureka_server [label = " --restful_http--\n"]
+        api_gateway -> eureka_server [label = " --restful_http--\n"]
+        mailer -> eureka_server [label = " --restful_http--\n"]
+        admin -> eureka_server [label = " --restful_http--\n"]
+        user -> eureka_server [label = " --restful_http--\n"]
+        admin -> oauth [label = " --restful_http--\n"]
+        admin -> api_gateway [label = " --restful_http--\n"]
+        admin -> mailer [label = " --restful_http--\n"]
+        admin -> user [label = " --restful_http--\n"]
+        admin -> reminder [label = " --restful_http--\n"]
+        zookeeper -> kafka [label = " --restful_http--\n"]
+        oauth -> logstash [label = " --restful_http--\n"]
+        admin -> logstash [label = " --restful_http--\n"]
+        api_gateway -> logstash [label = " --restful_http--\n"]
+        eureka_server -> logstash [label = " --restful_http--\n"]
+        mailer -> logstash [label = " --restful_http--\n"]
+        user -> logstash [label = " --restful_http--\n"]
+        config_server -> logstash [label = " --restful_http--\n"]
+        reminder -> logstash [label = " --restful_http--\n"]
+        zookeeper -> oauth [label = " --restful_http--\n"]
+        zookeeper -> admin [label = " --restful_http--\n"]
+        zookeeper -> api_gateway [label = " --restful_http--\n"]
+        zookeeper -> eureka_server [label = " --restful_http--\n"]
+        zookeeper -> mailer [label = " --restful_http--\n"]
+        zookeeper -> user [label = " --restful_http--\n"]
+        zookeeper -> reminder [label = " --restful_http--\n"]
+
+}
+@enduml

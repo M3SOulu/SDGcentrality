@@ -1,0 +1,32 @@
+{
+    "edges": [
+        {
+            "sender": "authserver",
+            "receiver": "registry"
+        },
+        {
+            "sender": "backend",
+            "receiver": "registry"
+        },
+        {
+            "sender": "registry",
+            "receiver": "gateway"
+        },
+        {
+            "sender": "user",
+            "receiver": "gateway"
+        },
+        {
+            "sender": "gateway",
+            "receiver": "user"
+        },
+        {
+            "sender": "gateway",
+            "receiver": "authserver"
+        },
+        {
+            "sender": "gateway",
+            "receiver": "backend"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        web_portal [label = "{Service: web_portal | --internal--\n}" shape = Mrecord];
+        user_webservice [label = "{Service: user_webservice | --resource_server--\n--internal--\n--authentication_scope_all_requests--\n'Endpoints': ['/'\n}" shape = Mrecord];
+        api_gateway [label = "{Service: api_gateway | --gateway--\n--load_balancer--\n--infrastructural--\n'Gateway': 'Zuul'\n'Load Balancer': 'Ribbon'\n}" shape = Mrecord];
+        comments_webservice [label = "{Service: comments_webservice | --resource_server--\n--internal--\n--authentication_scope_all_requests--\n'Endpoints': ['/comments/\n}" shape = Mrecord];
+        auth_server [label = "{Service: auth_server | --resource_server--\n--authorization_server--\n--infrastructural--\n'Endpoints': ['/'\n'Authorization Server': 'Spring OAuth2'\n}" shape = Mrecord];
+        webservice_registry [label = "{Service: webservice_registry | --service_discovery--\n--infrastructural--\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        task_webservice [label = "{Service: task_webservice | --circuit_breaker--\n--internal--\n--resource_server--\n--authentication_scope_all_requests--\n'Endpoints': ['/'\n}" shape = Mrecord];
+        configserver [label = "{Service: configserver | --configuration_server--\n--infrastructural--\n'Port': 8888\n'Configuration Server': 'Spring Cloud Config'\n}" shape = Mrecord];
+        github_repository [label = "{External Entity: github_repository | --entrypoint--\n--github_repository--\n'URL': 'https\n}"];
+        user [label = "{External Entity: user | --entrypoint--\n--user_stereotype--\n--exitpoint--\n}"];
+        github_repository -> configserver [label = " --restful_http--\n"]
+        configserver -> web_portal [label = " --restful_http--\n"]
+        configserver -> user_webservice [label = " --restful_http--\n"]
+        configserver -> api_gateway [label = " --restful_http--\n"]
+        configserver -> comments_webservice [label = " --restful_http--\n"]
+        configserver -> auth_server [label = " --restful_http--\n"]
+        configserver -> webservice_registry [label = " --restful_http--\n"]
+        configserver -> task_webservice [label = " --restful_http--\n"]
+        task_webservice -> comments_webservice [label = " --restful_http--\n--circuit_breaker_link--\n"]
+        auth_server -> webservice_registry [label = " --restful_http--\n"]
+        web_portal -> webservice_registry [label = " --restful_http--\n"]
+        comments_webservice -> webservice_registry [label = " --restful_http--\n"]
+        webservice_registry -> api_gateway [label = " --restful_http--\n"]
+        task_webservice -> webservice_registry [label = " --restful_http--\n--circuit_breaker_link--\n"]
+        user_webservice -> webservice_registry [label = " --restful_http--\n"]
+        user -> api_gateway [label = " --restful_http--\n"]
+        api_gateway -> user [label = " --restful_http--\n"]
+
+}
+@enduml

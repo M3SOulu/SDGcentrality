@@ -1,0 +1,64 @@
+{
+    "edges": [
+        {
+            "sender": "github-repository",
+            "receiver": "config-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "recommendation-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "recommendation-client"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "eureka-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "user-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "movie-service"
+        },
+        {
+            "sender": "recommendation-client",
+            "receiver": "user-service"
+        },
+        {
+            "sender": "recommendation-client",
+            "receiver": "recommendation-service"
+        },
+        {
+            "sender": "recommendation-client",
+            "receiver": "movie-service"
+        },
+        {
+            "sender": "user-service",
+            "receiver": "eureka-service"
+        },
+        {
+            "sender": "eureka-service",
+            "receiver": "recommendation-client"
+        },
+        {
+            "sender": "recommendation-service",
+            "receiver": "eureka-service"
+        },
+        {
+            "sender": "movie-service",
+            "receiver": "eureka-service"
+        },
+        {
+            "sender": "user",
+            "receiver": "recommendation-client"
+        },
+        {
+            "sender": "recommendation-client",
+            "receiver": "user"
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        employee_service [label = "{Service: employee_service | --internal--\n--local_logging--\n}" shape = Mrecord];
+        config_service [label = "{Service: config_service | --infrastructural--\n--configuration_server--\n'Configuration Server': 'Spring Cloud Config'\n'Port': 8088\n}" shape = Mrecord];
+        department_service [label = "{Service: department_service | --internal--\n--local_logging--\n}" shape = Mrecord];
+        gateway_service [label = "{Service: gateway_service | --gateway--\n--infrastructural--\n'Gateway': 'Spring Cloud Gateway'\n}" shape = Mrecord];
+        organization_service [label = "{Service: organization_service | --internal--\n--local_logging--\n}" shape = Mrecord];
+        discovery_service [label = "{Service: discovery_service | --service_discovery--\n--infrastructural--\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        zipkin [label = "{Service: zipkin | --tracing_server--\n--infrastructural--\n'Tracing Server': 'Zipkin'\n'Port': 9411\n}" shape = Mrecord];
+        user [label = "{External Entity: user | --user_stereotype--\n--entrypoint--\n--exitpoint--\n}"];
+        config_service -> employee_service [label = " --restful_http--\n"]
+        config_service -> department_service [label = " --restful_http--\n"]
+        config_service -> gateway_service [label = " --restful_http--\n"]
+        config_service -> organization_service [label = " --restful_http--\n"]
+        config_service -> discovery_service [label = " --restful_http--\n"]
+        employee_service -> zipkin [label = " --restful_http--\n"]
+        department_service -> employee_service [label = " --restful_http--\n"]
+        department_service -> zipkin [label = " --restful_http--\n"]
+        organization_service -> employee_service [label = " --restful_http--\n"]
+        organization_service -> department_service [label = " --restful_http--\n"]
+        organization_service -> zipkin [label = " --restful_http--\n"]
+        gateway_service -> employee_service [label = " --restful_http--\n"]
+        gateway_service -> department_service [label = " --restful_http--\n"]
+        gateway_service -> organization_service [label = " --restful_http--\n"]
+        gateway_service -> zipkin [label = " --restful_http--\n"]
+        employee_service -> discovery_service [label = " --restful_http--\n"]
+        discovery_service -> gateway_service [label = " --restful_http--\n"]
+        organization_service -> discovery_service [label = " --restful_http--\n"]
+        department_service -> discovery_service [label = " --restful_http--\n"]
+        user -> gateway_service [label = " --restful_http--\n"]
+        gateway_service -> user [label = " --restful_http--\n"]
+
+}
+@enduml

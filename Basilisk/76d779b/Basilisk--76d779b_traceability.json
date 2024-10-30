@@ -1,0 +1,119 @@
+{
+    "nodes": {
+        "benchmark-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/Basilisk/benchmark-service/src/main/resources/application.yml",
+            "line": 3,
+            "span": "(10:27)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/Basilisk/benchmark-service/src/main/resources/application.yml",
+                    "line": 33,
+                    "span": "(9, 13)"
+                },
+                "local_logging": {
+                    "file": "benchmark-service/src/main/java/org/dicegroup/basilisk/benchmarkService/services/IguanaService.java",
+                    "line": "4",
+                    "span": "(27, 32)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "commons": {
+            "file": "commons/pom.xml",
+            "line": 11,
+            "span": "[16:23]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "repository-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/Basilisk/repository-service/src/main/resources/application.yml",
+            "line": 3,
+            "span": "(10:28)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/Basilisk/repository-service/src/main/resources/application.yml",
+                    "line": 35,
+                    "span": "(9, 13)"
+                },
+                "local_logging": {
+                    "file": "repository-service/src/main/java/org/dicegroup/basilisk/repositoryService/services/repo/checkingService/DockerhubCheckingService.java",
+                    "line": "3",
+                    "span": "(27, 32)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "rabbitmq": {
+            "file": "docker-compose.yml",
+            "line": 35,
+            "span": "[2:10]",
+            "sub_items": {
+                "message_broker": {
+                    "file": "heuristic, based on image in Docker Compose",
+                    "line": "heuristic, based on image in Docker Compose",
+                    "span": "heuristic, based on image in Docker Compose"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype message_broker",
+                    "line": "heuristic, based on stereotype message_broker",
+                    "span": "heuristic, based on stereotype message_broker"
+                }
+            }
+        },
+        "database-benchmark-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/Basilisk/benchmark-service/src/main/resources/application.yml",
+            "line": 15,
+            "span": "(11, 69)"
+        },
+        "database-repository-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/Basilisk/repository-service/src/main/resources/application.yml",
+            "line": 15,
+            "span": "(11, 71)"
+        }
+    },
+    "edges": {
+        "rabbitmq -> repository-service": {
+            "file": "BenchmarkMessageReceiver.java",
+            "line": 14,
+            "span": "<re.Match object; span=(0, 15), match='@RabbitListener'>"
+        },
+        "rabbitmq -> benchmark-service": {
+            "file": "MessageReceiver.java",
+            "line": 20,
+            "span": "<re.Match object; span=(0, 15), match='@RabbitListener'>"
+        },
+        "benchmark-service -> rabbitmq": {
+            "file": "MessageSender.java",
+            "line": 38,
+            "span": "<re.Match object; span=(8, 37), match='rabbitTemplate.convertAndSend'>"
+        },
+        "repository-service -> rabbitmq": {
+            "file": "BenchmarkMessageSender.java",
+            "line": 25,
+            "span": "<re.Match object; span=(13, 42), match='rabbitTemplate.convertAndSend'>"
+        },
+        "database-benchmark-service -> benchmark-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/Basilisk/benchmark-service/src/main/resources/application.yml",
+            "line": 15,
+            "span": "(11, 69)"
+        },
+        "database-repository-service -> repository-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/Basilisk/repository-service/src/main/resources/application.yml",
+            "line": 15,
+            "span": "(11, 71)"
+        }
+    }
+}

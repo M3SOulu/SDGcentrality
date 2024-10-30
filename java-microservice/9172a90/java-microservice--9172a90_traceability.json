@@ -1,0 +1,437 @@
+{
+    "nodes": {
+        "oauth": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/oauth-server/src/main/resources/application.properties",
+            "line": 1,
+            "span": "(26:31)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/oauth.properties",
+                    "line": 0,
+                    "span": "(0, 11)"
+                },
+                "authorization_server": {
+                    "file": "oauth-server/src/main/java/com/apssouza/configuration/OAuth2ServerConfiguration.java",
+                    "line": "24",
+                    "span": "(0, 26)"
+                },
+                "circuit_breaker": {
+                    "file": "oauth-server/src/main/java/com/apssouza/BasicApplication.java",
+                    "line": "9",
+                    "span": "(0, 14)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype authorization_server",
+                    "line": "heuristic, based on stereotype authorization_server",
+                    "span": "heuristic, based on stereotype authorization_server"
+                }
+            }
+        },
+        "jmx-monitoring": {
+            "file": "jmx-monitoring/pom.xml",
+            "line": 6,
+            "span": "[16:30]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "admin": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/admin-server/src/main/resources/application.yml",
+            "line": 3,
+            "span": "(10:15)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/admin.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "administration_server": {
+                    "file": "admin-server/src/main/java/de/codecentric/boot/admin/SpringBootAdminApplication.java",
+                    "line": "30",
+                    "span": "(0, 18)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype administration_server",
+                    "line": "heuristic, based on stereotype administration_server",
+                    "span": "heuristic, based on stereotype administration_server"
+                }
+            }
+        },
+        "api-gateway": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/api-gateway/src/main/resources/application.properties",
+            "line": 1,
+            "span": "(26:37)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/api-gateway.properties",
+                    "line": 0,
+                    "span": "(0, 11)"
+                },
+                "csrf_disabled": {
+                    "file": "api-gateway/src/main/java/com/apssouza/configuration/OAuth2ResourceServerConfiguration.java",
+                    "line": "6",
+                    "span": "(67, 79)"
+                },
+                "resource_server": {
+                    "file": "api-gateway/src/main/java/com/apssouza/configuration/OAuth2ResourceServerConfiguration.java",
+                    "line": "19",
+                    "span": "(0, 21)"
+                },
+                "circuit_breaker": {
+                    "file": "api-gateway/src/main/java/com/apssouza/BasicApplication.java",
+                    "line": "10",
+                    "span": "(0, 14)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "eureka-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/eureka-server/src/main/resources/application.yml",
+            "line": 4,
+            "span": "(10:23)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/eureka-server.yml",
+                    "line": 58,
+                    "span": "(36, 40)"
+                },
+                "service_discovery": {
+                    "file": "eureka-server/src/main/java/com/apssouza/discovery/Application.java",
+                    "line": "8",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "mailer": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/mail-service/src/main/resources/application.properties",
+            "line": 1,
+            "span": "(24:30)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/mailer.properties",
+                    "line": 0,
+                    "span": "(0, 11)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "todo-infra": {
+            "file": "todo-infra/pom.xml",
+            "line": 5,
+            "span": "[16:26]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "user": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/user-service/src/main/resources/application.properties",
+            "line": 1,
+            "span": "(26:30)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/user.properties",
+                    "line": 0,
+                    "span": "(0, 11)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "config-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/application.yml",
+            "line": 3,
+            "span": "(25:38)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/application.yml",
+                    "line": 4,
+                    "span": "(13, 17)"
+                },
+                "configuration_server": {
+                    "file": "config-server/src/main/java/com/apssouza/config/Application.java",
+                    "line": "8",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype configuration_server",
+                    "line": "heuristic, based on stereotype configuration_server",
+                    "span": "heuristic, based on stereotype configuration_server"
+                }
+            }
+        },
+        "reminder": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/remainder-service/src/main/resources/application.properties",
+            "line": 1,
+            "span": "(26:34)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/reminder.properties",
+                    "line": 0,
+                    "span": "(0, 11)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "zookeeper": {
+            "file": "docker-compose.yml",
+            "line": 125,
+            "span": "[2:11]",
+            "sub_items": {
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype configuration_server",
+                    "line": "heuristic, based on stereotype configuration_server",
+                    "span": "heuristic, based on stereotype configuration_server"
+                }
+            }
+        },
+        "kafka": {
+            "file": "docker-compose.yml",
+            "line": 134,
+            "span": "[2:7]",
+            "sub_items": {
+                "message_broker": {
+                    "file": "heuristic, based on image in Docker Compose",
+                    "line": "heuristic, based on image in Docker Compose",
+                    "span": "heuristic, based on image in Docker Compose"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype message_broker",
+                    "line": "heuristic, based on stereotype message_broker",
+                    "span": "heuristic, based on stereotype message_broker"
+                }
+            }
+        },
+        "github-repository": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/application.yml",
+            "line": 12,
+            "span": "(16, 63)"
+        },
+        "logstash": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/remainder-service/src/main/resources/docker/filebeat.yml",
+            "line": 5,
+            "span": "(9, 17)"
+        },
+        "web-app": {
+            "file": "proxy/Dockerfile",
+            "line": "3",
+            "span": "(0, 11)",
+            "sub_items": {
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype web_application",
+                    "line": "heuristic, based on stereotype web_application",
+                    "span": "heuristic, based on stereotype web_application"
+                }
+            }
+        }
+    },
+    "edges": {
+        "github-repository -> config-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/application.yml",
+            "line": 12,
+            "span": "(16, 63)"
+        },
+        "config-server -> oauth": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/oauth-server/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "config-server -> admin": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/admin-server/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "config-server -> api-gateway": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/api-gateway/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "config-server -> eureka-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/eureka-server/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "config-server -> mailer": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/mail-service/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "config-server -> user": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/user-service/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "config-server -> reminder": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/remainder-service/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "kafka -> mailer": {
+            "file": "mail-service/src/main/java/com/apssouza/mailservice/integration/reminder/EventInput.java",
+            "line": "33",
+            "span": "(4, 19)"
+        },
+        "reminder -> kafka": {
+            "file": "remainder-service/src/main/java/com/apssouza/integrations/socket/TodoSocketController.java",
+            "line": "17",
+            "span": "(4, 11)"
+        },
+        "reminder -> eureka-server": {
+            "file": "remainder-service/src/main/java/com/apssouza/configuration/ServiceDiscoveryConfiguration.java",
+            "line": "3",
+            "span": "(50, 71)"
+        },
+        "oauth -> eureka-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/oauth.properties",
+            "line": 2,
+            "span": "(0, 36)"
+        },
+        "api-gateway -> eureka-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/api-gateway.properties",
+            "line": 2,
+            "span": "(0, 36)"
+        },
+        "mailer -> eureka-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/mailer.properties",
+            "line": 4,
+            "span": "(0, 36)"
+        },
+        "admin -> eureka-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/admin.yml",
+            "line": 17,
+            "span": "(20, 71)"
+        },
+        "user -> eureka-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/user.properties",
+            "line": 2,
+            "span": "(0, 36)"
+        },
+        "admin -> oauth": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/oauth.properties",
+            "line": 14,
+            "span": "(0, 21)"
+        },
+        "admin -> api-gateway": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/api-gateway.properties",
+            "line": 14,
+            "span": "(0, 21)"
+        },
+        "admin -> mailer": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/mailer.properties",
+            "line": 7,
+            "span": "(0, 21)"
+        },
+        "admin -> user": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/user.properties",
+            "line": 14,
+            "span": "(0, 21)"
+        },
+        "admin -> reminder": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/offline-repository/reminder.properties",
+            "line": 13,
+            "span": "(0, 21)"
+        },
+        "oauth -> logstash": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/oauth-server/src/main/resources/docker/filebeat.yml",
+            "line": 5,
+            "span": "(9, 17)"
+        },
+        "admin -> logstash": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/admin-server/src/main/resources/docker/filebeat.yml",
+            "line": 5,
+            "span": "(9, 17)"
+        },
+        "api-gateway -> logstash": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/api-gateway/src/main/resources/docker/filebeat.yml",
+            "line": 5,
+            "span": "(9, 17)"
+        },
+        "eureka-server -> logstash": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/eureka-server/src/main/resources/docker/filebeat.yml",
+            "line": 5,
+            "span": "(9, 17)"
+        },
+        "mailer -> logstash": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/mail-service/src/main/resources/docker/filebeat.yml",
+            "line": 5,
+            "span": "(9, 17)"
+        },
+        "user -> logstash": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/user-service/src/main/resources/docker/filebeat.yml",
+            "line": 5,
+            "span": "(9, 17)"
+        },
+        "config-server -> logstash": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/config-server/src/main/resources/docker/filebeat.yml",
+            "line": 5,
+            "span": "(9, 17)"
+        },
+        "reminder -> logstash": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/remainder-service/src/main/resources/docker/filebeat.yml",
+            "line": 5,
+            "span": "(9, 17)"
+        },
+        "zookeeper -> oauth": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/oauth-server/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "zookeeper -> admin": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/admin-server/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "zookeeper -> api-gateway": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/api-gateway/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "zookeeper -> eureka-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/eureka-server/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "zookeeper -> mailer": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/mail-service/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "zookeeper -> user": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/user-service/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        },
+        "zookeeper -> reminder": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/java-microservice/remainder-service/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(12, 30)"
+        }
+    }
+}

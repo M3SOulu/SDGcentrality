@@ -1,0 +1,284 @@
+{
+    "microservices": [
+        {
+            "name": "web-portal",
+            "type": "service",
+            "gradle_path": "web-portal/build.gradle",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "user-webservice",
+            "type": "service",
+            "gradle_path": "user-webservice/build.gradle",
+            "stereotype_instances": [
+                "internal",
+                "resource_server",
+                "authentication_scope_all_requests"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/', '/{userName}']"
+                ]
+            ]
+        },
+        {
+            "name": "api-gateway",
+            "type": "service",
+            "gradle_path": "api-gateway/build.gradle",
+            "stereotype_instances": [
+                "infrastructural",
+                "load_balancer",
+                "gateway"
+            ],
+            "tagged_values": [
+                [
+                    "Gateway",
+                    "Zuul"
+                ],
+                [
+                    "Load Balancer",
+                    "Ribbon"
+                ]
+            ]
+        },
+        {
+            "name": "comments-webservice",
+            "type": "service",
+            "gradle_path": "comments-webservice/build.gradle",
+            "stereotype_instances": [
+                "internal",
+                "resource_server",
+                "authentication_scope_all_requests"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/comments/{taskId}', '/comments']"
+                ]
+            ]
+        },
+        {
+            "name": "auth-server",
+            "type": "service",
+            "gradle_path": "auth-server/build.gradle",
+            "stereotype_instances": [
+                "resource_server",
+                "authorization_server",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/', '/me']"
+                ],
+                [
+                    "Authorization Server",
+                    "Spring OAuth2"
+                ]
+            ]
+        },
+        {
+            "name": "webservice-registry",
+            "type": "service",
+            "gradle_path": "webservice-registry/build.gradle",
+            "stereotype_instances": [
+                "service_discovery",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Service Discovery",
+                    "Eureka"
+                ]
+            ]
+        },
+        {
+            "name": "task-webservice",
+            "type": "service",
+            "gradle_path": "task-webservice/build.gradle",
+            "stereotype_instances": [
+                "internal",
+                "circuit_breaker",
+                "resource_server",
+                "authentication_scope_all_requests"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/', '/usertask/{userName}', '/{taskId}']"
+                ]
+            ]
+        },
+        {
+            "name": "configserver",
+            "type": "service",
+            "gradle_path": "config-server/build.gradle",
+            "stereotype_instances": [
+                "configuration_server",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8888
+                ],
+                [
+                    "Configuration Server",
+                    "Spring Cloud Config"
+                ]
+            ]
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "github-repository",
+            "receiver": "configserver",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "configserver",
+            "receiver": "web-portal",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "configserver",
+            "receiver": "user-webservice",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "configserver",
+            "receiver": "api-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "configserver",
+            "receiver": "comments-webservice",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "configserver",
+            "receiver": "auth-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "configserver",
+            "receiver": "webservice-registry",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "configserver",
+            "receiver": "task-webservice",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "task-webservice",
+            "receiver": "comments-webservice",
+            "stereotype_instances": [
+                "restful_http",
+                "circuit_breaker_link"
+            ]
+        },
+        {
+            "sender": "auth-server",
+            "receiver": "webservice-registry",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "web-portal",
+            "receiver": "webservice-registry",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "comments-webservice",
+            "receiver": "webservice-registry",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "webservice-registry",
+            "receiver": "api-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "task-webservice",
+            "receiver": "webservice-registry",
+            "stereotype_instances": [
+                "restful_http",
+                "circuit_breaker_link"
+            ]
+        },
+        {
+            "sender": "user-webservice",
+            "receiver": "webservice-registry",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "api-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "github-repository",
+            "type": "external_component",
+            "stereotype_instances": [
+                "entrypoint",
+                "github_repository"
+            ],
+            "tagged_values": [
+                [
+                    "URL",
+                    "https://github.com/anilallewar/sample-config"
+                ]
+            ]
+        },
+        {
+            "name": "user",
+            "type": "external_component",
+            "stereotype_instances": [
+                "entrypoint",
+                "user_stereotype",
+                "exitpoint"
+            ]
+        }
+    ]
+}

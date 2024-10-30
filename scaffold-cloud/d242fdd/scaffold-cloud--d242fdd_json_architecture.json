@@ -1,0 +1,335 @@
+{
+    "microservices": [
+        {
+            "name": "scaffold-txmanager",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "scaffold-core-code",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": [
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ]
+            ]
+        },
+        {
+            "name": "scaffold-core-common",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "scaffold-core-plugin",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": [
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ]
+            ]
+        },
+        {
+            "name": "scaffold-business-thirdparty-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": [
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ]
+            ]
+        },
+        {
+            "name": "scaffold-business-job-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "scaffold-business-sys-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": [
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ]
+            ]
+        },
+        {
+            "name": "scaffold-zuul",
+            "type": "service",
+            "stereotype_instances": [
+                "gateway",
+                "infrastructural",
+                "load_balancer"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Ribbon"
+                ],
+                [
+                    "Gateway",
+                    "Zuul"
+                ]
+            ]
+        },
+        {
+            "name": "demo",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "scaffold-config-server",
+            "type": "service",
+            "stereotype_instances": [
+                "configuration_server",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Configuration Server",
+                    "Spring Cloud Config"
+                ]
+            ]
+        },
+        {
+            "name": "scaffold-eureka",
+            "type": "service",
+            "stereotype_instances": [
+                "service_discovery",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Service Discovery",
+                    "Eureka"
+                ]
+            ]
+        },
+        {
+            "name": "scaffold-business-thirdparty-api",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "scaffold-business-sys-api",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "scaffold-feign-sys",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "scaffold-feign-thirdparty",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "scaffold-route-openapi",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "circuit_breaker"
+            ],
+            "tagged_values": [
+                [
+                    "Circuit Breaker",
+                    "Hystrix"
+                ]
+            ]
+        },
+        {
+            "name": "scaffold-route-app",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "scaffold-route-operate",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging",
+                "circuit_breaker"
+            ],
+            "tagged_values": [
+                [
+                    "Circuit Breaker",
+                    "Hystrix"
+                ],
+                [
+                    "Logging Technology",
+                    "Lombok"
+                ]
+            ]
+        },
+        {
+            "name": "mysql",
+            "type": "type",
+            "stereotype_instances": [
+                "database"
+            ],
+            "tagged_values": [
+                [
+                    "Database",
+                    "MySQL"
+                ],
+                [
+                    "Port",
+                    3306
+                ]
+            ]
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "scaffold-config-server",
+            "receiver": "demo",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "scaffold-route-app",
+            "receiver": "scaffold-eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "scaffold-route-operate",
+            "receiver": "scaffold-eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "scaffold-route-openapi",
+            "receiver": "scaffold-eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "demo",
+            "receiver": "scaffold-eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "scaffold-eureka",
+            "receiver": "scaffold-zuul",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "scaffold-business-thirdparty-service",
+            "receiver": "scaffold-eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "scaffold-business-job-service",
+            "receiver": "scaffold-eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "scaffold-txmanager",
+            "receiver": "scaffold-eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "scaffold-business-sys-service",
+            "receiver": "scaffold-eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "scaffold-config-server",
+            "receiver": "scaffold-eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "scaffold-zuul",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "scaffold-zuul",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "user",
+            "type": "external_component",
+            "stereotype_instances": [
+                "entrypoint",
+                "exitpoint",
+                "user_stereotype"
+            ]
+        }
+    ]
+}

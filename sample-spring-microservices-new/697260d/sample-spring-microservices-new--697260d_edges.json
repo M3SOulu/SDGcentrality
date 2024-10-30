@@ -1,0 +1,88 @@
+{
+    "edges": [
+        {
+            "sender": "config-service",
+            "receiver": "employee-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "department-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "gateway-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "organization-service"
+        },
+        {
+            "sender": "config-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "employee-service",
+            "receiver": "zipkin"
+        },
+        {
+            "sender": "department-service",
+            "receiver": "employee-service"
+        },
+        {
+            "sender": "department-service",
+            "receiver": "zipkin"
+        },
+        {
+            "sender": "organization-service",
+            "receiver": "employee-service"
+        },
+        {
+            "sender": "organization-service",
+            "receiver": "department-service"
+        },
+        {
+            "sender": "organization-service",
+            "receiver": "zipkin"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "employee-service"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "department-service"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "organization-service"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "zipkin"
+        },
+        {
+            "sender": "employee-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "discovery-service",
+            "receiver": "gateway-service"
+        },
+        {
+            "sender": "organization-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "department-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "user",
+            "receiver": "gateway-service"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "user"
+        }
+    ]
+}

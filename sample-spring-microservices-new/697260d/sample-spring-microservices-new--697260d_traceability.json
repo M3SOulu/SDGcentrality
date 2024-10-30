@@ -1,0 +1,202 @@
+{
+    "nodes": {
+        "employee-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/sample-spring-microservices-new/employee-service/src/main/resources/application.yml",
+            "line": 9,
+            "span": "(10:26)",
+            "sub_items": {
+                "local_logging": {
+                    "file": "employee-service/src/main/java/pl/piomin/services/employee/controller/EmployeeController.java",
+                    "line": "6",
+                    "span": "(17, 30)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "config-service": {
+            "file": "config-service/pom.xml",
+            "line": 8,
+            "span": "[16:30]",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/sample-spring-microservices-new/config-service/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "configuration_server": {
+                    "file": "config-service/src/main/java/pl/piomin/services/config/ConfigApplication.java",
+                    "line": "8",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype configuration_server",
+                    "line": "heuristic, based on stereotype configuration_server",
+                    "span": "heuristic, based on stereotype configuration_server"
+                }
+            }
+        },
+        "department-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/sample-spring-microservices-new/department-service/src/main/resources/application.yml",
+            "line": 9,
+            "span": "(10:28)",
+            "sub_items": {
+                "local_logging": {
+                    "file": "department-service/src/main/java/pl/piomin/services/department/controller/DepartmentController.java",
+                    "line": "4",
+                    "span": "(17, 30)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "gateway-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/sample-spring-microservices-new/gateway-service/src/main/resources/application.yml",
+            "line": 9,
+            "span": "(10:25)",
+            "sub_items": {
+                "gateway": {
+                    "file": "gateway-service/pom.xml",
+                    "line": "19",
+                    "span": "(24, 52)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "organization-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/sample-spring-microservices-new/organization-service/src/main/resources/application.yml",
+            "line": 9,
+            "span": "(10:30)",
+            "sub_items": {
+                "local_logging": {
+                    "file": "organization-service/src/main/java/pl/piomin/services/organization/controller/OrganizationController.java",
+                    "line": "6",
+                    "span": "(17, 30)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "discovery-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/sample-spring-microservices-new/discovery-service/src/main/resources/application.yml",
+            "line": 9,
+            "span": "(10:27)",
+            "sub_items": {
+                "service_discovery": {
+                    "file": "discovery-service/src/main/java/pl/piomin/services/discovery/DiscoveryApplication.java",
+                    "line": "8",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "zipkin": {
+            "file": "docker-compose.yml",
+            "line": 3,
+            "span": "[2:8]",
+            "sub_items": {
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype tracing_server",
+                    "line": "heuristic, based on stereotype tracing_server",
+                    "span": "heuristic, based on stereotype tracing_server"
+                }
+            }
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "config-service -> employee-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/sample-spring-microservices-new/employee-service/src/main/resources/application.yml",
+            "line": 11,
+            "span": "span"
+        },
+        "config-service -> department-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/sample-spring-microservices-new/department-service/src/main/resources/application.yml",
+            "line": 3,
+            "span": "(14, 62)"
+        },
+        "config-service -> gateway-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/sample-spring-microservices-new/gateway-service/src/main/resources/application.yml",
+            "line": 3,
+            "span": "(14, 62)"
+        },
+        "config-service -> organization-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/sample-spring-microservices-new/organization-service/src/main/resources/application.yml",
+            "line": 11,
+            "span": "(14, 57)"
+        },
+        "config-service -> discovery-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/sample-spring-microservices-new/discovery-service/src/main/resources/application.yml",
+            "line": 3,
+            "span": "span"
+        },
+        "employee-service -> discovery-service": {
+            "file": "employee-service/src/main/java/pl/piomin/services/employee/EmployeeApplication.java",
+            "line": "7",
+            "span": "(50, 71)"
+        },
+        "organization-service -> discovery-service": {
+            "file": "organization-service/pom.xml",
+            "line": "19",
+            "span": "(24, 66)"
+        },
+        "department-service -> discovery-service": {
+            "file": "department-service/pom.xml",
+            "line": "31",
+            "span": "(24, 66)"
+        },
+        "discovery-service -> gateway-service": {
+            "file": "gateway-service/pom.xml",
+            "line": "27",
+            "span": "(24, 66)"
+        },
+        "user -> gateway-service": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "gateway-service -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        }
+    }
+}

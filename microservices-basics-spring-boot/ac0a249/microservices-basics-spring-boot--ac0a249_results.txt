@@ -1,0 +1,39 @@
+Microservices:
+
+{'name': 'web-portal', 'type': 'service', 'gradle_path': 'web-portal/build.gradle', 'stereotype_instances': ['monitoring_server', 'infrastructural', 'monitoring_dashboard'], 'tagged_values': [('Monitoring Dashboard', 'Hystrix'), ('Monitoring Server', 'Turbine')]}
+{'name': 'user-webservice', 'type': 'service', 'gradle_path': 'user-webservice/build.gradle', 'stereotype_instances': ['authentication_scope_all_requests', 'resource_server', 'internal'], 'tagged_values': [('Endpoints', "['/', '/{userName}']")]}
+{'name': 'api-gateway', 'type': 'service', 'gradle_path': 'api-gateway/build.gradle', 'stereotype_instances': ['infrastructural', 'load_balancer', 'csrf_disabled', 'gateway'], 'tagged_values': [('Gateway', 'Zuul'), ('Load Balancer', 'Ribbon')]}
+{'name': 'comments-webservice', 'type': 'service', 'gradle_path': 'comments-webservice/build.gradle', 'stereotype_instances': ['resource_server', 'internal'], 'tagged_values': [('Endpoints', "['/comments', '/comments/{taskId}']")]}
+{'name': 'auth-server', 'type': 'service', 'gradle_path': 'auth-server/build.gradle', 'stereotype_instances': ['authorization_server', 'resource_server', 'infrastructural'], 'tagged_values': [('Endpoints', "['/me']"), ('Authorization Server', 'Spring OAuth2')]}
+{'name': 'webservice-registry', 'type': 'service', 'gradle_path': 'webservice-registry/build.gradle', 'stereotype_instances': ['infrastructural', 'service_discovery'], 'tagged_values': [('Service Discovery', 'Eureka')]}
+{'name': 'task-webservice', 'type': 'service', 'gradle_path': 'task-webservice/build.gradle', 'stereotype_instances': ['internal', 'authentication_scope_all_requests', 'circuit_breaker', 'load_balancer', 'resource_server'], 'tagged_values': [('Load Balancer', 'Spring Cloud'), ('Endpoints', "['/usertask/{userName}', '/', '/{taskId}']")]}
+{'name': 'configserver', 'type': 'service', 'gradle_path': 'config-server/build.gradle', 'stereotype_instances': ['configuration_server', 'infrastructural'], 'tagged_values': [('Port', 8888), ('Configuration Server', 'Spring Cloud Config')]}
+{'name': 'zipkin-tracing', 'type': 'service', 'gradle_path': 'zipkin-server/build.gradle', 'stereotype_instances': ['internal'], 'tagged_values': []}
+{'name': 'zipkinserver', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Port', 9411)]}
+{'name': 'mysqldb', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Port', 3306)]}
+
+Information Flows:
+
+{'sender': 'github-repository', 'receiver': 'configserver', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'web-portal', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'user-webservice', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'api-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'comments-webservice', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'auth-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'webservice-registry', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'task-webservice', 'stereotype_instances': ['restful_http']}
+{'sender': 'configserver', 'receiver': 'zipkin-tracing', 'stereotype_instances': ['restful_http']}
+{'sender': 'task-webservice', 'receiver': 'comments-webservice', 'stereotype_instances': ['circuit_breaker_link', 'restful_http', 'load_balanced_link'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'webservice-registry', 'receiver': 'api-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'user-webservice', 'receiver': 'webservice-registry', 'stereotype_instances': ['restful_http']}
+{'sender': 'auth-server', 'receiver': 'webservice-registry', 'stereotype_instances': ['restful_http']}
+{'sender': 'comments-webservice', 'receiver': 'webservice-registry', 'stereotype_instances': ['restful_http']}
+{'sender': 'web-portal', 'receiver': 'webservice-registry', 'stereotype_instances': ['restful_http']}
+{'sender': 'task-webservice', 'receiver': 'webservice-registry', 'stereotype_instances': ['circuit_breaker_link', 'restful_http', 'load_balanced_link'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'user', 'receiver': 'api-gateway', 'stereotype_instances': ['restful_http']}
+{'sender': 'api-gateway', 'receiver': 'user', 'stereotype_instances': ['restful_http']}
+
+External Components:
+
+{'name': 'github-repository', 'type': 'external_component', 'stereotype_instances': ['github_repository', 'entrypoint'], 'tagged_values': [('URL', 'https://github.com/anilallewar/microservices-basics-cloud-config')]}
+{'name': 'user', 'type': 'external_component', 'stereotype_instances': ['user_stereotype', 'entrypoint', 'exitpoint']}

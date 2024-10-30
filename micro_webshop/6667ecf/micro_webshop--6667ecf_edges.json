@@ -1,0 +1,64 @@
+{
+    "edges": [
+        {
+            "sender": "user-proxy",
+            "receiver": "security-service"
+        },
+        {
+            "sender": "product-proxy",
+            "receiver": "category-service"
+        },
+        {
+            "sender": "product-proxy",
+            "receiver": "product-service"
+        },
+        {
+            "sender": "database-product-service",
+            "receiver": "product-service"
+        },
+        {
+            "sender": "database-category-service",
+            "receiver": "category-service"
+        },
+        {
+            "sender": "database-security-service",
+            "receiver": "security-service"
+        },
+        {
+            "sender": "category-service",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "security-service",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "user-proxy",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "auth-server",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "product-service",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "product-proxy",
+            "receiver": "eureka"
+        },
+        {
+            "sender": "eureka",
+            "receiver": "zuul"
+        },
+        {
+            "sender": "user",
+            "receiver": "zuul"
+        },
+        {
+            "sender": "zuul",
+            "receiver": "user"
+        }
+    ]
+}

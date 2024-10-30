@@ -1,0 +1,153 @@
+{
+    "nodes": {
+        "customer": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice-consul/microservice-consul-demo/microservice-consul-demo-customer/src/main/resources/application.properties",
+            "line": 3,
+            "span": "(24:32)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice-consul/microservice-consul-demo/microservice-consul-demo-customer/src/main/resources/application.properties",
+                    "line": 7,
+                    "span": "(0, 11)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "order": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice-consul/microservice-consul-demo/microservice-consul-demo-order/src/main/resources/application.properties",
+            "line": 4,
+            "span": "(24:29)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice-consul/microservice-consul-demo/microservice-consul-demo-order/src/main/resources/application.properties",
+                    "line": 8,
+                    "span": "(0, 11)"
+                },
+                "local_logging": {
+                    "file": "microservice-consul-demo/microservice-consul-demo-order/src/main/java/com/ewolff/microservice/order/clients/CustomerClient.java",
+                    "line": "8",
+                    "span": "(17, 30)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "catalog": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice-consul/microservice-consul-demo/microservice-consul-demo-catalog/src/main/resources/application.properties",
+            "line": 3,
+            "span": "(24:31)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservice-consul/microservice-consul-demo/microservice-consul-demo-catalog/src/main/resources/application.properties",
+                    "line": 7,
+                    "span": "(0, 11)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "apache": {
+            "file": "docker/docker-compose.yml",
+            "line": 21,
+            "span": "[2:8]",
+            "sub_items": {
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype web_server",
+                    "line": "heuristic, based on stereotype web_server",
+                    "span": "heuristic, based on stereotype web_server"
+                }
+            }
+        },
+        "consul": {
+            "file": "docker/docker-compose.yml",
+            "line": 3,
+            "span": "[2:8]",
+            "sub_items": {
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "web_server": {
+            "file": "docker/apache/Dockerfile",
+            "line": 26,
+            "span": "(165, 175)"
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "order -> catalog": {
+            "file": "microservice-consul-demo/microservice-consul-demo-order/src/main/java/com/ewolff/microservice/order/clients/CatalogClient.java",
+            "line": "90",
+            "span": "(9, 34)"
+        },
+        "order -> customer": {
+            "file": "microservice-consul-demo/microservice-consul-demo-order/src/main/java/com/ewolff/microservice/order/clients/CustomerClient.java",
+            "line": "103",
+            "span": "(9, 34)"
+        },
+        "apache -> customer": {
+            "file": "docker/apache/index.html",
+            "line": "7",
+            "span": "(1, 5)"
+        },
+        "apache -> catalog": {
+            "file": "docker/apache/index.html",
+            "line": "7",
+            "span": "(1, 5)"
+        },
+        "apache -> order": {
+            "file": "docker/apache/index.html",
+            "line": "7",
+            "span": "(1, 5)"
+        },
+        "order -> order": {
+            "file": "microservice-consul-demo/microservice-consul-demo-order/src/main/resources/templates/orderlist.html",
+            "line": "25",
+            "span": "(12, 16)"
+        },
+        "user -> apache": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "apache -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        }
+    }
+}

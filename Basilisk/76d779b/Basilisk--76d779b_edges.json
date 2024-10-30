@@ -1,0 +1,28 @@
+{
+    "edges": [
+        {
+            "sender": "rabbitmq",
+            "receiver": "repository-service"
+        },
+        {
+            "sender": "rabbitmq",
+            "receiver": "benchmark-service"
+        },
+        {
+            "sender": "benchmark-service",
+            "receiver": "rabbitmq"
+        },
+        {
+            "sender": "repository-service",
+            "receiver": "rabbitmq"
+        },
+        {
+            "sender": "database-benchmark-service",
+            "receiver": "benchmark-service"
+        },
+        {
+            "sender": "database-repository-service",
+            "receiver": "repository-service"
+        }
+    ]
+}

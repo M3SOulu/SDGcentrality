@@ -1,0 +1,381 @@
+{
+    "nodes": {
+        "scaffold-txmanager": {
+            "file": "scaffold-tx-manager/pom.xml",
+            "line": 11,
+            "span": "[16:34]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-core-code": {
+            "file": "scaffold-core/scaffold-core-code/pom.xml",
+            "line": 10,
+            "span": "[16:34]",
+            "sub_items": {
+                "local_logging": {
+                    "file": "scaffold-core/scaffold-core-code/src/main/java/com/cms/scaffold/code/mq/core/MqNoTransactionSynchronizationAdapter.java",
+                    "line": "12",
+                    "span": "(27, 32)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-core-common": {
+            "file": "scaffold-core/scaffold-core-common/pom.xml",
+            "line": 11,
+            "span": "[16:36]",
+            "sub_items": {
+                "local_logging": {
+                    "file": "scaffold-core/scaffold-core-common/src/main/java/com/cms/scaffold/common/builder/Builder.java",
+                    "line": "6",
+                    "span": "(17, 30)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-core-plugin": {
+            "file": "scaffold-core/scaffold-core-plugin/pom.xml",
+            "line": 10,
+            "span": "[16:36]",
+            "sub_items": {
+                "local_logging": {
+                    "file": "scaffold-core/scaffold-core-plugin/src/main/resources/templates/micro-controller.ftl",
+                    "line": "11",
+                    "span": "(27, 32)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-business-thirdparty-service": {
+            "file": "scaffold-business/scaffold-business-thirdparty-service/pom.xml",
+            "line": 11,
+            "span": "[16:52]",
+            "sub_items": {
+                "local_logging": {
+                    "file": "scaffold-business/scaffold-business-thirdparty-service/src/main/java/com/cms/scaffold/micro/message/controller/MessageController.java",
+                    "line": "11",
+                    "span": "(27, 32)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-business-job-service": {
+            "file": "scaffold-business/scaffold-business-job-service/pom.xml",
+            "line": 11,
+            "span": "[16:45]",
+            "sub_items": {
+                "local_logging": {
+                    "file": "scaffold-business/scaffold-business-job-service/src/main/java/com/cms/scaffold/micro/job/tool/JobTool.java",
+                    "line": "9",
+                    "span": "(17, 30)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-business-sys-service": {
+            "file": "scaffold-business/scaffold-business-sys-service/pom.xml",
+            "line": 11,
+            "span": "[16:45]",
+            "sub_items": {
+                "local_logging": {
+                    "file": "scaffold-business/scaffold-business-sys-service/src/main/java/com/cms/scaffold/micro/consumer/RegisterConsumers.java",
+                    "line": "6",
+                    "span": "(27, 32)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-zuul": {
+            "file": "scaffold-zuul/pom.xml",
+            "line": 10,
+            "span": "[16:29]",
+            "sub_items": {
+                "gateway": {
+                    "file": "scaffold-zuul/src/main/java/com/cms/scaffold/zuul/ZuulApplication.java",
+                    "line": "13",
+                    "span": "(0, 16)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "demo": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/scaffold-cloud/scaffold-config/scaffold-config-client/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:14)",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-config-server": {
+            "file": "scaffold-config/scaffold-config-server/pom.xml",
+            "line": 11,
+            "span": "[16:38]",
+            "sub_items": {
+                "configuration_server": {
+                    "file": "scaffold-config/scaffold-config-server/src/main/java/com/cmd/scaffold/config/ConfigServerApplication.java",
+                    "line": "12",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype configuration_server",
+                    "line": "heuristic, based on stereotype configuration_server",
+                    "span": "heuristic, based on stereotype configuration_server"
+                }
+            }
+        },
+        "scaffold-eureka": {
+            "file": "scaffold-eureka/pom.xml",
+            "line": 9,
+            "span": "[16:31]",
+            "sub_items": {
+                "service_discovery": {
+                    "file": "scaffold-eureka/src/main/java/com/cms/scaffold/eureka/EurekaApplication.java",
+                    "line": "11",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "scaffold-business-thirdparty-api": {
+            "file": "scaffold-business-api/scaffold-business-thirdparty-api/pom.xml",
+            "line": 11,
+            "span": "[16:48]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-business-sys-api": {
+            "file": "scaffold-business-api/scaffold-business-sys-api/pom.xml",
+            "line": 10,
+            "span": "[16:41]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-feign-sys": {
+            "file": "scaffold-feign/scaffold-feign-sys/pom.xml",
+            "line": 11,
+            "span": "[16:34]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-feign-thirdparty": {
+            "file": "scaffold-feign/scaffold-feign-thirdparty/pom.xml",
+            "line": 11,
+            "span": "[16:41]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-route-openapi": {
+            "file": "scaffold-route/scaffold-route-openapi/pom.xml",
+            "line": 11,
+            "span": "[16:38]",
+            "sub_items": {
+                "circuit_breaker": {
+                    "file": "scaffold-route/scaffold-route-openapi/src/main/java/com/cms/scaffold/route/openapi/RouteOpenApiApplication.java",
+                    "line": "22",
+                    "span": "(0, 14)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-route-app": {
+            "file": "scaffold-route/scaffold-route-app/pom.xml",
+            "line": 10,
+            "span": "[16:34]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "scaffold-route-operate": {
+            "file": "scaffold-route/scaffold-route-operate/pom.xml",
+            "line": 11,
+            "span": "[16:38]",
+            "sub_items": {
+                "local_logging": {
+                    "file": "scaffold-route/scaffold-route-operate/src/main/java/com/cms/scaffold/route/operate/aop/SysOperateLogAop.java",
+                    "line": "8",
+                    "span": "(27, 32)"
+                },
+                "circuit_breaker": {
+                    "file": "scaffold-route/scaffold-route-operate/src/main/java/com/cms/scaffold/route/operate/RouteOperateApplication.java",
+                    "line": "22",
+                    "span": "(0, 14)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "mysql": {
+            "file": "docker-compose.yml",
+            "line": 69,
+            "span": "[2:7]",
+            "sub_items": {
+                "database": {
+                    "file": "heuristic, based on image",
+                    "line": "heuristic, based on image",
+                    "span": "heuristic, based on image"
+                }
+            }
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "scaffold-config-server -> demo": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/scaffold-cloud/scaffold-config/scaffold-config-client/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 33)"
+        },
+        "scaffold-route-app -> scaffold-eureka": {
+            "file": "scaffold-route/scaffold-route-app/src/main/java/com/cms/scaffold/route/app/AppOperateApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "scaffold-route-operate -> scaffold-eureka": {
+            "file": "scaffold-route/scaffold-route-operate/src/main/java/com/cms/scaffold/route/operate/RouteOperateApplication.java",
+            "line": "6",
+            "span": "(50, 71)"
+        },
+        "scaffold-route-openapi -> scaffold-eureka": {
+            "file": "scaffold-route/scaffold-route-openapi/src/main/java/com/cms/scaffold/route/openapi/RouteOpenApiApplication.java",
+            "line": "6",
+            "span": "(50, 71)"
+        },
+        "demo -> scaffold-eureka": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/scaffold-cloud/scaffold-config/scaffold-config-client/src/main/resources/bootstrap.yml",
+            "line": 12,
+            "span": "(20, 49)"
+        },
+        "scaffold-business-thirdparty-service -> scaffold-eureka": {
+            "file": "scaffold-business/scaffold-business-thirdparty-service/src/main/java/com/cms/scaffold/micro/ThirdPartyApplication.java",
+            "line": "8",
+            "span": "(50, 71)"
+        },
+        "scaffold-business-job-service -> scaffold-eureka": {
+            "file": "scaffold-business/scaffold-business-job-service/src/main/java/com/cms/scaffold/micro/JobApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "scaffold-txmanager -> scaffold-eureka": {
+            "file": "scaffold-tx-manager/pom.xml",
+            "line": "38",
+            "span": "(24, 66)"
+        },
+        "scaffold-business-sys-service -> scaffold-eureka": {
+            "file": "scaffold-business/scaffold-business-sys-service/src/main/java/com/cms/scaffold/micro/SysServiceApplication.java",
+            "line": "7",
+            "span": "(50, 71)"
+        },
+        "scaffold-config-server -> scaffold-eureka": {
+            "file": "scaffold-config/scaffold-config-server/src/main/java/com/cmd/scaffold/config/ConfigServerApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "scaffold-eureka -> scaffold-zuul": {
+            "file": "scaffold-zuul/pom.xml",
+            "line": "21",
+            "span": "(24, 66)"
+        },
+        "user -> scaffold-zuul": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "scaffold-zuul -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        }
+    }
+}

@@ -1,0 +1,330 @@
+{
+    "nodes": {
+        "web-portal": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/web-portal/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:20)",
+            "sub_items": {
+                "monitoring_dashboard": {
+                    "file": "web-portal/src/main/java/com/anilallewar/microservices/portal/PortalApplication.java",
+                    "line": "31",
+                    "span": "(0, 23)"
+                },
+                "monitoring_server": {
+                    "file": "web-portal/src/main/java/com/anilallewar/microservices/portal/PortalApplication.java",
+                    "line": "32",
+                    "span": "(0, 14)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype monitoring_server",
+                    "line": "heuristic, based on stereotype monitoring_server",
+                    "span": "heuristic, based on stereotype monitoring_server"
+                }
+            }
+        },
+        "user-webservice": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/user-webservice/src/main/resources/bootstrap.yml",
+            "line": 4,
+            "span": "(10:25)",
+            "sub_items": {
+                "authentication_scope_all_requests": {
+                    "file": "user-webservice/src/main/java/com/anilallewar/microservices/user/config/security/WebSecurityConfiguration.java",
+                    "line": "6",
+                    "span": "(67, 79)"
+                },
+                "resource_server": {
+                    "file": "user-webservice/src/main/java/com/anilallewar/microservices/user/UserApplication.java",
+                    "line": "32",
+                    "span": "(0, 21)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "api-gateway": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/api-gateway/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:21)",
+            "sub_items": {
+                "csrf_disabled": {
+                    "file": "api-gateway/src/main/java/com/anilallewar/microservices/gateway/security/WebSecurityConfiguration.java",
+                    "line": "8",
+                    "span": "(67, 79)"
+                },
+                "gateway": {
+                    "file": "api-gateway/src/main/java/com/anilallewar/microservices/gateway/GatewayApplication.java",
+                    "line": "48",
+                    "span": "(0, 16)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "comments-webservice": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/comments-webservice/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(10:29)",
+            "sub_items": {
+                "resource_server": {
+                    "file": "comments-webservice/src/main/java/com/anilallewar/microservices/comments/CommentsApplication.java",
+                    "line": "30",
+                    "span": "(0, 21)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "auth-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/auth-server/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:21)",
+            "sub_items": {
+                "authorization_server": {
+                    "file": "auth-server/src/main/java/com/anilallewar/microservices/auth/config/OAuthServerConfiguration.java",
+                    "line": "52",
+                    "span": "(0, 26)"
+                },
+                "resource_server": {
+                    "file": "auth-server/src/main/java/com/anilallewar/microservices/auth/AuthServerApplication.java",
+                    "line": "22",
+                    "span": "(0, 21)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype authorization_server",
+                    "line": "heuristic, based on stereotype authorization_server",
+                    "span": "heuristic, based on stereotype authorization_server"
+                }
+            }
+        },
+        "webservice-registry": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/webservice-registry/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:29)",
+            "sub_items": {
+                "service_discovery": {
+                    "file": "webservice-registry/src/main/java/com/anilallewar/microservices/registry/RegistryApplication.java",
+                    "line": "19",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "task-webservice": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/task-webservice/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(10:25)",
+            "sub_items": {
+                "authentication_scope_all_requests": {
+                    "file": "task-webservice/src/main/java/com/anilallewar/microservices/task/config/security/WebSecurityConfiguration.java",
+                    "line": "6",
+                    "span": "(67, 79)"
+                },
+                "resource_server": {
+                    "file": "task-webservice/src/main/java/com/anilallewar/microservices/task/TaskApplication.java",
+                    "line": "41",
+                    "span": "(0, 21)"
+                },
+                "load_balancer": {
+                    "file": "task-webservice/src/main/java/com/anilallewar/microservices/task/config/OAuthClientConfiguration.java",
+                    "line": "30",
+                    "span": "(1, 14)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "configserver": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/config-server/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:22)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/config-server/src/main/resources/application.yml",
+                    "line": 18,
+                    "span": "(8, 12)"
+                },
+                "configuration_server": {
+                    "file": "config-server/src/main/java/com/anilallewar/microservices/config/ConfigApplication.java",
+                    "line": "21",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype configuration_server",
+                    "line": "heuristic, based on stereotype configuration_server",
+                    "span": "heuristic, based on stereotype configuration_server"
+                }
+            }
+        },
+        "zipkin-tracing": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/zipkin-server/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:24)",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "zipkinserver": {
+            "file": "docker-orchestration/rancher/docker-compose.yml",
+            "line": 136,
+            "span": "[2:14]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "mysqldb": {
+            "file": "docker-orchestration/rancher/docker-compose.yml",
+            "line": 3,
+            "span": "[2:9]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "github-repository": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/config-server/src/main/resources/application.yml",
+            "line": 6,
+            "span": "(16, 80)"
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "github-repository -> configserver": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/config-server/src/main/resources/application.yml",
+            "line": 6,
+            "span": "(16, 80)"
+        },
+        "configserver -> web-portal": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/web-portal/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 33)"
+        },
+        "configserver -> user-webservice": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/user-webservice/src/main/resources/bootstrap.yml",
+            "line": 17,
+            "span": "(14, 38)"
+        },
+        "configserver -> api-gateway": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/api-gateway/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 33)"
+        },
+        "configserver -> comments-webservice": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/comments-webservice/src/main/resources/bootstrap.yml",
+            "line": 11,
+            "span": "(12, 33)"
+        },
+        "configserver -> auth-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/auth-server/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 33)"
+        },
+        "configserver -> webservice-registry": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/webservice-registry/src/main/resources/bootstrap.yml",
+            "line": 14,
+            "span": "(14, 38)"
+        },
+        "configserver -> task-webservice": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/task-webservice/src/main/resources/bootstrap.yml",
+            "line": 19,
+            "span": "(14, 38)"
+        },
+        "configserver -> zipkin-tracing": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/microservices-basics-spring-boot/zipkin-server/src/main/resources/bootstrap.yml",
+            "line": 9,
+            "span": "(12, 33)"
+        },
+        "task-webservice -> comments-webservice": {
+            "file": "task-webservice/src/main/java/com/anilallewar/microservices/task/apis/CommentsService.java",
+            "line": "93",
+            "span": "(9, 34)"
+        },
+        "user-webservice -> webservice-registry": {
+            "file": "user-webservice/src/main/java/com/anilallewar/microservices/user/UserApplication.java",
+            "line": "5",
+            "span": "(48, 66)"
+        },
+        "auth-server -> webservice-registry": {
+            "file": "auth-server/src/main/java/com/anilallewar/microservices/auth/AuthServerApplication.java",
+            "line": "5",
+            "span": "(48, 66)"
+        },
+        "comments-webservice -> webservice-registry": {
+            "file": "comments-webservice/src/main/java/com/anilallewar/microservices/comments/CommentsApplication.java",
+            "line": "5",
+            "span": "(48, 66)"
+        },
+        "web-portal -> webservice-registry": {
+            "file": "web-portal/src/main/java/com/anilallewar/microservices/portal/PortalApplication.java",
+            "line": "5",
+            "span": "(48, 66)"
+        },
+        "task-webservice -> webservice-registry": {
+            "file": "task-webservice/src/main/java/com/anilallewar/microservices/task/TaskApplication.java",
+            "line": "6",
+            "span": "(48, 66)"
+        },
+        "webservice-registry -> api-gateway": {
+            "file": "api-gateway/src/main/java/com/anilallewar/microservices/gateway/GatewayApplication.java",
+            "line": "6",
+            "span": "(48, 66)"
+        },
+        "user -> api-gateway": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "api-gateway -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        }
+    }
+}

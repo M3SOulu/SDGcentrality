@@ -1,0 +1,215 @@
+{
+    "nodes": {
+        "authserver": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/authserver/src/main/resources/application.yml",
+            "line": 8,
+            "span": "(10:20)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/authserver/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 10)"
+                },
+                "basic_authentication": {
+                    "file": "authserver/src/main/java/org/flowant/website/WebSecurityConfig.java",
+                    "line": "7",
+                    "span": "(67, 79)"
+                },
+                "authentication_scope_all_requests": {
+                    "file": "authserver/src/main/java/org/flowant/website/ResourceServerConfig.java",
+                    "line": "5",
+                    "span": "(67, 79)"
+                },
+                "authorization_server": {
+                    "file": "authserver/src/main/java/org/flowant/website/OAuth2ServerConfig.java",
+                    "line": "28",
+                    "span": "(0, 26)"
+                },
+                "resource_server": {
+                    "file": "authserver/src/main/java/org/flowant/website/ResourceServerConfig.java",
+                    "line": "10",
+                    "span": "(0, 21)"
+                },
+                "local_logging": {
+                    "file": "authserver/src/main/java/org/flowant/website/OAuth2ServerConfig.java",
+                    "line": "26",
+                    "span": "(27, 33)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype authorization_server",
+                    "line": "heuristic, based on stereotype authorization_server",
+                    "span": "heuristic, based on stereotype authorization_server"
+                }
+            }
+        },
+        "backend": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/backend/src/main/resources/application.yml",
+            "line": 6,
+            "span": "(10:17)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/backend/src/main/resources/application.yml",
+                    "line": 39,
+                    "span": "(10, 12)"
+                },
+                "local_logging": {
+                    "file": "backend/src/main/java/org/flowant/website/storage/FileStorage.java",
+                    "line": "26",
+                    "span": "(27, 33)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "common": {
+            "file": "common/pom.xml",
+            "line": 12,
+            "span": "[14:20]",
+            "sub_items": {
+                "local_logging": {
+                    "file": "common/src/main/java/org/flowant/website/WebSiteConfig.java",
+                    "line": "20",
+                    "span": "(27, 33)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "registry": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/registry/src/main/resources/application.yml",
+            "line": 3,
+            "span": "(10:18)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/registry/src/main/resources/application.yml",
+                    "line": 14,
+                    "span": "(8, 12)"
+                },
+                "csrf_disabled": {
+                    "file": "registry/src/main/java/org/flowant/website/registry/RegistrySecurityConfiguration.java",
+                    "line": "3",
+                    "span": "(67, 79)"
+                },
+                "basic_authentication": {
+                    "file": "registry/src/main/java/org/flowant/website/registry/RegistrySecurityConfiguration.java",
+                    "line": "3",
+                    "span": "(67, 79)"
+                },
+                "authentication_scope_all_requests": {
+                    "file": "registry/src/main/java/org/flowant/website/registry/RegistrySecurityConfiguration.java",
+                    "line": "3",
+                    "span": "(67, 79)"
+                },
+                "service_discovery": {
+                    "file": "registry/src/main/java/org/flowant/website/registry/RegistryApplication.java",
+                    "line": "8",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "gateway": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/gateway/src/main/resources/application.yml",
+            "line": 12,
+            "span": "(10:17)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/gateway/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 11)"
+                },
+                "gateway": {
+                    "file": "gateway/pom.xml",
+                    "line": "20",
+                    "span": "(18, 46)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "web-app": {
+            "file": "frontend/Dockerfile",
+            "line": "13",
+            "span": "(0, 11)",
+            "sub_items": {
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype web_application",
+                    "line": "heuristic, based on stereotype web_application",
+                    "span": "heuristic, based on stereotype web_application"
+                }
+            }
+        }
+    },
+    "edges": {
+        "authserver -> registry": {
+            "file": "authserver/pom.xml",
+            "line": "59",
+            "span": "(18, 60)"
+        },
+        "backend -> registry": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/backend/src/main/resources/application.yml",
+            "line": 25,
+            "span": "(20, 91)"
+        },
+        "registry -> gateway": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/gateway/src/main/resources/application.yml",
+            "line": 36,
+            "span": "(20, 91)"
+        },
+        "user -> gateway": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "gateway -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "gateway -> authserver": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/gateway/src/main/resources/application.yml",
+            "line": 18,
+            "span": "span"
+        },
+        "gateway -> backend": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/website/gateway/src/main/resources/application.yml",
+            "line": 18,
+            "span": "span"
+        }
+    }
+}

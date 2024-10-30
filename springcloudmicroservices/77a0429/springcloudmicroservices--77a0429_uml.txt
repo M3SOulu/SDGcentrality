@@ -1,0 +1,33 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        serviceregistry [label = "{Service: serviceregistry | --service_discovery--\n--infrastructural--\n'Port': 8762\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        user_service [label = "{Service: user_service | --internal--\n--local_logging--\n--load_balancer--\n'Port': 8081\n'Endpoints': ['/users'\n}" shape = Mrecord];
+        rating_service [label = "{Service: rating_service | --internal--\n'Endpoints': ['/ratings'\n}" shape = Mrecord];
+        hotel_service [label = "{Service: hotel_service | --internal--\n'Endpoints': ['/hotels'\n}" shape = Mrecord];
+        api_gateway [label = "{Service: api_gateway | --infrastructural--\n--gateway--\n'Gateway': 'Spring Cloud Gateway'\n'Port': 8084\n}" shape = Mrecord];
+        database_user_service [label = "{External Entity: database_user_service | --entrypoint--\n--exitpoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Port': 3306\n'Username': 'root'\n}"];
+        database_hotel_service [label = "{External Entity: database_hotel_service | --entrypoint--\n--exitpoint--\n--external_database--\n--plaintext_credentials--\n'Database': 'MySQL'\n'Port': 3306\n'Username': 'root'\n}"];
+        user [label = "{External Entity: user | --user_stereotype--\n--entrypoint--\n--exitpoint--\n}"];
+        user_service -> rating_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        database_user_service -> user_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'root'\n"]
+        database_hotel_service -> hotel_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Username': 'root'\n"]
+        serviceregistry -> api_gateway [label = " --restful_http--\n"]
+        user_service -> serviceregistry [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        rating_service -> serviceregistry [label = " --restful_http--\n"]
+        hotel_service -> serviceregistry [label = " --restful_http--\n"]
+        user -> api_gateway [label = " --restful_http--\n"]
+        api_gateway -> user [label = " --restful_http--\n"]
+        api_gateway -> hotel_service [label = " --restful_http--\n"]
+        api_gateway -> user_service [label = " --restful_http--\n"]
+        api_gateway -> rating_service [label = " --restful_http--\n"]
+
+}
+@enduml

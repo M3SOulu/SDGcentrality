@@ -1,0 +1,72 @@
+{
+    "edges": [
+        {
+            "sender": "github-repository",
+            "receiver": "configserver"
+        },
+        {
+            "sender": "configserver",
+            "receiver": "web-portal"
+        },
+        {
+            "sender": "configserver",
+            "receiver": "user-webservice"
+        },
+        {
+            "sender": "configserver",
+            "receiver": "api-gateway"
+        },
+        {
+            "sender": "configserver",
+            "receiver": "comments-webservice"
+        },
+        {
+            "sender": "configserver",
+            "receiver": "auth-server"
+        },
+        {
+            "sender": "configserver",
+            "receiver": "webservice-registry"
+        },
+        {
+            "sender": "configserver",
+            "receiver": "task-webservice"
+        },
+        {
+            "sender": "task-webservice",
+            "receiver": "comments-webservice"
+        },
+        {
+            "sender": "auth-server",
+            "receiver": "webservice-registry"
+        },
+        {
+            "sender": "web-portal",
+            "receiver": "webservice-registry"
+        },
+        {
+            "sender": "comments-webservice",
+            "receiver": "webservice-registry"
+        },
+        {
+            "sender": "webservice-registry",
+            "receiver": "api-gateway"
+        },
+        {
+            "sender": "task-webservice",
+            "receiver": "webservice-registry"
+        },
+        {
+            "sender": "user-webservice",
+            "receiver": "webservice-registry"
+        },
+        {
+            "sender": "user",
+            "receiver": "api-gateway"
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "user"
+        }
+    ]
+}

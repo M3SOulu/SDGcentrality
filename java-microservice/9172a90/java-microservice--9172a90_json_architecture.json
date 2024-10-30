@@ -1,0 +1,524 @@
+{
+    "microservices": [
+        {
+            "name": "oauth",
+            "type": "service",
+            "stereotype_instances": [
+                "authorization_server",
+                "infrastructural",
+                "circuit_breaker"
+            ],
+            "tagged_values": [
+                [
+                    "Circuit Breaker",
+                    "Hystrix"
+                ],
+                [
+                    "Port",
+                    8017
+                ],
+                [
+                    "Authorization Server",
+                    "Spring OAuth2"
+                ]
+            ]
+        },
+        {
+            "name": "jmx-monitoring",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "admin",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "administration_server"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8026
+                ],
+                [
+                    "Administration Server",
+                    "Spring Boot Admin"
+                ]
+            ]
+        },
+        {
+            "name": "api-gateway",
+            "type": "service",
+            "stereotype_instances": [
+                "csrf_disabled",
+                "internal",
+                "resource_server",
+                "circuit_breaker"
+            ],
+            "tagged_values": [
+                [
+                    "Circuit Breaker",
+                    "Hystrix"
+                ],
+                [
+                    "Port",
+                    8018
+                ]
+            ]
+        },
+        {
+            "name": "eureka-server",
+            "type": "service",
+            "stereotype_instances": [
+                "service_discovery",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8012
+                ],
+                [
+                    "Service Discovery",
+                    "Eureka"
+                ],
+                [
+                    "Port",
+                    8011
+                ],
+                [
+                    "Port",
+                    8010
+                ],
+                [
+                    "Port",
+                    8013
+                ]
+            ]
+        },
+        {
+            "name": "mailer",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8020
+                ]
+            ]
+        },
+        {
+            "name": "todo-infra",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "user",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8016
+                ]
+            ]
+        },
+        {
+            "name": "config-server",
+            "type": "service",
+            "stereotype_instances": [
+                "configuration_server",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Configuration Server",
+                    "Spring Cloud Config"
+                ],
+                [
+                    "Port",
+                    8888
+                ]
+            ]
+        },
+        {
+            "name": "reminder",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8015
+                ]
+            ]
+        },
+        {
+            "name": "zookeeper",
+            "type": "service",
+            "stereotype_instances": [
+                "configuration_server",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Configuration Server",
+                    "ZooKeeper"
+                ],
+                [
+                    "Port",
+                    2181
+                ]
+            ]
+        },
+        {
+            "name": "kafka",
+            "type": "service",
+            "stereotype_instances": [
+                "message_broker",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Message Broker",
+                    "Kafka"
+                ]
+            ]
+        },
+        {
+            "name": "web-app",
+            "type": "service",
+            "docker_path": "../../proxy",
+            "stereotype_instances": [
+                "infrastructural",
+                "web_application"
+            ],
+            "tagged_values": [
+                [
+                    "Web Application",
+                    "Nginx"
+                ]
+            ]
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "github-repository",
+            "receiver": "config-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "oauth",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "admin",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "api-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "eureka-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "mailer",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "reminder",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "kafka",
+            "receiver": "mailer",
+            "stereotype_instances": [
+                "message_consumer_kafka",
+                "restful_http"
+            ],
+            "tagged_values": [
+                [
+                    "Consumer Topic",
+                    "todo-mail"
+                ]
+            ]
+        },
+        {
+            "sender": "reminder",
+            "receiver": "kafka",
+            "stereotype_instances": [
+                "message_producer_kafka",
+                "restful_http"
+            ],
+            "tagged_values": [
+                [
+                    "Producer Topic",
+                    "todo-mail"
+                ]
+            ]
+        },
+        {
+            "sender": "reminder",
+            "receiver": "eureka-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "oauth",
+            "receiver": "eureka-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "eureka-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "mailer",
+            "receiver": "eureka-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "admin",
+            "receiver": "eureka-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "eureka-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "admin",
+            "receiver": "oauth",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "admin",
+            "receiver": "api-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "admin",
+            "receiver": "mailer",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "admin",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "admin",
+            "receiver": "reminder",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "kafka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "oauth",
+            "receiver": "logstash",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "admin",
+            "receiver": "logstash",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "api-gateway",
+            "receiver": "logstash",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "eureka-server",
+            "receiver": "logstash",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "mailer",
+            "receiver": "logstash",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "logstash",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-server",
+            "receiver": "logstash",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "reminder",
+            "receiver": "logstash",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "oauth",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "admin",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "api-gateway",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "eureka-server",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "mailer",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zookeeper",
+            "receiver": "reminder",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "github-repository",
+            "type": "external_component",
+            "stereotype_instances": [
+                "entrypoint",
+                "github_repository"
+            ],
+            "tagged_values": [
+                [
+                    "URL",
+                    "https://github.com/apssouza22/java-microservice"
+                ]
+            ]
+        },
+        {
+            "name": "logstash",
+            "type": "external_component",
+            "stereotype_instances": [
+                "logging_server",
+                "exitpoint"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    5044
+                ],
+                [
+                    "Logging Server",
+                    "Logstash"
+                ]
+            ]
+        }
+    ]
+}

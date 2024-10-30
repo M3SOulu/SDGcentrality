@@ -1,0 +1,27 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        authserver [label = "{Service: authserver | --resource_server--\n--authorization_server--\n--authentication_scope_all_requests--\n--basic_authentication--\n--local_logging--\n--infrastructural--\n'Authorization Server': 'Spring OAuth2'\n'Logging Technology': 'Lombok'\n'Endpoints': ['/user'\n'Port': 80\n}" shape = Mrecord];
+        backend [label = "{Service: backend | --local_logging--\n--internal--\n'Logging Technology': 'Lombok'\n'Port': 80\n}" shape = Mrecord];
+        common [label = "{Service: common | --local_logging--\n--internal--\n'Logging Technology': 'Lombok'\n}" shape = Mrecord];
+        registry [label = "{Service: registry | --csrf_disabled--\n--authentication_scope_all_requests--\n--basic_authentication--\n--service_discovery--\n--infrastructural--\n'Port': 8761\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        gateway [label = "{Service: gateway | --gateway--\n--infrastructural--\n'Gateway': 'Spring Cloud Gateway'\n'Port': 443\n}" shape = Mrecord];
+        web_app [label = "{Service: web_app | --web_application--\n--infrastructural--\n'Web Application': 'Nginx'\n}" shape = Mrecord];
+        user [label = "{External Entity: user | --exitpoint--\n--entrypoint--\n--user_stereotype--\n}"];
+        authserver -> registry [label = " --restful_http--\n"]
+        backend -> registry [label = " --restful_http--\n"]
+        registry -> gateway [label = " --restful_http--\n"]
+        user -> gateway [label = " --restful_http--\n"]
+        gateway -> user [label = " --restful_http--\n"]
+        gateway -> authserver [label = " --restful_http--\n"]
+        gateway -> backend [label = " --restful_http--\n"]
+
+}
+@enduml

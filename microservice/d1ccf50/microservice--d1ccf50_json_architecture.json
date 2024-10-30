@@ -1,0 +1,241 @@
+{
+    "microservices": [
+        {
+            "name": "order",
+            "type": "service",
+            "stereotype_instances": [
+                "local_logging",
+                "internal",
+                "load_balancer"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/\"order']"
+                ],
+                [
+                    "Endpoints",
+                    "['/{id}', '/form.html', '/line', '/']"
+                ],
+                [
+                    "Port",
+                    8080
+                ],
+                [
+                    "Load Balancer",
+                    "Ribbon"
+                ]
+            ]
+        },
+        {
+            "name": "eureka",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "service_discovery"
+            ],
+            "tagged_values": [
+                [
+                    "Service Discovery",
+                    "Eureka"
+                ],
+                [
+                    "Port",
+                    8761
+                ]
+            ]
+        },
+        {
+            "name": "turbine",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "monitoring_dashboard",
+                "monitoring_server"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8989
+                ],
+                [
+                    "Monitoring Server",
+                    "Turbine"
+                ],
+                [
+                    "Monitoring Dashboard",
+                    "Hystrix"
+                ]
+            ]
+        },
+        {
+            "name": "catalog",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/\"catalog']"
+                ],
+                [
+                    "Endpoints",
+                    "['/form.html', '/{id}.html', '/list.html', '/searchByName.html', '/searchForm.html']"
+                ],
+                [
+                    "Port",
+                    8080
+                ]
+            ]
+        },
+        {
+            "name": "zuul",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "gateway",
+                "load_balancer"
+            ],
+            "tagged_values": [
+                [
+                    "Gateway",
+                    "Zuul"
+                ],
+                [
+                    "Port",
+                    8080
+                ],
+                [
+                    "Load Balancer",
+                    "Ribbon"
+                ]
+            ]
+        },
+        {
+            "name": "customer",
+            "type": "service",
+            "stereotype_instances": [
+                "internal"
+            ],
+            "tagged_values": [
+                [
+                    "Endpoints",
+                    "['/form.html', '/{id}.html', '/list.html']"
+                ],
+                [
+                    "Port",
+                    8080
+                ],
+                [
+                    "Endpoints",
+                    "['/\"customer']"
+                ]
+            ]
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "order",
+            "receiver": "catalog",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "order",
+            "receiver": "customer",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "order",
+            "receiver": "order",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zuul",
+            "receiver": "customer",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zuul",
+            "receiver": "catalog",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zuul",
+            "receiver": "order",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "customer",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "catalog",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "eureka",
+            "receiver": "zuul",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "turbine",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "order",
+            "receiver": "eureka",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "zuul",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "zuul",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "user",
+            "type": "external_component",
+            "stereotype_instances": [
+                "exitpoint",
+                "user_stereotype",
+                "entrypoint"
+            ]
+        }
+    ]
+}

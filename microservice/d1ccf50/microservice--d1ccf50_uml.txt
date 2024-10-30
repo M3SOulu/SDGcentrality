@@ -1,0 +1,33 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        order [label = "{Service: order | --local_logging--\n--internal--\n--load_balancer--\n'Endpoints': ['/\n}" shape = Mrecord];
+        eureka [label = "{Service: eureka | --infrastructural--\n--service_discovery--\n'Service Discovery': 'Eureka'\n'Port': 8761\n}" shape = Mrecord];
+        turbine [label = "{Service: turbine | --infrastructural--\n--monitoring_dashboard--\n--monitoring_server--\n'Port': 8989\n'Monitoring Server': 'Turbine'\n'Monitoring Dashboard': 'Hystrix'\n}" shape = Mrecord];
+        catalog [label = "{Service: catalog | --internal--\n'Endpoints': ['/form.html'\n}" shape = Mrecord];
+        zuul [label = "{Service: zuul | --infrastructural--\n--gateway--\n--load_balancer--\n'Gateway': 'Zuul'\n'Port': 8080\n'Load Balancer': 'Ribbon'\n}" shape = Mrecord];
+        customer [label = "{Service: customer | --internal--\n'Endpoints': '[\'/"customer\']'\n'Port': 8080\n}" shape = Mrecord];
+        user [label = "{External Entity: user | --entrypoint--\n--user_stereotype--\n--exitpoint--\n}"];
+        order -> catalog [label = " --restful_http--\n"]
+        order -> customer [label = " --restful_http--\n"]
+        order -> order [label = " --restful_http--\n"]
+        zuul -> customer [label = " --restful_http--\n"]
+        zuul -> catalog [label = " --restful_http--\n"]
+        zuul -> order [label = " --restful_http--\n"]
+        customer -> eureka [label = " --restful_http--\n"]
+        catalog -> eureka [label = " --restful_http--\n"]
+        eureka -> zuul [label = " --restful_http--\n"]
+        turbine -> eureka [label = " --restful_http--\n"]
+        order -> eureka [label = " --restful_http--\n"]
+        user -> zuul [label = " --restful_http--\n"]
+        zuul -> user [label = " --restful_http--\n"]
+
+}
+@enduml

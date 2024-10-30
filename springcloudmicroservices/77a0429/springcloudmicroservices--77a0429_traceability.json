@@ -1,0 +1,203 @@
+{
+    "nodes": {
+        "ServiceRegistry": {
+            "file": "ServiceRegistry/pom.xml",
+            "line": 11,
+            "span": "[13:28]",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/ServiceRegistry/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "service_discovery": {
+                    "file": "ServiceRegistry/src/main/java/com/lcwd/service/registry/ServiceRegistryApplication.java",
+                    "line": "8",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "USER-SERVICE": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/UserService/src/main/resources/application.yml",
+            "line": 15,
+            "span": "(10:22)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/UserService/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "local_logging": {
+                    "file": "UserService/src/main/java/com/lcwd/user/service/impl/UserServericeImp.java",
+                    "line": "11",
+                    "span": "(17, 30)"
+                },
+                "load_balancer": {
+                    "file": "UserService/src/main/java/com/lcwd/user/service/config/MyConfig.java",
+                    "line": "12",
+                    "span": "(4, 17)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "RATING-SERVICE": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/RatingService/src/main/resources/application.yml",
+            "line": 11,
+            "span": "(10:24)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/RatingService/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "HOTEL-SERVICE": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/HotelService/src/main/resources/application.yml",
+            "line": 16,
+            "span": "(10:23)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/HotelService/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "API-GATEWAY": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/Apigateway/src/main/resources/application.yml",
+            "line": 6,
+            "span": "(10:21)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/Apigateway/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "gateway": {
+                    "file": "Apigateway/pom.xml",
+                    "line": "31",
+                    "span": "(15, 43)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "database-USER-SERVICE": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/UserService/src/main/resources/application.yml",
+            "line": 6,
+            "span": "(10, 51)"
+        },
+        "database-HOTEL-SERVICE": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/HotelService/src/main/resources/application.yml",
+            "line": 6,
+            "span": "(10, 48)"
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "USER-SERVICE -> RATING-SERVICE": {
+            "file": "UserService/src/main/java/com/lcwd/user/service/impl/UserServericeImp.java",
+            "line": "54",
+            "span": "(33, 58)"
+        },
+        "database-USER-SERVICE -> USER-SERVICE": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/UserService/src/main/resources/application.yml",
+            "line": 6,
+            "span": "(10, 51)"
+        },
+        "database-HOTEL-SERVICE -> HOTEL-SERVICE": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/HotelService/src/main/resources/application.yml",
+            "line": 6,
+            "span": "(10, 48)"
+        },
+        "USER-SERVICE -> ServiceRegistry": {
+            "file": "UserService/pom.xml",
+            "line": "39",
+            "span": "(15, 57)"
+        },
+        "RATING-SERVICE -> ServiceRegistry": {
+            "file": "RatingService/src/main/java/com/lcwd/rating/RatingServiceApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "HOTEL-SERVICE -> ServiceRegistry": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/HotelService/src/main/resources/application.yml",
+            "line": 21,
+            "span": "(20, 48)"
+        },
+        "ServiceRegistry -> API-GATEWAY": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/Apigateway/src/main/resources/application.yml",
+            "line": 30,
+            "span": "(20, 48)"
+        },
+        "user -> API-GATEWAY": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "API-GATEWAY -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "API-GATEWAY -> HOTEL-SERVICE": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/Apigateway/src/main/resources/application.yml",
+            "line": 11,
+            "span": "span"
+        },
+        "API-GATEWAY -> USER-SERVICE": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/Apigateway/src/main/resources/application.yml",
+            "line": 11,
+            "span": "span"
+        },
+        "API-GATEWAY -> RATING-SERVICE": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/springcloudmicroservices/Apigateway/src/main/resources/application.yml",
+            "line": 11,
+            "span": "span"
+        }
+    }
+}

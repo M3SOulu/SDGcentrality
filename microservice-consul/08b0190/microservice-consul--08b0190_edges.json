@@ -1,0 +1,52 @@
+{
+    "edges": [
+        {
+            "sender": "order",
+            "receiver": "catalog"
+        },
+        {
+            "sender": "order",
+            "receiver": "customer"
+        },
+        {
+            "sender": "apache",
+            "receiver": "customer"
+        },
+        {
+            "sender": "apache",
+            "receiver": "catalog"
+        },
+        {
+            "sender": "apache",
+            "receiver": "order"
+        },
+        {
+            "sender": "order",
+            "receiver": "order"
+        },
+        {
+            "sender": "customer",
+            "receiver": "consul"
+        },
+        {
+            "sender": "catalog",
+            "receiver": "consul"
+        },
+        {
+            "sender": "order",
+            "receiver": "consul"
+        },
+        {
+            "sender": "apache",
+            "receiver": "consul"
+        },
+        {
+            "sender": "user",
+            "receiver": "apache"
+        },
+        {
+            "sender": "apache",
+            "receiver": "user"
+        }
+    ]
+}

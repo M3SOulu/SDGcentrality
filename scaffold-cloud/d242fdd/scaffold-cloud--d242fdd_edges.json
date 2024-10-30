@@ -1,0 +1,56 @@
+{
+    "edges": [
+        {
+            "sender": "scaffold-config-server",
+            "receiver": "demo"
+        },
+        {
+            "sender": "scaffold-route-app",
+            "receiver": "scaffold-eureka"
+        },
+        {
+            "sender": "scaffold-route-operate",
+            "receiver": "scaffold-eureka"
+        },
+        {
+            "sender": "scaffold-route-openapi",
+            "receiver": "scaffold-eureka"
+        },
+        {
+            "sender": "demo",
+            "receiver": "scaffold-eureka"
+        },
+        {
+            "sender": "scaffold-eureka",
+            "receiver": "scaffold-zuul"
+        },
+        {
+            "sender": "scaffold-business-thirdparty-service",
+            "receiver": "scaffold-eureka"
+        },
+        {
+            "sender": "scaffold-business-job-service",
+            "receiver": "scaffold-eureka"
+        },
+        {
+            "sender": "scaffold-txmanager",
+            "receiver": "scaffold-eureka"
+        },
+        {
+            "sender": "scaffold-business-sys-service",
+            "receiver": "scaffold-eureka"
+        },
+        {
+            "sender": "scaffold-config-server",
+            "receiver": "scaffold-eureka"
+        },
+        {
+            "sender": "user",
+            "receiver": "scaffold-zuul"
+        },
+        {
+            "sender": "scaffold-zuul",
+            "receiver": "user"
+        }
+    ]
+}

@@ -1,0 +1,311 @@
+{
+    "nodes": {
+        "appointment-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/appointment-service/src/main/resources/application.yml",
+            "line": 6,
+            "span": "(10:29)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/appointment-service/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "local_logging": {
+                    "file": "appointment-service/src/main/java/com/microservice/appointmentservice/service/impl/AppointmentServiceImpl.java",
+                    "line": "18",
+                    "span": "(27, 32)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "approval-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/approval-service/target/classes/application.yml",
+            "line": 5,
+            "span": "(10:26)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/approval-service/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "hospital-manage-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/hospital-manage-service/src/main/resources/application.yml",
+            "line": 7,
+            "span": "(10:33)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/hospital-manage-service/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "local_logging": {
+                    "file": "hospital-manage-service/src/main/java/com/microservice/hospitalmanageservice/service/ManageMQService.java",
+                    "line": "12",
+                    "span": "(27, 32)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "gateway-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/gateway-service/src/main/resources/application.yml",
+            "line": 9,
+            "span": "(10:25)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/gateway-service/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "gateway": {
+                    "file": "gateway-service/pom.xml",
+                    "line": "44",
+                    "span": "(24, 52)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "common": {
+            "file": "common/pom.xml",
+            "line": 10,
+            "span": "[16:22]",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "message-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/message-service/src/main/resources/application.yml",
+            "line": 5,
+            "span": "(10:25)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/message-service/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "personal-info-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/personal-info-service/src/main/resources/bootstrap.yml",
+            "line": 5,
+            "span": "(10:31)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/personal-info-service/src/main/resources/bootstrap.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "auth-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/auth-service/src/main/resources/application.yml",
+            "line": 5,
+            "span": "(10:22)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/auth-service/src/main/resources/application.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "authorization_server": {
+                    "file": "auth-service/src/main/java/com/microservice/authservice/config/Oauth2ServerConfig.java",
+                    "line": "36",
+                    "span": "(0, 26)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype authorization_server",
+                    "line": "heuristic, based on stereotype authorization_server",
+                    "span": "heuristic, based on stereotype authorization_server"
+                }
+            }
+        },
+        "database-appointment-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/appointment-service/src/main/resources/application.yml",
+            "line": 16,
+            "span": "(10, 159)"
+        },
+        "database-approval-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/approval-service/target/classes/application.yml",
+            "line": 15,
+            "span": "(10, 159)"
+        },
+        "database-hospital-manage-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/hospital-manage-service/src/main/resources/application.yml",
+            "line": 32,
+            "span": "(10, 169)"
+        },
+        "database-message-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/message-service/src/main/resources/application.yml",
+            "line": 15,
+            "span": "(10, 166)"
+        },
+        "database-personal-info-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/personal-info-service/src/main/resources/application.yml",
+            "line": 7,
+            "span": "(10, 159)"
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "mail-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/message-service/src/main/resources/application.yml",
+            "line": 21,
+            "span": "(11, 22)",
+            "sub_items": {
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "mail_server": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "appointment-service -> personal-info-service": {
+            "file": "appointment-service/src/main/java/com/microservice/appointmentservice/service/PersonalInfoFeignService.java",
+            "line": "11",
+            "span": "(0, 12)"
+        },
+        "appointment-service -> hospital-manage-service": {
+            "file": "appointment-service/src/main/java/com/microservice/appointmentservice/service/HospitalManageFeignService.java",
+            "line": "10",
+            "span": "(0, 12)"
+        },
+        "approval-service -> appointment-service": {
+            "file": "approval-service/src/main/java/com/microservice/approvalservice/service/AppointmentFeignService.java",
+            "line": "7",
+            "span": "(0, 12)"
+        },
+        "approval-service -> message-service": {
+            "file": "approval-service/src/main/java/com/microservice/approvalservice/service/FeignService.java",
+            "line": "6",
+            "span": "(0, 12)"
+        },
+        "message-service -> personal-info-service": {
+            "file": "message-service/src/main/java/com/microservice/messageservice/service/impl/Feign_Service.java",
+            "line": "7",
+            "span": "(0, 12)"
+        },
+        "database-appointment-service -> appointment-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/appointment-service/src/main/resources/application.yml",
+            "line": 16,
+            "span": "(10, 159)"
+        },
+        "database-approval-service -> approval-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/approval-service/target/classes/application.yml",
+            "line": 15,
+            "span": "(10, 159)"
+        },
+        "database-hospital-manage-service -> hospital-manage-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/hospital-manage-service/src/main/resources/application.yml",
+            "line": 32,
+            "span": "(10, 169)"
+        },
+        "database-message-service -> message-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/message-service/src/main/resources/application.yml",
+            "line": 15,
+            "span": "(10, 166)"
+        },
+        "database-personal-info-service -> personal-info-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/personal-info-service/src/main/resources/application.yml",
+            "line": 7,
+            "span": "(10, 159)"
+        },
+        "user -> gateway-service": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "gateway-service -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "gateway-service -> message-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/gateway-service/src/main/resources/application.yml",
+            "line": 24,
+            "span": "span"
+        },
+        "gateway-service -> approval-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/gateway-service/src/main/resources/application.yml",
+            "line": 24,
+            "span": "span"
+        },
+        "gateway-service -> hospital-manage-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/gateway-service/src/main/resources/application.yml",
+            "line": 24,
+            "span": "span"
+        },
+        "gateway-service -> appointment-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/gateway-service/src/main/resources/application.yml",
+            "line": 24,
+            "span": "span"
+        },
+        "message-service -> mail-server": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/DentalAppointment/message-service/src/main/resources/application.yml",
+            "line": 21,
+            "span": "(11, 22)"
+        }
+    }
+}

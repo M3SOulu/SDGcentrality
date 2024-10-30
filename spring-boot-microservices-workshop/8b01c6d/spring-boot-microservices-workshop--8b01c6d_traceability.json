@@ -1,0 +1,109 @@
+{
+    "nodes": {
+        "movie-info-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-boot-microservices-workshop/movie-info-service/src/main/resources/application.properties",
+            "line": 1,
+            "span": "(24:42)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-boot-microservices-workshop/movie-info-service/src/main/resources/application.properties",
+                    "line": 1,
+                    "span": "(0, 11)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "ratings-data-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-boot-microservices-workshop/ratings-data-service/src/main/resources/application.properties",
+            "line": 1,
+            "span": "(24:44)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-boot-microservices-workshop/ratings-data-service/src/main/resources/application.properties",
+                    "line": 1,
+                    "span": "(0, 11)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "movie-catalog-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-boot-microservices-workshop/movie-catalog-service/src/main/resources/application.properties",
+            "line": 1,
+            "span": "(24:45)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-boot-microservices-workshop/movie-catalog-service/src/main/resources/application.properties",
+                    "line": 1,
+                    "span": "(0, 11)"
+                },
+                "load_balancer": {
+                    "file": "movie-catalog-service/src/main/java/io/javabrains/moviecatalogservice/MovieCatalogServiceApplication.java",
+                    "line": "18",
+                    "span": "(1, 14)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "discovery-server": {
+            "file": "discovery-server/pom.xml",
+            "line": 11,
+            "span": "[13:29]",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-boot-microservices-workshop/discovery-server/src/main/resources/application.properties",
+                    "line": 0,
+                    "span": "(0, 11)"
+                },
+                "service_discovery": {
+                    "file": "discovery-server/src/main/java/io/javabrains/discoveryserver/DiscoveryServerApplication.java",
+                    "line": "8",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        }
+    },
+    "edges": {
+        "movie-catalog-service -> ratings-data-service": {
+            "file": "movie-catalog-service/src/main/java/io/javabrains/moviecatalogservice/resources/CatalogResource.java",
+            "line": "32",
+            "span": "(32, 57)"
+        },
+        "movie-catalog-service -> movie-info-service": {
+            "file": "movie-catalog-service/src/main/java/io/javabrains/moviecatalogservice/resources/CatalogResource.java",
+            "line": "32",
+            "span": "(32, 57)"
+        },
+        "movie-catalog-service -> discovery-server": {
+            "file": "movie-catalog-service/pom.xml",
+            "line": "33",
+            "span": "(15, 57)"
+        },
+        "ratings-data-service -> discovery-server": {
+            "file": "ratings-data-service/pom.xml",
+            "line": "29",
+            "span": "(15, 57)"
+        },
+        "movie-info-service -> discovery-server": {
+            "file": "movie-info-service/src/main/java/io/javabrains/movieinfoservice/MovieInfoServiceApplication.java",
+            "line": "5",
+            "span": "(48, 66)"
+        }
+    }
+}

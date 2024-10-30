@@ -1,0 +1,319 @@
+{
+    "nodes": {
+        "geocoderLocal-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/geocoderLocal-service/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:31)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/configurator/src/main/resources/commun/geocoderLocal-service.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "resource_server": {
+                    "file": "geocoderLocal-service/src/main/java/com/alphalog/geocoder/local/config/SecurityConfiguration.java",
+                    "line": "16",
+                    "span": "(0, 21)"
+                },
+                "circuit_breaker": {
+                    "file": "geocoderLocal-service/src/main/java/com/alphalog/geocoder/local/GeocoderLocal.java",
+                    "line": "15",
+                    "span": "(0, 14)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "zuul-gateway": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/zuul-gateway/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:22)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/configurator/src/main/resources/commun/zuul-gateway.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "gateway": {
+                    "file": "zuul-gateway/src/main/java/com/alphalog/geocoder/gateway/GatewayApplication.java",
+                    "line": "11",
+                    "span": "(0, 16)"
+                },
+                "local_logging": {
+                    "file": "zuul-gateway/src/main/java/com/alphalog/geocoder/gateway/filter/PreRouteFilter.java",
+                    "line": "6",
+                    "span": "(17, 30)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype gateway",
+                    "line": "heuristic, based on stereotype gateway",
+                    "span": "heuristic, based on stereotype gateway"
+                }
+            }
+        },
+        "geocoderRemote-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/geocoderRemote-service/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:32)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/configurator/src/main/resources/commun/geocoderRemote-service.yml",
+                    "line": 2,
+                    "span": "(8, 12)"
+                },
+                "resource_server": {
+                    "file": "geocoderRemote-service/src/main/java/com/alphalog/geocoder/remote/config/SecurityConfiguration.java",
+                    "line": "16",
+                    "span": "(0, 21)"
+                },
+                "circuit_breaker": {
+                    "file": "geocoderRemote-service/src/main/java/com/alphalog/geocoder/remote/GeocoderRemote.java",
+                    "line": "17",
+                    "span": "(0, 14)"
+                },
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "hystrix-dashboard": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/hystrix-dashboard/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:27)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/hystrix-dashboard/src/main/resources/bootstrap.yml",
+                    "line": 18,
+                    "span": "(8, 12)"
+                },
+                "monitoring_dashboard": {
+                    "file": "hystrix-dashboard/src/main/java/com/alphalog/geocoder/monitoring/HystrixDashboardApplication.java",
+                    "line": "12",
+                    "span": "(0, 23)"
+                },
+                "monitoring_server": {
+                    "file": "hystrix-dashboard/src/main/java/com/alphalog/geocoder/monitoring/HystrixDashboardApplication.java",
+                    "line": "8",
+                    "span": "(56, 75)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype monitoring_server",
+                    "line": "heuristic, based on stereotype monitoring_server",
+                    "span": "heuristic, based on stereotype monitoring_server"
+                }
+            }
+        },
+        "eureka-discovery": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/eureka-discovery/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:26)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/eureka-discovery/src/main/resources/bootstrap.yml",
+                    "line": 9,
+                    "span": "(8, 12)"
+                },
+                "service_discovery": {
+                    "file": "eureka-discovery/src/main/java/com/alphalog/geocoder/discovery/DiscoveryApplication.java",
+                    "line": "7",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "configurator": {
+            "file": "configurator/pom.xml",
+            "line": 5,
+            "span": "[13:25]",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/configurator/src/main/resources/application.yml",
+                    "line": 11,
+                    "span": "(8, 12)"
+                },
+                "configuration_server": {
+                    "file": "configurator/src/main/java/com/alphalog/geocoder/configurator/ConfiguratorApplication.java",
+                    "line": "8",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype configuration_server",
+                    "line": "heuristic, based on stereotype configuration_server",
+                    "span": "heuristic, based on stereotype configuration_server"
+                }
+            }
+        },
+        "auth-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/auth-service/src/main/resources/bootstrap.yml",
+            "line": 3,
+            "span": "(10:22)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/configurator/src/main/resources/commun/auth-service.yml",
+                    "line": 12,
+                    "span": "(8, 12)"
+                },
+                "authorization_server": {
+                    "file": "auth-service/src/main/java/com/alphalog/geocoder/security/AuthApplication.java",
+                    "line": "34",
+                    "span": "(1, 27)"
+                },
+                "resource_server": {
+                    "file": "auth-service/src/main/java/com/alphalog/geocoder/security/AuthApplication.java",
+                    "line": "23",
+                    "span": "(0, 21)"
+                },
+                "token_server": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/configurator/src/main/resources/commun/geocoderRemote-service.yml",
+                    "line": 19,
+                    "span": "(23, 63)"
+                },
+                "local_logging": {
+                    "file": "auth-service/src/main/java/com/alphalog/geocoder/security/service/UserServiceImpl.java",
+                    "line": "4",
+                    "span": "(17, 30)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype authorization_server",
+                    "line": "heuristic, based on stereotype authorization_server",
+                    "span": "heuristic, based on stereotype authorization_server"
+                }
+            }
+        },
+        "mongodb": {
+            "file": "docker-compose.yml",
+            "line": 19,
+            "span": "[2:9]",
+            "sub_items": {
+                "database": {
+                    "file": "heuristic, based on Dockerfile base image",
+                    "line": "heuristic, based on Dockerfile base image",
+                    "span": "heuristic, based on Dockerfile base image"
+                }
+            }
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "configurator -> geocoderLocal-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/geocoderLocal-service/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 36)"
+        },
+        "configurator -> zuul-gateway": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/zuul-gateway/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 36)"
+        },
+        "configurator -> geocoderRemote-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/geocoderRemote-service/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 36)"
+        },
+        "configurator -> hystrix-dashboard": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/hystrix-dashboard/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 36)"
+        },
+        "configurator -> eureka-discovery": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/eureka-discovery/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 36)"
+        },
+        "configurator -> auth-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/auth-service/src/main/resources/bootstrap.yml",
+            "line": 6,
+            "span": "(12, 36)"
+        },
+        "mongodb -> geocoderRemote-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/configurator/src/main/resources/commun/geocoderRemote-service.yml",
+            "line": 8,
+            "span": "(13, 20)"
+        },
+        "mongodb -> auth-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/configurator/src/main/resources/commun/auth-service.yml",
+            "line": 4,
+            "span": "(13, 20)"
+        },
+        "geocoderRemote-service -> eureka-discovery": {
+            "file": "geocoderRemote-service/src/main/java/com/alphalog/geocoder/remote/GeocoderRemote.java",
+            "line": "5",
+            "span": "(48, 66)"
+        },
+        "auth-service -> eureka-discovery": {
+            "file": "auth-service/src/main/java/com/alphalog/geocoder/security/AuthApplication.java",
+            "line": "6",
+            "span": "(50, 71)"
+        },
+        "geocoderLocal-service -> eureka-discovery": {
+            "file": "geocoderLocal-service/src/main/java/com/alphalog/geocoder/local/GeocoderLocal.java",
+            "line": "5",
+            "span": "(48, 66)"
+        },
+        "eureka-discovery -> zuul-gateway": {
+            "file": "zuul-gateway/src/main/java/com/alphalog/geocoder/gateway/GatewayApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "user -> zuul-gateway": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "zuul-gateway -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "zuul-gateway -> auth-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/configurator/src/main/resources/commun/zuul-gateway.yml",
+            "line": 25,
+            "span": "(13, 37)"
+        },
+        "auth-service -> geocoderLocal-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/configurator/src/main/resources/commun/geocoderLocal-service.yml",
+            "line": 22,
+            "span": "(23, 63)"
+        },
+        "auth-service -> geocoderRemote-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/geocoder-microservices/configurator/src/main/resources/commun/geocoderRemote-service.yml",
+            "line": 19,
+            "span": "(23, 63)"
+        },
+        "hystrix-dashboard -> hystrix-dashboard": {
+            "file": "hystrix-dashboard/src/main/java/com/alphalog/geocoder/monitoring/HystrixDashboardApplication.java",
+            "line": "8",
+            "span": "(56, 75)"
+        }
+    }
+}

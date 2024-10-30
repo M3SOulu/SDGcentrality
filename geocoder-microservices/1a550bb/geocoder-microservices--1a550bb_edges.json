@@ -1,0 +1,76 @@
+{
+    "edges": [
+        {
+            "sender": "configurator",
+            "receiver": "geocoderlocal-service"
+        },
+        {
+            "sender": "configurator",
+            "receiver": "zuul-gateway"
+        },
+        {
+            "sender": "configurator",
+            "receiver": "geocoderremote-service"
+        },
+        {
+            "sender": "configurator",
+            "receiver": "hystrix-dashboard"
+        },
+        {
+            "sender": "configurator",
+            "receiver": "eureka-discovery"
+        },
+        {
+            "sender": "configurator",
+            "receiver": "auth-service"
+        },
+        {
+            "sender": "mongodb",
+            "receiver": "geocoderremote-service"
+        },
+        {
+            "sender": "mongodb",
+            "receiver": "auth-service"
+        },
+        {
+            "sender": "geocoderremote-service",
+            "receiver": "eureka-discovery"
+        },
+        {
+            "sender": "eureka-discovery",
+            "receiver": "zuul-gateway"
+        },
+        {
+            "sender": "auth-service",
+            "receiver": "eureka-discovery"
+        },
+        {
+            "sender": "geocoderlocal-service",
+            "receiver": "eureka-discovery"
+        },
+        {
+            "sender": "user",
+            "receiver": "zuul-gateway"
+        },
+        {
+            "sender": "zuul-gateway",
+            "receiver": "user"
+        },
+        {
+            "sender": "zuul-gateway",
+            "receiver": "auth-service"
+        },
+        {
+            "sender": "auth-service",
+            "receiver": "geocoderlocal-service"
+        },
+        {
+            "sender": "auth-service",
+            "receiver": "geocoderremote-service"
+        },
+        {
+            "sender": "hystrix-dashboard",
+            "receiver": "hystrix-dashboard"
+        }
+    ]
+}

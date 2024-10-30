@@ -1,0 +1,14 @@
+Microservices:
+
+{'name': 'movie-info-service', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Endpoints', "['/movies', '/movies/{movieId}']"), ('Port', 8082)]}
+{'name': 'ratings-data-service', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': [('Endpoints', "['/ratingsdata', '/ratingsdata/user/{userId}', '/ratingsdata/movies/{movieId}']"), ('Port', 8083)]}
+{'name': 'movie-catalog-service', 'type': 'service', 'stereotype_instances': ['internal', 'load_balancer'], 'tagged_values': [('Port', 8081), ('Endpoints', "['/catalog', '/catalog/{userId}']"), ('Load Balancer', 'Spring Cloud')]}
+{'name': 'discovery-server', 'type': 'service', 'stereotype_instances': ['infrastructural', 'service_discovery'], 'tagged_values': [('Port', 8761), ('Service Discovery', 'Eureka')]}
+
+Information Flows:
+
+{'sender': 'movie-catalog-service', 'receiver': 'ratings-data-service', 'stereotype_instances': ['restful_http', 'load_balanced_link'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'movie-catalog-service', 'receiver': 'movie-info-service', 'stereotype_instances': ['restful_http', 'load_balanced_link'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'movie-catalog-service', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http', 'load_balanced_link'], 'tagged_values': [('Load Balancer', 'Spring Cloud')]}
+{'sender': 'ratings-data-service', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}
+{'sender': 'movie-info-service', 'receiver': 'discovery-server', 'stereotype_instances': ['restful_http']}

@@ -1,0 +1,32 @@
+{
+    "edges": [
+        {
+            "sender": "discovery-service",
+            "receiver": "gateway-service"
+        },
+        {
+            "sender": "account-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "customer-service",
+            "receiver": "discovery-service"
+        },
+        {
+            "sender": "user",
+            "receiver": "gateway-service"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "user"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "account-service"
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "customer-service"
+        }
+    ]
+}

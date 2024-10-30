@@ -1,0 +1,44 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        web_portal [label = "{Service: web_portal | --monitoring_server--\n--infrastructural--\n--monitoring_dashboard--\n'Monitoring Dashboard': 'Hystrix'\n'Monitoring Server': 'Turbine'\n}" shape = Mrecord];
+        user_webservice [label = "{Service: user_webservice | --authentication_scope_all_requests--\n--resource_server--\n--internal--\n'Endpoints': ['/'\n}" shape = Mrecord];
+        api_gateway [label = "{Service: api_gateway | --gateway--\n--load_balancer--\n--csrf_disabled--\n--infrastructural--\n'Gateway': 'Zuul'\n'Load Balancer': 'Ribbon'\n}" shape = Mrecord];
+        comments_webservice [label = "{Service: comments_webservice | --resource_server--\n--internal--\n'Endpoints': ['/comments'\n}" shape = Mrecord];
+        auth_server [label = "{Service: auth_server | --authorization_server--\n--resource_server--\n--infrastructural--\n'Endpoints': ['/me']\n'Authorization Server': 'Spring OAuth2'\n}" shape = Mrecord];
+        webservice_registry [label = "{Service: webservice_registry | --infrastructural--\n--service_discovery--\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        task_webservice [label = "{Service: task_webservice | --circuit_breaker--\n--authentication_scope_all_requests--\n--internal--\n--load_balancer--\n--resource_server--\n'Load Balancer': 'Spring Cloud'\n'Endpoints': ['/usertask/\n}" shape = Mrecord];
+        configserver [label = "{Service: configserver | --configuration_server--\n--infrastructural--\n'Port': 8888\n'Configuration Server': 'Spring Cloud Config'\n}" shape = Mrecord];
+        zipkin_tracing [label = "{Service: zipkin_tracing | --internal--\n}" shape = Mrecord];
+        zipkinserver [label = "{Service: zipkinserver | --internal--\n'Port': 9411\n}" shape = Mrecord];
+        mysqldb [label = "{Service: mysqldb | --internal--\n'Port': 3306\n}" shape = Mrecord];
+        github_repository [label = "{External Entity: github_repository | --github_repository--\n--entrypoint--\n'URL': 'https\n}"];
+        user [label = "{External Entity: user | --user_stereotype--\n--entrypoint--\n--exitpoint--\n}"];
+        github_repository -> configserver [label = " --restful_http--\n"]
+        configserver -> web_portal [label = " --restful_http--\n"]
+        configserver -> user_webservice [label = " --restful_http--\n"]
+        configserver -> api_gateway [label = " --restful_http--\n"]
+        configserver -> comments_webservice [label = " --restful_http--\n"]
+        configserver -> auth_server [label = " --restful_http--\n"]
+        configserver -> webservice_registry [label = " --restful_http--\n"]
+        configserver -> task_webservice [label = " --restful_http--\n"]
+        configserver -> zipkin_tracing [label = " --restful_http--\n"]
+        task_webservice -> comments_webservice [label = " --circuit_breaker_link--\n--restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        webservice_registry -> api_gateway [label = " --restful_http--\n"]
+        user_webservice -> webservice_registry [label = " --restful_http--\n"]
+        auth_server -> webservice_registry [label = " --restful_http--\n"]
+        comments_webservice -> webservice_registry [label = " --restful_http--\n"]
+        web_portal -> webservice_registry [label = " --restful_http--\n"]
+        task_webservice -> webservice_registry [label = " --circuit_breaker_link--\n--restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        user -> api_gateway [label = " --restful_http--\n"]
+        api_gateway -> user [label = " --restful_http--\n"]
+
+}
+@enduml

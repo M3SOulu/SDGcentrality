@@ -1,0 +1,45 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        appointment_service [label = "{Service: appointment_service | --local_logging--\n--internal--\n'Port': 8201\n'Logging Technology': 'Lombok'\n'Endpoints': ['/api/appointment/cancel/patient'\n}" shape = Mrecord];
+        approval_service [label = "{Service: approval_service | --internal--\n'Endpoints': ['/api/approval/doctor'\n'Port': 8301\n}" shape = Mrecord];
+        hospital_manage_service [label = "{Service: hospital_manage_service | --local_logging--\n--internal--\n'Logging Technology': 'Lombok'\n'Port': 8401\n'Endpoints': ['/\n}" shape = Mrecord];
+        gateway_service [label = "{Service: gateway_service | --infrastructural--\n--gateway--\n'Gateway': 'Spring Cloud Gateway'\n'Port': 9201\n}" shape = Mrecord];
+        common [label = "{Service: common | --internal--\n}" shape = Mrecord];
+        message_service [label = "{Service: message_service | --internal--\n'Endpoints': ['/api/message'\n'Port': 8302\n}" shape = Mrecord];
+        personal_info_service [label = "{Service: personal_info_service | --internal--\n'Port': 8101\n'Endpoints': ['/api/doctor/loadByUsername'\n}" shape = Mrecord];
+        auth_service [label = "{Service: auth_service | --infrastructural--\n--authorization_server--\n'Port': 9101\n'Endpoints': ['/rsa/publicKey'\n'Authorization Server': 'Spring OAuth2'\n}" shape = Mrecord];
+        database_appointment_service [label = "{External Entity: database_appointment_service | --external_database--\n--entrypoint--\n--plaintext_credentials--\n--exitpoint--\n'Password': 'Tj_12345'\n'Username': 'root'\n'Database': 'MySQL'\n}"];
+        database_approval_service [label = "{External Entity: database_approval_service | --external_database--\n--entrypoint--\n--plaintext_credentials--\n--exitpoint--\n'Password': 'Tj_12345'\n'Username': 'root'\n'Database': 'MySQL'\n}"];
+        database_hospital_manage_service [label = "{External Entity: database_hospital_manage_service | --external_database--\n--entrypoint--\n--plaintext_credentials--\n--exitpoint--\n'Password': 'Tongji123'\n'Username': 'root'\n'Database': 'MySQL'\n}"];
+        database_message_service [label = "{External Entity: database_message_service | --external_database--\n--entrypoint--\n--plaintext_credentials--\n--exitpoint--\n'Password': 'Tongji123'\n'Username': 'root'\n'Database': 'MySQL'\n}"];
+        database_personal_info_service [label = "{External Entity: database_personal_info_service | --external_database--\n--entrypoint--\n--plaintext_credentials--\n--exitpoint--\n'Password': 'Tj_12345'\n'Username': 'root'\n'Database': 'MySQL'\n}"];
+        user [label = "{External Entity: user | --entrypoint--\n--user_stereotype--\n--exitpoint--\n}"];
+        mail_server [label = "{External Entity: mail_server | --entrypoint--\n--plaintext_credentials--\n--exitpoint--\n--mail_server--\n'Host': 'smtp.qq.com'\n'Password': 'xdzqpspcejvjbgbe'\n'Username': '1910727674@qq.com'\n}"];
+        appointment_service -> personal_info_service [label = " --feign_connection--\n--restful_http--\n--load_balanced_link--\n'Load Balancer': 'Ribbon'\n"]
+        appointment_service -> hospital_manage_service [label = " --feign_connection--\n--restful_http--\n--load_balanced_link--\n'Load Balancer': 'Ribbon'\n"]
+        approval_service -> appointment_service [label = " --feign_connection--\n--restful_http--\n--load_balanced_link--\n'Load Balancer': 'Ribbon'\n"]
+        approval_service -> message_service [label = " --feign_connection--\n--restful_http--\n--load_balanced_link--\n'Load Balancer': 'Ribbon'\n"]
+        message_service -> personal_info_service [label = " --feign_connection--\n--restful_http--\n--load_balanced_link--\n'Load Balancer': 'Ribbon'\n"]
+        database_appointment_service -> appointment_service [label = " --jdbc--\n--plaintext_credentials_link--\n'Password': 'Tj_12345'\n 'Username': 'root'\n"]
+        database_approval_service -> approval_service [label = " --jdbc--\n--plaintext_credentials_link--\n'Password': 'Tj_12345'\n 'Username': 'root'\n"]
+        database_hospital_manage_service -> hospital_manage_service [label = " --jdbc--\n--plaintext_credentials_link--\n'Password': 'Tongji123'\n 'Username': 'root'\n"]
+        database_message_service -> message_service [label = " --jdbc--\n--plaintext_credentials_link--\n'Password': 'Tongji123'\n 'Username': 'root'\n"]
+        database_personal_info_service -> personal_info_service [label = " --jdbc--\n--plaintext_credentials_link--\n'Password': 'Tj_12345'\n 'Username': 'root'\n"]
+        user -> gateway_service [label = " --restful_http--\n"]
+        gateway_service -> user [label = " --restful_http--\n"]
+        gateway_service -> message_service [label = " --restful_http--\n"]
+        gateway_service -> approval_service [label = " --restful_http--\n"]
+        gateway_service -> hospital_manage_service [label = " --restful_http--\n"]
+        gateway_service -> appointment_service [label = " --restful_http--\n"]
+        message_service -> mail_server [label = " --plaintext_credentials_link--\n--restful_http--\n"]
+
+}
+@enduml

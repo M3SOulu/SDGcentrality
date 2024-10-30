@@ -1,0 +1,40 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        zuul [label = "{Service: zuul | --infrastructural--\n--load_balancer--\n--gateway--\n'Port': 8081\n'Gateway': 'Zuul'\n'Load Balancer': 'Ribbon'\n}" shape = Mrecord];
+        eureka [label = "{Service: eureka | --service_discovery--\n--monitoring_dashboard--\n--infrastructural--\n'Port': 8761\n'Monitoring Dashboard': 'Hystrix'\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        user_proxy [label = "{Service: user_proxy | --circuit_breaker--\n--internal--\n--load_balancer--\n'Circuit Breaker': 'Hystrix'\n'Port': 8088\n'Endpoints': ['/users/\n}" shape = Mrecord];
+        product_service [label = "{Service: product_service | --internal--\n'Port': 8092\n'Endpoints': ['/'\n}" shape = Mrecord];
+        category_service [label = "{Service: category_service | --internal--\n'Endpoints': ['/categories/byname/\n}" shape = Mrecord];
+        security_service [label = "{Service: security_service | --internal--\n'Endpoints': ['/'\n}" shape = Mrecord];
+        product_proxy [label = "{Service: product_proxy | --resource_server--\n--circuit_breaker--\n--internal--\n--load_balancer--\n'Circuit Breaker': 'Hystrix'\n'Endpoints': ['/'\n}" shape = Mrecord];
+        auth_server [label = "{Service: auth_server | --authorization_server--\n--resource_server--\n--in_memory_authentication--\n--infrastructural--\n'Port': 8010\n'Authorization Server': 'Spring OAuth2'\n'Username': 'user'\n'Password': 'password'\n'Endpoints': ['/user']\n}" shape = Mrecord];
+        database_product_service [label = "{External Entity: database_product_service | --entrypoint--\n--external_database--\n--plaintext_credentials--\n--exitpoint--\n'Port': 3306\n'Username': 'admin'\n'Password': ''\n'Database': 'MySQL'\n}"];
+        database_category_service [label = "{External Entity: database_category_service | --entrypoint--\n--external_database--\n--plaintext_credentials--\n--exitpoint--\n'Port': 3306\n'Username': 'admin'\n'Password': ''\n'Database': 'MySQL'\n}"];
+        database_security_service [label = "{External Entity: database_security_service | --entrypoint--\n--external_database--\n--plaintext_credentials--\n--exitpoint--\n'Port': 3306\n'Username': 'admin'\n'Password': ''\n'Database': 'MySQL'\n}"];
+        user [label = "{External Entity: user | --user_stereotype--\n--entrypoint--\n--exitpoint--\n}"];
+        user_proxy -> security_service [label = " --restful_http--\n--circuit_breaker_link--\n"]
+        product_proxy -> category_service [label = " --restful_http--\n--circuit_breaker_link--\n"]
+        product_proxy -> product_service [label = " --restful_http--\n--circuit_breaker_link--\n"]
+        database_product_service -> product_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': ''\n 'Username': 'admin'\n"]
+        database_category_service -> category_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': ''\n 'Username': 'admin'\n"]
+        database_security_service -> security_service [label = " --plaintext_credentials_link--\n--jdbc--\n'Password': ''\n 'Username': 'admin'\n"]
+        category_service -> eureka [label = " --restful_http--\n"]
+        security_service -> eureka [label = " --restful_http--\n"]
+        user_proxy -> eureka [label = " --restful_http--\n--circuit_breaker_link--\n"]
+        auth_server -> eureka [label = " --restful_http--\n"]
+        product_service -> eureka [label = " --restful_http--\n"]
+        product_proxy -> eureka [label = " --restful_http--\n--circuit_breaker_link--\n"]
+        eureka -> zuul [label = " --restful_http--\n"]
+        user -> zuul [label = " --restful_http--\n"]
+        zuul -> user [label = " --restful_http--\n"]
+
+}
+@enduml

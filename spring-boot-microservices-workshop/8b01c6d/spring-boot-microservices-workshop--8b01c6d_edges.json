@@ -1,0 +1,24 @@
+{
+    "edges": [
+        {
+            "sender": "movie-catalog-service",
+            "receiver": "ratings-data-service"
+        },
+        {
+            "sender": "movie-catalog-service",
+            "receiver": "movie-info-service"
+        },
+        {
+            "sender": "movie-catalog-service",
+            "receiver": "discovery-server"
+        },
+        {
+            "sender": "ratings-data-service",
+            "receiver": "discovery-server"
+        },
+        {
+            "sender": "movie-info-service",
+            "receiver": "discovery-server"
+        }
+    ]
+}

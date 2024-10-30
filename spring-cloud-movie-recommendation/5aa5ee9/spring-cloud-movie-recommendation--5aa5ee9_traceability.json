@@ -1,0 +1,210 @@
+{
+    "nodes": {
+        "recommendation-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/recommendation-service/src/main/resources/bootstrap.properties",
+            "line": 1,
+            "span": "(24:46)",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "config-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/config-service/src/main/resources/application.properties",
+            "line": 2,
+            "span": "(25:39)",
+            "sub_items": {
+                "Port": {
+                    "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/config-service/src/main/resources/application.properties",
+                    "line": 0,
+                    "span": "(0, 11)"
+                },
+                "configuration_server": {
+                    "file": "config-service/src/main/java/com/example/ConfigServiceApplication.java",
+                    "line": "7",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype configuration_server",
+                    "line": "heuristic, based on stereotype configuration_server",
+                    "span": "heuristic, based on stereotype configuration_server"
+                }
+            }
+        },
+        "recommendation-client": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/recommendation-client/src/main/resources/bootstrap.properties",
+            "line": 1,
+            "span": "(24:45)",
+            "sub_items": {
+                "gateway": {
+                    "file": "recommendation-client/src/main/java/com/example/RecommendationClientApplication.java",
+                    "line": "12",
+                    "span": "(0, 16)"
+                },
+                "monitoring_dashboard": {
+                    "file": "recommendation-client/src/main/java/com/example/RecommendationClientApplication.java",
+                    "line": "16",
+                    "span": "(0, 23)"
+                },
+                "load_balancer": {
+                    "file": "recommendation-client/src/main/java/com/example/Config.java",
+                    "line": "20",
+                    "span": "(4, 17)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype monitoring_dashboard",
+                    "line": "heuristic, based on stereotype monitoring_dashboard",
+                    "span": "heuristic, based on stereotype monitoring_dashboard"
+                }
+            }
+        },
+        "eureka-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/eureka-service/src/main/resources/bootstrap.properties",
+            "line": 1,
+            "span": "(24:38)",
+            "sub_items": {
+                "service_discovery": {
+                    "file": "eureka-service/src/main/java/com/example/EurekaServiceApplication.java",
+                    "line": "7",
+                    "span": "(0, 19)"
+                },
+                "infrastructural": {
+                    "file": "heuristic, based on stereotype service_discovery",
+                    "line": "heuristic, based on stereotype service_discovery",
+                    "span": "heuristic, based on stereotype service_discovery"
+                }
+            }
+        },
+        "user-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/user-service/src/main/resources/bootstrap.properties",
+            "line": 1,
+            "span": "(24:36)",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "movie-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/movie-service/src/main/resources/bootstrap.properties",
+            "line": 1,
+            "span": "(24:37)",
+            "sub_items": {
+                "internal": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        },
+        "github-repository": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/config-service/src/main/resources/application.properties",
+            "line": 2,
+            "span": "(0, 34)"
+        },
+        "user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit",
+            "sub_items": {
+                "user_stereotype": {
+                    "file": "implicit",
+                    "line": "implicit",
+                    "span": "implicit"
+                },
+                "entrypoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                },
+                "exitpoint": {
+                    "file": "heuristic",
+                    "line": "heuristic",
+                    "span": "heuristic"
+                }
+            }
+        }
+    },
+    "edges": {
+        "github-repository -> config-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/config-service/src/main/resources/application.properties",
+            "line": 2,
+            "span": "(0, 34)"
+        },
+        "config-service -> recommendation-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/recommendation-service/src/main/resources/bootstrap.properties",
+            "line": 1,
+            "span": "(0, 23)"
+        },
+        "config-service -> recommendation-client": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/recommendation-client/src/main/resources/bootstrap.properties",
+            "line": 1,
+            "span": "(0, 23)"
+        },
+        "config-service -> eureka-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/eureka-service/src/main/resources/bootstrap.properties",
+            "line": 1,
+            "span": "(0, 23)"
+        },
+        "config-service -> user-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/user-service/src/main/resources/bootstrap.properties",
+            "line": 1,
+            "span": "(0, 23)"
+        },
+        "config-service -> movie-service": {
+            "file": "/Users/abakhtin22/Documents/TempNet/code2DFD/analysed_repositories/spring-cloud-movie-recommendation/movie-service/src/main/resources/bootstrap.properties",
+            "line": 1,
+            "span": "(0, 23)"
+        },
+        "recommendation-client -> user-service": {
+            "file": "recommendation-client/src/main/java/com/example/service/RecommendationClientService.java",
+            "line": "42",
+            "span": "(47, 68)"
+        },
+        "recommendation-client -> recommendation-service": {
+            "file": "recommendation-client/src/main/java/com/example/service/RecommendationClientService.java",
+            "line": "42",
+            "span": "(47, 68)"
+        },
+        "recommendation-client -> movie-service": {
+            "file": "recommendation-client/src/main/java/com/example/service/RecommendationClientService.java",
+            "line": "42",
+            "span": "(47, 68)"
+        },
+        "user-service -> eureka-service": {
+            "file": "user-service/src/main/java/com/example/UserServiceApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "recommendation-service -> eureka-service": {
+            "file": "recommendation-service/src/main/java/com/example/RecommendationServiceApplication.java",
+            "line": "5",
+            "span": "(50, 71)"
+        },
+        "movie-service -> eureka-service": {
+            "file": "movie-service/src/main/java/com/example/MovieServiceApplication.java",
+            "line": "5",
+            "span": "(48, 66)"
+        },
+        "eureka-service -> recommendation-client": {
+            "file": "recommendation-client/src/main/java/com/example/RecommendationClientApplication.java",
+            "line": "6",
+            "span": "(50, 71)"
+        },
+        "user -> recommendation-client": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        },
+        "recommendation-client -> user": {
+            "file": "implicit",
+            "line": "implicit",
+            "span": "implicit"
+        }
+    }
+}

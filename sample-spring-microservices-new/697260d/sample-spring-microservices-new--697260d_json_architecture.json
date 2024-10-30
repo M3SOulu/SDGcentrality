@@ -1,0 +1,255 @@
+{
+    "microservices": [
+        {
+            "name": "employee-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "config-service",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "configuration_server"
+            ],
+            "tagged_values": [
+                [
+                    "Configuration Server",
+                    "Spring Cloud Config"
+                ],
+                [
+                    "Port",
+                    8088
+                ]
+            ]
+        },
+        {
+            "name": "department-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "gateway-service",
+            "type": "service",
+            "stereotype_instances": [
+                "gateway",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Gateway",
+                    "Spring Cloud Gateway"
+                ]
+            ]
+        },
+        {
+            "name": "organization-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": []
+        },
+        {
+            "name": "discovery-service",
+            "type": "service",
+            "stereotype_instances": [
+                "service_discovery",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Service Discovery",
+                    "Eureka"
+                ]
+            ]
+        },
+        {
+            "name": "zipkin",
+            "type": "service",
+            "stereotype_instances": [
+                "tracing_server",
+                "infrastructural"
+            ],
+            "tagged_values": [
+                [
+                    "Tracing Server",
+                    "Zipkin"
+                ],
+                [
+                    "Port",
+                    9411
+                ]
+            ]
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "config-service",
+            "receiver": "employee-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-service",
+            "receiver": "department-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-service",
+            "receiver": "gateway-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-service",
+            "receiver": "organization-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "config-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "employee-service",
+            "receiver": "zipkin",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "department-service",
+            "receiver": "employee-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "department-service",
+            "receiver": "zipkin",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "organization-service",
+            "receiver": "employee-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "organization-service",
+            "receiver": "department-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "organization-service",
+            "receiver": "zipkin",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "employee-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "department-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "organization-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "zipkin",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "employee-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "discovery-service",
+            "receiver": "gateway-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "organization-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "department-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "gateway-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "user",
+            "type": "external_component",
+            "stereotype_instances": [
+                "user_stereotype",
+                "entrypoint",
+                "exitpoint"
+            ]
+        }
+    ]
+}

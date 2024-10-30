@@ -1,0 +1,142 @@
+{
+    "microservices": [
+        {
+            "name": "account-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "local_logging"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    2222
+                ]
+            ]
+        },
+        {
+            "name": "gateway-service",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "gateway"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8090
+                ],
+                [
+                    "Gateway",
+                    "Spring Cloud Gateway"
+                ]
+            ]
+        },
+        {
+            "name": "customer-service",
+            "type": "service",
+            "stereotype_instances": [
+                "internal",
+                "load_balancer",
+                "local_logging"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    3333
+                ],
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ]
+            ]
+        },
+        {
+            "name": "discovery-service",
+            "type": "service",
+            "stereotype_instances": [
+                "infrastructural",
+                "service_discovery"
+            ],
+            "tagged_values": [
+                [
+                    "Port",
+                    8761
+                ],
+                [
+                    "Service Discovery",
+                    "Eureka"
+                ]
+            ]
+        }
+    ],
+    "information_flows": [
+        {
+            "sender": "discovery-service",
+            "receiver": "gateway-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "account-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "customer-service",
+            "receiver": "discovery-service",
+            "stereotype_instances": [
+                "load_balanced_link",
+                "restful_http"
+            ],
+            "tagged_values": [
+                [
+                    "Load Balancer",
+                    "Spring Cloud"
+                ]
+            ]
+        },
+        {
+            "sender": "user",
+            "receiver": "gateway-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "user",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "account-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        },
+        {
+            "sender": "gateway-service",
+            "receiver": "customer-service",
+            "stereotype_instances": [
+                "restful_http"
+            ]
+        }
+    ],
+    "external_components": [
+        {
+            "name": "user",
+            "type": "external_component",
+            "stereotype_instances": [
+                "exitpoint",
+                "entrypoint",
+                "user_stereotype"
+            ]
+        }
+    ]
+}

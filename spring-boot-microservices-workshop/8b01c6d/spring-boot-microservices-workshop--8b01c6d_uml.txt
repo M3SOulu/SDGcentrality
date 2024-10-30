@@ -1,0 +1,22 @@
+
+@startuml
+skinparam monochrome true
+skinparam ClassBackgroundColor White
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+
+digraph dfd2{
+    node[shape=record]
+        movie_info_service [label = "{Service: movie_info_service | --internal--\n'Endpoints': ['/movies'\n}" shape = Mrecord];
+        ratings_data_service [label = "{Service: ratings_data_service | --internal--\n'Endpoints': ['/ratingsdata'\n}" shape = Mrecord];
+        movie_catalog_service [label = "{Service: movie_catalog_service | --internal--\n--load_balancer--\n'Port': 8081\n'Endpoints': ['/catalog'\n}" shape = Mrecord];
+        discovery_server [label = "{Service: discovery_server | --infrastructural--\n--service_discovery--\n'Port': 8761\n'Service Discovery': 'Eureka'\n}" shape = Mrecord];
+        movie_catalog_service -> ratings_data_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        movie_catalog_service -> movie_info_service [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        movie_catalog_service -> discovery_server [label = " --restful_http--\n--load_balanced_link--\n'Load Balancer': 'Spring Cloud'\n"]
+        ratings_data_service -> discovery_server [label = " --restful_http--\n"]
+        movie_info_service -> discovery_server [label = " --restful_http--\n"]
+
+}
+@enduml

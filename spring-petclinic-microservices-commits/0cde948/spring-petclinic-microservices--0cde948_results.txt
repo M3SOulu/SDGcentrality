@@ -1,4 +1,0 @@
-Microservices:
-
-{'name': 'spring-petclinic-client', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': []}
-{'name': 'petclinic', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': []}

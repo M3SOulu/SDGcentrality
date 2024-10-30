@@ -1,3 +1,0 @@
-Microservices:
-
-{'name': 'samples', 'type': 'service', 'stereotype_instances': ['internal'], 'tagged_values': []}

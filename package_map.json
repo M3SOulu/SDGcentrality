@@ -10,4 +10,9 @@
   "se.callista.microservises.support.monitordashboard": "monitor-dashboard",
   "se.callista.microservises.support.oauth": "auth-server",
   "se.callista.microservises.support.turbine": "turbine-server",
+  "com.microservice.appointmentservice": "appointment-service",
+  "com.microservice.approvalservice": "approval-service",
+  "com.microservice.hospitalmanageservice": "hospital-manage-service",
+  "com.microservice.messageservice": "message-service",
+  "com.microservice.personalinfoservice": "personal-info-service"
 }

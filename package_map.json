@@ -1,0 +1,13 @@
+{
+  "org.dicegroup.basilisk.benchmarkService": "benchmark-service",
+  "org.dicegroup.basilisk.repositoryService": "repository-service",
+  "se.callista.microservices.composite": "composite-service",
+  "se.callista.microservices.core.product": "product-service",
+  "se.callista.microservices.core.recommendation": "recommendation-service",
+  "se.callista.microservices.core.review": "review-service",
+  "se.callista.microservises.support.discovery": "discovery-server",
+  "se.callista.microservises.support.edge": "edge-server",
+  "se.callista.microservises.support.monitordashboard": "monitor-dashboard",
+  "se.callista.microservises.support.oauth": "auth-server",
+  "se.callista.microservises.support.turbine": "turbine-server",
+}

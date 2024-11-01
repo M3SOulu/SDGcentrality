@@ -14,5 +14,11 @@
   "com.microservice.approvalservice": "approval-service",
   "com.microservice.hospitalmanageservice": "hospital-manage-service",
   "com.microservice.messageservice": "message-service",
-  "com.microservice.personalinfoservice": "personal-info-service"
+  "com.microservice.personalinfoservice": "personal-info-service",
+  "com.alphalog.geocoder.configurator": "configurator",
+  "com.alphalog.geocoder.discovery": "eureka-discovery",
+  "com.alphalog.geocoder.gateway": "zuul-gateway",
+  "com.alphalog.geocoder.loal": "geocoderlocal-service",
+  "com.alphalog.geocoder.local": "geocoderlocal-service",
+  "com.alphalog.geocoder.monitoring": "hystrix-dashboard"
 }

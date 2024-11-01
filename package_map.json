@@ -20,5 +20,7 @@
   "com.alphalog.geocoder.gateway": "zuul-gateway",
   "com.alphalog.geocoder.loal": "geocoderlocal-service",
   "com.alphalog.geocoder.local": "geocoderlocal-service",
-  "com.alphalog.geocoder.monitoring": "hystrix-dashboard"
+  "com.alphalog.geocoder.monitoring": "hystrix-dashboard",
+  "com.apssouza.discovery": "eureka-server",
+  "com.apssouza.mailservice": "mailer"
 }

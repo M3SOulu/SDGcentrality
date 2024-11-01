@@ -39,7 +39,8 @@ for folder in os.listdir(os.getcwd()):
                 # Remove DB only connected to own service
                 nodes = set(G.nodes)
                 for node in nodes:
-                    if ("mongo" in node or "database" in node) and G.in_degree(node)+G.out_degree(node) == 1:
+                    if (("mongo" in node.casefold() or "mysql" in node.casefold() or "database" in node.casefold())
+                            and G.in_degree(node)+G.out_degree(node) == 1):
                         G.remove_node(node)
                 g = nx.node_link_data(G, edges="edges", nodes="nodes", name="name", source="sender", target="receiver")
                 del g["multigraph"]

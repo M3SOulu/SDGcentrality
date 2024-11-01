@@ -20,6 +20,6 @@ for folder in os.listdir(os.getcwd()):
         df = df[cols]
         all_dfs.append(df)
 
-all_dfs = sorted(all_dfs, key=lambda d: d.iloc[0,0])
+all_dfs = sorted(all_dfs, key=lambda d: d["MS_system"].iloc[0].casefold())
 df = pd.concat(all_dfs)
 df.to_csv("understand_metrics.csv", index=False, header=True)

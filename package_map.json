@@ -57,5 +57,9 @@
   "club.newtech.qbike.intention": "intention",
   "club.newtech.qbike.order": "order",
   "club.newtech.qbike.trip": "qbike-trip",
-  "club.newtech.qbike.uc": "qbike-uc"
+  "club.newtech.qbike.uc": "qbike-uc",
+  "pl.piomin.service.customer": "customer-service",
+  "pl.piomin.services.account": "account-service",
+  "pl.piomin.services.discovery": "discovery-service",
+  "pl.piomin.services.gateway": "gateway-service"
 }

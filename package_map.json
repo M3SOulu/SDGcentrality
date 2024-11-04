@@ -26,5 +26,11 @@
   "io.github.jhipster.registry": "jhipster-registry",
   "org.jhipster.blog": "blog",
   "org.jhipster.store": "store",
-  "de.hska.iwi.oauth": "auth-server"
+  "de.hska.iwi.oauth": "auth-server",
+  "com.ewolff.microservice.catalog": "catalog",
+  "com.ewolff.microservice.customer": "customer",
+  "com.ewolff.microservice.order": "order",
+  "com.ewolff.microservice.eurekaserver": "eureka",
+  "com.ewolff.microservice.turbine": "turbine",
+  "com.ewolff.microservice.zuulserver": "zuul"
 }

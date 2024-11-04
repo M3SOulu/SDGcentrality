@@ -52,5 +52,10 @@
   "com.piggymetrics.notification": "notification-service",
   "com.piggymetrics.registry": "registry",
   "com.piggymetrics.statistics": "statistics-service",
-  "com.piggymetrics.turbine": "turbine-stream-service"
+  "com.piggymetrics.turbine": "turbine-stream-service",
+  "club.newtech.qbick.gateway": "microservice-api-gateway",
+  "club.newtech.qbike.intention": "intention",
+  "club.newtech.qbike.order": "order",
+  "club.newtech.qbike.trip": "qbike-trip",
+  "club.newtech.qbike.uc": "qbike-uc"
 }

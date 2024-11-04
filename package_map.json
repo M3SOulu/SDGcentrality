@@ -65,5 +65,13 @@
   "pl.piomin.services.config": "config-service",
   "pl.piomin.services.department": "department-service",
   "pl.piomin.services.employee": "employee-service",
-  "pl.piomin.services.organization": "organization-service"
+  "pl.piomin.services.organization": "organization-service",
+  "com.cms.scaffold.config": "scaffold-config-server",
+  "com.cms.scaffold.eureka": "scaffold-eureka",
+  "com.cms.scaffold.micro.sys": "scaffold-business-sys-service",
+  "com.cms.scaffold.route.openapi": "scaffold-route-openapi",
+  "com.cms.scaffold.route.app": "scaffold-route-app",
+  "com.cms.scaffold.route.operate": "scaffold-route-operate",
+  "com.cms.scaffold.txlcn": "scaffold-txmanager",
+  "com.cms.scaffold.zuul": "scaffold-zuul"
 }

@@ -43,5 +43,14 @@
   "com.anilallewar.microservices.registry": "webservice-registry",
   "com.anilallewar.microservices.task": "task-webservice",
   "com.anilallewar.microservices.tracing": "zipkin-tracing",
-  "com.anilallewar.microservices.user": "user-webservice"
+  "com.anilallewar.microservices.user": "user-webservice",
+  "com.piggymetrics.account": "account-service",
+  "com.piggymetrics.auth": "auth-service",
+  "com.piggymetrics.config": "config",
+  "com.piggymetrics.gateway": "gateway",
+  "com.piggymetrics.monitoring": "monitoring",
+  "com.piggymetrics.notification": "notification-service",
+  "com.piggymetrics.registry": "registry",
+  "com.piggymetrics.statistics": "statistics-service",
+  "com.piggymetrics.turbine": "turbine-stream-service"
 }

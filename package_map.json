@@ -99,5 +99,10 @@
   "com.github.joffryferrater.foodtrayservice": "foodtray-service",
   "com.github.joffryferrater.itemservice": "item-service",
   "com.github.joffryferrater.priceservice": "price-service",
-  "com.github.joffryferrater.storeservice": "store-service"
+  "com.github.joffryferrater.storeservice": "store-service",
+  "org.flowant.authserver": "authserver",
+  "org.flowant.gateway": "gateway",
+  "org.flowant.website.registry": "registry",
+  "org.flowant.website.gateway": "gateway",
+  "org.flowant.website": "backend"
 }

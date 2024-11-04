@@ -73,5 +73,13 @@
   "com.cms.scaffold.route.app": "scaffold-route-app",
   "com.cms.scaffold.route.operate": "scaffold-route-operate",
   "com.cms.scaffold.txlcn": "scaffold-txmanager",
-  "com.cms.scaffold.zuul": "scaffold-zuul"
+  "com.cms.scaffold.zuul": "scaffold-zuul",
+  "com.rohitghatol.microservice.auth": "auth-server",
+  "com.rohitghatol.microservice.gateway": "api-gateway",
+  "com.rohitghatol.microservices.comments": "comments-webservice",
+  "com.rohitghatol.microservices.config": "configserver",
+  "com.rohitghatol.microservices.portal": "web-portal",
+  "com.rohitghatol.microservices.registry": "webservice-registry",
+  "com.rohitghatol.microservices.task": "task-webservice",
+  "com.rohitghatol.microservices.user": "user-webservice"
 }

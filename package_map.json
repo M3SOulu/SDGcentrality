@@ -32,5 +32,7 @@
   "com.ewolff.microservice.order": "order",
   "com.ewolff.microservice.eurekaserver": "eureka",
   "com.ewolff.microservice.turbine": "turbine",
-  "com.ewolff.microservice.zuulserver": "zuul"
+  "com.ewolff.microservice.zuulserver": "zuul",
+  "com.ewolff.microservice.invoicing": "invoicing",
+  "com.ewolff.microservice.shipping": "shipping"
 }

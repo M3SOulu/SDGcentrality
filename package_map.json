@@ -61,5 +61,9 @@
   "pl.piomin.service.customer": "customer-service",
   "pl.piomin.services.account": "account-service",
   "pl.piomin.services.discovery": "discovery-service",
-  "pl.piomin.services.gateway": "gateway-service"
+  "pl.piomin.services.gateway": "gateway-service",
+  "pl.piomin.services.config": "config-service",
+  "pl.piomin.services.department": "department-service",
+  "pl.piomin.services.employee": "employee-service",
+  "pl.piomin.services.organization": "organization-service"
 }

@@ -81,5 +81,9 @@
   "com.rohitghatol.microservices.portal": "web-portal",
   "com.rohitghatol.microservices.registry": "webservice-registry",
   "com.rohitghatol.microservices.task": "task-webservice",
-  "com.rohitghatol.microservices.user": "user-webservice"
+  "com.rohitghatol.microservices.user": "user-webservice",
+  "io.javabrains.discoveryserver": "discovery-server",
+  "io.javabrains.moviecatalogservice": "movie-catalog-service",
+  "io.javabrains.movieinfoservice": "movie-service",
+  "io.javabrains.ratingsdataservice": "ratings-data-service"
 }

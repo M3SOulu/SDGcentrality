@@ -90,5 +90,14 @@
   "com.lcwd.gateway": "api-gateway",
   "com.lcwd.rating": "rating-service",
   "com.lcwd.service": "serviceregistry",
-  "com.lcwd.user": "user-service"
+  "com.lcwd.user": "user-service",
+  "com.github.joffry.ferrater.configservice": "config-service",
+  "com.github.joffry.ferrater.discoveryservice": "discovery-service",
+  "com.github.joffryferrater.accountservice": "account-service",
+  "com.github.joffryferrater.configservice": "config-service",
+  "com.github.joffryferrater.customerservice": "customer-service",
+  "com.github.joffryferrater.foodtrayservice": "foodtray-service",
+  "com.github.joffryferrater.itemservice": "item-service",
+  "com.github.joffryferrater.priceservice": "price-service",
+  "com.github.joffryferrater.storeservice": "store-service"
 }

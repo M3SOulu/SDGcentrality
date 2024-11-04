@@ -85,5 +85,10 @@
   "io.javabrains.discoveryserver": "discovery-server",
   "io.javabrains.moviecatalogservice": "movie-catalog-service",
   "io.javabrains.movieinfoservice": "movie-service",
-  "io.javabrains.ratingsdataservice": "ratings-data-service"
+  "io.javabrains.ratingsdataservice": "ratings-data-service",
+  "com.lcwd.Hotel": "hotel-service",
+  "com.lcwd.gateway": "api-gateway",
+  "com.lcwd.rating": "rating-service",
+  "com.lcwd.service": "serviceregistry",
+  "com.lcwd.user": "user-service"
 }

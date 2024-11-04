@@ -34,5 +34,14 @@
   "com.ewolff.microservice.turbine": "turbine",
   "com.ewolff.microservice.zuulserver": "zuul",
   "com.ewolff.microservice.invoicing": "invoicing",
-  "com.ewolff.microservice.shipping": "shipping"
+  "com.ewolff.microservice.shipping": "shipping",
+  "com.anilallewar.microservices.auth": "auth-server",
+  "com.anilallewar.microservices.comments": "comments-webservice",
+  "com.anilallewar.microservices.config": "configserver",
+  "com.anilallewar.microservices.gateway": "api-gateway",
+  "com.anilallewar.microservices.portal": "web-portal",
+  "com.anilallewar.microservices.registry": "webservice-registry",
+  "com.anilallewar.microservices.task": "task-webservice",
+  "com.anilallewar.microservices.tracing": "zipkin-tracing",
+  "com.anilallewar.microservices.user": "user-webservice"
 }

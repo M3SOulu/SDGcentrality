@@ -138,6 +138,8 @@ total = total.merge(jasome_package, on=["MS_system", "Microservice"], how="left"
 total = total.merge(jasome_class, on=["MS_system", "Microservice"], how="left")
 total = total.merge(jasome_method, on=["MS_system", "Microservice"], how="left")
 total = total.merge(centrality, on=["MS_system", "Microservice"], how="left")
+total = total.drop(columns=["ClassAvgNMIR", "ClassAvgPF", "ClassMaxPF"])
+total = total.dropna()
 
 # Reorder columns to start with system, service
 cols = ["MS_system", "Microservice"] + [col for col in total.columns

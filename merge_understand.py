@@ -15,6 +15,7 @@ for folder in os.listdir(os.getcwd()):
         metrics_path = os.path.join(folder, file)
         df = pd.read_csv(metrics_path)
         df = df[df["Kind"] == "Package"]
+        df = df.drop(columns=["Kind"])
         df["MS_system"] = file[:-4]
         cols = ["MS_system"] + [col for col in df.columns if col != "MS_system"]
         df = df[cols]

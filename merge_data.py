@@ -21,8 +21,6 @@ understand = pd.read_csv("metrics_understand.csv")
 
 # Remove NaN columns
 understand = understand.dropna(axis=1, how='all')
-# Remove Kind column (always Package)
-understand = understand.drop(columns=["Kind"])
 
 # Map Package to Microservice
 understand = understand.rename(columns={"Name": "Package"})

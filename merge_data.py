@@ -70,6 +70,32 @@ jasome_class["Microservice"] = jasome_class["Package"].map(map_packages)
 jasome_class = jasome_class.dropna(subset=["Microservice"])
 jasome_class = jasome_class.drop(columns=["Package"])
 
+# Drop unnecessary metrics
+jasome_class = jasome_class.drop(columns=["A", "I", "DMS", "CCRC", "PkgRCI",
+                                "ClRCi", "ClTCi", "TLOC"], errors="ignore")
+
+SUM_COLS = ["Aa", "Ad", "Ait", "Ao", "Av", "HMd", "HMi", "Ma", "Md", "Mi", "Mit", "Mo", "NF", "NM", "NMA",
+            "NMI", "NOA", "NOCh", "NOD", "NOL", "NOPa", "NORM", "NPF", "NPM", "NSF", "NSM", "PMd",
+            "PMi", "RTLOC", "SIX", "WMC", "LCOM*", "PF"]
+AVG_COLS = ["Aa", "Ad", "Ait", "Ao", "Av", "DIT", "HMd", "HMi", "MHF", "MIF", "Ma", "Md", "Mi", "Mit", "Mo",
+            "NF", "NM", "NMA", "NMI", "NOA", "NOCh", "NOD", "NOL", "NOPa", "NORM", "NPF", "NPM",
+            "NSF", "NSM", "PMR", "PMd", "PMi", "SIX", "AHF", "AIF", "LCOM*", "NMIR", "PF"]
+MAX_COLS = ["DIT", "WMC", "LCOM*", "PF"]
+ms_systems = jasome_class.groupby("Microservice").first()[["MS_system"]]  # Retain the MS_system column
+sum_metrics = jasome_class.groupby('Microservice')[SUM_COLS].sum()
+sum_metrics.columns = sum_metrics.columns.map(lambda x: f"ClassSum{x}")
+sum_metrics = sum_metrics.reset_index()
+jasome_class_merged = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the MS_system column
+avg_metrics = jasome_class.groupby('Microservice')[AVG_COLS].mean()
+avg_metrics.columns = avg_metrics.columns.map(lambda x: f"ClassAvg{x}")
+avg_metrics = avg_metrics.reset_index()
+jasome_class_merged = jasome_class_merged.merge(avg_metrics, on='Microservice')
+max_metrics = jasome_class.groupby('Microservice')[MAX_COLS].max()
+max_metrics.columns = max_metrics.columns.map(lambda x: f"ClassMax{x}")
+max_metrics = max_metrics.reset_index()
+jasome_class_merged = jasome_class_merged.merge(max_metrics, on='Microservice')
+jasome_class = jasome_class_merged
+
 
 # --- Jasome Method
 jasome_method = pd.read_csv("metrics_jasome_method.csv")
@@ -89,6 +115,7 @@ centrality = centrality.rename(columns={"node": "Microservice"})
 
 total = understand
 total = total.merge(jasome_package, on=["MS_system", "Microservice"], how="left")
+total = total.merge(jasome_class, on=["MS_system", "Microservice"], how="left")
 total = total.merge(centrality, on=["MS_system", "Microservice"], how="left")
 
 # Reorder columns to start with system, service

@@ -32,8 +32,9 @@ for folder in os.listdir(os.getcwd()):
                 del g["multigraph"]
                 del g["directed"]
                 del g["graph"]
-                name = file.split("_json_")[0]
-                with open(f"{name}_gwcc.json", 'w') as f:
+                name = file.split("--")[0]
+                os.makedirs(f"{name}-graph", exist_ok=True)
+                with open(f"{name}-graph/{name}_gwcc.json", 'w') as f:
                     json.dump(g, f, indent=4, sort_keys=True)
 
                 # Remove DB only connected to own service
@@ -46,5 +47,5 @@ for folder in os.listdir(os.getcwd()):
                 del g["multigraph"]
                 del g["directed"]
                 del g["graph"]
-                with open(f"{name}_gwcc_noDB.json", 'w') as f:
+                with open(f"{name}-graph/{name}_gwcc_noDB.json", 'w') as f:
                     json.dump(g, f, indent=4, sort_keys=True)

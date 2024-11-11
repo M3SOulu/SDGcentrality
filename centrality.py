@@ -5,11 +5,11 @@ import networkx as nx
 import pandas as pd
 
 all_dfs = []
-for file in os.listdir(os.getcwd()):
-    if not file.endswith("noDB.json"):
+for folder in os.listdir(os.getcwd()):
+    if not folder.endswith("graph"):
         continue
-    name = file.split('--')[0]
-    with open(file, 'r') as f:
+    name = folder.replace("-graph", "")
+    with open(os.path.join(folder, f"{name}_gwcc_noDB.json"), 'r') as f:
         g = json.load(f)
     G = nx.node_link_graph(g, edges="edges", nodes="nodes", name="name", source="sender", target="receiver",
                            multigraph=False, directed=True)  # Load the graph

@@ -47,8 +47,8 @@ for folder in os.listdir(os.getcwd()):
                                                     DATA_METHOD.append(data_point)
 
 df = pd.DataFrame(DATA_PACKAGE)
-df.to_csv("jasome_metrics_package.csv", index=False, header=True)
+df.to_csv("metrics_jasome_package.csv", index=False, header=True)
 df = pd.DataFrame(DATA_CLASS)
-df.to_csv("jasome_metrics_class.csv", index=False, header=True)
+df.to_csv("metrics_jasome_class.csv", index=False, header=True)
 df = pd.DataFrame(DATA_METHOD)
-df.to_csv("jasome_metrics_method.csv", index=False, header=True)
+df.to_csv("metrics_jasome_method.csv", index=False, header=True)

@@ -8,7 +8,7 @@ with open("package_map.json", 'r') as f:
 packages = set(package_map.keys())
 services = set(package_map.values())
 
-understand = pd.read_csv("understand_metrics.csv")
+understand = pd.read_csv("metrics_understand.csv")
 
 # Remove NaN columns
 understand = understand.dropna(axis=1, how='all')
@@ -31,7 +31,7 @@ understand = understand.dropna(subset=["microservice"])
 # Remove Kind column (always Package)
 understand = understand.drop(columns=["Kind"])
 
-centrality = pd.read_csv("centrality_metrics.csv")
+centrality = pd.read_csv("metrics_centrality.csv")
 centrality = centrality.rename(columns={"node": "microservice"})
 
 # Merged Understand metrics and Centrality scores on correct System and Microservice pair
@@ -44,7 +44,7 @@ merged = merged[cols]
 
 # Save
 merged = merged.sort_values(by=["MS_system", "microservice", "package"])
-merged.to_csv("microservice_metrics.csv", index=False, header=True)
+merged.to_csv("metrics_microservice.csv", index=False, header=True)
 
 # Remove Average and Ratio columns
 avg_cols = [col for col in understand.columns if "Avg" in col or "Ratio" in col]
@@ -68,4 +68,4 @@ collapsed_merged = collapsed_merged[cols]
 
 # Save
 collapsed_merged = collapsed_merged.sort_values(by=["MS_system", "microservice"])
-collapsed_merged.to_csv("microservice_metrics_collapsed.csv", index=False, header=True)
+collapsed_merged.to_csv("metrics_microservice_collapsed.csv", index=False, header=True)

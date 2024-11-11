@@ -20,7 +20,8 @@ for folder in os.listdir(os.getcwd()):
                     package_name = package.attrib["name"]
                     for child_p in package:
                         if child_p.tag == "Metrics":
-                            data_point = {"Package": package_name}
+                            data_point = {"MS_system": folder.replace("-jasome", ""),
+                                          "Package": package_name}
                             for metric in child_p:
                                 data_point[metric.attrib["name"]] = float(metric.attrib["value"].replace(",", "."))
                             DATA_PACKAGE.append(data_point)
@@ -29,7 +30,8 @@ for folder in os.listdir(os.getcwd()):
                                 class_name = clas.attrib["name"]
                                 for child_c in clas:
                                     if child_c.tag == "Metrics":
-                                        data_point = {"Package": package_name,
+                                        data_point = {"MS_system": folder.replace("-jasome", ""),
+                                                      "Package": package_name,
                                                       "Class": class_name}
                                         for metric in child_c:
                                             data_point[metric.attrib["name"]] = float(metric.attrib["value"].replace(",", "."))
@@ -39,7 +41,8 @@ for folder in os.listdir(os.getcwd()):
                                             method_name = method.attrib["name"]
                                             for child_m in method:
                                                 if child_m.tag == "Metrics":
-                                                    data_point = {"Package": package_name,
+                                                    data_point = {"MS_system": folder.replace("-jasome", ""),
+                                                                  "Package": package_name,
                                                                   "Class": class_name,
                                                                   "Method": method_name}
                                                     for metric in child_m:

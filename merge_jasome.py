@@ -3,7 +3,9 @@ import xml.etree.ElementTree as ET
 
 import pandas as pd
 
-DATA = {}
+DATA_PACKAGE = []
+DATA_CLASS = []
+DATA_METHOD = []
 for folder in os.listdir(os.getcwd()):
     if not folder.endswith("jasome"):
         continue
@@ -18,26 +20,35 @@ for folder in os.listdir(os.getcwd()):
                     package_name = package.attrib["name"]
                     for child_p in package:
                         if child_p.tag == "Metrics":
-                            DATA[f"{package_name}"] = {}
+                            data_point = {"Package": package_name}
                             for metric in child_p:
-                                DATA[f"{package_name}"][metric.attrib["name"]] = float(metric.attrib["value"].replace(",","."))
+                                data_point[metric.attrib["name"]] = float(metric.attrib["value"].replace(",", "."))
+                            DATA_PACKAGE.append(data_point)
                         elif child_p.tag == "Classes":
                             for clas in child_p:
                                 class_name = clas.attrib["name"]
                                 for child_c in clas:
                                     if child_c.tag == "Metrics":
-                                        DATA[f"{package_name}.{class_name}"] = {}
+                                        data_point = {"Package": package_name,
+                                                      "Class": class_name}
                                         for metric in child_c:
-                                            DATA[f"{package_name}.{class_name}"][metric.attrib["name"]] = float(metric.attrib["value"].replace(",", "."))
+                                            data_point[metric.attrib["name"]] = float(metric.attrib["value"].replace(",", "."))
+                                        DATA_CLASS.append(data_point)
                                     elif child_c.tag == "Methods":
                                         for method in child_c:
                                             method_name = method.attrib["name"]
                                             for child_m in method:
                                                 if child_m.tag == "Metrics":
-                                                    DATA[f"{package_name}.{class_name}.{method_name}"] = {}
+                                                    data_point = {"Package": package_name,
+                                                                  "Class": class_name,
+                                                                  "Method": method_name}
                                                     for metric in child_m:
-                                                        DATA[f"{package_name}.{class_name}.{method_name}"][metric.attrib["name"]] = float(metric.attrib["value"].replace(",","."))
+                                                        data_point[metric.attrib["name"]] = float(metric.attrib["value"].replace(",", "."))
+                                                    DATA_METHOD.append(data_point)
 
-df = pd.DataFrame.from_dict(DATA, orient="index")
-df = df.reset_index().rename(columns={"index": "source"})
-df.to_csv("jasome_metrics.csv", index=False, header=True)
+df = pd.DataFrame(DATA_PACKAGE)
+df.to_csv("jasome_metrics_package.csv", index=False, header=True)
+df = pd.DataFrame(DATA_CLASS)
+df.to_csv("jasome_metrics_class.csv", index=False, header=True)
+df = pd.DataFrame(DATA_METHOD)
+df.to_csv("jasome_metrics_method.csv", index=False, header=True)

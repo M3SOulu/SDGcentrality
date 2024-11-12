@@ -4,8 +4,6 @@ import os
 import networkx as nx
 
 for folder in os.listdir(os.getcwd()):
-    if not os.path.isdir(folder):  # Loop over MS system folders
-        continue
     if not folder.endswith("code2dfd"):
         continue
     for commit in os.listdir(folder):

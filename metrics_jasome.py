@@ -4,12 +4,10 @@ import subprocess
 JASOME_PATH = "/Users/abakhtin22/Documents/jasome-0.6.8-alpha/bin/jasome"
 
 
-def run_understand(project_path, output_dir):
-    """Run SciTools Understand on the given project path and output results to a CSV file."""
+def run_jasome(project_path, output_dir):
     project_name = os.path.basename(project_path)
     print(f"Inspecting {project_name}")
 
-    # Create Understand project
     try:
         print(f"\t Analyzing Project...")
         subprocess.run([JASOME_PATH, project_path, "--output", output_dir], check=True)
@@ -24,7 +22,8 @@ def main(master_folder):
                        and not f.path.endswith("code2dfd")
                        and not f.path.endswith("und")
                        and not f.path.endswith("jasome")
-                       and not f.name in [".idea", ".git"]]
+                       and not f.path.endswith("graph")
+                       and not f.name in [".idea", ".git", "fakedir", ".scannerwork"]]
     analyze_folder = []
     output_files = []
     for project in project_folders:
@@ -36,7 +35,7 @@ def main(master_folder):
     for i, (project, output) in enumerate(zip(analyze_folder, output_files), start=1):
         print(f"Progress: {i}/{len(analyze_folder)}")
         os.makedirs(os.path.dirname(output), exist_ok=True)
-        run_understand(project, output)
+        run_jasome(project, output)
         print("----------- \n")
 
 

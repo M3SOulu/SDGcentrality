@@ -5,8 +5,6 @@ import pandas as pd
 
 all_dfs = []
 for folder in os.listdir(os.getcwd()):
-    if not os.path.isdir(folder):
-        continue
     if not folder.endswith("-und"):
         continue
     for file in os.listdir(folder):

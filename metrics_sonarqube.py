@@ -5,8 +5,7 @@ SONAR_PATH = "/Users/abakhtin22/Documents/sonar-scanner-6.2.1.4610-macosx-x64/bi
 TOKEN = "sqa_bde2972ca3539cda86a01800002351995d20368e"
 
 
-def run_understand(project_path):
-    """Run SciTools Understand on the given project path and output results to a CSV file."""
+def run_sonarqube(project_path):
     project_name = os.path.basename(project_path)
     print(f"Inspecting {project_name}")
 
@@ -31,7 +30,7 @@ def main(master_folder):
                        and not f.name in [".idea", ".git", "fakedir", ".scannerwork"]]
     for i, project in enumerate(project_folders, start=1):
         print(f"Progress: {i}/{len(project_folders)}")
-        run_understand(project)
+        run_sonarqube(project)
         print("----------- \n")
 
 

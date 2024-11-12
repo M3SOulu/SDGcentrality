@@ -42,7 +42,9 @@ def main(master_folder):
     project_folders = [f.path for f in os.scandir(master_folder) if f.is_dir()
                        and not f.path.endswith("code2dfd")
                        and not f.path.endswith("und")
-                       and not f.name in [".idea", ".git"]]
+                       and not f.path.endswith("jasome")
+                       and not f.path.endswith("graph")
+                       and not f.name in [".idea", ".git", "fakedir", ".scannerwork"]]
     output_folders = [f"{f}-und" for f in project_folders]
 
     for i, (project, output) in enumerate(zip(project_folders, output_folders), start=1):

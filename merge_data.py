@@ -124,6 +124,20 @@ jasome_method_merged = jasome_method_merged.merge(max_metrics, on='Microservice'
 jasome_method = jasome_method_merged
 
 
+# --- SonarQube
+sonarqube = pd.read_csv("metrics_sonarqube.csv")
+sonarqube["Microservice"] = sonarqube["Package"].map(map_packages)
+
+# Remove rows that are not mapped to a service
+sonarqube = sonarqube.dropna(subset=["Microservice"])
+sonarqube = sonarqube.drop(columns=["Package"])
+
+count_cols = [col for col in sonarqube.columns if col not in ["MS_system", "Microservice"]]
+ms_systems = sonarqube.groupby("Microservice").first()[["MS_system"]]  # Retain the MS_system column
+sum_metrics = sonarqube.groupby('Microservice')[count_cols].sum().reset_index()
+sonarqube = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the MS_system column
+
+
 # --- Centrality
 centrality = pd.read_csv("metrics_centrality.csv")
 centrality = centrality.rename(columns={"node": "Microservice"})
@@ -135,6 +149,7 @@ total = understand
 total = total.merge(jasome_package, on=["MS_system", "Microservice"], how="left")
 total = total.merge(jasome_class, on=["MS_system", "Microservice"], how="left")
 total = total.merge(jasome_method, on=["MS_system", "Microservice"], how="left")
+total = total.merge(sonarqube, on=["MS_system", "Microservice"], how="left")
 total = total.merge(centrality, on=["MS_system", "Microservice"], how="left")
 total = total.drop(columns=["ClassAvgNMIR", "ClassAvgPF", "ClassMaxPF"])
 total = total.dropna()

@@ -55,7 +55,7 @@ jasome_package = jasome_package.drop(columns=["A", "I", "DMS", "CCRC", "PkgRCI"]
 count_cols = [col for col in jasome_package.columns if col not in ["MS_system", "Microservice"]]
 ms_systems = jasome_package.groupby("Microservice").first()[["MS_system"]]  # Retain the MS_system column
 sum_metrics = jasome_package.groupby('Microservice')[count_cols].sum()
-sum_metrics.columns = sum_metrics.columns.map(lambda x: f"PackageSum{x}")
+sum_metrics.columns = sum_metrics.columns.map(lambda x: f"PackageSum_{x}")
 sum_metrics = sum_metrics.reset_index()
 jasome_package = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the MS_system column
 
@@ -80,7 +80,7 @@ AVG_COLS = ["Aa", "Ad", "Ait", "Ao", "Av", "DIT", "HMd", "HMi", "MHF", "MIF", "M
 MAX_COLS = ["DIT", "WMC", "LCOM*", "PF"]
 ms_systems = jasome_class.groupby("Microservice").first()[["MS_system"]]  # Retain the MS_system column
 sum_metrics = jasome_class.groupby('Microservice')[SUM_COLS].sum()
-sum_metrics.columns = sum_metrics.columns.map(lambda x: f"ClassSum{x}")
+sum_metrics.columns = sum_metrics.columns.map(lambda x: f"ClassSum_{x}")
 sum_metrics = sum_metrics.reset_index()
 jasome_class_merged = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the MS_system column
 avg_metrics = jasome_class.groupby('Microservice')[AVG_COLS].mean()
@@ -110,7 +110,7 @@ AVG_COLS = ["Di", "Fin", "Fout", "IOVars", "MCLC", "NBD", "Si", "VG"]
 MAX_COLS = ["Di", "Fin", "Fout", "IOVars", "MCLC", "NBD", "Si", "VG"]
 ms_systems = jasome_method.groupby("Microservice").first()[["MS_system"]]  # Retain the MS_system column
 sum_metrics = jasome_method.groupby('Microservice')[SUM_COLS].sum()
-sum_metrics.columns = sum_metrics.columns.map(lambda x: f"MethodSum{x}")
+sum_metrics.columns = sum_metrics.columns.map(lambda x: f"MethodSum_{x}")
 sum_metrics = sum_metrics.reset_index()
 jasome_method_merged = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the MS_system column
 avg_metrics = jasome_method.groupby('Microservice')[AVG_COLS].mean()

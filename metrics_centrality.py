@@ -21,7 +21,7 @@ for folder in os.listdir(os.getcwd()):
     graph_df["in_degree_centrality"] = graph_df["node"].map(nx.in_degree_centrality(G))
     graph_df["out_degree_centrality"] = graph_df["node"].map(nx.out_degree_centrality(G))
     graph_df["eigenvector_centrality"] = graph_df["node"].map(nx.eigenvector_centrality(G, max_iter=1000))
-    graph_df["closeness_centralty"] = graph_df["node"].map(nx.closeness_centrality(G))
+    graph_df["closeness_centrality"] = graph_df["node"].map(nx.closeness_centrality(G))
     graph_df["betweenness_centrality"] = graph_df["node"].map(nx.betweenness_centrality(G))
     graph_df["load_centrality"] = graph_df["node"].map(nx.load_centrality(G))
     graph_df["harmonic_centrality"] = graph_df["node"].map(nx.harmonic_centrality(G))

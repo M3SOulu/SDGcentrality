@@ -5,7 +5,8 @@ import pandas as pd
 
 USER_TOKEN = "squ_716bdb66681839207f45848b2884859ab60540d5"
 
-METRICS = ["reliability_remediation_effort",
+METRICS = ["sqale_rating",
+           "reliability_remediation_effort",
            "security_remediation_effort",
            "software_quality_maintainability_remediation_effort",
            "software_quality_reliability_remediation_effort",
@@ -14,7 +15,15 @@ METRICS = ["reliability_remediation_effort",
            "code_smells",
            "cognitive_complexity",
            "violations",
-           "effort_to_reach_software_quality_maintainability_rating_a"]
+           "effort_to_reach_software_quality_maintainability_rating_a",
+           "duplicated_blocks",
+           "reliability_rating",
+           "security_hotspots",
+           "security_rating",
+           "critical_violations",
+           "info_violations",
+           "major_violations",
+           "minor_violations"]
 
 COMPONENTS = {}
 for folder in os.listdir(os.getcwd()):

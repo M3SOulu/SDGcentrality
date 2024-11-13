@@ -84,11 +84,11 @@ sum_metrics.columns = sum_metrics.columns.map(lambda x: f"ClassSum{x}")
 sum_metrics = sum_metrics.reset_index()
 jasome_class_merged = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the MS_system column
 avg_metrics = jasome_class.groupby('Microservice')[AVG_COLS].mean()
-avg_metrics.columns = avg_metrics.columns.map(lambda x: f"ClassAvg{x}")
+avg_metrics.columns = avg_metrics.columns.map(lambda x: f"ClassAvg_{x}")
 avg_metrics = avg_metrics.reset_index()
 jasome_class_merged = jasome_class_merged.merge(avg_metrics, on='Microservice')
 max_metrics = jasome_class.groupby('Microservice')[MAX_COLS].max()
-max_metrics.columns = max_metrics.columns.map(lambda x: f"ClassMax{x}")
+max_metrics.columns = max_metrics.columns.map(lambda x: f"ClassMax_{x}")
 max_metrics = max_metrics.reset_index()
 jasome_class_merged = jasome_class_merged.merge(max_metrics, on='Microservice')
 jasome_class = jasome_class_merged
@@ -114,11 +114,11 @@ sum_metrics.columns = sum_metrics.columns.map(lambda x: f"MethodSum{x}")
 sum_metrics = sum_metrics.reset_index()
 jasome_method_merged = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the MS_system column
 avg_metrics = jasome_method.groupby('Microservice')[AVG_COLS].mean()
-avg_metrics.columns = avg_metrics.columns.map(lambda x: f"MethodAvg{x}")
+avg_metrics.columns = avg_metrics.columns.map(lambda x: f"MethodAvg_{x}")
 avg_metrics = avg_metrics.reset_index()
 jasome_method_merged = jasome_method_merged.merge(avg_metrics, on='Microservice')
 max_metrics = jasome_method.groupby('Microservice')[MAX_COLS].max()
-max_metrics.columns = max_metrics.columns.map(lambda x: f"MethodMax{x}")
+max_metrics.columns = max_metrics.columns.map(lambda x: f"MethodMax_{x}")
 max_metrics = max_metrics.reset_index()
 jasome_method_merged = jasome_method_merged.merge(max_metrics, on='Microservice')
 jasome_method = jasome_method_merged
@@ -132,10 +132,19 @@ sonarqube["Microservice"] = sonarqube["Package"].map(map_packages)
 sonarqube = sonarqube.dropna(subset=["Microservice"])
 sonarqube = sonarqube.drop(columns=["Package"])
 
-count_cols = [col for col in sonarqube.columns if col not in ["MS_system", "Microservice"]]
+rating_cols = ["sqale_rating", "reliability_rating", "security_rating"]
+count_cols = [col for col in sonarqube.columns if col not in ["MS_system", "Microservice"] + rating_cols]
 ms_systems = sonarqube.groupby("Microservice").first()[["MS_system"]]  # Retain the MS_system column
 sum_metrics = sonarqube.groupby('Microservice')[count_cols].sum().reset_index()
-sonarqube = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the MS_system column
+avg_metrics = sonarqube.groupby('Microservice')[rating_cols].mean()
+avg_metrics.columns = avg_metrics.columns.map(lambda x: f"Avg_{x}")
+avg_metrics = avg_metrics.reset_index()
+max_metrics = sonarqube.groupby('Microservice')[rating_cols].max()
+max_metrics.columns = max_metrics.columns.map(lambda x: f"Max_{x}")
+max_metrics = max_metrics.reset_index()
+sonarqube_merged = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the MS_system column
+sonarqube_merged = sonarqube_merged.merge(avg_metrics, on="Microservice")
+sonarqube = sonarqube_merged.merge(max_metrics, on="Microservice")
 
 
 # --- Centrality
@@ -151,7 +160,7 @@ total = total.merge(jasome_class, on=["MS_system", "Microservice"], how="left")
 total = total.merge(jasome_method, on=["MS_system", "Microservice"], how="left")
 total = total.merge(sonarqube, on=["MS_system", "Microservice"], how="left")
 total = total.merge(centrality, on=["MS_system", "Microservice"], how="left")
-total = total.drop(columns=["ClassAvgNMIR", "ClassAvgPF", "ClassMaxPF"])
+total = total.drop(columns=["ClassAvg_NMIR", "ClassAvg_PF", "ClassMax_PF"])
 total = total.dropna()
 
 # Reorder columns to start with system, service

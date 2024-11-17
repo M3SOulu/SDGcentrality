@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+
+  cassandra:
+    image: cassandra:latest
+    ports:
+      - "9042"
+      - "7000"
+    volumes:
+      - ~/site/cassandra_data:/var/lib/cassandra
+    networks:
+      - maven-build
+
+  maven:
+    build:
+      context: .
+    env_file:
+      - ~/site/env_file.txt
+    volumes:
+      - .:/usr/share/website
+      - ~/.m2:/root/.m2
+    networks:
+      - maven-build
+
+networks:
+  maven-build:

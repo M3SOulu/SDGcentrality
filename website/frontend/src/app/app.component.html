@@ -1,0 +1,39 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+  <app-modals></app-modals>
+
+  <app-sidebar></app-sidebar>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <div id="content">
+
+      <app-topbar></app-topbar>
+
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+
+    <footer class="sticky-footer">
+        <div class="text-center">
+          <span>Copyright &copy; Your Website 2019</span>
+        </div>
+    </footer>
+
+  </div>
+  <!-- End of Content Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top" href="#wrapper">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Dark overlay element for sidebar action -->
+  <div class="overlay"></div>
+
+</div>
+<!-- End of Page Wrapper -->

@@ -1,0 +1,84 @@
+version: "3.7"
+
+services:
+
+  cassandra:
+    image: cassandra:latest
+    ports:
+      - "9042"
+      - "7000"
+    volumes:
+      - ~/site/cassandra_data:/var/lib/cassandra
+    networks:
+      - website
+
+  registry:
+    image: flowant/registry:0.0.1
+    build:
+      context: ./registry
+    ports:
+      - "8761"
+    env_file:
+      - ~/site/env_file.txt
+    networks:
+      website:
+        aliases:
+         - registry.flowant.org
+
+  auth:
+    image: flowant/authserver:0.0.1
+    build:
+      context: ./authserver
+    ports:
+      - "80"
+    env_file:
+      - ~/site/env_file.txt
+    networks:
+      website:
+        aliases:
+         - auth.flowant.org
+
+  backend:
+    image: flowant/backend:0.0.1
+    build:
+      context: ./backend
+    ports:
+      - "80"
+    env_file:
+      - ~/site/env_file.txt
+    volumes:
+      - ~/site/storage:/usr/share/website/backend/storage
+    networks:
+      website:
+        aliases:
+         - backend.flowant.org
+
+  gateway:
+    image: flowant/gateway:0.0.1
+    build:
+      context: ./gateway
+    ports:
+      - "8443:443"
+    env_file:
+      - ~/site/env_file.txt
+    networks:
+      website:
+        aliases:
+         - gateway.flowant.org
+
+  frontend:
+    image: flowant/frontend:0.0.1
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ~/site/keystore:/etc/keystore
+    networks:
+      website:
+        aliases:
+         - www.flowant.org
+
+networks:
+  website:

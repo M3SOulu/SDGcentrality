@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: prod
+  data:
+    cassandra:
+      keyspace-name: website
+      schema-action: CREATE_IF_NOT_EXISTS
+      contactPoints: cassandra
+      port: 9042
+
+website:
+  identity: f1b8dba2-44a4-11e9-944f-99e89c6a8c79
+  maxSubContentItems: 5
+  maxSubReviewItems: 5
+  maxSubReplyItems: 5
+  ttlNotifications: 2592000000 # 86400 * 30 * 1000, 30 days in milliseconds
+  cassandra:
+    cqlCreateKeySpace: "CREATE KEYSPACE IF NOT EXISTS %s WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };"
+
+---
+spring:
+  profiles: prod
+
+logging:
+  config: classpath:log4j2-spring-prod.xml
+
+---
+spring:
+  profiles: test
+
+logging:
+  config: classpath:log4j2-spring-test.xml
+

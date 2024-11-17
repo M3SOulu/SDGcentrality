@@ -1,0 +1,34 @@
+@import "src/styles.scss";
+
+.reputation {
+  @extend .container;
+  @extend .p-0;
+  @extend .row;
+  @extend .no-gutters;
+  width: 100%;
+}
+
+.rating-star-half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: gold;
+}
+
+.btn-rating-number {
+  @extend .btn;
+  @extend .btn-light;
+  @extend .py-0;
+}
+
+.btn-like {
+  @extend .btn;
+  @extend .btn-outline-primary;
+  @extend .btn-sm;
+  @extend .border-0;
+}
+
+.uniform {
+  @extend .col;
+  @extend .align-self-center;
+}

@@ -1,0 +1,19 @@
+server:
+  port: 8081
+      
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /routes
+    healthCheckUrlPath: /health    
+   
+zuul:
+  ignoredServices: '*'
+  routes:
+    user-proxy: /user-api/**
+    product-proxy: /product-api/**
+    auth-server:
+      path: /auth/**
+      stripPrefix: false
+  ConnectTimeout: 30000  
+  ReadTimeout: 30000

@@ -1,0 +1,40 @@
+server:
+  port: 8201
+
+spring:
+  application:
+    name: appointment-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.116.162.133:8848
+        username: nacos
+        password: microservice
+        ip: 127.0.0.1
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-cn-36z3pj7vj000eyfo.rwlb.rds.aliyuncs.com:3306/order?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: Tj_12345
+  redis:
+    host: 118.178.253.118
+    port: 6379
+    password: microservice
+  rabbitmq:
+    host: 118.178.253.118
+    port: 5672
+    username: rabbitmq
+    password: microservice
+    virtualHost: /
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+

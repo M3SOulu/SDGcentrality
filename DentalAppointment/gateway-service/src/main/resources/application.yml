@@ -1,0 +1,85 @@
+server:
+  port: 9201
+
+spring:
+#  main:
+#    web-application-type: reactive
+#    allow-bean-definition-overriding: true
+  application:
+    name: gateway-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.115.205.56:8848
+        username: nacos
+        password: microservice
+        ip: 121.43.108.102
+    sentinel:
+      transport:
+        dashboard: 8.130.167.87:8090
+        clientIp: 8.130.167.87
+        port: 8719
+    gateway:
+      routes:
+        - id: patient-info
+          uri: lb://personal-info-service
+          predicates:
+            - Path=/patient-info/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/api/patient
+
+        - id: doctor-info
+          uri: lb://personal-info-service
+          predicates:
+            - Path=/doctor-info/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/api/doctor
+
+        - id: admin-info
+          uri: lb://admin-info-service
+          predicates:
+            - Path=/admin-info/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/api/admin
+
+        - id: appointment-service
+          uri: lb://appointment-service
+          predicates:
+            - Path=/appointment/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/api/appointment
+
+        - id: approval-service
+          uri: lb://approval-service
+          predicates:
+            - Path=/approval/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/api/approval
+
+        - id: message-service
+          uri: lb://message-service
+          predicates:
+            - Path=/message/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/api/message
+
+        - id: hospital-manage-service
+          uri: lb://hospital-manage-service
+          predicates:
+            - Path=/hospital-manage/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/api/hospital
+
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:9101/rsa/publicKey' #配置RSA的公钥访问地址

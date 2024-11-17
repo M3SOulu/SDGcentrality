@@ -1,0 +1,9 @@
+@import "src/styles.scss";
+
+.noti {
+  @extend .m-1;
+}
+
+ngb-alert {
+  @extend .m-0;
+}

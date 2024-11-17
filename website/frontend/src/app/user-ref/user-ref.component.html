@@ -1,0 +1,15 @@
+<div *ngIf="userRefId && userRefName" class="btn-group dropright">
+
+  <img class="icon dropdown-toggle" [ngClass]="{ 'disabled' : !canShowMenu() }" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+    src="{{imgPath + userRefId}}" onError="this.src='/assets/img/icon-user-64.png';">
+
+  <div class="dropdown-menu">
+    <a class="dropdown-item" routerLink="/user/profile/{{userRefId}}">Profile</a>
+    <a class="dropdown-item" routerLink="/user/content/{{userRefId}}">Contents</a>
+    <a *ngIf="!hasFollowee()" class="dropdown-item" (click)="postRelation(true)">Follow</a>
+    <a *ngIf="hasFollowee()" class="dropdown-item" (click)="postRelation(false)">Unfollow</a>
+    <a class="dropdown-item" (click)="sendMessage()">Send Message</a>
+  </div><!-- class="btn-group dropright"> -->
+
+</div>
+

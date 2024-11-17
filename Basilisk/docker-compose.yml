@@ -1,0 +1,55 @@
+version: '3.0'
+services:
+  jobs-managing-service:
+    build:
+      context: jobs-managing-service
+      dockerfile: Dockerfile
+    image: jobs-managing-service:latest
+    depends_on:
+      - rabbitmq
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./.data/:/.data/
+    networks:
+      - basilisk
+
+  benchmark-service:
+    build:
+      context: benchmark-service
+      dockerfile: Dockerfile
+    image: benchmark-service:latest
+    depends_on:
+      - rabbitmq
+      - fuseki
+    ports:
+      - "8082:8082"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /data/iguana-configs:/iguana-configs
+      - /data/benchmarks:/benchmarks
+      - /data/datasets:/datasets
+    networks:
+      - basilisk
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - basilisk
+
+  fuseki:
+    image: fuseki
+    command: "--tdb2 --update --loc databases/results /results"
+    ports:
+      - "3030:3030"
+    volumes:
+      - /data/logs/fuseki:/fuseki/logs
+      - /data/databases/fuseki:/fuseki/databases
+    networks:
+      - basilisk
+
+networks:
+  basilisk:

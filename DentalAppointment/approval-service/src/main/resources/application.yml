@@ -1,0 +1,37 @@
+server:
+  port: 8301
+spring:
+  application:
+    name: approval-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.116.162.133:8848
+        username: nacos
+        password: microservice
+        ip: 127.0.0.1
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-cn-36z3pj7vj000eyfo.rwlb.rds.aliyuncs.com:3306/check?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: Tj_12345
+  rabbitmq:
+    host: 118.178.253.118
+    port: 5672
+    username: rabbitmq
+    password: microservice
+    virtualHost: /
+# seata配置
+#seata:
+#  tx-service-group: xzw-approval-group  #这里每个服务都是对应不同的映射名,在配置中心可以看到
+#  registry:
+#    type: nacos
+#    nacos:
+#      server-addr: 47.116.162.133:8848
+#      username: nacos
+#      password: microservice
+#      group: SEATA_GROUP
+#  service:
+#    vgroup-mapping:
+#      #这里也要注意 key为映射名,
+#      xzw-approval-group: default

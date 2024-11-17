@@ -1,0 +1,66 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: backend
+  profiles:
+    active: prod
+  data:
+    cassandra:
+      keyspace-name: website
+      schema-action: CREATE_IF_NOT_EXISTS
+      contactPoints: cassandra
+      port: 9042
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://auth.flowant.org/uaa/.well-known/jwks.json
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://${EUREKA_ID}:${EUREKA_PASSWORD}@registry.flowant.org:8761/eureka
+    healthcheck:
+      enabled: true
+
+website:
+  identity: f1b8dba2-44a4-11e9-944f-99e89c6a8c79
+  maxSubContentItems: 12
+  maxSubReviewItems: 5
+  maxSubReplyItems: 5
+  ttlNotifications: 2592000000 # 86400 * 30 * 1000, 30 days in milliseconds
+  contentContainerIds:
+    recipe: "56a1cd50-3c77-11e9-bf26-d571c84212ed"
+  oauth2Server:
+    address: auth.flowant.org
+    port: 80
+    clientId: ${OAUTH2_CLIENT_ID}
+    clientSecret: ${OAUTH2_CLIENT_PASSWORD}
+  cassandra:
+    cqlCreateKeySpace: "CREATE KEYSPACE IF NOT EXISTS %s WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };"
+  storage:
+    root: storage
+
+---
+spring:
+  profiles: prod
+
+logging:
+  config: classpath:log4j2-spring-prod.xml
+
+---
+spring:
+  profiles: test
+
+logging:
+  config: classpath:log4j2-spring-test.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+

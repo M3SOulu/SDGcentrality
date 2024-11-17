@@ -1,0 +1,40 @@
+**/build/
+**/bin/
+**/logs/
+**/target/
+**/gradle/
+**/.gradle/
+**/.mvn/
+**/storage/
+
+tree
+mvnw
+mvnw.cmd
+.editorconfig
+.attach_pid*
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+**/out/
+
+### NetBeans ###
+**/nbproject/private/
+**/nbbuild/
+**/dist/
+**/nbdist/
+**/.nb-gradle/
+
+### VSCode ###
+**/.vscode/

@@ -1,0 +1,26 @@
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+// used by review, reputation
+.rating-star {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #b0c4de;
+}
+
+// used by review, reputation
+.rating-star-full {
+  color: gold;
+}
+
+.btn-next-page {
+  @extend .btn;
+  @extend .btn-outline-secondary;
+  @extend .btn-block;
+}
+
+.btn-basic {
+  @extend .btn;
+  @extend .btn-outline-secondary;
+  @extend .mx-1;
+}

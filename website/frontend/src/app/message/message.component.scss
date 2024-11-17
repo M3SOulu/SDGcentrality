@@ -1,0 +1,37 @@
+@import "src/styles.scss";
+
+.msg {
+    @extend .card;
+    @extend .m-1;
+    @extend .p-1;
+}
+
+.user-ref {
+    @extend .col-3;
+    @extend .align-self-center;
+    @extend .m-1;
+    @extend .p-0;
+    @extend .card-img;
+}
+
+.msg-body {
+    @extend .col-7;
+    @extend .align-self-center;
+    @extend .card-body;
+    @extend .p-0;
+}
+
+.btn-delete {
+    @extend .col-1;
+    @extend .align-self-center;
+    @extend .btn;
+    @extend .btn-outline-secondary;
+    @extend .btn-sm;
+    @extend .m-0;
+    @extend .p-0;
+}
+
+.msg-text {
+    @extend .card-text;
+    @extend .ml-1;
+}

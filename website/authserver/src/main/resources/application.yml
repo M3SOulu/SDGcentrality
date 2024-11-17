@@ -1,0 +1,104 @@
+server:
+  port: 80
+  servlet:
+    context-path: /uaa
+
+spring:
+  application:
+    name: authserver
+  profiles:
+    active: prod
+  data:
+    cassandra:
+      keyspace-name: website
+      schema-action: CREATE_IF_NOT_EXISTS
+      contactPoints: cassandra
+      port: 9042
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://${EUREKA_ID}:${EUREKA_PASSWORD}@registry.flowant.org:8761/eureka
+    healthcheck:
+      enabled: true
+
+website:
+  cassandra:
+    cqlCreateKeySpace: "CREATE KEYSPACE IF NOT EXISTS %s WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };"
+  oauth2-client:
+    facebook:
+      client:
+        clientId: ${FACEBOOK_CLIENT_ID}
+        clientSecret: ${FACEBOOK_CLIENT_SECRET}
+        accessTokenUri: https://graph.facebook.com/oauth/access_token
+        userAuthorizationUri: https://www.facebook.com/dialog/oauth
+        tokenName: oauth_token
+        authenticationScheme: query
+        clientAuthenticationScheme: form
+      resource:
+        userInfoUri: https://graph.facebook.com/me
+    google:
+      client:
+        clientId: ${GOOGLE_CLIENT_ID}
+        clientSecret: ${GOOGLE_CLIENT_SECRET}
+        accessTokenUri: https://www.googleapis.com/oauth2/v3/token
+        userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+        tokenName: oauth_token
+        authenticationScheme: query
+        clientAuthenticationScheme: form
+        scope: openid email
+      resource:
+        userInfoUri: https://www.googleapis.com/userinfo/v2/me
+
+  oauth2-server:
+    clientId: ${OAUTH2_CLIENT_ID}
+    clientSecret: ${OAUTH2_CLIENT_PASSWORD}
+    authorizedGrantTypes:
+      - password
+      - authorization_code
+      - refresh_token
+      - client_credentials
+    authorities:
+      - U
+    accessTokenValiditySeconds: 3600
+    refreshTokenValiditySeconds: 3600
+    scopes:
+      - message:read
+      - message:write
+    autoApproveScopes:
+      - read
+      - write
+    autoApprove: true
+    registeredRedirectUris:
+      - https://auth.flowant.org/login/oauth2/code/website
+      - https://auth.flowant.org/
+      - https://auth.flowant.org/login/oauth2/code/website
+      - https://auth.flowant.org/
+    resourceIds: oauth2-resource
+    additionalInformation:
+      org: flowant
+  keystore:
+    path: keystore/keystore.jks
+    alias: website_keystore
+    password: ${OAUTH2_KEYSTORE_STOREPASS}
+
+---
+spring:
+  profiles: prod
+
+logging:
+  config: classpath:log4j2-spring-prod.xml
+
+---
+spring:
+  profiles: test
+
+logging:
+  config: classpath:log4j2-spring-test.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

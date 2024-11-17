@@ -1,0 +1,93 @@
+<div class="shadow p-4">
+  <h2 class="text-center mb-3"><b>Sign Up</b></h2>
+
+  <hr class="my-4"/>
+
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fas fa-user"></i>
+          </span>
+        </div>
+        <input type="text" class="form-control" placeholder="Username" formControlName="username"
+            [ngClass]="{'is-invalid': isInvalid(f.username) }">
+        <div *ngIf="isInvalid(f.username)" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username is required. </div>
+          <div *ngIf="f.username.errors.minlength">Username must be at least 6 characters long.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </div>
+        <input type="text" class="form-control" placeholder="Email@email.net" formControlName="email"
+            [ngClass]="{ 'is-invalid': isInvalid(f.email) }">
+        <div *ngIf="isInvalid(f.email)" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required.</div>
+          <div *ngIf="f.email.errors.email">Email must have @ between characters.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fas fa-key"></i>
+          </span>
+        </div>
+        <input type="password" class="form-control" placeholder="Password" formControlName="password"
+            [ngClass]="{ 'is-invalid': isInvalid(f.password) }">
+        <div *ngIf="isInvalid(f.password)" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required.</div>
+          <div *ngIf="f.password.errors.pattern">Password cannot contain {{'{ or }'}} character
+            and must have at least 8 characters with at least one capital letter, at least one
+             lower case letter and at least one number.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fas fa-key"></i>
+          </span>
+        </div>
+        <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirm"
+            [ngClass]="{ 'is-invalid': signUpForm.errors?.notSame }">
+        <div *ngIf="signUpForm.errors?.notSame" class="invalid-feedback">
+          <div *ngIf="signUpForm.errors?.notSame">Password confirmation fails.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="checkbox-inline">
+        <input type="checkbox" formControlName="accept" required>
+            I accept the <a href="/assets/terms-of-use.html" target="_blank" class="text-primary">Terms of Use</a>
+            &amp; <a href="/assets/privacy-policy.html" target="_blank" class="text-primary">Privacy Policy</a>
+        <div *ngIf="isInvalid(f.accept)">
+          <div *ngIf="f.accept.errors.required" class="text-danger">Acceptance is required.</div>
+        </div>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" [disabled]="signUpForm.invalid || pending" class="btn btn-success btn-block">Sign Up</button>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger">The username already exists. Please use a different username</div>
+  </form>
+</div>
+
+<div class="d-flex justify-content-center mt-2">
+  <div class="hint-text">Already have an account? <a routerLink="/signin" class="text-success">Sign in here</a></div>
+</div>

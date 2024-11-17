@@ -1,0 +1,64 @@
+server:
+  port: 443
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: keystore/ssl_certificate.p12
+    key-store-password: ${SSL_KEYSTORE_STOREPASS}
+    key-alias: website_ssl
+
+spring:
+  application:
+    name: gateway
+  profiles:
+    active: prod
+  cloud:
+    gateway:
+      routes:
+      - id: authserver
+        uri: lb://authserver
+        predicates:
+        - Path=/api/oauth/token/**
+        filters:
+        - RewritePath=/api/(?<segment>.*), /uaa/$\{segment}
+
+      - id: backend
+        uri: lb://backend
+        predicates:
+        - Path=/api/**
+        filters:
+        - StripPrefix=1
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://${EUREKA_ID}:${EUREKA_PASSWORD}@registry.flowant.org:8761/eureka
+    healthcheck:
+      enabled: true
+
+website:
+  cors:
+    allowedOrigins:
+    - "https://www.flowant.org"
+    - "https://www.flowant.org:4200"
+
+---
+spring:
+  profiles: prod
+
+logging:
+  config: classpath:log4j2-spring-prod.xml
+
+---
+spring:
+  profiles: test
+
+logging:
+  config: classpath:log4j2-spring-test.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,20 @@
+server:
+  ConnectTimeout: 30000
+  ReadTimeout: 30000
+  port: 8089
+spring:
+  application:
+    name: product-proxy
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8081/auth/user
+      preferTokenInfo: false
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 5
+    metadataMap:
+      instanceId: "${spring.application.name}:${random.value}"

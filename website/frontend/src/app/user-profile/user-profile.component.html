@@ -1,0 +1,83 @@
+<div *ngIf="user">
+
+  <ngb-tabset justify="justified">
+    <ngb-tab title="Basic">
+      <ng-template ngbTabContent>
+        <div class="text-center m-1">
+          <img src="{{userImageUri}}" class="img-thumbnail" onError="this.src='/assets/img/icon-user-128.png';">
+        </div>
+
+        <div *ngIf="isReadonly==false" class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" (change)="onUploadPhoto($event.target.files)">
+            <label class="custom-file-label">Choose file</label>
+          </div>
+          <div class="input-group-append">
+            <button class="btn-basic" type="button" (click)="onDeletePhoto()">Delete</button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Username</span>
+          </div>
+          <input class="input-box-readonly" type="text" [(ngModel)]="user.username">
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Display Name</span>
+          </div>
+          <input [ngClass]="'input-box'+ suffixReadonly()" type="text" [(ngModel)]="user.displayName">
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Firstname</span>
+          </div>
+          <input [ngClass]="'input-box'+ suffixReadonly()" type="text" [(ngModel)]="user.firstname">
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Lastname</span>
+          </div>
+          <input [ngClass]="'input-box'+ suffixReadonly()" type="text" [(ngModel)]="user.lastname">
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Email</span>
+          </div>
+          <input [ngClass]="'input-box'+ suffixReadonly()" type="text" [(ngModel)]="user.email">
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="genderSelector">Gender</label>
+          </div>
+          <select [ngClass]="'select'+ suffixReadonly()" id="genderSelector" [(ngModel)]="user.gender">
+            <option *ngFor="let key of genderKeys" [value]="genders[key]">{{key}}</option>
+          </select>
+        </div>
+        <!-- TODO change password-->
+
+        <div *ngIf="isReadonly==false" class="float-right">
+          <button type="button" (click)="onSave()" class="btn-basic">
+            Save
+          </button>
+        </div>
+
+      </ng-template>
+    </ngb-tab> <!--  title="Basic" -->
+
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>Interest</b> items</ng-template>
+      <ng-template ngbTabContent>
+
+      </ng-template>
+    </ngb-tab>
+
+  </ngb-tabset>
+
+</div><!-- *ngIf="user" -->

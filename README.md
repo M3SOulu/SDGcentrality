@@ -11,6 +11,8 @@ This repository contains the following:
   - A folder `PROJECT-graph` with graphs in `json` format for processing with `NetworkX`
 - Script [process_graph.py](process_graphs.py): processes the `Code2DFD` output into standard graph `json`
 - Script [metrics_centrality.py](metrics_centrality.py): computes centrality scores with `NetworkX`
+- Script [metrics_jasome.py](merge_jasome.py): executes `Jasome` tool and saves raw data
+- Script [merge_jasome.py](merge_jasome.py): merge the raw `Jasome` data into `csv` files
 
 ## Setup
 Install the following Python packages: `networkx`, `pandas`, `requests`.
@@ -45,3 +47,21 @@ The script [metrics_centrality.py](metrics_centrality.py) loads the `PROJECT-gwc
 - Subgraph centrality
 
 The centrality metrics for each system and service are saved into [metrics_centrality.csv](metrics_centrality.csv) `csv` file.
+
+## `Jasome` metrics
+
+`Jasome` tool can be downloaded from its GitHub [page](https://github.com/rodhilton/jasome).
+
+### Raw `Jasome` data
+The script [metrics_jasome.py](metrics_jasome.py) executes the `Jasome` tool for each `PROJECT`.
+
+Change the variable `JASOME_PATH` in the script to point to the `Jasome` binary on your system.
+
+For each `PROJECT`, the scripts saves to the folder `PROJECT-jasome` the raw `xml` output from `Jasome` for each `src` folder in the project. 
+
+### Merging `Jasome` metrics
+
+The script [merge_jasome.py](merge_jasome.py) takes the data from all the raw `xml`s into the following `csv` files:
+- [metrics_jasome_package.csv](metrics_jasome_package.csv): metrics calculated for each package
+- [metrics_jasome_class.csv](metrics_jasome_class.csv): metrics calculated for each class
+- [metrics_jasome_method.csv](metrics_jasome_method.csv): metrics calculated for each method

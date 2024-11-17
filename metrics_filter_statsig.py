@@ -13,6 +13,6 @@ size_metrics = (["MS_system", "Microservice"] + centrality_cols
 df_size = df[size_metrics]
 df_size.to_csv("metrics_size.csv", index=False, header=True)
 techdebt_metrics = (["MS_system", "Microservice"] + centrality_cols
-                    + list(df_metrics[df_metrics["type"] == "techdebt"]["metric"]))
+                    + list(df_metrics[df_metrics["type"] == "quality"]["metric"]))
 df_techdebt = df[techdebt_metrics]
-df_techdebt.to_csv("metrics_techdebt.csv", index=False, header=True)
+df_techdebt.to_csv("metrics_quality.csv", index=False, header=True)

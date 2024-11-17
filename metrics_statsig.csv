@@ -75,14 +75,14 @@ CountDeclMethodProtected,size
 CountLineComment,size
 CountLineCodeExe,size
 CountLineCodeDecl,size
-Violations,techdebt
-Code smells,techdebt
-Critical violations,techdebt
-Major violations,techdebt
-Minor violations,techdebt
-Duplicated blocks,techdebt
-Security remediation effort,techdebt
-SQ security remediation effort,techdebt
-SQ maintainability remediation effort,techdebt
-Avg(Security rating),techdebt
-Max(Security rating),techdebt
+Violations,quality
+Code smells,quality
+Critical violations,quality
+Major violations,quality
+Minor violations,quality
+Duplicated blocks,quality
+Security remediation effort,quality
+SQ security remediation effort,quality
+SQ maintainability remediation effort,quality
+Avg(Security rating),quality
+Max(Security rating),quality

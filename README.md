@@ -9,10 +9,15 @@ This repository contains the following:
   - A folder called `PROJECT` with the projects source code at the commit we performed the analysis on
   - A folder `PROJECT-code2dfd` with the raw `Code2DFD` output
   - A folder `PROJECT-graph` with graphs in `json` format for processing with `NetworkX`
-- Script [process_graph.py](process_graphs.py): processes the `Code2DFD` output into standard graph `json`
-- Script [metrics_centrality.py](metrics_centrality.py): computes centrality scores with `NetworkX`
-- Script [metrics_jasome.py](merge_jasome.py): executes `Jasome` tool and saves raw data
-- Script [merge_jasome.py](merge_jasome.py): merge the raw `Jasome` data into `csv` files
+  - A folder `PROJECT-jasome` with the raw `Jasome` output
+  - A folder `PROJECT-und` with the raw `Understand` output
+- Scripts:
+  - [process_graph.py](process_graphs.py): processes the `Code2DFD` output into standard graph `json`
+  - [metrics_centrality.py](metrics_centrality.py): computes centrality scores with `NetworkX`
+  - [metrics_jasome.py](merge_jasome.py): executes `Jasome` tool and saves raw data
+  - [merge_jasome.py](merge_jasome.py): merge the raw `Jasome` data into `csv` files
+  - [metrics_understand.py](merge_understand.py): executes `Understand` tool and saves raw data
+  - [merge_understand.py](merge_understand.py): merge the raw `Understand` data into a `csv` file
 
 ## Setup
 Install the following Python packages: `networkx`, `pandas`, `requests`.
@@ -65,3 +70,20 @@ The script [merge_jasome.py](merge_jasome.py) takes the data from all the raw `x
 - [metrics_jasome_package.csv](metrics_jasome_package.csv): metrics calculated for each package
 - [metrics_jasome_class.csv](metrics_jasome_class.csv): metrics calculated for each class
 - [metrics_jasome_method.csv](metrics_jasome_method.csv): metrics calculated for each method
+
+## `Understand` metrics
+
+Download the `Understand` tool and acquire its license on the official [website](https://scitools.com/)
+
+### Raw `Understand` data
+
+The script [metrics_understand.py](metrics_understand.py) executes the `Understand` tool for each `PROJECT`.
+
+Change the variable `UND_PATH` in the script to point to the `und` [cli tool](https://support.scitools.com/support/solutions/articles/70000582798-using-understand-from-the-command-line-with-und) on your system.
+
+For each `PROJECT`, the scripts saves to the folder `PROJECT-und` the raw `csv` output from `Understand`.
+
+### Merging `Understand` metrics
+
+The script [merge_understand.py](merge_understand.py) takes only the metrics calculated on `Package` level for all
+`PROJECTS` and saves them to [metrics_understand.csv](metrics_understand.csv) `csv` file.

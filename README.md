@@ -22,6 +22,19 @@ This repository contains the following:
   - [merge_sonarqube.py](merge_sonarqube.py): put the `SonarQube` data into a `csv` file
   - [merge_data.py](merge_data.py): merge all metrics into a single `csv` file
   - [metrics_filter_statsig.py](metrics_filter_statsig.py): keep only the statistically significantly correlated metrics
+- Data files:
+  - [metrics_centrality.csv](metrics_centrality.csv): All the centrality metrics for all microservice
+  - [metrics_understand.csv](metrics_understand.csv): All the `Understand` metrics for all microservices
+  - [metrics_jasome_package.csv](metrics_jasome_package.csv): All the `Jasome` metrics for all microservices on package level
+  - [metrics_jasome_class.csv](metrics_jasome_class.csv): All the `Jasome` metrics for all microservices on class level
+  - [metrics_jasome_method.csv](metrics_jasome_method.csv): All the `Jasome` metrics for all microservices on method level
+  - [metrics_sonarqube.csv](metrics_sonarqube.csv): All the `SonarQube` metrics for all microservices
+  - [metrics_microservice.csv](metrics_microservice.csv): All the metrics for all microservices
+  - [metrics_statsig.csv](metrics_statsig.csv): List of all metrics that have a statistically significant correlation with centrality
+  - [metrics_size.csv](metrics_size.csv): All the size metrics that have a statistically significant correlation with centrality
+  - [metrics_complexity.csv](metrics_complexity.csv): All the complexity metrics that have a statistically significant correlation with centrality
+  - [metrics_quality.csv](metrics_quality.csv): All the quality metrics that have a statistically significant correlation with centrality
+  - [package_maps.json](package_map.json): Mapping of Java packages to microservices
 
 ## Setup
 Install the following Python packages: `networkx`, `pandas`, `requests`.

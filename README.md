@@ -14,10 +14,12 @@ This repository contains the following:
 - Scripts:
   - [process_graph.py](process_graphs.py): processes the `Code2DFD` output into standard graph `json`
   - [metrics_centrality.py](metrics_centrality.py): computes centrality scores with `NetworkX`
-  - [metrics_jasome.py](merge_jasome.py): executes `Jasome` tool and saves raw data
+  - [metrics_jasome.py](metrics_jasome.py): executes `Jasome` tool and saves raw data
   - [merge_jasome.py](merge_jasome.py): merge the raw `Jasome` data into `csv` files
-  - [metrics_understand.py](merge_understand.py): executes `Understand` tool and saves raw data
+  - [metrics_understand.py](metrics_understand.py): executes `Understand` tool and saves raw data
   - [merge_understand.py](merge_understand.py): merge the raw `Understand` data into a `csv` file
+  - [metrics_sonarqube.py](metrics_sonarqube.py): executes `SonarQube` analysis
+  - [merge_sonarqube.py](merge_sonarqube.py): put the `SonarQube` data into a `csv` file
 
 ## Setup
 Install the following Python packages: `networkx`, `pandas`, `requests`.
@@ -87,3 +89,34 @@ For each `PROJECT`, the scripts saves to the folder `PROJECT-und` the raw `csv` 
 
 The script [merge_understand.py](merge_understand.py) takes only the metrics calculated on `Package` level for all
 `PROJECTS` and saves them to [metrics_understand.csv](metrics_understand.csv) `csv` file.
+
+
+## `SonarQube` metrics
+
+Deploy a `SonarQube` instance using the intructions from the [official website](https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/install-the-server/introduction/).
+
+Generate a `Global Analysis Token` and a `User token`.
+
+Download the `SonarScanner` application from the [official website](https://docs.sonarsource.com/sonarqube/9.9/analyzing-source-code/scanners/sonarscanner/).
+
+### Raw `SonarQube` data
+
+The script [metrics_sonarqube.py](metrics_sonarqube.py) sets up a `SonarQube` project for each of the `PROJECT`s
+in the repository and executes the analysis with `SonarScanner`.
+
+Change the `SONAR_PATH` variable to the location of the `sonar-scanner` binary.
+
+Change the `TOKEN` variable to the `Global Analysis Token` generated in `SonarQube`.
+
+Additionally, if `SonarQube` is not deployed on `localhost:9000`, change the `-Dsonar.host.url` parameter in the run command.
+
+After executing the script, you should see all projects analyzed in the `SonarQube` dashboard.
+
+### Merging `SonarQube` data
+
+The script [merge_sonarqube.py](merge_sonarqube.py) queries data for each `PROJECT`.
+
+Change the variable `USER_TOKEN` to the `User token` generated in `SonarQube`.
+
+The script will query the `SonarQube` metrics on directory level, infer the package name from the directory path,
+and save the metrics for each `PROJECT` and each package in the [metrics_sonarqube.csv](metrics_sonarqube.csv).

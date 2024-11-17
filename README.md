@@ -7,6 +7,7 @@ This repository contains the following:
 - Appendix:
   - [Table I](Table_used_projects.pdf): Data on the 24 studied projects
   - [Table II](Table_list_of_metrics.pdf): List of all gathered metrics
+  - [Project information](Project%20information.ods): Tables of all projects gathered from all dataset and their metadata
 - For 24 `PROJECT`s:
   - A folder called `PROJECT` with the projects source code at the commit we performed the analysis on
   - A folder `PROJECT-code2dfd` with the raw `Code2DFD` output

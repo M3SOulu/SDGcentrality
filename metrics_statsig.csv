@@ -4,7 +4,6 @@ Avg(NORM),complexity
 Sum(NORM),complexity
 Avg(DIT),complexity
 Max(DIT),complexity
-Avg(Di),complexity
 Avg(SIX),complexity
 Sum(SIX),complexity
 Avg(VG),complexity
@@ -24,7 +23,6 @@ Sum(LCOM*),complexity
 Avg(Si),complexity
 Sum(Si),complexity
 Max(Si),complexity
-Avg(NMA),complexity
 Sum(NMA),complexity
 Avg(NOA),complexity
 Sum(NOA),complexity
@@ -41,19 +39,14 @@ Sum(MCLC),complexity
 Max(MCLC),complexity
 Sum(Ca),complexity
 Sum(Ce),complexity
-Avg(IOVars),size
 Sum(RTLOC),size
 Sum(TLOC),size
-Avg(NOL),size
 Sum(NOL),size
 Sum(NSF),size
 Avg(NF),size
 CountStmtExe,size
 Avg(Ad),size
 Avg(Aa),size
-Avg(Ma),size
-Avg(Md),size
-Avg(NM),size
 Sum(PMd),size
 Avg(NSM),size
 Sum(NSM),size

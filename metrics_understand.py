@@ -39,13 +39,8 @@ def run_understand(project_path, output_dir):
 
 def main(master_folder):
 
-    project_folders = [f.path for f in os.scandir(master_folder) if f.is_dir()
-                       and not f.path.endswith("code2dfd")
-                       and not f.path.endswith("und")
-                       and not f.path.endswith("jasome")
-                       and not f.path.endswith("graph")
-                       and not f.name in [".idea", ".git", "fakedir", ".scannerwork"]]
-    output_folders = [f"{f}-und" for f in project_folders]
+    project_folders = [f.path for f in os.scandir(master_folder) if f.is_dir()]
+    output_folders = [f"{os.path.basename(f)}-und" for f in project_folders]
 
     for i, (project, output) in enumerate(zip(project_folders, output_folders), start=1):
         print(f"Progress: {i}/{len(project_folders)}")
@@ -54,6 +49,6 @@ def main(master_folder):
 
 
 if __name__ == "__main__":
-    master_folder = os.getcwd()
+    master_folder = os.path.join(os.getcwd(), "projects")
 
     main(master_folder)

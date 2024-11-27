@@ -22,12 +22,7 @@ def run_sonarqube(project_path):
 
 def main(master_folder):
 
-    project_folders = [f.path for f in os.scandir(master_folder) if f.is_dir()
-                       and not f.path.endswith("code2dfd")
-                       and not f.path.endswith("und")
-                       and not f.path.endswith("jasome")
-                       and not f.path.endswith("graph")
-                       and not f.name in [".idea", ".git", "fakedir", ".scannerwork"]]
+    project_folders = [f.path for f in os.scandir(master_folder) if f.is_dir()]
     for i, project in enumerate(project_folders, start=1):
         print(f"Progress: {i}/{len(project_folders)}")
         run_sonarqube(project)
@@ -35,6 +30,6 @@ def main(master_folder):
 
 
 if __name__ == "__main__":
-    master_folder = os.getcwd()
+    master_folder = os.path.join(os.getcwd(), "projects")
 
     main(master_folder)

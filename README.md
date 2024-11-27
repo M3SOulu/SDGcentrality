@@ -33,8 +33,8 @@ This repository contains the following:
   - [merge_understand.py](merge_understand.py): merge the raw `Understand` data into a `csv` file
   - [metrics_sonarqube.py](metrics_sonarqube.py): executes `SonarQube` analysis
   - [merge_sonarqube.py](merge_sonarqube.py): put the `SonarQube` data into a `csv` file
-  - [merge_data.py](merge_data.py): merge all metrics into a single `csv` file
-  - [metrics_filter_statsig.py](metrics_filter_statsig.py): keep only the statistically significantly correlated metrics
+  - [merge_data.py](merge_all.py): merge all metrics into a single `csv` file
+  - [metrics_filter_statsig.py](metrics_results.py): keep only the statistically significantly correlated metrics
 - Data files:
   - [metrics_centrality.csv](metrics_centrality.csv): All the centrality metrics for all microservice
   - [metrics_understand.csv](metrics_understand.csv): All the `Understand` metrics for all microservices
@@ -42,7 +42,7 @@ This repository contains the following:
   - [metrics_jasome_class.csv](metrics_jasome_class.csv): All the `Jasome` metrics for all microservices on class level
   - [metrics_jasome_method.csv](metrics_jasome_method.csv): All the `Jasome` metrics for all microservices on method level
   - [metrics_sonarqube.csv](metrics_sonarqube.csv): All the `SonarQube` metrics for all microservices
-  - [metrics_microservice.csv](metrics_microservice.csv): All the metrics for all microservices
+  - [metrics_merged.csv](metrics/metrics_merged.csv): All the metrics for all microservices
   - [metrics_statsig.csv](metrics_statsig.csv): List of all metrics that have a statistically significant correlation with centrality
   - [metrics_size.csv](metrics_size.csv): All the size metrics that have a statistically significant correlation with centrality
   - [metrics_complexity.csv](metrics_complexity.csv): All the complexity metrics that have a statistically significant correlation with centrality
@@ -153,9 +153,9 @@ and save the metrics for each `PROJECT` and each package in the [metrics_sonarqu
 
 The file [package_map.json](package_map.json) contains the mapping of Java packages to the microservices.
 
-The script [merge_data.py](merge_data.py) takes the [metrics_centrality.csv](metrics_centrality.csv), [metrics_understand.csv](metrics_understand.csv),
+The script [merge_data.py](merge_all.py) takes the [metrics_centrality.csv](metrics_centrality.csv), [metrics_understand.csv](metrics_understand.csv),
  [metrics_jasome_package.csv](metrics_jasome_package.csv), [metrics_jasome_class.csv](metrics_jasome_class.csv), [metrics_jasome_method.csv](metrics_jasome_method.csv) ,
-[metrics_sonarqube.csv](metrics_sonarqube.csv) files, maps the packages to microservices and creates a unified `csv` file [metrics_microservice.csv](metrics_microservice.csv) with microservices that have all possible metrics.
+[metrics_sonarqube.csv](metrics_sonarqube.csv) files, maps the packages to microservices and creates a unified `csv` file [metrics_microservice.csv](metrics_merged.csv) with microservices that have all possible metrics.
 
 Metrics are aggregated from packages using `sum`, `mean` and `max` wherever suitable.
 
@@ -164,5 +164,5 @@ Metrics are aggregated from packages using `sum`, `mean` and `max` wherever suit
 The file [metrics_statsig.csv](metrics_statsig.csv) contains a list of metrics that have a statistically significant (`p<0.01`)
 correlation with at least one centrality score, and their category of either `size`, `complexity` or `quality`.
 
-The script [metrics_filter_statsig.py](metrics_filter_statsig.py) takes only such metrics from [metrics_microservice.csv](metrics_microservice.csv)
+The script [metrics_filter_statsig.py](metrics_results.py) takes only such metrics from [metrics_microservice.csv](metrics_merged.csv)
 and saves them to three respective `csv` files: [metrics_size.csv](metrics_size.csv), [metrics_complexity.csv](metrics_complexity.csv) and [metrics_quality.csv](metrics_quality.csv) together with the centrality metrics.

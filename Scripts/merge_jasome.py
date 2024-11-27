@@ -46,8 +46,8 @@ for folder in os.scandir(os.path.join(os.getcwd(), "raw_data", "jasome")):
                                                     DATA_METHOD.append(data_point)
 
 df = pd.DataFrame(DATA_PACKAGE)
-df.to_csv("metrics/metrics_jasome_package.csv", index=False, header=True)
+df.to_csv("Metrics/metrics_jasome_package.csv", index=False, header=True)
 df = pd.DataFrame(DATA_CLASS)
-df.to_csv("metrics/metrics_jasome_class.csv", index=False, header=True)
+df.to_csv("Metrics/metrics_jasome_class.csv", index=False, header=True)
 df = pd.DataFrame(DATA_METHOD)
-df.to_csv("metrics/metrics_jasome_method.csv", index=False, header=True)
+df.to_csv("Metrics/metrics_jasome_method.csv", index=False, header=True)

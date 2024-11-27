@@ -32,4 +32,4 @@ for project in os.listdir(os.path.join(os.getcwd(), "Projects")):
 
 all_dfs = sorted(all_dfs, key=lambda d: d["MS_system"].iloc[0].casefold())
 df = pd.concat(all_dfs)
-df.to_csv("metrics/metrics_centrality.csv", index=False, header=True)
+df.to_csv("Metrics/metrics_centrality.csv", index=False, header=True)

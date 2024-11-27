@@ -17,7 +17,7 @@ def map_packages(value: str):
 
 
 # --- Understand metrics
-understand = pd.read_csv("metrics/metrics_understand.csv")
+understand = pd.read_csv("Metrics/metrics_understand.csv")
 
 # Remove NaN columns
 understand = understand.dropna(axis=1, how='all')
@@ -41,7 +41,7 @@ understand = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the
 
 
 # --- Jasome Package
-jasome_package = pd.read_csv("metrics/metrics_jasome_package.csv")
+jasome_package = pd.read_csv("Metrics/metrics_jasome_package.csv")
 # Map Package to Microservice
 jasome_package["Microservice"] = jasome_package["Package"].map(map_packages)
 # Remove rows that are not mapped to a service
@@ -61,7 +61,7 @@ jasome_package = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back
 
 
 # --- Jasome Class
-jasome_class = pd.read_csv("metrics/metrics_jasome_class.csv")
+jasome_class = pd.read_csv("Metrics/metrics_jasome_class.csv")
 # Map Package to Microservice
 jasome_class["Microservice"] = jasome_class["Package"].map(map_packages)
 # Remove rows that are not mapped to a service
@@ -95,7 +95,7 @@ jasome_class = jasome_class_merged
 
 
 # --- Jasome Method
-jasome_method = pd.read_csv("metrics/metrics_jasome_method.csv")
+jasome_method = pd.read_csv("Metrics/metrics_jasome_method.csv")
 # Map Package to Microservice
 jasome_method["Microservice"] = jasome_method["Package"].map(map_packages)
 # Remove rows that are not mapped to a service
@@ -125,7 +125,7 @@ jasome_method = jasome_method_merged
 
 
 # --- SonarQube
-sonarqube = pd.read_csv("metrics/metrics_sonarqube.csv")
+sonarqube = pd.read_csv("Metrics/metrics_sonarqube.csv")
 sonarqube["Microservice"] = sonarqube["Package"].map(map_packages)
 
 # Remove rows that are not mapped to a service
@@ -148,7 +148,7 @@ sonarqube = sonarqube_merged.merge(max_metrics, on="Microservice")
 
 
 # --- Centrality
-centrality = pd.read_csv("metrics/metrics_centrality.csv")
+centrality = pd.read_csv("Metrics/metrics_centrality.csv")
 centrality = centrality.rename(columns={"node": "Microservice"})
 
 
@@ -168,4 +168,4 @@ cols = ["MS_system", "Microservice"] + [col for col in total.columns
                                         if col not in ["MS_system", "Microservice"]]
 total = total[cols]
 total = total.sort_values(by=["MS_system", "Microservice"])
-total.to_csv("metrics/metrics_merged.csv", index=False, header=True)
+total.to_csv("Metrics/metrics_merged.csv", index=False, header=True)

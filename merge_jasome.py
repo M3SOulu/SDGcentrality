@@ -6,13 +6,9 @@ import pandas as pd
 DATA_PACKAGE = []
 DATA_CLASS = []
 DATA_METHOD = []
-for folder in os.listdir(os.getcwd()):
-    if not folder.endswith("jasome"):
-        continue
-    for f in os.listdir(folder):
-        if not f.endswith("xml"):
-            continue
-        tree = ET.parse(os.path.join(folder, f))
+for folder in os.scandir(os.path.join(os.getcwd(), "raw_data", "jasome")):
+    for f in os.scandir(folder):
+        tree = ET.parse(f)
         root = tree.getroot()
         for child_r in root:
             if child_r.tag == "Packages":
@@ -20,7 +16,7 @@ for folder in os.listdir(os.getcwd()):
                     package_name = package.attrib["name"]
                     for child_p in package:
                         if child_p.tag == "Metrics":
-                            data_point = {"MS_system": folder.replace("-jasome", ""),
+                            data_point = {"MS_system": folder.name,
                                           "Package": package_name}
                             for metric in child_p:
                                 data_point[metric.attrib["name"]] = float(metric.attrib["value"].replace(",", "."))
@@ -30,7 +26,7 @@ for folder in os.listdir(os.getcwd()):
                                 class_name = clas.attrib["name"]
                                 for child_c in clas:
                                     if child_c.tag == "Metrics":
-                                        data_point = {"MS_system": folder.replace("-jasome", ""),
+                                        data_point = {"MS_system": folder.name,
                                                       "Package": package_name,
                                                       "Class": class_name}
                                         for metric in child_c:
@@ -41,7 +37,7 @@ for folder in os.listdir(os.getcwd()):
                                             method_name = method.attrib["name"]
                                             for child_m in method:
                                                 if child_m.tag == "Metrics":
-                                                    data_point = {"MS_system": folder.replace("-jasome", ""),
+                                                    data_point = {"MS_system": folder.name,
                                                                   "Package": package_name,
                                                                   "Class": class_name,
                                                                   "Method": method_name}
@@ -50,8 +46,8 @@ for folder in os.listdir(os.getcwd()):
                                                     DATA_METHOD.append(data_point)
 
 df = pd.DataFrame(DATA_PACKAGE)
-df.to_csv("metrics_jasome_package.csv", index=False, header=True)
+df.to_csv("metrics/metrics_jasome_package.csv", index=False, header=True)
 df = pd.DataFrame(DATA_CLASS)
-df.to_csv("metrics_jasome_class.csv", index=False, header=True)
+df.to_csv("metrics/metrics_jasome_class.csv", index=False, header=True)
 df = pd.DataFrame(DATA_METHOD)
-df.to_csv("metrics_jasome_method.csv", index=False, header=True)
+df.to_csv("metrics/metrics_jasome_method.csv", index=False, header=True)

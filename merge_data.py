@@ -41,7 +41,7 @@ understand = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the
 
 
 # --- Jasome Package
-jasome_package = pd.read_csv("metrics_jasome_package.csv")
+jasome_package = pd.read_csv("metrics/metrics_jasome_package.csv")
 # Map Package to Microservice
 jasome_package["Microservice"] = jasome_package["Package"].map(map_packages)
 # Remove rows that are not mapped to a service
@@ -61,7 +61,7 @@ jasome_package = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back
 
 
 # --- Jasome Class
-jasome_class = pd.read_csv("metrics_jasome_class.csv")
+jasome_class = pd.read_csv("metrics/metrics_jasome_class.csv")
 # Map Package to Microservice
 jasome_class["Microservice"] = jasome_class["Package"].map(map_packages)
 # Remove rows that are not mapped to a service
@@ -95,7 +95,7 @@ jasome_class = jasome_class_merged
 
 
 # --- Jasome Method
-jasome_method = pd.read_csv("metrics_jasome_method.csv")
+jasome_method = pd.read_csv("metrics/metrics_jasome_method.csv")
 # Map Package to Microservice
 jasome_method["Microservice"] = jasome_method["Package"].map(map_packages)
 # Remove rows that are not mapped to a service

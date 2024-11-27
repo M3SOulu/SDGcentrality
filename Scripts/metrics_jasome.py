@@ -25,7 +25,7 @@ def main(master_folder):
         for root, dirs, files in os.walk(project):
             if "src" in dirs:
                 analyze_folder.append(os.path.join(project, root, "src"))
-                output_files.append(os.path.join("raw_data", "jasome", f"{os.path.basename(project)}-jasome", f"{os.path.basename(root)}.xml"))
+                output_files.append(os.path.join("../raw_data", "jasome", f"{os.path.basename(project)}-jasome", f"{os.path.basename(root)}.xml"))
 
     for i, (project, output) in enumerate(zip(analyze_folder, output_files), start=1):
         print(f"Progress: {i}/{len(analyze_folder)}")

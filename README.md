@@ -25,16 +25,16 @@ This repository contains the following:
   - A folder `PROJECT-jasome` with the raw `Jasome` output
   - A folder `PROJECT-und` with the raw `Understand` output
 - Scripts:
-  - [process_graph.py](process_graphs.py): processes the `Code2DFD` output into standard graph `json`
-  - [metrics_centrality.py](metrics_centrality.py): computes centrality scores with `NetworkX`
-  - [metrics_jasome.py](metrics_jasome.py): executes `Jasome` tool and saves raw data
-  - [merge_jasome.py](merge_jasome.py): merge the raw `Jasome` data into `csv` files
-  - [metrics_understand.py](metrics_understand.py): executes `Understand` tool and saves raw data
-  - [merge_understand.py](merge_understand.py): merge the raw `Understand` data into a `csv` file
-  - [metrics_sonarqube.py](metrics_sonarqube.py): executes `SonarQube` analysis
-  - [merge_sonarqube.py](merge_sonarqube.py): put the `SonarQube` data into a `csv` file
-  - [merge_data.py](merge_all.py): merge all metrics into a single `csv` file
-  - [metrics_filter_statsig.py](metrics_results.py): keep only the statistically significantly correlated metrics
+  - [process_graph.py](Scripts/extract_graphs.py): processes the `Code2DFD` output into standard graph `json`
+  - [metrics_centrality.py](Scripts/metrics_centrality.py): computes centrality scores with `NetworkX`
+  - [metrics_jasome.py](Scripts/metrics_jasome.py): executes `Jasome` tool and saves raw data
+  - [merge_jasome.py](Scripts/merge_jasome.py): merge the raw `Jasome` data into `csv` files
+  - [metrics_understand.py](Scripts/metrics_understand.py): executes `Understand` tool and saves raw data
+  - [merge_understand.py](Scripts/merge_understand.py): merge the raw `Understand` data into a `csv` file
+  - [metrics_sonarqube.py](Scripts/metrics_sonarqube.py): executes `SonarQube` analysis
+  - [merge_sonarqube.py](Scripts/merge_sonarqube.py): put the `SonarQube` data into a `csv` file
+  - [merge_data.py](Scripts/merge_all.py): merge all metrics into a single `csv` file
+  - [metrics_filter_statsig.py](Scripts/metrics_results.py): keep only the statistically significantly correlated metrics
 - Data files:
   - [metrics_centrality.csv](metrics_centrality.csv): All the centrality metrics for all microservice
   - [metrics_understand.csv](metrics_understand.csv): All the `Understand` metrics for all microservices
@@ -59,7 +59,7 @@ All DFDs are reconstructed with [c65b4a](https://github.com/tuhh-softsec/code2DF
 The raw output for each `PROJECT` is copied here to a folder `PROJECT-code2dfd`.
 
 ### Converting `Code2DFD` to `NetworkX` graph
-The script [process_graphs.py](process_graphs.py) converts the `json` files of the `Code2DFD` output into
+The script [process_graphs.py](Scripts/extract_graphs.py) converts the `json` files of the `Code2DFD` output into
 network files suitable for `NetworkX`.
 
 For each `PROJECT`, it creates 2 files in a `PROJECT-graph` folder:
@@ -68,7 +68,7 @@ For each `PROJECT`, it creates 2 files in a `PROJECT-graph` folder:
 
 ### Computing centrality metrics
 
-The script [metrics_centrality.py](metrics_centrality.py) loads the `PROJECT-gwcc_noDB.json` files and computes the following centrality metrics with `NetworkX`:
+The script [metrics_centrality.py](Scripts/metrics_centrality.py) loads the `PROJECT-gwcc_noDB.json` files and computes the following centrality metrics with `NetworkX`:
 - Degree centrality
 - In-degree centrality
 - Out-degree centrality
@@ -88,7 +88,7 @@ The centrality metrics for each system and service are saved into [metrics_centr
 `Jasome` tool can be downloaded from its GitHub [page](https://github.com/rodhilton/jasome).
 
 ### Raw `Jasome` data
-The script [metrics_jasome.py](metrics_jasome.py) executes the `Jasome` tool for each `PROJECT`.
+The script [metrics_jasome.py](Scripts/metrics_jasome.py) executes the `Jasome` tool for each `PROJECT`.
 
 Change the variable `JASOME_PATH` in the script to point to the `Jasome` binary on your system.
 
@@ -96,7 +96,7 @@ For each `PROJECT`, the scripts saves to the folder `PROJECT-jasome` the raw `xm
 
 ### Merging `Jasome` metrics
 
-The script [merge_jasome.py](merge_jasome.py) takes the data from all the raw `xml`s into the following `csv` files:
+The script [merge_jasome.py](Scripts/merge_jasome.py) takes the data from all the raw `xml`s into the following `csv` files:
 - [metrics_jasome_package.csv](metrics_jasome_package.csv): metrics calculated for each package
 - [metrics_jasome_class.csv](metrics_jasome_class.csv): metrics calculated for each class
 - [metrics_jasome_method.csv](metrics_jasome_method.csv): metrics calculated for each method
@@ -107,7 +107,7 @@ Download the `Understand` tool and acquire its license on the official [website]
 
 ### Raw `Understand` data
 
-The script [metrics_understand.py](metrics_understand.py) executes the `Understand` tool for each `PROJECT`.
+The script [metrics_understand.py](Scripts/metrics_understand.py) executes the `Understand` tool for each `PROJECT`.
 
 Change the variable `UND_PATH` in the script to point to the `und` [cli tool](https://support.scitools.com/support/solutions/articles/70000582798-using-understand-from-the-command-line-with-und) on your system.
 
@@ -115,7 +115,7 @@ For each `PROJECT`, the scripts saves to the folder `PROJECT-und` the raw `csv` 
 
 ### Merging `Understand` metrics
 
-The script [merge_understand.py](merge_understand.py) takes only the metrics calculated on `Package` level for all
+The script [merge_understand.py](Scripts/merge_understand.py) takes only the metrics calculated on `Package` level for all
 `PROJECTS` and saves them to [metrics_understand.csv](metrics_understand.csv) `csv` file.
 
 
@@ -129,7 +129,7 @@ Download the `SonarScanner` application from the [official website](https://docs
 
 ### Raw `SonarQube` data
 
-The script [metrics_sonarqube.py](metrics_sonarqube.py) sets up a `SonarQube` project for each of the `PROJECT`s
+The script [metrics_sonarqube.py](Scripts/metrics_sonarqube.py) sets up a `SonarQube` project for each of the `PROJECT`s
 in the repository and executes the analysis with `SonarScanner`.
 
 Change the `SONAR_PATH` variable to the location of the `sonar-scanner` binary.
@@ -142,7 +142,7 @@ After executing the script, you should see all projects analyzed in the `SonarQu
 
 ### Merging `SonarQube` data
 
-The script [merge_sonarqube.py](merge_sonarqube.py) queries data for each `PROJECT`.
+The script [merge_sonarqube.py](Scripts/merge_sonarqube.py) queries data for each `PROJECT`.
 
 Change the variable `USER_TOKEN` to the `User token` generated in `SonarQube`.
 
@@ -153,7 +153,7 @@ and save the metrics for each `PROJECT` and each package in the [metrics_sonarqu
 
 The file [package_map.json](package_map.json) contains the mapping of Java packages to the microservices.
 
-The script [merge_data.py](merge_all.py) takes the [metrics_centrality.csv](metrics_centrality.csv), [metrics_understand.csv](metrics_understand.csv),
+The script [merge_data.py](Scripts/merge_all.py) takes the [metrics_centrality.csv](metrics_centrality.csv), [metrics_understand.csv](metrics_understand.csv),
  [metrics_jasome_package.csv](metrics_jasome_package.csv), [metrics_jasome_class.csv](metrics_jasome_class.csv), [metrics_jasome_method.csv](metrics_jasome_method.csv) ,
 [metrics_sonarqube.csv](metrics_sonarqube.csv) files, maps the packages to microservices and creates a unified `csv` file [metrics_microservice.csv](metrics_merged.csv) with microservices that have all possible metrics.
 
@@ -164,5 +164,5 @@ Metrics are aggregated from packages using `sum`, `mean` and `max` wherever suit
 The file [metrics_statsig.csv](metrics_statsig.csv) contains a list of metrics that have a statistically significant (`p<0.01`)
 correlation with at least one centrality score, and their category of either `size`, `complexity` or `quality`.
 
-The script [metrics_filter_statsig.py](metrics_results.py) takes only such metrics from [metrics_microservice.csv](metrics_merged.csv)
+The script [metrics_filter_statsig.py](Scripts/metrics_results.py) takes only such metrics from [metrics_microservice.csv](metrics_merged.csv)
 and saves them to three respective `csv` files: [metrics_size.csv](metrics_size.csv), [metrics_complexity.csv](metrics_complexity.csv) and [metrics_quality.csv](metrics_quality.csv) together with the centrality metrics.

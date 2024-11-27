@@ -26,7 +26,7 @@ METRICS = {"sqale_rating": "Sqale rating",
            "minor_violations": "Minor violations"}
 
 COMPONENTS = {}
-for folder in os.listdir("projects"):
+for folder in os.listdir("../projects"):
     response = requests.get("http://localhost:9000/api/measures/component_tree", params={
         "component": folder,
         "metricKeys": ",".join(METRICS.keys()),

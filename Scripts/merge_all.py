@@ -2,7 +2,7 @@ import json
 
 import pandas as pd
 
-with open("package_map.json", 'r') as f:
+with open("raw_data/package_map.json", 'r') as f:
     PACKAGE_MAP = json.load(f)
 
 PACKAGES = set(PACKAGE_MAP.keys())
@@ -168,5 +168,4 @@ cols = ["MS_system", "Microservice"] + [col for col in total.columns
                                         if col not in ["MS_system", "Microservice"]]
 total = total[cols]
 total = total.sort_values(by=["MS_system", "Microservice"])
-total.to_csv("metrics_microservice.csv", index=False, header=True)
-
+total.to_csv("metrics/metrics_merged.csv", index=False, header=True)

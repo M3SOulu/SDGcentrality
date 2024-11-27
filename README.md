@@ -8,24 +8,41 @@ This repository contains the following:
   - [Table I](Table_used_projects.pdf): Data on the 24 studied projects
   - [Table II](Table_list_of_metrics.pdf): List of all gathered metrics
   - [Project information](Project%20information.ods): Tables of all projects gathered from all dataset and their metadata
-  - Figures:
-    - [Sankey diagram](Figures/DataCollectionSankey.pdf): Sankey diagram of project selection process
-    - [BMP process](Figures/BPM-Flow.pdf): BMP process for the data collection
-    - [Size Heat Map](Figures/SizeHeatMap.pdf): Heat of Spearman Rho for correlation of size metrics with centrality
-    - [Size Heat Map (Stat. Sig.)](Figures/SizeHeatMapStatSig.pdf): Heat of Spearman Rho for correlation of size metrics with centrality (stat. sig. only)
-    - [Complexity Heat Map](Figures/ComplexityHeatMap.pdf): Heat of Spearman Rho for correlation of complexity metrics with centrality
-    - [Complexity Heat Map (Stat. Sig.)](Figures/ComplexityHeatMapStatSig.pdf): Heat of Spearman Rho for correlation of complexity metrics with centrality (stat. sig. only)
-    - [Quality Heat Map](Figures/QualityHeatMap.pdf): Heat of Spearman Rho for correlation of quality metrics with centrality
-    - [Quality Heat Map (Stat. Sig.)](Figures/QualityHeatMapStatSig.pdf): Heat of Spearman Rho for correlation of quality metrics with centrality (stat. sig. only)
-    - [Centrality Heat Map (Stat. Sig.)](Figures/CentralityHeatMapStatSig.pdf): Heat of Spearman Rho for correlation of centrality metrics with each other (stat. sig. only)
-- For 24 `PROJECT`s:
-  - A folder called `PROJECT` with the projects source code at the commit we performed the analysis on
-  - A folder `PROJECT-code2dfd` with the raw `Code2DFD` output
-  - A folder `PROJECT-graph` with graphs in `json` format for processing with `NetworkX`
-  - A folder `PROJECT-jasome` with the raw `Jasome` output
-  - A folder `PROJECT-und` with the raw `Understand` output
-- Scripts:
-  - [process_graph.py](Scripts/extract_graphs.py): processes the `Code2DFD` output into standard graph `json`
+- [Projects](Projects): a folder containing source code of all studied projects
+- [Figures](Figures): a folder containing all figures used in the paper
+  - [Sankey diagram](Figures/DataCollectionSankey.pdf): Sankey diagram of project selection process
+  - [BMP process](Figures/BPM-Flow.pdf): BMP process for the data collection
+  - [Size Heat Map](Figures/SizeHeatMap.pdf): Heat of Spearman Rho for correlation of size metrics with centrality
+  - [Size Heat Map (Stat. Sig.)](Figures/SizeHeatMapStatSig.pdf): Heat of Spearman Rho for correlation of size metrics with centrality (stat. sig. only)
+  - [Complexity Heat Map](Figures/ComplexityHeatMap.pdf): Heat of Spearman Rho for correlation of complexity metrics with centrality
+  - [Complexity Heat Map (Stat. Sig.)](Figures/ComplexityHeatMapStatSig.pdf): Heat of Spearman Rho for correlation of complexity metrics with centrality (stat. sig. only)
+  - [Quality Heat Map](Figures/QualityHeatMap.pdf): Heat of Spearman Rho for correlation of quality metrics with centrality
+  - [Quality Heat Map (Stat. Sig.)](Figures/QualityHeatMapStatSig.pdf): Heat of Spearman Rho for correlation of quality metrics with centrality (stat. sig. only)
+  - [Centrality Heat Map (Stat. Sig.)](Figures/CentralityHeatMapStatSig.pdf): Heat of Spearman Rho for correlation of centrality metrics with each other (stat. sig. only)
+- [Raw data](raw_data): a folder containing all raw data extracted from different tools
+  - [code2dfd](raw_data/code2dfd): Raw output of Code2DFD
+  - [graph](raw_data/graph): Graphs extracted from Code2DFD output
+  - [understand](raw_data/understand): Raw data from Understand
+  - [jasome](raw_data/jasome): Raw data from Jasome
+  - [package_map.json](raw_data/package_map.json): Mapping of Java packages to microservices
+- [Metrics](Metrics): metrics extracted from raw data
+  - [metrics_centrality.csv](Metrics/metrics_centrality.csv): All the centrality metrics for all microservice
+  - [metrics_understand.csv](Metrics/metrics_understand.csv): All the `Understand` metrics for all microservices
+  - [metrics_jasome_package.csv](Metrics/metrics_jasome_package.csv): All the `Jasome` metrics for all microservices on package level
+  - [metrics_jasome_class.csv](Metrics/metrics_jasome_class.csv): All the `Jasome` metrics for all microservices on class level
+  - [metrics_jasome_method.csv](Metrics/metrics_jasome_method.csv): All the `Jasome` metrics for all microservices on method level
+  - [metrics_sonarqube.csv](Metrics/metrics_sonarqube.csv): All the `SonarQube` metrics for all microservices
+  - [metrics_merged.csv](Metrics/metrics_merged.csv): All the metrics for all microservices
+  - [metrics_statsig.csv](Metrics/metrics_statsig.csv): List of all metrics that have a statistically significant correlation with centrality
+- [Results](Results): Data files containing the analyzed results to answer the Research Question
+  - [RQ1](Results/RQ1): Does centrality correlate with size metrics?
+    - [metrics_size.csv](Results/RQ1/metrics_size.csv): All the size metrics that have a statistically significant correlation with centrality
+  - [RQ2](Results/RQ2): Does centrality correlate with complexity metrics?
+    - [metrics_complexity.csv](Results/RQ2/metrics_complexity.csv): All the complexity metrics that have a statistically significant correlation with centrality
+  - [RQ3](Results/RQ3): Does centrality correlate with quality metrics?
+    - [metrics_quality.csv](Results/RQ3/metrics_quality.csv): All the quality metrics that have a statistically significant correlation with centrality
+- [Scripts](Scripts): a folder containing all the scripts
+  - [extract_graphs.py](Scripts/extract_graphs.py): processes the `Code2DFD` output into standard graph `json`
   - [metrics_centrality.py](Scripts/metrics_centrality.py): computes centrality scores with `NetworkX`
   - [metrics_jasome.py](Scripts/metrics_jasome.py): executes `Jasome` tool and saves raw data
   - [merge_jasome.py](Scripts/merge_jasome.py): merge the raw `Jasome` data into `csv` files
@@ -33,21 +50,8 @@ This repository contains the following:
   - [merge_understand.py](Scripts/merge_understand.py): merge the raw `Understand` data into a `csv` file
   - [metrics_sonarqube.py](Scripts/metrics_sonarqube.py): executes `SonarQube` analysis
   - [merge_sonarqube.py](Scripts/merge_sonarqube.py): put the `SonarQube` data into a `csv` file
-  - [merge_data.py](Scripts/merge_all.py): merge all metrics into a single `csv` file
-  - [metrics_filter_statsig.py](Scripts/metrics_results.py): keep only the statistically significantly correlated metrics
-- Data files:
-  - [metrics_centrality.csv](metrics_centrality.csv): All the centrality metrics for all microservice
-  - [metrics_understand.csv](metrics_understand.csv): All the `Understand` metrics for all microservices
-  - [metrics_jasome_package.csv](metrics_jasome_package.csv): All the `Jasome` metrics for all microservices on package level
-  - [metrics_jasome_class.csv](metrics_jasome_class.csv): All the `Jasome` metrics for all microservices on class level
-  - [metrics_jasome_method.csv](metrics_jasome_method.csv): All the `Jasome` metrics for all microservices on method level
-  - [metrics_sonarqube.csv](metrics_sonarqube.csv): All the `SonarQube` metrics for all microservices
-  - [metrics_merged.csv](metrics/metrics_merged.csv): All the metrics for all microservices
-  - [metrics_statsig.csv](metrics_statsig.csv): List of all metrics that have a statistically significant correlation with centrality
-  - [metrics_size.csv](metrics_size.csv): All the size metrics that have a statistically significant correlation with centrality
-  - [metrics_complexity.csv](metrics_complexity.csv): All the complexity metrics that have a statistically significant correlation with centrality
-  - [metrics_quality.csv](metrics_quality.csv): All the quality metrics that have a statistically significant correlation with centrality
-  - [package_maps.json](package_map.json): Mapping of Java packages to microservices
+  - [merge_all.py](Scripts/merge_all.py): merge all metrics into a single `csv` file
+  - [metrics_results.py](Scripts/metrics_results.py): keep only the statistically significantly correlated metrics
 
 ## Setup
 Install the following Python packages: `networkx`, `pandas`, `requests`.

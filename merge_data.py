@@ -148,7 +148,7 @@ sonarqube = sonarqube_merged.merge(max_metrics, on="Microservice")
 
 
 # --- Centrality
-centrality = pd.read_csv("metrics_centrality.csv")
+centrality = pd.read_csv("metrics/metrics_centrality.csv")
 centrality = centrality.rename(columns={"node": "Microservice"})
 
 

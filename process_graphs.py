@@ -3,16 +3,11 @@ import os
 
 import networkx as nx
 
-for folder in os.listdir(os.getcwd()):
-    if not folder.endswith("code2dfd"):
-        continue
-    for commit in os.listdir(folder):
-        commit_path = os.path.join(folder, commit)
-        if not os.path.isdir(commit_path):  # Loop over commit folders
-            continue
-        for file in os.listdir(commit_path):
-            if file.endswith("_json_architecture.json"):  # Get the json format
-                file_path = os.path.join(commit_path, file)
+for folder in os.scandir(os.path.join(os.getcwd(), "raw_data", "code2dfd")):
+    for commit in os.scandir(folder):
+        for file in os.scandir(commit):
+            if file.path.endswith("_json_architecture.json"):  # Get the json format
+                file_path = file.path
                 with open(file_path, 'r') as f:
                     g = json.load(f)
                 g = {
@@ -30,9 +25,11 @@ for folder in os.listdir(os.getcwd()):
                 del g["multigraph"]
                 del g["directed"]
                 del g["graph"]
-                name = file.split("--")[0]
-                os.makedirs(f"{name}-graph", exist_ok=True)
-                with open(f"{name}-graph/{name}_gwcc.json", 'w') as f:
+                name = file.name.split("--")[0]
+                output_folder = os.path.join(os.getcwd(), "raw_data", "graph")
+                os.makedirs(output_folder, exist_ok=True)
+                gwcc_path = os.path.join(output_folder, f"{name}_gwcc.json")
+                with open(gwcc_path, 'w') as f:
                     json.dump(g, f, indent=4, sort_keys=True)
 
                 # Remove DB only connected to own service
@@ -45,5 +42,6 @@ for folder in os.listdir(os.getcwd()):
                 del g["multigraph"]
                 del g["directed"]
                 del g["graph"]
-                with open(f"{name}-graph/{name}_gwcc_noDB.json", 'w') as f:
+                gwcc_nodb_path = os.path.join(output_folder, f"{name}_gwcc_noDB.json")
+                with open(gwcc_nodb_path, 'w') as f:
                     json.dump(g, f, indent=4, sort_keys=True)

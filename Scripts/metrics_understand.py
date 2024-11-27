@@ -49,6 +49,6 @@ def main(master_folder):
 
 
 if __name__ == "__main__":
-    master_folder = os.path.join(os.getcwd(), "projects")
+    master_folder = os.path.join(os.getcwd(), "Projects")
 
     main(master_folder)

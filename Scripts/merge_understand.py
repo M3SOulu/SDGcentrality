@@ -4,7 +4,7 @@ import pandas as pd
 
 
 all_dfs = []
-for project in os.listdir("../projects"):
+for project in os.listdir("Projects"):
     metrics_path = os.path.join(os.getcwd(), "raw_data", "understand", f"{project}-und", f"{project}.csv")
     df = pd.read_csv(metrics_path)
     df = df[df["Kind"] == "Package"]

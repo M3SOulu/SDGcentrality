@@ -5,7 +5,7 @@ import networkx as nx
 import pandas as pd
 
 all_dfs = []
-for project in os.listdir(os.path.join(os.getcwd(), "projects")):
+for project in os.listdir(os.path.join(os.getcwd(), "Projects")):
     name = os.path.join(os.getcwd(), "raw_data", "graph", f"{project}_gwcc_noDB.json")
     with open(name, 'r') as f:
         g = json.load(f)

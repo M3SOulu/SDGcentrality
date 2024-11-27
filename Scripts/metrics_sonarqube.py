@@ -10,11 +10,13 @@ def run_sonarqube(project_path):
     print(f"Inspecting {project_name}")
 
     # Create Understand project
+    fakedir = os.path.join(os.getcwd(), "raw_data", "fakedir")
+    os.mkdir(fakedir)
     try:
         print(f"\t Analyzing Project...")
         subprocess.run([SONAR_PATH, f"-Dsonar.projectKey={project_name}", f"-Dsonar.token={TOKEN}",
                         f"-Dsonar.sources={project_path}", "-Dsonar.language=java",
-                        "-Dsonar.host.url=http://localhost:9000", "-Dsonar.java.binaries=./fakedir"], check=True)
+                        "-Dsonar.host.url=http://localhost:9000", f"-Dsonar.java.binaries={fakedir!s}"], check=True)
 
     except subprocess.CalledProcessError as e:
         print(f"Error while processing {project_name}: {e}")

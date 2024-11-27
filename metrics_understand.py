@@ -40,7 +40,7 @@ def run_understand(project_path, output_dir):
 def main(master_folder):
 
     project_folders = [f.path for f in os.scandir(master_folder) if f.is_dir()]
-    output_folders = [f"{os.path.basename(f)}-und" for f in project_folders]
+    output_folders = [os.path.join(os.getcwd(), "raw_data", "understand", f"{os.path.basename(f)}-und") for f in project_folders]
 
     for i, (project, output) in enumerate(zip(project_folders, output_folders), start=1):
         print(f"Progress: {i}/{len(project_folders)}")

@@ -17,7 +17,7 @@ def map_packages(value: str):
 
 
 # --- Understand metrics
-understand = pd.read_csv("metrics_understand.csv")
+understand = pd.read_csv("metrics/metrics_understand.csv")
 
 # Remove NaN columns
 understand = understand.dropna(axis=1, how='all')

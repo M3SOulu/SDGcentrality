@@ -4,21 +4,16 @@ import pandas as pd
 
 
 all_dfs = []
-for folder in os.listdir(os.getcwd()):
-    if not folder.endswith("-und"):
-        continue
-    for file in os.listdir(folder):
-        if not file.endswith("csv"):
-            continue
-        metrics_path = os.path.join(folder, file)
-        df = pd.read_csv(metrics_path)
-        df = df[df["Kind"] == "Package"]
-        df = df.drop(columns=["Kind"])
-        df["MS_system"] = file[:-4]
-        cols = ["MS_system"] + [col for col in df.columns if col != "MS_system"]
-        df = df[cols]
-        all_dfs.append(df)
+for project in os.listdir("projects"):
+    metrics_path = os.path.join(os.getcwd(), "raw_data", "understand", f"{project}-und", f"{project}.csv")
+    df = pd.read_csv(metrics_path)
+    df = df[df["Kind"] == "Package"]
+    df = df.drop(columns=["Kind"])
+    df["MS_system"] = project
+    cols = ["MS_system"] + [col for col in df.columns if col != "MS_system"]
+    df = df[cols]
+    all_dfs.append(df)
 
 all_dfs = sorted(all_dfs, key=lambda d: d["MS_system"].iloc[0].casefold())
 df = pd.concat(all_dfs)
-df.to_csv("metrics_understand.csv", index=False, header=True)
+df.to_csv("metrics/metrics_understand.csv", index=False, header=True)

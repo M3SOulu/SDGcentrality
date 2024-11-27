@@ -13,7 +13,7 @@ def run_sonarqube(project_path):
     try:
         print(f"\t Analyzing Project...")
         subprocess.run([SONAR_PATH, f"-Dsonar.projectKey={project_name}", f"-Dsonar.token={TOKEN}",
-                        f"-Dsonar.sources=./{project_name}", "-Dsonar.language=java",
+                        f"-Dsonar.sources={project_path}", "-Dsonar.language=java",
                         "-Dsonar.host.url=http://localhost:9000", "-Dsonar.java.binaries=./fakedir"], check=True)
 
     except subprocess.CalledProcessError as e:

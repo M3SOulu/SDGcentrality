@@ -47,5 +47,5 @@ for ms_system, components in COMPONENTS.items():
             datapoint[METRICS[metric["metric"]]] = metric["value"]
         DATA.append(datapoint)
 df = pd.DataFrame(DATA)
-df.to_csv("metrics_sonarqube.csv", header=True, index=False)
+df.to_csv("metrics/metrics_sonarqube.csv", header=True, index=False)
 

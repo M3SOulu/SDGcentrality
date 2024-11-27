@@ -125,7 +125,7 @@ jasome_method = jasome_method_merged
 
 
 # --- SonarQube
-sonarqube = pd.read_csv("metrics_sonarqube.csv")
+sonarqube = pd.read_csv("metrics/metrics_sonarqube.csv")
 sonarqube["Microservice"] = sonarqube["Package"].map(map_packages)
 
 # Remove rows that are not mapped to a service

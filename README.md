@@ -54,6 +54,14 @@ This repository contains the following:
   - [merge_all.py](Scripts/merge_all.py): merge all metrics into a single `csv` file
   - [metrics_results.py](Scripts/metrics_results.py): keep only the statistically significantly correlated metrics
 
+## License
+
+All generated data is provided under Creative Commons 4.0 Attribution License.
+
+All scripts are provided under the MIT License.
+
+All the analysed projects must be used in accordance with their respective licenses.
+
 ## Preparation and installation
 
 Follow the instructions in [INSTALL](INSTALL.md) to install and configure all used tools.

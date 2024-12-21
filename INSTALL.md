@@ -42,6 +42,14 @@ Request an Educational/Academic license at the appropriate step.
 
 Change the variable `UND_PATH` in the [understand script](Scripts/metrics_understand.py) to point to the `und` [cli tool](https://support.scitools.com/support/solutions/articles/70000582798-using-understand-from-the-command-line-with-und) on your system.
 
+## Jasome
+
+Download the latest release of `Jasome` from official [GitHub page](https://github.com/rodhilton/jasome/releases).
+
+The data in these package are generated using `v0.6.8-alpha`.
+
+Change the variable `JASOME_PATH` in the [Jasome script](Scripts/metrics_jasome.py) to point to the `Jasome` binary on your system.
+
 ## Working with the package scripts
 Install the following Python packages: `networkx`, `pandas`, `requests`.
 If you want to replicate a specific tool, follow its instructions on how to properly set it up.

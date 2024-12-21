@@ -32,6 +32,16 @@ For an analysed project, the tool will generate a folder `code2DFD_output/REPO_N
 
 Such results folders are presented here in [raw_data/code2dfd](raw_data/code2dfd).
 
+## Understand by SciTools
+
+Download and install Understand from the [official website](https://licensing.scitools.com/download).
+
+The data in this package are generated using version `6.5.1201`.
+
+Request an Educational/Academic license at the appropriate step.
+
+Change the variable `UND_PATH` in the [understand script](Scripts/metrics_understand.py) to point to the `und` [cli tool](https://support.scitools.com/support/solutions/articles/70000582798-using-understand-from-the-command-line-with-und) on your system.
+
 ## Working with the package scripts
 Install the following Python packages: `networkx`, `pandas`, `requests`.
 If you want to replicate a specific tool, follow its instructions on how to properly set it up.

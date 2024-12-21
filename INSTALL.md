@@ -83,6 +83,10 @@ In the [SonarQube merge script](Scripts/merge_sonarqube.py):
 Use the [SonarQube script](Scripts/metrics_sonarqube.py) to generate the data. See instructions in [README](README.md#sonarqube-metrics).
 
 ## Working with the package scripts
-Install the following Python packages: `networkx`, `pandas`, `requests`.
-If you want to replicate a specific tool, follow its instructions on how to properly set it up.
 
+Install the following Python packages: `networkx`, `pandas`, `requests` using the [requirements.txt](requirements.txt) file as:
+```
+python -m pip install -r requirements.txt
+```
+
+Follow the instructions in [README](README.md) to replicate each step of the data collection.

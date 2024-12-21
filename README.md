@@ -4,6 +4,7 @@ This is a replication package and online appendix for the ICSA2025 paper "Networ
 
 ## Contents
 This repository contains the following:
+- [INSTALL](INSTALL.md): Detailed installation instructions for each used tool
 - [Appendix](Appendix):
   - [Table I](Appendix/TableI_used_projects.pdf): Data on the 24 studied projects
   - [Table II](Appendix/TableII_list_of_metrics.pdf): List of all gathered metrics
@@ -52,6 +53,10 @@ This repository contains the following:
   - [merge_sonarqube.py](Scripts/merge_sonarqube.py): put the `SonarQube` data into a `csv` file
   - [merge_all.py](Scripts/merge_all.py): merge all metrics into a single `csv` file
   - [metrics_results.py](Scripts/metrics_results.py): keep only the statistically significantly correlated metrics
+
+## Preparation and installation
+
+Follow the instructions in [INSTALL](INSTALL.md) to install and configure all used tools.
 
 ##  `Code2DFD` and centrality metrics
 All DFDs are reconstructed with [c65b4a](https://github.com/tuhh-softsec/code2DFD/tree/c65b4a081ed2ca1618319e5dabf9ecf590988059) version of `Code2DFD` tool.

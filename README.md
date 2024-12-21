@@ -36,12 +36,16 @@ This repository contains the following:
   - [metrics_merged.csv](Metrics/metrics_merged.csv): All the metrics for all microservices
   - [metrics_statsig.csv](Metrics/metrics_statsig.csv): List of all metrics that have a statistically significant correlation with centrality
 - [Results](Results): Data files containing the analyzed results to answer the Research Question
+  - [NormalityAndersonDarling](Results/NormalityAndersonDarling.ods): Results of testing normality of each metric distribution with Anderson-Darling
   - [RQ1](Results/RQ1): Does centrality correlate with size metrics?
     - [metrics_size.csv](Results/RQ1/metrics_size.csv): All the size metrics that have a statistically significant correlation with centrality
+    - [SizeSpearmanRho](Results/RQ1/SizeSpearmanRho.ods): Spearman Rho correlation between centrality and size metrics
   - [RQ2](Results/RQ2): Does centrality correlate with complexity metrics?
     - [metrics_complexity.csv](Results/RQ2/metrics_complexity.csv): All the complexity metrics that have a statistically significant correlation with centrality
+    - [ComplexitySpearmanRho](Results/RQ2/ComplexitySpearmanRho.ods): Spearman Rho correlation between centrality and complexity metrics
   - [RQ3](Results/RQ3): Does centrality correlate with quality metrics?
     - [metrics_quality.csv](Results/RQ3/metrics_quality.csv): All the quality metrics that have a statistically significant correlation with centrality
+    - [QualitySpearmanRho](Results/RQ3/QualitySpearmanRho.ods): Spearman Rho correlation between centrality and complexity metrics
 - [Scripts](Scripts): a folder containing all the scripts
   - [extract_graphs.py](Scripts/extract_graphs.py): processes the `Code2DFD` output into standard graph `json`
   - [metrics_centrality.py](Scripts/metrics_centrality.py): computes centrality scores with `NetworkX`

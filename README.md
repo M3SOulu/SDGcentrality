@@ -81,7 +81,7 @@ The script [metrics_centrality.py](Scripts/metrics_centrality.py) loads the `PRO
 - Current flow centrality
 - Subgraph centrality
 
-The centrality metrics for each system and service are saved into [metrics_centrality.csv](metrics_centrality.csv) `csv` file.
+The centrality metrics for each system and service are saved into [metrics_centrality.csv](Metrics/metrics_centrality.csv) `csv` file.
 
 ## `Jasome` metrics
 
@@ -97,9 +97,9 @@ For each `PROJECT`, the scripts saves to the folder `PROJECT-jasome` the raw `xm
 ### Merging `Jasome` metrics
 
 The script [merge_jasome.py](Scripts/merge_jasome.py) takes the data from all the raw `xml`s into the following `csv` files:
-- [metrics_jasome_package.csv](metrics_jasome_package.csv): metrics calculated for each package
-- [metrics_jasome_class.csv](metrics_jasome_class.csv): metrics calculated for each class
-- [metrics_jasome_method.csv](metrics_jasome_method.csv): metrics calculated for each method
+- [metrics_jasome_package.csv](Metrics/metrics_jasome_package.csv): metrics calculated for each package
+- [metrics_jasome_class.csv](Metrics/metrics_jasome_class.csv): metrics calculated for each class
+- [metrics_jasome_method.csv](Metrics/metrics_jasome_method.csv): metrics calculated for each method
 
 ## `Understand` metrics
 
@@ -116,7 +116,7 @@ For each `PROJECT`, the scripts saves to the folder `PROJECT-und` the raw `csv` 
 ### Merging `Understand` metrics
 
 The script [merge_understand.py](Scripts/merge_understand.py) takes only the metrics calculated on `Package` level for all
-`PROJECTS` and saves them to [metrics_understand.csv](metrics_understand.csv) `csv` file.
+`PROJECTS` and saves them to [metrics_understand.csv](Metrics/metrics_understand.csv) `csv` file.
 
 
 ## `SonarQube` metrics
@@ -147,22 +147,22 @@ The script [merge_sonarqube.py](Scripts/merge_sonarqube.py) queries data for eac
 Change the variable `USER_TOKEN` to the `User token` generated in `SonarQube`.
 
 The script will query the `SonarQube` metrics on directory level, infer the package name from the directory path,
-and save the metrics for each `PROJECT` and each package in the [metrics_sonarqube.csv](metrics_sonarqube.csv).
+and save the metrics for each `PROJECT` and each package in the [metrics_sonarqube.csv](Metrics/metrics_sonarqube.csv).
 
 ## Merging all data
 
-The file [package_map.json](package_map.json) contains the mapping of Java packages to the microservices.
+The file [package_map.json](raw_data/package_map.json) contains the mapping of Java packages to the microservices.
 
-The script [merge_data.py](Scripts/merge_all.py) takes the [metrics_centrality.csv](metrics_centrality.csv), [metrics_understand.csv](metrics_understand.csv),
- [metrics_jasome_package.csv](metrics_jasome_package.csv), [metrics_jasome_class.csv](metrics_jasome_class.csv), [metrics_jasome_method.csv](metrics_jasome_method.csv) ,
-[metrics_sonarqube.csv](metrics_sonarqube.csv) files, maps the packages to microservices and creates a unified `csv` file [metrics_microservice.csv](metrics_merged.csv) with microservices that have all possible metrics.
+The script [merge_data.py](Scripts/merge_all.py) takes the [metrics_centrality.csv](Metrics/metrics_centrality.csv), [metrics_understand.csv](Metrics/metrics_understand.csv),
+ [metrics_jasome_package.csv](Metrics/metrics_jasome_package.csv), [metrics_jasome_class.csv](Metrics/metrics_jasome_class.csv), [metrics_jasome_method.csv](Metrics/metrics_jasome_method.csv) ,
+[metrics_sonarqube.csv](Metrics/metrics_sonarqube.csv) files, maps the packages to microservices and creates a unified `csv` file [metrics_merged.csv](Metrics/metrics_merged.csv) with microservices that have all possible metrics.
 
 Metrics are aggregated from packages using `sum`, `mean` and `max` wherever suitable.
 
 ## Filtering metrics with statistically significant correlation
 
-The file [metrics_statsig.csv](metrics_statsig.csv) contains a list of metrics that have a statistically significant (`p<0.01`)
+The file [metrics_statsig.csv](Metrics/metrics_statsig.csv) contains a list of metrics that have a statistically significant (`p<0.01`)
 correlation with at least one centrality score, and their category of either `size`, `complexity` or `quality`.
 
-The script [metrics_filter_statsig.py](Scripts/metrics_results.py) takes only such metrics from [metrics_microservice.csv](metrics_merged.csv)
-and saves them to three respective `csv` files: [metrics_size.csv](metrics_size.csv), [metrics_complexity.csv](metrics_complexity.csv) and [metrics_quality.csv](metrics_quality.csv) together with the centrality metrics.
+The script [metrics_filter_statsig.py](Scripts/metrics_results.py) takes only such metrics from [metrics_merged.csv](Metrics/metrics_merged.csv)
+and saves them to three respective `csv` files: [metrics_size.csv](Results/RQ1/metrics_size.csv), [metrics_complexity.csv](Results/RQ2/metrics_complexity.csv) and [metrics_quality.csv](Results/RQ3/metrics_quality.csv) together with the centrality metrics.

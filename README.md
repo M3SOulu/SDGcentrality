@@ -53,10 +53,6 @@ This repository contains the following:
   - [merge_all.py](Scripts/merge_all.py): merge all metrics into a single `csv` file
   - [metrics_results.py](Scripts/metrics_results.py): keep only the statistically significantly correlated metrics
 
-## Setup
-Install the following Python packages: `networkx`, `pandas`, `requests`.
-If you want to replicate a specific tool, follow its instructions on how to properly set it up.
-
 ##  `Code2DFD` and centrality metrics
 All DFDs are reconstructed with [c65b4a](https://github.com/tuhh-softsec/code2DFD/tree/c65b4a081ed2ca1618319e5dabf9ecf590988059) version of `Code2DFD` tool.
 

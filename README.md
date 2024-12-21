@@ -60,11 +60,11 @@ This repository contains the following:
 
 ## License
 
-All generated data is provided under Creative Commons 4.0 Attribution License.
+All generated data is provided under [Creative Commons 4.0 Attribution License](DATA_LICENSE).
 
-All scripts are provided under the MIT License.
+All scripts are provided under the [MIT License](SCRIPT_LICENSE).
 
-All the analysed projects must be used in accordance with their respective licenses.
+All the analysed projects must be used in accordance with their respective licenses (shared in each project when applicable).
 
 ## Preparation and installation
 

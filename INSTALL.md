@@ -40,7 +40,9 @@ The data in this package are generated using version `6.5.1201`.
 
 Request an Educational/Academic license at the appropriate step.
 
-Change the variable `UND_PATH` in the [understand script](Scripts/metrics_understand.py) to point to the `und` [cli tool](https://support.scitools.com/support/solutions/articles/70000582798-using-understand-from-the-command-line-with-und) on your system.
+Change the variable `UND_PATH` in the [Understand script](Scripts/metrics_understand.py) to point to the `und` [cli tool](https://support.scitools.com/support/solutions/articles/70000582798-using-understand-from-the-command-line-with-und) on your system.
+
+Use the [Understand script](Scripts/metrics_understand.py) to generate the data. See instructions in [README](README.md#understand-metrics).
 
 ## Jasome
 
@@ -49,6 +51,8 @@ Download the latest release of `Jasome` from official [GitHub page](https://gith
 The data in these package are generated using `v0.6.8-alpha`.
 
 Change the variable `JASOME_PATH` in the [Jasome script](Scripts/metrics_jasome.py) to point to the `Jasome` binary on your system.
+
+Use the [Jasome script](Scripts/metrics_jasome.py) to generate the data. See instructions in [README](README.md#jasome-metrics).
 
 ## SonarQube
 
@@ -68,6 +72,15 @@ Navigate to [http://localhost:9000](http://localhost:9000). For the first login,
 Generate a `Global Analysis Token` and a `User token`.
 
 Download the `SonarScanner` application from the [official website](https://docs.sonarsource.com/sonarqube/9.9/analyzing-source-code/scanners/sonarscanner/).
+
+In the [SonarQube script](Scripts/metrics_sonarqube.py):
+- Change the `SONAR_PATH` variable to the location of the `sonar-scanner` binary.
+- Change the `TOKEN` variable to the `Global Analysis Token` generated in `SonarQube`.
+
+In the [SonarQube merge script](Scripts/merge_sonarqube.py):
+- Change the variable `USER_TOKEN` to the `User token` generated in `SonarQube`.
+
+Use the [SonarQube script](Scripts/metrics_sonarqube.py) to generate the data. See instructions in [README](README.md#sonarqube-metrics).
 
 ## Working with the package scripts
 Install the following Python packages: `networkx`, `pandas`, `requests`.

@@ -121,7 +121,7 @@ The script [merge_understand.py](Scripts/merge_understand.py) takes only the met
 
 ## `SonarQube` metrics
 
-Deploy a `SonarQube` instance using the intructions from the [official website](https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/install-the-server/introduction/).
+Deploy a `SonarQube` instance using the instructions from the [official website](https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/install-the-server/introduction/).
 
 Generate a `Global Analysis Token` and a `User token`.
 

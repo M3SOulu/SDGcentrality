@@ -50,6 +50,25 @@ The data in these package are generated using `v0.6.8-alpha`.
 
 Change the variable `JASOME_PATH` in the [Jasome script](Scripts/metrics_jasome.py) to point to the `Jasome` binary on your system.
 
+## SonarQube
+
+NOTE: There are many ways to deploy `SonarQube`, we provide the most simple way to achieve necessary results.
+
+Install [Docker](https://www.docker.com/).
+
+Deploy `SonarQube` using the example [docker-compose.yml](https://github.com/SonarSource/docker-sonarqube/blob/master/example-compose-files/sq-with-postgres/docker-compose.yml) as:
+
+
+```
+docker compose -f docker-compose.yml up -d
+```
+
+Navigate to [http://localhost:9000](http://localhost:9000). For the first login, credentials are `admin/admin`, then set your own.
+
+Generate a `Global Analysis Token` and a `User token`.
+
+Download the `SonarScanner` application from the [official website](https://docs.sonarsource.com/sonarqube/9.9/analyzing-source-code/scanners/sonarscanner/).
+
 ## Working with the package scripts
 Install the following Python packages: `networkx`, `pandas`, `requests`.
 If you want to replicate a specific tool, follow its instructions on how to properly set it up.

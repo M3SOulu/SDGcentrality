@@ -5,8 +5,8 @@ This is a replication package and online appendix for the ICSA2025 paper "Networ
 ## Contents
 This repository contains the following:
 - [Appendix](Appendix):
-  - [Table I](Appendix/Table_used_projects.pdf): Data on the 24 studied projects
-  - [Table II](Appendix/Table_list_of_metrics.pdf): List of all gathered metrics
+  - [Table I](Appendix/TableI_used_projects.pdf): Data on the 24 studied projects
+  - [Table II](Appendix/TableII_list_of_metrics.pdf): List of all gathered metrics
   - [Project information](Appendix/Project%20information.ods): Tables of all projects gathered from all dataset and their metadata
 - [Projects](Projects): a folder containing source code of all studied projects
 - [Figures](Figures): a folder containing all figures used in the paper

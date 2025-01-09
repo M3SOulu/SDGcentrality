@@ -39,6 +39,10 @@ ms_systems = understand.groupby("Microservice").first()[["MS_system"]]  # Retain
 sum_metrics = understand.groupby('Microservice')[count_cols].sum().reset_index()
 understand = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the MS_system column
 
+# Calculate Private to Public method ratio
+understand["RatioPrivateToPublicMethod"] = understand["CountDeclMethodPrivate"]/understand["CountDeclMethodPublic"]
+
+
 
 # --- Jasome Package
 jasome_package = pd.read_csv("Metrics/metrics_jasome_package.csv")

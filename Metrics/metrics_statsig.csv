@@ -68,6 +68,7 @@ CountDeclMethodProtected,size
 CountLineComment,size
 CountLineCodeExe,size
 CountLineCodeDecl,size
+RatioPrivateToPublicMethod,size
 Violations,quality
 Code smells,quality
 Critical violations,quality

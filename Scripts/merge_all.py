@@ -41,6 +41,7 @@ understand = sum_metrics.merge(ms_systems, on='Microservice')  # Insert back the
 
 # Calculate Private to Public method ratio
 understand["RatioPrivateToPublicMethod"] = understand["CountDeclMethodPrivate"]/understand["CountDeclMethodPublic"]
+understand["RatioProtectedToPublicMethod"] = understand["CountDeclMethodProtected"]/understand["CountDeclMethodPublic"]
 
 
 

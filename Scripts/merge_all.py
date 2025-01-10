@@ -54,7 +54,7 @@ jasome_package = jasome_package.dropna(subset=["Microservice"])
 jasome_package = jasome_package.drop(columns=["Package"])
 
 # Drop unnecessary metrics
-jasome_package = jasome_package.drop(columns=["A", "I", "DMS", "CCRC", "PkgRCI"], errors="ignore")
+jasome_package = jasome_package.drop(columns=["A", "I", "DMS", "CCRC"], errors="ignore")
 
 # Group by microservice and sum all the metric columns
 count_cols = [col for col in jasome_package.columns if col not in ["MS_system", "Microservice"]]
@@ -165,7 +165,7 @@ total = total.merge(jasome_class, on=["MS_system", "Microservice"], how="left")
 total = total.merge(jasome_method, on=["MS_system", "Microservice"], how="left")
 total = total.merge(sonarqube, on=["MS_system", "Microservice"], how="left")
 total = total.merge(centrality, on=["MS_system", "Microservice"], how="left")
-total = total.drop(columns=["Avg(NMIR)", "Avg(PF)", "Max(PF)"])
+total = total.drop(columns=["Avg(NMIR)", "Avg(PF)", "Max(PF)"])  # These cause values to be NaN
 total = total.dropna()
 
 # Reorder columns to start with system, service

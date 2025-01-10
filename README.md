@@ -7,7 +7,9 @@ This repository contains the following:
 - [INSTALL](INSTALL.md): Detailed installation instructions for each used tool
 - [Appendix](Appendix):
   - [Table I](Appendix/TableI_used_projects.pdf): Data on the 24 studied projects
-  - [Table II](Appendix/TableII_list_of_metrics.pdf): List of all gathered metrics
+  - [Table II](Appendix/TableII_understand_metrics.pdf): List of metrics from Understand
+  - [Table III](Appendix/TableIII_jasome_metrics.pdf): List of metrics from Jasome
+  - [Table IV](Appendix/TableIV_sonarqube_metrics.pdf): List of metrics from SonarQube
   - [Project information](Appendix/Project%20information.ods): Tables of all projects gathered from all dataset and their metadata
 - [Projects](Projects): a folder containing source code of all studied projects
 - [Figures](Figures): a folder containing all figures used in the paper
